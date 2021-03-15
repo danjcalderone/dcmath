@@ -13134,8 +13134,45 @@ div#notebook {
 <span class="k">def</span> <span class="nf">friends</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">number</span><span class="p">):</span>
     <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> has </span><span class="si">{}</span><span class="s1"> friends!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">number</span><span class="p">)</span>
 
+<span class="n">interact</span><span class="p">(</span><span class="n">friends</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Dan&#39;</span><span class="p">,</span><span class="n">number</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">));</span>
+</pre></div>
 
-<span class="n">arml</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">armw</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">;</span> <span class="n">depth</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span> <span class="n">rrad</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">;</span>
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    
+
+
+
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
+
+</div>
+
+</div>
+</div>
+
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">arml</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">armw</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">;</span> <span class="n">depth</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span> <span class="n">rrad</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">;</span>
 <span class="n">shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="n">arml</span><span class="p">,</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">],[</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">,</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">],[</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">,</span><span class="n">arml</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">,</span><span class="n">arml</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">,</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">],</span>
                   <span class="p">[</span><span class="o">-</span><span class="n">arml</span><span class="p">,</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">],[</span><span class="o">-</span><span class="n">arml</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">,</span><span class="o">-</span><span class="n">arml</span><span class="p">],[</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">,</span><span class="o">-</span><span class="n">arml</span><span class="p">],</span>
                   <span class="p">[</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">],[</span><span class="n">arml</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">armw</span><span class="p">]]);</span>
@@ -13399,6 +13436,43 @@ div#notebook {
 <span class="n">time_length</span>   <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;900px&#39;</span><span class="p">);</span>
 <span class="n">orient_length</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;400px&#39;</span><span class="p">);</span>
 
+<span class="n">interact</span><span class="p">(</span><span class="n">plot3D</span><span class="p">,</span>
+           <span class="n">t</span>      <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Time Step&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;900px&#39;</span><span class="p">)),</span>
+           <span class="n">k</span>      <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span>  <span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span> <span class="n">K</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Iteration&#39;</span><span class="p">),</span>
+           <span class="n">show_quad</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Show quad:&#39;</span><span class="p">),</span>
+           <span class="n">show_env</span>  <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Show environment:&#39;</span><span class="p">),</span>         
+           <span class="n">show_objs</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Show objects:&#39;</span><span class="p">),</span>                  
+           <span class="n">quad_size</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span>  <span class="mf">0.2</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span> <span class="mi">5</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Quad Size&#39;</span><span class="p">),</span>
+           <span class="n">zoom</span>   <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatLogSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Zoom&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">orient_length</span><span class="p">),</span>         
+           <span class="n">rot</span>    <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span>  <span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Orientation&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">orient_length</span><span class="p">),</span>         
+           <span class="n">vert</span>   <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span>  <span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span><span class="n">descrxiption</span><span class="o">=</span><span class="s1">&#39;Vertical Angle&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">orient_length</span><span class="p">));</span>
+
+
+<span class="c1"># rows = []</span>
+<span class="c1"># rows.append(HBox([dim_slider]));</span>
+<span class="c1"># rows.append(HBox([zoom_slider]));</span>
+<span class="c1"># rows.append(HBox([comb_choice,matrix_slider,shape_slider]));</span>
+<span class="c1"># rows.append(HBox([show_char,show_expound]));</span>
+<span class="c1"># rows.append(HBox([lambda_button,lambda_slider]));</span>
+<span class="c1"># rows.append(HBox([show_projections,proj_slider]));</span>
+<span class="c1"># rows.append(HBox([evolve_slider]));</span>
+<span class="c1"># rows.append(HBox([sym_slider]));</span>
+<span class="c1"># rows.append(HBox([uv_slider]));</span>
+<span class="c1"># rows.append(HBox([VBox(layer_buttons[0]),VBox(layer_buttons[1]),VBox(layer_buttons[2]),</span>
+<span class="c1">#                   decomp_select,snap_select]));                  </span>
+<span class="c1"># #                  VBox(decomp_select),snap_select]));</span>
+
+<span class="c1"># ig.min_aspect_ratio = 1;</span>
+<span class="c1"># #pts.on_drag(pts_drag_start);</span>
+<span class="c1"># pts.on_drag_end(pts_drag_end);</span>
+
+<span class="c1"># #pts.observe(foo,&#39;x&#39;);Lwj</span>
+<span class="c1"># pts.enable_move = True</span>
+
+
+<span class="c1"># display(fig)</span>
+<span class="c1"># display(ui)</span>
+
 
 
         
@@ -13408,26 +13482,23 @@ div#notebook {
 </div>
 </div>
 
-  </div>
-
-  
-
-  <div class="
-      cell border-box-sizing code_cell rendered">
-    <div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">interact</span><span class="p">(</span><span class="n">friends</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Dan&#39;</span><span class="p">,</span><span class="n">number</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">));</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 <div class="output_wrapper">
 <div class="output">
 
+
+<div class="output_area">
+
+    
+
+
+
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
+
+</div>
 
 <div class="output_area">
 
@@ -13456,17 +13527,7 @@ div#notebook {
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">interact</span><span class="p">(</span><span class="n">plot3D</span><span class="p">,</span>
-           <span class="n">t</span>      <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span><span class="n">T</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Time Step&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;900px&#39;</span><span class="p">)),</span>
-           <span class="n">k</span>      <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span>  <span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span> <span class="n">K</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Iteration&#39;</span><span class="p">),</span>
-           <span class="n">show_quad</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Show quad:&#39;</span><span class="p">),</span>
-           <span class="n">show_env</span>  <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Show environment:&#39;</span><span class="p">),</span>         
-           <span class="n">show_objs</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Show objects:&#39;</span><span class="p">),</span>                  
-           <span class="n">quad_size</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span>  <span class="mf">0.2</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span> <span class="mi">5</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Quad Size&#39;</span><span class="p">),</span>
-           <span class="n">zoom</span>   <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatLogSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span>  <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Zoom&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">orient_length</span><span class="p">),</span>         
-           <span class="n">rot</span>    <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span>  <span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Orientation&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">orient_length</span><span class="p">),</span>         
-           <span class="n">vert</span>   <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span>  <span class="mi">0</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span><span class="n">descrxiption</span><span class="o">=</span><span class="s1">&#39;Vertical Angle&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">orient_length</span><span class="p">));</span>
-    
+<div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
 
     </div>
