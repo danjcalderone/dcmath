@@ -13143,20 +13143,18 @@ div#notebook {
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> widget
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy.linalg</span> <span class="k">as</span> <span class="nn">mat</span>
 <span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">smat</span>
 
-<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span>
 <span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Polygon</span>
 
-
 <span class="c1">############   DEFINE QUAD SHAPE....</span>
 <span class="c1">############   DEFINE QUAD SHAPE....</span>
 <span class="c1">############   DEFINE QUAD SHAPE....</span>
 <span class="c1">############   DEFINE QUAD SHAPE....</span>
-
 
 <span class="c1"># ARM SHAPE...</span>
 <span class="n">arml</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">armw</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">;</span> <span class="n">depth</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span> <span class="n">rrad</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">;</span>
@@ -13171,8 +13169,6 @@ div#notebook {
 <span class="c1">#               np.array([[-arml,-0.5*armw,depth],[-arml,0.5*armw,depth],[-arml,0.5*armw,-depth],[-arml,-0.5*armw,-depth]]),              </span>
 <span class="c1">#               np.array([[0.5*armw,arml,depth],[-0.5*armw,arml,depth],[-0.5*armw,arml,-depth],[0.5*armw,arml,-depth]]),</span>
 <span class="c1">#               np.array([[0.5*armw,-arml,depth],[-0.5*armw,-arml,depth],[-0.5*armw,-arml,-depth],[0.5*armw,-arml,-depth]])];</span>
-
-
 
 <span class="c1"># ROTORS...</span>
 <span class="n">thetas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
@@ -13305,7 +13301,6 @@ div#notebook {
                             <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="n">fill</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">));</span>
 
             
-
 <span class="c1">#### CONSTRUCTING SAMPLE TRAJECTORYIES USING BEZIER CURVES....</span>
 <span class="c1">#### CONSTRUCTING SAMPLE TRAJECTORYIES USING BEZIER CURVES....</span>
 <span class="c1">#### CONSTRUCTING SAMPLE TRAJECTORYIES USING BEZIER CURVES....</span>
