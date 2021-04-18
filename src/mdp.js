@@ -1,3 +1,8 @@
+
+
+
+
+
 import {
   CanvasSpace,
   HTMLSpace,
@@ -23,19 +28,31 @@ import {
   UIDragger,
   UIButton,
   Vec
-} from "pts";
-//import * as katex from "katex";
-import * as tf from "@tensorflow/tfjs";
-//import * as tfvis from "@tensorflow/tfjs-vis";
-import math, {
-  applyTransformDependencies,
-  i,
-  range,
-  rowTransformDependencies,
-  simplify
-} from "mathjs";
+} from Pts;
 
+
+
+Pts.namespace(window);
+
+
+
+
+
+
+const outline1 = "rgba(0,0,0,";
 var dt;
+
+function intersectPolyPt(poly, tip) {
+  let temp1 = poly.clone();
+  temp1.push(poly[0]);
+  let temp2 = Curve.cardinal(temp1, 100, 0);
+  var closest = tip;
+  if (!Polygon.hasIntersectPoint(poly, tip)) {
+    closest = temp2[Polygon.nearestPt(temp2, tip)];
+  }
+  return closest;
+}
+
 var zeros = [];
 var ones = [];
 for (let i = 0; i < 20; i++) {
@@ -46,11 +63,41 @@ zeros = Group.fromPtArray(zeros);
 ones = Group.fromPtArray(ones);
 
 const maxDim = 8;
+
 var CUBE = [[]];
 CUBE[1] = new Group([0, 1]);
 CUBE[1] = CUBE[1].$zip();
 var CUBEE = [[]];
 
+function cubeCorners() {
+  var X, X0, X1;
+  for (let i = 2; i <= maxDim; i++) {
+    X = CUBE[i - 1].$zip().clone();
+    X0 = X.concat(new Group(math.zeros(X[0].length)._data));
+    X1 = X.concat(new Group(math.ones(X[0].length)._data));
+    CUBE[i] = X0.$zip().concat(X1.$zip());
+  }
+}
+
+function cubeEdges() {
+  var cube, X0, X1;
+  for (let i = 1; i < maxDim; i++) {
+    cube = CUBE[i];
+    CUBEE[i] = [];
+    for (let j = 0; j < cube.length; j++) {
+      X0 = new Group(cube[j]);
+      for (let k = 0; k < X0[0].length; k++) {
+        if (X0[0][k] == 1) {
+          let temp = X0[0].clone();
+          temp[k] = 0;
+          X0.push(temp);
+        }
+      }
+      //console.log([].concat(Polygon.network(X0,0)))
+      CUBEE[i] = CUBEE[i].concat(Polygon.network(X0, 0));
+    }
+  }
+}
 cubeCorners();
 cubeEdges();
 
@@ -73,6 +120,138 @@ var SIMP = [];
 var SIMPE = [];
 var SPHERE = [];
 var SPHEREE = [];
+
+// for (let dim = 0; dim < maxDim; dim++) {
+//   CUBE[i] = cubeCorners(dim);
+//   CUBEE[i] = cubeEdges(CUBE[i]);
+// }
+
+function convexComb2n(y, A) {
+  let iters = 50,
+    sharp = 3,
+    mu = 0.01,
+    gam = 0.1,
+    scale = 0.01;
+  let yy = new Pt(y[0], y[1], 1);
+  let m = A.length,
+    n = A[0].length;
+  let dist = A.$zip().map((h) => {
+    return h.$subtract(y).magnitude();
+  });
+  let exp = dist.map((t) => {
+    return math.exp(sharp / (t * scale));
+  });
+  let sum = exp.reduce((a, b) => {
+    return a + b;
+  });
+  let xb = new Pt(exp.map((t) => t / sum));
+  let yb = yy.$subtract(A.map((t) => t.dot(xb)));
+  let x = xb.clone();
+  let v = new Pt(math.zeros(m + 1)._data);
+  let B = A.clone();
+  B.push(new Pt(math.ones(n)._data));
+
+  if (n == 1) {
+    x = new Pt([1]);
+  } else if (n == 2) {
+    let B00 = B[0][0],
+      B01 = B[0][1];
+    let B10 = B[1][0],
+      B11 = B[1][1];
+    let Bi = Group.fromArray([
+      [B00 - B01, B10 - B11],
+      [B11 - B10, B00 - B01]
+    ]);
+    Bi.divide((B00 - B01) * (B00 - B01) + (B11 - B10) * (B11 - B10));
+    let temp = Bi.map((t) => t.dot(new Pt(yy[0] - B01, yy[1] - B11)))[0];
+    temp = math.min(1, math.max(temp, 0));
+    x = new Pt(temp, 1 - temp);
+  } else if (n == 3) {
+    let M00 = B[0][0],
+      M01 = B[0][1],
+      M02 = B[0][2];
+    let M10 = B[1][0],
+      M11 = B[1][1],
+      M12 = B[1][2];
+    let M20 = B[2][0],
+      M21 = B[2][1],
+      M22 = B[2][2];
+    let Bi = Group.fromArray([
+      [M11 * M22 - M12 * M21, M02 * M21 - M01 * M22, M01 * M12 - M02 * M11],
+      [M12 * M20 - M10 * M22, M00 * M22 - M02 * M20, M02 * M10 - M00 * M12],
+      [M10 * M21 - M11 * M20, M01 * M20 - M00 * M21, M00 * M11 - M01 * M10]
+    ]);
+    Bi.divide(
+      M00 * (M11 * M22 - M12 * M21) -
+        M01 * (M10 * M22 - M12 * M20) +
+        M02 * (M10 * M21 - M11 * M20)
+    );
+    x = new Pt(Bi.map((t) => t.dot(new Pt(yy[0], yy[1], 1))));
+  } else {
+    for (let i = 0, len = iters; i < len; i++) {
+      let temp = x.$add(xb);
+      let temp2 = temp.$multiply(temp);
+      let qi = temp2.$divide(temp2.$add(mu));
+      let M = B.$matrixMultiply(B.map((t) => t.$multiply(qi)).$zip());
+      // explicit 3x3 matrix inverse
+      let M00 = M[0][0],
+        M01 = M[0][1],
+        M02 = M[0][2];
+      let M10 = M[1][0],
+        M11 = M[1][1],
+        M12 = M[1][2];
+      let M20 = M[2][0],
+        M21 = M[2][1],
+        M22 = M[2][2];
+      let Mi = Group.fromArray([
+        [M11 * M22 - M12 * M21, M02 * M21 - M01 * M22, M01 * M12 - M02 * M11],
+        [M12 * M20 - M10 * M22, M00 * M22 - M02 * M20, M02 * M10 - M00 * M12],
+        [M10 * M21 - M11 * M20, M01 * M20 - M00 * M21, M00 * M11 - M01 * M10]
+      ]);
+      Mi.divide(
+        M00 * (M11 * M22 - M12 * M21) -
+          M01 * (M10 * M22 - M12 * M20) +
+          M02 * (M10 * M21 - M11 * M20)
+      );
+      let dfx = new Pt(B.$zip().map((t) => t.dot(v)));
+      dfx.add(x.$subtract(temp2.map((t) => mu / t)));
+      let dfv = new Pt(B.map((t) => t.dot(x)).subtract(yb));
+
+      // ====================================
+      // (Qi - QiB.TMiBQi)dfx + Qi B.T Mi dfv
+      // Mi B Qi dfx          +    -Mi dfv
+      // ====================================
+      // console.log(qi.$multiply(dfx).$subtract(-1))
+      let dx1 = new Pt(
+        dfx.$subtract(
+          B.$zip()
+            .$matrixMultiply(Mi.$matrixMultiply(B))
+            .map((t) => t.dot(dfx.$multiply(qi)))
+        )
+      );
+      dx1.multiply(qi);
+      let dx2 = new Pt(
+        qi.$multiply(
+          B.$zip()
+            .$matrixMultiply(Mi)
+            .map((t) => t.dot(dfv))
+        )
+      );
+      let dv1 = new Pt(
+        Mi.$matrixMultiply(B).map((t) => t.dot(dfx.$multiply(qi)))
+      );
+      let dv2 = new Pt(Mi.map((t) => t.dot(dfv.$multiply(-1))));
+      x.subtract(dx1.$add(dx2).$multiply(gam));
+      v.subtract(dv1.$add(dv2).$multiply(gam));
+    }
+    x.add(xb);
+    let xmag = x.reduce((a, b) => {
+      return a + b;
+    });
+    x = x.map((t) => t / xmag);
+  }
+  return x;
+}
 
 const ishift = new Pt(-100, -100);
 const ashift = new Pt(-100, 200);
@@ -430,7 +609,221 @@ const div100 = new Pt(math.range(0, 1, 0.01)._data);
 var ocenter;
 var gcenter;
 
+function drawArrow(e, start, end, dcenter, perc, wid) {
+  var arrowHead, arrowTail;
+  let shrink = Group.fromArray([
+    [1 - perc[0], perc[0]],
+    [1 - perc[1], perc[1]]
+  ]);
+  if (oneWay.includes(e)) {
+    ptoi = shrink.$matrixMultiply(new Group(start, end));
+    diff = ptoi[1].$subtract(ptoi[0]);
+    arrowHead = whead.map((t) =>
+      t
+        .$multiply(ewidth * wid)
+        .$add([diff.magnitude() - whead[2][0] * ewidth * wid, 0])
+    );
+    arrowTail = new Group(
+      arrowHead[arrowHead.length - 1],
+      wtail[0].$multiply(ewidth * wid),
+      wtail[1].$multiply(ewidth * wid),
+      arrowHead[0]
+    );
+    phi = -math.atan2(diff[1], diff[0]);
+    rotphi = [
+      [math.cos(phi), -math.sin(phi)],
+      [math.sin(phi), math.cos(phi)]
+    ];
+    arrowHead = arrowHead.$matrixMultiply(rotphi);
+    arrowTail = arrowTail.$matrixMultiply(rotphi);
+    arrowHead.add(ptoi[0]);
+    arrowTail.add(ptoi[0]);
+  } else if (bothWays.includes(e)) {
+    ptoi = shrink.$matrixMultiply(new Group(start, end));
+    diff = ptoi[1].$subtract(ptoi[0]);
+    arrowHead = hhead.map((t) =>
+      t
+        .$multiply(ewidth * wid)
+        .$add([diff.magnitude() - whead[2][0] * ewidth * wid, 0])
+    );
+    // arrowTail = htail
+    //   .map((t) => t.$multiply(ewidth))
+    //   .concat([[diff.magnitude() - whead[2]]]);
+    arrowTail = new Group(
+      arrowHead[arrowHead.length - 1],
+      htail[0].$multiply(ewidth * wid),
+      htail[1].$multiply(ewidth * wid),
+      arrowHead[0]
+    );
+
+    phi = -math.atan2(diff[1], diff[0]);
+    rotphi = [
+      [math.cos(phi), -math.sin(phi)],
+      [math.sin(phi), math.cos(phi)]
+    ];
+    arrowHead = arrowHead.$matrixMultiply(rotphi);
+    arrowTail = arrowTail.$matrixMultiply(rotphi);
+    arrowHead.add(ptoi[0]);
+    arrowTail.add(ptoi[0]);
+  } else if (selfLoops.includes(e)) {
+    let ph0 = 2 * 3.1415 * perc[0],
+      ph1 = 2 * 3.1415 * perc[1];
+
+    let ax0 = start.$subtract(dcenter).$unit();
+    let ax1 = new Pt(ax0[1], -ax0[0]).$unit();
+    let orient = new Group(ax0, ax1);
+    let degs = div100.$multiply(ph1 - ph0);
+    let coss = degs.map((t) => math.cos(-t));
+    let sins = degs.map((t) => math.sin(-t));
+    let arc = new Group(coss, sins).$zip();
+    let arc1 = arc.map((t) => t.$multiply(erad));
+    let arc2 = arc.map((t) => t.$multiply(erad + 2 * loopWidth * ewidth * wid));
+    let whd = whead.map((t) => t.$multiply(loopWidth * ewidth * wid));
+    whd = whd.$matrixMultiply([
+      [0, 1],
+      [-1, 0]
+    ]);
+    whd = whd.map((t) => t.$add([loopWidth * ewidth * wid + erad, 0]));
+    arrowHead = whd.clone();
+    arrowTail = arc2.concat(arc1.reverse());
+    arrowHead = arrowHead.$matrixMultiply(orient);
+    arrowTail = arrowTail.$matrixMultiply(orient);
+    rotphi = [
+      [math.cos(ph1), -math.sin(ph1)],
+      [math.sin(ph1), math.cos(ph1)]
+    ];
+    arrowHead = arrowHead.$matrixMultiply(rotphi);
+    arrowTail = arrowTail.$matrixMultiply(rotphi);
+    arrowHead = arrowHead.map((t) =>
+      t.$add(dcenter.$add(start.$subtract(dcenter).$multiply(1.4)))
+    );
+    arrowTail = arrowTail.map((t) =>
+      t.$add(dcenter.$add(start.$subtract(dcenter).$multiply(1.4)))
+    );
+  }
+  return [arrowHead, arrowTail];
+}
+
 var extrudez = new Pt([0, -30]);
+
+function drawGraph(extrude) {
+  let eperc, arrow, arrowHT;
+  for (let e = 0; e < oinds.length; e++) {
+    if (bothWays.includes(e)) {
+      eperc = [0.1, 0.9];
+      arrowHT = drawArrow(
+        e,
+        iaxes[oinds[e]],
+        iaxes[iinds[e]],
+        ocenter,
+        eperc,
+        1
+      );
+      arrow = arrowHT[0].concat(arrowHT[1]);
+      form.fill("rgba(200,200,200,0.2)").polygon(arrow);
+      arrowHT = drawArrow(
+        e,
+        iaxes[oinds[e]].$subtract(ocenter).$multiply(0.5).$add(gcenter),
+        iaxes[iinds[e]].$subtract(ocenter).$multiply(0.5).$add(gcenter),
+        gcenter,
+        eperc,
+        1
+      );
+      arrow = arrowHT[0].concat(arrowHT[1]);
+      form.strokeOnly("rgba(100,100,100,0.4)").polygon(arrow);
+    } else if (oneWay.includes(e)) {
+      eperc = [0.1, 0.9];
+      arrowHT = drawArrow(
+        e,
+        iaxes[oinds[e]],
+        iaxes[iinds[e]],
+        ocenter,
+        eperc,
+        1
+      );
+      arrow = arrowHT[0].concat(arrowHT[1]);
+      form.fill("rgba(200,200,200,0.2)").polygon(arrow);
+      arrow = drawArrow(
+        e,
+        iaxes[oinds[e]].$subtract(ocenter).$multiply(0.5).$add(gcenter),
+        iaxes[iinds[e]].$subtract(ocenter).$multiply(0.5).$add(gcenter),
+        gcenter,
+        eperc,
+        1
+      );
+      arrow = arrowHT[0].concat(arrowHT[1]);
+      form.strokeOnly("rgba(100,100,100,0.4)").polygon(arrow);
+    } else if (selfLoops.includes(e)) {
+      //let eperc = [-0.375, 0.375];
+      eperc = [-0.45, 0.3];
+      arrowHT = drawArrow(
+        e,
+        iaxes[oinds[e]],
+        iaxes[iinds[e]],
+        ocenter,
+        eperc,
+        1
+      );
+      arrow = arrowHT[0].concat(arrowHT[1]);
+      form.fill("rgba(200,200,200,0.2)").polygon(arrow);
+      arrowHT = drawArrow(
+        e,
+        iaxes[oinds[e]].$subtract(ocenter).$multiply(0.5).$add(gcenter),
+        iaxes[iinds[e]].$subtract(ocenter).$multiply(0.5).$add(gcenter),
+        gcenter,
+        eperc,
+        1
+      );
+      arrow = arrowHT[0].concat(arrowHT[1]);
+      form.strokeOnly("rgba(100,100,100,0.4)").polygon(arrow);
+    }
+  }
+}
+
+function drawFlow(xwid) {
+  let eperc, arrow, arrowHT;
+  for (let e = 0; e < oinds.length; e++) {
+    let ee = [0, 1, 2, 3, 4, 5, 6, 7, 8][e];
+    if (bothWays.includes(e)) {
+      eperc = [0.1, 0.9];
+      arrowHT = drawArrow(
+        e,
+        iaxes[oinds[e]].$subtract(ocenter).$multiply(0.5).$add(gcenter),
+        iaxes[iinds[e]].$subtract(ocenter).$multiply(0.5).$add(gcenter),
+        gcenter,
+        eperc,
+        xwid[e]
+      );
+      arrow = arrowHT[0].concat(arrowHT[1]);
+      form.fill("rgba(100,100,255,0.8)").polygon(arrow);
+    } else if (oneWay.includes(e)) {
+      eperc = [0.1, 0.9];
+      arrow = drawArrow(
+        e,
+        iaxes[oinds[e]].$subtract(ocenter).$multiply(0.5).$add(gcenter),
+        iaxes[iinds[e]].$subtract(ocenter).$multiply(0.5).$add(gcenter),
+        gcenter,
+        eperc,
+        xwid[e]
+      );
+      arrow = arrowHT[0].concat(arrowHT[1]);
+      form.fill("rgba(100,100,255,0.8)").polygon(arrow);
+    } else if (selfLoops.includes(e)) {
+      //let eperc = [-0.375, 0.375];
+      eperc = [-0.45, 0.3];
+      arrowHT = drawArrow(
+        e,
+        iaxes[oinds[e]].$subtract(ocenter).$multiply(0.5).$add(gcenter),
+        iaxes[iinds[e]].$subtract(ocenter).$multiply(0.5).$add(gcenter),
+        gcenter,
+        eperc,
+        xwid[e]
+      );
+      arrow = arrowHT[0].concat(arrowHT[1]);
+      form.fill("rgba(100,100,255,0.8)").polygon(arrow);
+    }
+  }
+}
 
 var rr = new Pt(5, 3, 4, 7, 8, 7);
 var mu = new Pt(0, 0, 0, 0, 0, 0);
@@ -445,7 +838,6 @@ var viOpt = new Pt(1, 4, 2);
 var voOpt = viOpt.$add(lamOpt);
 var v0 = new Pt(40, -40, 40);
 var lam0 = 20;
-
 var muOpt = new Pt(1, 1, 1, 1, 1, 1);
 
 var maxi;
@@ -497,6 +889,35 @@ for (let i = 0; i < rr.length; i++) {
   rhoshow[i] = false;
 }
 
+// console.log(blip);
+// console.log(lam);
+// console.log(viOpt);
+// }
+// const blah = drawArrow(0, [0, 0.9]);
+
+// var pto, pti, diff, arrow, phi, rotth;
+// for (let e = 0; e < oinds.length; e++) {
+//   if (bothWays.includes(e)) {
+//     pto = iaxes[oinds[e]];
+//     pti = iaxes[iinds[e]];
+//     diff = pti.$subtract(pto);
+//     let whd = whead.map((t) =>
+//       t.$multiply(ewidth).$add([diff.magnitude() - ewidth, 0])
+//     );
+//     let wtl = wtail.map((t) => t.$multiply(ewidth));
+//     arrow = whd.concat(wtl);
+//     phi = math.atan2(diff[1], diff[0]);
+//     rotth = [
+//       [math.cos(phi), -math.sin(phi)],
+//       [math.sin(phi), math.cos(phi)]
+//     ];
+//     arrow = arrow.$matrixMultiply(rotth);
+//     arrow = arrow.add(iaxes[oinds[e]]);
+
+//     //form.fillOnly("rgba(0,0,200,0.3)").polygon(arrow);
+//   }
+// }
+
 const ainds = [
   [0, 1],
   [1, 3],
@@ -520,6 +941,20 @@ var AA = Group.fromArray([
 
 var initHover;
 var useVOpt;
+
+//   let gp = Geom.perpendicular(g[1].$subtract(g[0]))
+//   //.map((gg) => gg.$add(anchor)
+//   // );
+//   gp.push(tip);
+//   return gp
+
+// let positions = [];
+// for (let i = 0, len = tEo.shape[0]; i < len; i++) {
+//   positions[i] = space.center.$add(
+//     100 * math.cos(6.28 * (i / tEo.shape[0])),
+//     100 * math.sin(6.28 * (i / tEo.shape[0]))
+//   );
+// }on
 
 // top2 top2 top 2 top 2
 // top2 top2 top 2 top 2
@@ -549,6 +984,23 @@ var EQS = {
 };
 var EQSTXT = {}; // _: {} };
 
+// for (let i = 0; i < Object.keys(EQS).length; i++) {
+//   // Your existing code unmodified...
+//   let keys = Object.keys(EQS);
+//   let iDiv = document.createElement("div");
+//   iDiv["id"] = "eq" + Object.keys(EQS)[i];
+//   iDiv["z-index"] = 5;
+//   iDiv["background"] = "none";
+//   iDiv["position"] = "absolute";
+//   iDiv["left"] = EQS[keys[i]]["left"];
+//   iDiv["top"] = EQS[keys[i]]["top"];
+//   iDiv["width"] = "0px";
+//   iDiv["height"] = "0px";
+//   iDiv["overflow"] = "visible";
+//   iDiv["pointer-events"] = "none";
+//   document.getElementsByTagName("body")[0].appendChild(iDiv);
+// }
+
 var elemstyles = {
   displayMode: true,
   leqno: false,
@@ -561,6 +1013,80 @@ var elemstyles = {
   //macros: { "\\f": "#1f(#2)" }
 };
 
+// var css = document.createElement("style");
+// css.type = "text/css";
+// css.innerHTML =
+//   "#eqns { font-size: 30vw; line-height: 50vh; overflow: hidden; } .r2 { opacity: 0.9 } .r1a { border-bottom-color: #fff !important; }";
+// document.body.appendChild(css);
+//var elem = document.getElementById("eqns");
+//// ----
+// htmlSpace.bindMouse().bindTouch().play(5000);
+
+// EQSTXT["rho"] = "blah";
+// // "P = \\begin{bmatrix}" +
+// // inits[0][0].toFixed(2).toString() +
+// // " & " +
+// // inits[0][1].toFixed(2).toString() +
+// // " & " +
+// // inits[0][2].toFixed(2).toString() +
+// // " \\end{bmatrix}";
+// EQSTXT["P"] = "blah";
+// // "P = \\begin{bmatrix}" +
+// // inits[0][0].toFixed(2).toString() +
+// // " & " +
+// // inits[0][1].toFixed(2).toString() +
+// // " & " +
+// // inits[0][2].toFixed(2).toString() +
+// // " \\end{bmatrix}";
+// EQSTXT["W"] =
+//   "P = \\begin{bmatrix}" +
+//   inits[0][0].toFixed(2).toString() +
+//   " & " +
+//   inits[0][1].toFixed(2).toString() +
+//   " & " +
+//   inits[0][2].toFixed(2).toString() +
+//   " \\end{bmatrix}";
+
+// let keys = Object.keys(EQSTXT);
+// for (let i = 0; i < Object.keys(EQSTXT).length; i++) {
+//   // console.log("eq"+keys[i])
+//   // console.log(EQSTXT[keys[i]])
+//   // console.log(document.getElementById("eq" + keys[i]))
+//   katex.render(
+//     EQSTXT[keys[i]],
+//     document.getElementById("eq" + keys[i]),
+//     elemstyles
+//   );
+// }
+
+//console.log(document.getElementById("eq" + Object.keys(EQS)[]));
+
+// eqns =  {
+//   z-index: 5;
+//   opacity: 1;
+//   background: none;
+//   position: absolute;
+//   top: 400px;
+//   left: 400px;
+//   width: 0px;
+//   height: 0px;
+//   overflow: visible;
+//   pointer-events: none;
+// }
+
+//// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE ////
+//// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE ////
+//// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE ////
+//// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE ////
+//// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE ////
+//// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE ////
+//// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE ////
+//// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE ////
+//// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE ////
+//// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE ////
+
+// Create HTML space and form
+
 // Initiate Space
 var space = new CanvasSpace("#pts"); //figs"); //document.getElementById("blip"));
 space.setup({
@@ -569,6 +1095,153 @@ space.setup({
   retina: true
 });
 var form = space.getForm();
+
+// var htmlSpace = new HTMLSpace("#pts");
+// htmlSpace.setup({
+//   bgcolor: "rgb(248,248,255,1.0)", // blah
+//   resize: true
+// });
+// var htmlForm = htmlSpace.getForm();
+
+// css for testing
+// var css = document.createElement("style");
+// css.type = "text/css";
+// css.innerHTML =
+//   ".pts-rect { font-size: 30vw; line-height: 50vh; overflow: hidden; } .r2 { opacity: 0.9 } .r1a { border-bottom-color: #fff !important; }";
+// document.body.appendChild(css);
+
+// var grid = [];
+// var headerResize;
+// var widthResize;
+
+// var layout = () => {
+//   let gs = Rectangle.halves(htmlSpace.innerBound, 0.3, true);
+//   grid = Create.gridCells(Bound.fromGroup(gs[1]), 4, 1);
+//   grid.unshift(gs[0]);
+// };
+
+// htmlSpace.add({
+//   start: (bound) => {
+//     layout();
+//     headerResize = Typography.fontSizeToBox(grid[0], 0.8); // a function to resize header font based on box height
+//     widthResize = Typography.fontSizeToThreshold(850, -1); // a function to resize header font based on threshold
+//   },
+
+//   animate: (time, ftime) => {
+//     let w = htmlSpace.size.x;
+
+//     // measure text width accurately
+//     //htmlForm.fontWidthEstimate(false);
+//     //htmlForm.fillOnly("#123").font(headerResize(grid[0])).alignText("left");
+//     htmlForm.textBox(grid[0], "The Metamorphosis", "middle", "ᔘ");
+//     htmlForm.font(widthResize(14, w)).alignText("right");
+//     htmlForm
+//       .fillOnly("#fff")
+//       .textBox(grid[0], "By Franz Kafka", "bottom", "...");
+
+//     htmlForm
+//       .fillOnly("#123")
+//       .font(widthResize(42, w))
+//       .alignText("left")
+//       .textBox(grid[1], "One morning", "top", "☀ ");
+//     htmlForm
+//       .font(widthResize(16, w))
+//       .alignText("center")
+//       .textBox(grid[1], "when Gregor Samsa woke", "middle", "☟");
+//     htmlForm
+//       .font(widthResize(14, w))
+//       .alignText("right")
+//       .textBox(grid[1], "from troubled dreams", "bottom", "🐜");
+
+//     htmlForm
+//       .font(widthResize(30, w))
+//       .paragraphBox(
+//         grid[2],
+//         "he found himself transformed in his bed into a horrible vermin."
+//       );
+//     htmlForm
+//       .font(12)
+//       .alignText("left")
+//       .paragraphBox(
+//         grid[3],
+//         "He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.",
+//         2,
+//         "middle",
+//         true
+//       );
+
+//     // measure text width by estimate (faster but less accurate)
+//     //htmlForm.fontWidthEstimate(true);
+//     htmlForm
+//       .font(widthResize(16, w))
+//       .alignText("left")
+//       .paragraphBox(
+//         grid[4],
+//         "'What's happened to me'?\nhe thought.\nIt wasn't a dream.\nHis room, a proper human room although a little too small, lay peacefully between its four familiar walls."
+//       );
+//     htmlForm
+//       .font(widthResize(11, w))
+//       .alignText("right")
+//       .paragraphBox(
+//         grid[4],
+//         "A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.",
+//         1,
+//         "bottom"
+//       );
+//     htmlForm.strokeOnly("#fff").rects(grid);
+//   },
+
+//   resize: (bound, evt) => {
+//     layout();
+//   }
+// });
+
+// htmlSpace.add(
+//   // For DOM, don't use arrow function so that `this` here will refer to this player
+//   function (time, ftime) {
+//     // DOM scope starts
+//     htmlForm.scope(this);
+
+//     let p = htmlSpace.pointer.$max(0, 0).$min(htmlSpace.size);
+//     let r1 = Rectangle.fromTopLeft([0, 0], htmlSpace.size);
+//     let r1Alt = Rectangle.fromTopLeft([10, 0], [p.x, p.y]);
+//     let r2 = Rectangle.fromTopLeft([p.x, 0], htmlSpace.size);
+
+//     // Draw first rectangle(s)
+//     htmlForm.strokeOnly("#36f", 1).fillText("#fe3").cls("r1").rect(r1);
+//     htmlForm.strokeOnly("#36f", 1).fillText("#fff").cls("r1a").rect(r1Alt);
+//     document.querySelector(".r1").textContent = "hello";
+//     document.querySelector(".r1a").textContent = "hello";
+
+//     // Draw second rectange
+//     htmlForm.fillOnly("#f03").fillText("#fff").cls("r2").rect(r2);
+//     document.querySelector(".r2").textContent = "world";
+//   }
+// );
+
+// // Add another player for testing. Again don't use arrow function => so as to bind the scope of "this" correctly.
+// htmlSpace.add(function (time, ftime) {
+//   // SVG scope starts
+//   htmlForm.text(new Pt(200, 200), "blah");
+//   //katex.render("blah", document.getElementById("pt"));
+//   htmlForm.scope(this);
+//   htmlForm.strokeOnly("#fff", 2).point(htmlSpace.pointer, 5, "circle");
+// });
+// katex.render(
+//   "\\begin{bmatrix} a & b \\ c & d \\end{bmatrix}",
+//   document.getElementById("blah")
+// );
+
+// katex.render(
+//   "c = \\pm\\sqrt{a^2 + b^2}\\in\\RR",
+//   document.getElementById("blah"),
+//   {
+//     displayMode: true,
+//     macros: {
+//       "\\RR": "\\mathbb{R}"
+//     }
+//   }
+// );
 
 space.add({
   start: (bound, space) => {
@@ -605,311 +1278,313 @@ space.add({
     }
     rdraw = Group.fromPtArray(rdraw);
 
-    solveOpt();
+    
 
-    vi = viOpt.clone();
-    lam = lamOpt;
-    vo = vi.$add(lam);
-    v0 = vi.clone();
+  //   solveOpt();
 
-    lamdraw = [viorigin.$subtract([0, -rwid * lam])];
+  //   vi = viOpt.clone();
+  //   lam = lamOpt;
+  //   vo = vi.$add(lam);
+  //   v0 = vi.clone();
 
-    vidraw = [];
-    vodraw = [];
-    for (let s = 0; s < iaxes.length; s++) {
-      vidraw[s] = viorigin.$add([
-        iaxes[s].$subtract(ocenter)[0] * 0.25,
-        rwid * -vi[s]
-      ]);
-      vodraw[s] = voorigin.$add([
-        iaxes[s].$subtract(ocenter)[0] * 0.25,
-        rwid * -vo[s]
-      ]);
-    }
-    vidraw = Group.fromPtArray(vidraw);
-    vodraw = Group.fromPtArray(vodraw);
+  //   lamdraw = [viorigin.$subtract([0, -rwid * lam])];
 
-    initsdraw = inits.$matrixMultiply(iaxes);
-    actions = W.$zip().$matrixMultiply(Ei.$zip().$matrixMultiply(iaxes));
-    pis = Pi.$zip().$matrixMultiply(actions);
+  //   vidraw = [];
+  //   vodraw = [];
+  //   for (let s = 0; s < iaxes.length; s++) {
+  //     vidraw[s] = viorigin.$add([
+  //       iaxes[s].$subtract(ocenter)[0] * 0.25,
+  //       rwid * -vi[s]
+  //     ]);
+  //     vodraw[s] = voorigin.$add([
+  //       iaxes[s].$subtract(ocenter)[0] * 0.25,
+  //       rwid * -vo[s]
+  //     ]);
+  //   }
+  //   vidraw = Group.fromPtArray(vidraw);
+  //   vodraw = Group.fromPtArray(vodraw);
 
-    // HANDLERS  HANDLERS  HANDLERS  HANDLERS
-    // HANDLERS  HANDLERS  HANDLERS  HANDLERS
-    // HANDLERS  HANDLERS  HANDLERS  HANDLERS
-    // HANDLERS  HANDLERS  HANDLERS  HANDLERS
-    // HANDLERS  HANDLERS  HANDLERS  HANDLERS
+  //   initsdraw = inits.$matrixMultiply(iaxes);
+  //   actions = W.$zip().$matrixMultiply(Ei.$zip().$matrixMultiply(iaxes));
+  //   pis = Pi.$zip().$matrixMultiply(actions);
 
-    // rHandles = rdraw.map((h, i) => {
-    //   let ud = UIDragger.fromCircle([h, [10, 10]]);
-    //   ud.onDrag((ui, pt) => {
-    //     rr[i] = (space.pointer[1] - rorigin.$add(rbase[i])[1]) * (1 / rwid);
-    //     ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
-    //   });
-    // });
+  //   // HANDLERS  HANDLERS  HANDLERS  HANDLERS
+  //   // HANDLERS  HANDLERS  HANDLERS  HANDLERS
+  //   // HANDLERS  HANDLERS  HANDLERS  HANDLERS
+  //   // HANDLERS  HANDLERS  HANDLERS  HANDLERS
+  //   // HANDLERS  HANDLERS  HANDLERS  HANDLERS
 
-    rHandles = rdraw.map((h, a) => {
-      var temp, tempx, tempy;
-      let ud = UIDragger.fromCircle([h, [2, 2]]);
-      ud.onDrop((ui, pt) => {
-        useVOpt = false;
-      });
-      ud.onDrag((ui, pt) => {
-        useVOpt = true;
-        // drag handling
-        tempy = space.pointer[1];
-        tempx = ui.group[0][0];
-        rr[a] = (rorigin[1] - tempy) * (1 / rwid);
-        ui.group[0].to([tempx, tempy - ui.state("offset")[1]]);
-        solveOpt();
-        solveUp();
-      });
+  //   // rHandles = rdraw.map((h, i) => {
+  //   //   let ud = UIDragger.fromCircle([h, [10, 10]]);
+  //   //   ud.onDrag((ui, pt) => {
+  //   //     rr[i] = (space.pointer[1] - rorigin.$add(rbase[i])[1]) * (1 / rwid);
+  //   //     ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
+  //   //   });
+  //   // });
 
-      ud.onHover(
-        // hover handling
-        (ui) => ui.group[1].scale(10),
-        (ui) => ui.group[1].scale(1 / 10)
-      );
-      return ud;
-    });
+  //   rHandles = rdraw.map((h, a) => {
+  //     var temp, tempx, tempy;
+  //     let ud = UIDragger.fromCircle([h, [2, 2]]);
+  //     ud.onDrop((ui, pt) => {
+  //       useVOpt = false;
+  //     });
+  //     ud.onDrag((ui, pt) => {
+  //       useVOpt = true;
+  //       // drag handling
+  //       tempy = space.pointer[1];
+  //       tempx = ui.group[0][0];
+  //       rr[a] = (rorigin[1] - tempy) * (1 / rwid);
+  //       ui.group[0].to([tempx, tempy - ui.state("offset")[1]]);
+  //       solveOpt();
+  //       solveUp();
+  //     });
 
-    lamHandles = lamdraw.map((h, i) => {
-      var temp;
-      let ud = UIDragger.fromCircle([h, [10, 10]]);
-      ud.onDrag((ui, pt) => {
-        temp = space.pointer;
-        temp[1] = math.min(viorigin[1] - lamUp * rwid, temp[1]);
-        lam = (viorigin[1] - temp[1]) / rwid;
-        ui.group[0].to(temp.$subtract(ui.state("offset")));
-        //dt = math.min((lam - lamOpt) / (lam0 - lamOpt + 0.001), 1);
-        //vi = v0.$subtract(viOpt).$multiply(dt).$add(viOpt);
-        //vo = vi.$add(lam);
-        solveUp();
-      });
-      // ud.onDrop((ui, pt) => {
-      //   lam0 = lam;
-      // });
-      ud.onHover(
-        (ui) => {
-          ui.group[1].scale(2);
-        },
-        (ui) => {
-          ui.group[1].scale(1 / 2);
-        }
-      );
-      return ud;
-    });
+  //     ud.onHover(
+  //       // hover handling
+  //       (ui) => ui.group[1].scale(10),
+  //       (ui) => ui.group[1].scale(1 / 10)
+  //     );
+  //     return ud;
+  //   });
 
-    viHandles = vidraw.map((h, s) => {
-      var tempx, tempy;
-      let ud = UIDragger.fromCircle([h, [2, 2]]);
-      ud.onDrag((ui, pt) => {
-        if (s == 0) {
-          tempy = viorigin[0][1];
-        } else {
-          tempy = space.pointer[1];
-          vi[s] = (viorigin[1] - tempy) * (1 / rwid);
-        }
-        tempx = ui.group[0][0];
-        ui.group[0].to([tempx, tempy - ui.state("offset")[1]]);
-        solveUp();
-      });
-      // ud.onDrop((ui, pt) => {
-      //   //xv0 = vi.clone();
-      //   lam0 = lam;
-      // });
-      ud.onHover(
-        (ui) => {
-          ui.group[1].scale(2);
-        },
-        (ui) => {
-          ui.group[1].scale(1 / 2);
-        }
-      );
-      return ud;
-    });
+  //   lamHandles = lamdraw.map((h, i) => {
+  //     var temp;
+  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
+  //     ud.onDrag((ui, pt) => {
+  //       temp = space.pointer;
+  //       temp[1] = math.min(viorigin[1] - lamUp * rwid, temp[1]);
+  //       lam = (viorigin[1] - temp[1]) / rwid;
+  //       ui.group[0].to(temp.$subtract(ui.state("offset")));
+  //       //dt = math.min((lam - lamOpt) / (lam0 - lamOpt + 0.001), 1);
+  //       //vi = v0.$subtract(viOpt).$multiply(dt).$add(viOpt);
+  //       //vo = vi.$add(lam);
+  //       solveUp();
+  //     });
+  //     // ud.onDrop((ui, pt) => {
+  //     //   lam0 = lam;
+  //     // });
+  //     ud.onHover(
+  //       (ui) => {
+  //         ui.group[1].scale(2);
+  //       },
+  //       (ui) => {
+  //         ui.group[1].scale(1 / 2);
+  //       }
+  //     );
+  //     return ud;
+  //   });
 
-    initHandles = initsdraw.map((h, i) => {
-      let ud = UIDragger.fromCircle([h, [10, 10]]);
-      ud.onDrag((ui, pt) => {
-        var project = intersectPolyPt(iaxes, space.pointer);
-        ui.group[0].to(project.$subtract(ui.state("offset")));
-        inits[i] = convexComb2n(ui.group[0], iaxes.$zip());
-        updateTraj(depth, ["i"]);
-        //vi = vi.$subtract(vi.dot(inits[i]));
-        solveOpt();
-      });
-      // ud.onDrop((ui, pt) => {
-      //   updateTraj(5, ["i", "a"]);
-      // });
-      ud.onHover(
-        (ui) => {
-          ui.group[1].scale(2);
-          initHover = true;
-        },
-        (ui) => {
-          ui.group[1].scale(1 / 2);
-          initHover = false;
-        }
-      );
-      return ud;
-    });
+  //   viHandles = vidraw.map((h, s) => {
+  //     var tempx, tempy;
+  //     let ud = UIDragger.fromCircle([h, [2, 2]]);
+  //     ud.onDrag((ui, pt) => {
+  //       if (s == 0) {
+  //         tempy = viorigin[0][1];
+  //       } else {
+  //         tempy = space.pointer[1];
+  //         vi[s] = (viorigin[1] - tempy) * (1 / rwid);
+  //       }
+  //       tempx = ui.group[0][0];
+  //       ui.group[0].to([tempx, tempy - ui.state("offset")[1]]);
+  //       solveUp();
+  //     });
+  //     // ud.onDrop((ui, pt) => {
+  //     //   //xv0 = vi.clone();
+  //     //   lam0 = lam;
+  //     // });
+  //     ud.onHover(
+  //       (ui) => {
+  //         ui.group[1].scale(2);
+  //       },
+  //       (ui) => {
+  //         ui.group[1].scale(1 / 2);
+  //       }
+  //     );
+  //     return ud;
+  //   });
 
-    ihandles = iaxes.map((h) => {
-      let ud = UIDragger.fromCircle([h, [10, 10]]);
-      ud.onDrag((ui, pt) => {
-        // drag handling
-        ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
-      });
-      ud.onHover(
-        // hover handling
-        (ui) => ui.group[1].scale(2),
-        (ui) => ui.group[1].scale(1 / 2)
-      );
-      return ud;
-    });
+  //   initHandles = initsdraw.map((h, i) => {
+  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
+  //     ud.onDrag((ui, pt) => {
+  //       var project = intersectPolyPt(iaxes, space.pointer);
+  //       ui.group[0].to(project.$subtract(ui.state("offset")));
+  //       inits[i] = convexComb2n(ui.group[0], iaxes.$zip());
+  //       updateTraj(depth, ["i"]);
+  //       //vi = vi.$subtract(vi.dot(inits[i]));
+  //       solveOpt();
+  //     });
+  //     // ud.onDrop((ui, pt) => {
+  //     //   updateTraj(5, ["i", "a"]);
+  //     // });
+  //     ud.onHover(
+  //       (ui) => {
+  //         ui.group[1].scale(2);
+  //         initHover = true;
+  //       },
+  //       (ui) => {
+  //         ui.group[1].scale(1 / 2);
+  //         initHover = false;
+  //       }
+  //     );
+  //     return ud;
+  //   });
 
-    pihandles = pis.map((h, i) => {
-      let ud = UIDragger.fromCircle([h, [10, 10]]);
-      ud.onDrag((ui, pt) => {
-        let temp = P.$zip().$matrixMultiply(iaxes);
-        var project;
-        if (i != 0) {
-          project = intersectPolyPt(
-            temp.slice(ainds[i][0], ainds[i][1]),
-            space.pointer
-          );
-        } else {
-          project = temp[0];
-        }
-        ui.group[0].to(project.$subtract(ui.state("offset")));
-        let Pslice = P.$zip().slice(ainds[i][0], ainds[i][1]);
-        Pslice = Pslice.$matrixMultiply(iaxes);
-        // console.log(ui.state("offset"))
-        let pii = convexComb2n(ui.group[0], Pslice.$zip());
-        for (let j = 0; j < ainds[i][1] - ainds[i][0]; j++) {
-          Pi[ainds[i][0] + j][i] = pii[j];
-        }
-        updateTraj(depth, ["i"]);
-      });
-      // ud.onDrop((ui, pt) => {
-      //   updateTraj(5, ["i"]);
-      // });
-      ud.onHover(
-        // hover handling
-        (ui) => ui.group[1].scale(2),
-        (ui) => ui.group[1].scale(1 / 2)
-      );
-      return ud;
-    });
+  //   ihandles = iaxes.map((h) => {
+  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
+  //     ud.onDrag((ui, pt) => {
+  //       // drag handling
+  //       ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
+  //     });
+  //     ud.onHover(
+  //       // hover handling
+  //       (ui) => ui.group[1].scale(2),
+  //       (ui) => ui.group[1].scale(1 / 2)
+  //     );
+  //     return ud;
+  //   });
 
-    aHandles = actions.map((h, i) => {
-      let ud = UIDragger.fromCircle([h, [10, 10]]);
-      ud.onDrop((ui, pt) => {
-        useVOpt = false;
-      });
-      ud.onDrag((ui, pt) => {
-        useVOpt = true;
-        var temp;
-        let project = intersectPolyPt(iaxes, space.pointer);
-        ui.group[0].to(project.$subtract(ui.state("offset")));
-        let Pa = convexComb2n(ui.group[0], iaxes.$zip());
-        for (let j = 0; j < aeinds[i][1] - aeinds[i][0]; j++) {
-          P[j][i] = Pa[j];
-          W[aeinds[i][0] + j][i] = Pa[j];
-        }
-        updateTraj(depth, ["i", "a"]);
-        solveOpt();
-      });
-      // ud.onDrop((ui, pt) => {
-      //   updateTraj(5, ["i", "a"]);
-      // });
-      ud.onHover(
-        (ui) => {
-          ui.group[1].scale(2);
-          ashow[i] = true;
-        },
-        (ui) => {
-          ui.group[1].scale(1 / 2);
-          ashow[i] = false;
-        }
-      );
-      return ud;
-    });
+  //   pihandles = pis.map((h, i) => {
+  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
+  //     ud.onDrag((ui, pt) => {
+  //       let temp = P.$zip().$matrixMultiply(iaxes);
+  //       var project;
+  //       if (i != 0) {
+  //         project = intersectPolyPt(
+  //           temp.slice(ainds[i][0], ainds[i][1]),
+  //           space.pointer
+  //         );
+  //       } else {
+  //         project = temp[0];
+  //       }
+  //       ui.group[0].to(project.$subtract(ui.state("offset")));
+  //       let Pslice = P.$zip().slice(ainds[i][0], ainds[i][1]);
+  //       Pslice = Pslice.$matrixMultiply(iaxes);
+  //       // console.log(ui.state("offset"))
+  //       let pii = convexComb2n(ui.group[0], Pslice.$zip());
+  //       for (let j = 0; j < ainds[i][1] - ainds[i][0]; j++) {
+  //         Pi[ainds[i][0] + j][i] = pii[j];
+  //       }
+  //       updateTraj(depth, ["i"]);
+  //     });
+  //     // ud.onDrop((ui, pt) => {
+  //     //   updateTraj(5, ["i"]);
+  //     // });
+  //     ud.onHover(
+  //       // hover handling
+  //       (ui) => ui.group[1].scale(2),
+  //       (ui) => ui.group[1].scale(1 / 2)
+  //     );
+  //     return ud;
+  //   });
 
-    rhoHandles = rhosdraw.map((h, i) => {
-      let ud = UIDragger.fromCircle([h, [10, 10]]);
-      ud.onHover(
-        (ui) => {
-          rhoshow[i] = true;
-        },
-        (ui) => {
-          rhoshow[i] = false;
-        }
-      );
-      return ud;
-    });
+  //   aHandles = actions.map((h, i) => {
+  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
+  //     ud.onDrop((ui, pt) => {
+  //       useVOpt = false;
+  //     });
+  //     ud.onDrag((ui, pt) => {
+  //       useVOpt = true;
+  //       var temp;
+  //       let project = intersectPolyPt(iaxes, space.pointer);
+  //       ui.group[0].to(project.$subtract(ui.state("offset")));
+  //       let Pa = convexComb2n(ui.group[0], iaxes.$zip());
+  //       for (let j = 0; j < aeinds[i][1] - aeinds[i][0]; j++) {
+  //         P[j][i] = Pa[j];
+  //         W[aeinds[i][0] + j][i] = Pa[j];
+  //       }
+  //       updateTraj(depth, ["i", "a"]);
+  //       solveOpt();
+  //     });
+  //     // ud.onDrop((ui, pt) => {
+  //     //   updateTraj(5, ["i", "a"]);
+  //     // });
+  //     ud.onHover(
+  //       (ui) => {
+  //         ui.group[1].scale(2);
+  //         ashow[i] = true;
+  //       },
+  //       (ui) => {
+  //         ui.group[1].scale(1 / 2);
+  //         ashow[i] = false;
+  //       }
+  //     );
+  //     return ud;
+  //   });
 
-    yHandles = ysdraw.map((h, i) => {
-      let ud = UIDragger.fromCircle([h, [10, 10]]);
-      ud.onHover(
-        (ui) => {
-          yshow[i] = true;
-        },
-        (ui) => {
-          yshow[i] = false;
-        }
-      );
-      return ud;
-    });
+  //   rhoHandles = rhosdraw.map((h, i) => {
+  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
+  //     ud.onHover(
+  //       (ui) => {
+  //         rhoshow[i] = true;
+  //       },
+  //       (ui) => {
+  //         rhoshow[i] = false;
+  //       }
+  //     );
+  //     return ud;
+  //   });
 
-    origHandles = ORIG.map((h, i) => {
-      let ud = UIDragger.fromCircle([h, [10, 10]]);
-      ud.onDrag((ui, pt) => {
-        ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
-      });
-      ud.onHover(
-        (ui) => ui.group[1].scale(2),
-        (ui) => ui.group[1].scale(1 / 2)
-      );
-      return ud;
-    });
+  //   yHandles = ysdraw.map((h, i) => {
+  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
+  //     ud.onHover(
+  //       (ui) => {
+  //         yshow[i] = true;
+  //       },
+  //       (ui) => {
+  //         yshow[i] = false;
+  //       }
+  //     );
+  //     return ud;
+  //   });
 
-    axesHandles = AXES.map((h, i) => {
-      let ud = UIDragger.fromCircle([h, [10, 10]]);
-      ud.onDrag((ui, pt) => {
-        ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
-      });
-      ud.onHover(
-        (ui) => ui.group[1].scale(2),
-        (ui) => ui.group[1].scale(1 / 2)
-      );
-      return ud;
-    });
+  //   origHandles = ORIG.map((h, i) => {
+  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
+  //     ud.onDrag((ui, pt) => {
+  //       ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
+  //     });
+  //     ud.onHover(
+  //       (ui) => ui.group[1].scale(2),
+  //       (ui) => ui.group[1].scale(1 / 2)
+  //     );
+  //     return ud;
+  //   });
 
-    iorigHandles = [iorigin].map((h, i) => {
-      let ud = UIDragger.fromCircle([h, [10, 10]]);
-      ud.onDrag((ui, pt) => {
-        ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
-      });
-      ud.onHover(
-        (ui) => ui.group[1].scale(2),
-        (ui) => ui.group[1].scale(1 / 2)
-      );
-      return ud;
-    });
+  //   axesHandles = AXES.map((h, i) => {
+  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
+  //     ud.onDrag((ui, pt) => {
+  //       ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
+  //     });
+  //     ud.onHover(
+  //       (ui) => ui.group[1].scale(2),
+  //       (ui) => ui.group[1].scale(1 / 2)
+  //     );
+  //     return ud;
+  //   });
 
-    aorigHandles = [aorigin].map((h, i) => {
-      let ud = UIDragger.fromCircle([h, [10, 10]]);
-      ud.onDrag((ui, pt) => {
-        ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
-      });
-      ud.onHover(
-        (ui) => ui.group[1].scale(2),
-        (ui) => ui.group[1].scale(1 / 2)
-      );
-      return ud;
-    });
-  },
+  //   iorigHandles = [iorigin].map((h, i) => {
+  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
+  //     ud.onDrag((ui, pt) => {
+  //       ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
+  //     });
+  //     ud.onHover(
+  //       (ui) => ui.group[1].scale(2),
+  //       (ui) => ui.group[1].scale(1 / 2)
+  //     );
+  //     return ud;
+  //   });
+
+  //   aorigHandles = [aorigin].map((h, i) => {
+  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
+  //     ud.onDrag((ui, pt) => {
+  //       ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
+  //     });
+  //     ud.onHover(
+  //       (ui) => ui.group[1].scale(2),
+  //       (ui) => ui.group[1].scale(1 / 2)
+  //     );
+  //     return ud;
+  //   });
+  // },
 
   //// ANIMATE //// ANIMATE //// ANIMATE //// ANIMATE //// ANIMATE //// ANIMATE ////
   //// ANIMATE //// ANIMATE //// ANIMATE //// ANIMATE //// ANIMATE //// ANIMATE ////
@@ -927,32 +1602,32 @@ space.add({
     //   d.style.left = x_pos+'px';
     //   d.style.top = y_pos+'px';
 
-    EQSTXT["rho"] = "blah";
-    // "P = \\begin{bmatrix}" +
-    // inits[0][0].toFixed(2).toString() +
-    // " & " +
-    // inits[0][1].toFixed(2).toString() +
-    // " & " +
-    // inits[0][2].toFixed(2).toString() +
-    // " \\end{bmatrix}";
-    EQSTXT["P"] =
-      "P = \\begin{bmatrix}" +
-      P[0][0].toFixed(2).toString() +
-      " & " +
-      P[0][0].toFixed(2).toString() +
-      " & " +
-      P[0][0].toFixed(2).toString() +
-      " & " +
-      " \\\\ " +
-      P[0][0].toFixed(2).toString() +
-      " & " +
-      P[0][0].toFixed(2).toString() +
-      " & " +
-      P[0][0].toFixed(2).toString() +
-      " & " +
-      "\\end{bmatrix}";
-    //.toFixed(2).toString() +
-    EQSTXT["W"] = "blah";
+    // EQSTXT["rho"] = "blah";
+    // // "P = \\begin{bmatrix}" +
+    // // inits[0][0].toFixed(2).toString() +
+    // // " & " +
+    // // inits[0][1].toFixed(2).toString() +
+    // // " & " +
+    // // inits[0][2].toFixed(2).toString() +
+    // // " \\end{bmatrix}";
+    // EQSTXT["P"] =
+    //   "P = \\begin{bmatrix}" +
+    //   P[0][0].toFixed(2).toString() +
+    //   " & " +
+    //   P[0][0].toFixed(2).toString() +
+    //   " & " +
+    //   P[0][0].toFixed(2).toString() +
+    //   " & " +
+    //   " \\\\ " +
+    //   P[0][0].toFixed(2).toString() +
+    //   " & " +
+    //   P[0][0].toFixed(2).toString() +
+    //   " & " +
+    //   P[0][0].toFixed(2).toString() +
+    //   " & " +
+    //   "\\end{bmatrix}";
+    // //.toFixed(2).toString() +
+    // EQSTXT["W"] = "blah";
     // "P = \\begin{bmatrix}" +
     // inits[0][0].toFixed(2).toString() +
     // " & " +
@@ -963,8 +1638,8 @@ space.add({
 
     // let keys = Object.keys(EQSTXT);
     // for (let i = 0; i < Object.keys(EQSTXT).length; i++) {
-    katex.render(EQSTXT["rho"], document.getElementById("eqrho"), elemstyles);
-    katex.render(EQSTXT["P"], document.getElementById("eqP"), elemstyles);
+    // katex.render(EQSTXT["rho"], document.getElementById("eqrho"), elemstyles);
+    // katex.render(EQSTXT["P"], document.getElementById("eqP"), elemstyles);
     // }
 
     let tt = (time % 5000) / 5000;
