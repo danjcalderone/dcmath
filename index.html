@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
     <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
-    <link rel="stylesheet" href="./../../styles.css" ></link>
+    <link rel="stylesheet" href="./styles.css" ></link>
     <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
@@ -32,22 +32,55 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
   <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+  <!-- <script>
+      var parentDOM = document.getElementById('parent-id');
+      var test1 = parentDOM.getElementById('test1');
+      var kktx2 = parentDOM.getElementById('mykatex2');
+      //throw error
+      //Uncaught TypeError: parentDOM.getElementById is not a function
+
+      var expr = document.getElementById("expr"),
+          format = document.getElementById("format"),
+          result = document.getElementById("result");
+      
+      var texexp = "";
+
+      // initialize with an example expression
+      expr.value = "sqrt(75 / 3) + det([[-1, 2], [3, 1]]) - sin(pi / 4)^2";
+      texexp = math.parse(expr.value).toTex();
+      try {
+      katex.render(texexp, format);
+} catch (err) {
+out("using mathjax");
+format.innerHTML = "$$" + texexp + "$$";
+}
+result.innerHTML = math.eval(expr.value);
+</script> -->
+
+
   </head>
 
   <body>
 
 
-  <header> <h1> .dcmath </h1> </header>
+      <header> <h1> .dcmath </h1> </header>
+      <div id="blah1">  </div>
+      <nav>
+          <ul>
+            <li><a href="index.html">basic</a></li>
+            <li><a href="matrix.html">matrix</a></li>
+            <li><a href="convex.html">convex</a></li>
+            <li><a href="graph.html">graph</a></li>
+            <li><a href="mdp.html">mdp</a></li>
+          </ul>
+        </nav>
+
+
+<div font-size 20px><a href="./topics/basic/hypercube.html">hypercube</a></links>
+<div ><a href="./topics/basic/multiply.html">multiply</a></links>
+<div ><a href="./topics/basic/transpose">transpose</a></links>
+
   
-  <container>
-  <div class="main1"><canvas id="work1" class="CANVAS"></canvas></div>
-  <div class="EQN" id="eqntag" ></div>
-  </container>
-
-  <script type="module" src="./../../src/_base/base.js"> </script>
-  <script type="module" src="./../../src/_draw/work1.js"> </script>
-
-
-
   </body>
 </html>
