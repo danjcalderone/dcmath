@@ -12,13 +12,17 @@
     "url": "git+https://github.com/codesandbox-app/static-template.git"
   },
   "keywords": [],
-  "author": "Ives van Hoorne",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/codesandbox-app/static-template/issues"
   },
+
   "homepage": "https://github.com/codesandbox-app/static-template#readme",
+  "dependencies": {
+    "lit-html": "1.2.1"
+  },
   "devDependencies": {
-    "serve": "^11.2.0"
+    "serve": "^11.2.0",
+    "react-scripts": "^1.1.4"
   }
 }

@@ -1,12 +1,13 @@
-var xx = math.ones(2);
-
 Pts.namespace(window);
 var space1 = new CanvasSpace("uitrack").setup({
-  bgcolor: "#0c3",
+  bgcolor: f1.color,
   resize: true,
   retina: true
 });
+
+//console.log("run uitrack");
 var form1 = space1.getForm();
+f1.color = "#0c6";
 
 var handles;
 var firstPt, lastPt;

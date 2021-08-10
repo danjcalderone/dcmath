@@ -1,45 +1,23 @@
-
-
-
-
-
-import {
-  CanvasSpace,
-  HTMLSpace,
-  SVGSpace,
-  DOMSpace,
-  Pt,
-  Group,
-  Circle,
-  Bound,
-  Typography,
-  Line,
-  Rectangle,
-  Num,
-  Polygon,
-  Create,
-  Const,
-  Mat,
-  Curve,
-  Geom,
-  Triangle,
-  Util,
-  UI,
-  UIDragger,
-  UIButton,
-  Vec
-} from Pts;
-
-
+var xx = math.ones(2);
 
 Pts.namespace(window);
 
+// Create HTML space and form
+// Initiate Space
+var space = new CanvasSpace("#pts"); //figs"); //document.getElementById("blip"));
+space.setup({
+  bgcolor: "rgb(248,248,255,1.)", //""#5E5A80", // #FEFCFF //"#87CEFA", // #5E5A80
+  resize: true,
+  retina: true
+});
+var form = space.getForm();
 
-
-
-
-
-const outline1 = "rgba(0,0,0,";
+var space1 = new CanvasSpace("uitrack").setup({
+  bgcolor: "#0c3",
+  resize: true,
+  retina: true
+});
+var form1 = space1.getForm();
 var dt;
 
 function intersectPolyPt(poly, tip) {
@@ -1085,164 +1063,6 @@ var elemstyles = {
 //// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE ////
 //// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE //// SETUP CODE ////
 
-// Create HTML space and form
-
-// Initiate Space
-var space = new CanvasSpace("#pts"); //figs"); //document.getElementById("blip"));
-space.setup({
-  bgcolor: "rgb(248,248,255,1.)", //""#5E5A80", // #FEFCFF //"#87CEFA", // #5E5A80
-  resize: true,
-  retina: true
-});
-var form = space.getForm();
-
-// var htmlSpace = new HTMLSpace("#pts");
-// htmlSpace.setup({
-//   bgcolor: "rgb(248,248,255,1.0)", // blah
-//   resize: true
-// });
-// var htmlForm = htmlSpace.getForm();
-
-// css for testing
-// var css = document.createElement("style");
-// css.type = "text/css";
-// css.innerHTML =
-//   ".pts-rect { font-size: 30vw; line-height: 50vh; overflow: hidden; } .r2 { opacity: 0.9 } .r1a { border-bottom-color: #fff !important; }";
-// document.body.appendChild(css);
-
-// var grid = [];
-// var headerResize;
-// var widthResize;
-
-// var layout = () => {
-//   let gs = Rectangle.halves(htmlSpace.innerBound, 0.3, true);
-//   grid = Create.gridCells(Bound.fromGroup(gs[1]), 4, 1);
-//   grid.unshift(gs[0]);
-// };
-
-// htmlSpace.add({
-//   start: (bound) => {
-//     layout();
-//     headerResize = Typography.fontSizeToBox(grid[0], 0.8); // a function to resize header font based on box height
-//     widthResize = Typography.fontSizeToThreshold(850, -1); // a function to resize header font based on threshold
-//   },
-
-//   animate: (time, ftime) => {
-//     let w = htmlSpace.size.x;
-
-//     // measure text width accurately
-//     //htmlForm.fontWidthEstimate(false);
-//     //htmlForm.fillOnly("#123").font(headerResize(grid[0])).alignText("left");
-//     htmlForm.textBox(grid[0], "The Metamorphosis", "middle", "ᔘ");
-//     htmlForm.font(widthResize(14, w)).alignText("right");
-//     htmlForm
-//       .fillOnly("#fff")
-//       .textBox(grid[0], "By Franz Kafka", "bottom", "...");
-
-//     htmlForm
-//       .fillOnly("#123")
-//       .font(widthResize(42, w))
-//       .alignText("left")
-//       .textBox(grid[1], "One morning", "top", "☀ ");
-//     htmlForm
-//       .font(widthResize(16, w))
-//       .alignText("center")
-//       .textBox(grid[1], "when Gregor Samsa woke", "middle", "☟");
-//     htmlForm
-//       .font(widthResize(14, w))
-//       .alignText("right")
-//       .textBox(grid[1], "from troubled dreams", "bottom", "🐜");
-
-//     htmlForm
-//       .font(widthResize(30, w))
-//       .paragraphBox(
-//         grid[2],
-//         "he found himself transformed in his bed into a horrible vermin."
-//       );
-//     htmlForm
-//       .font(12)
-//       .alignText("left")
-//       .paragraphBox(
-//         grid[3],
-//         "He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked.",
-//         2,
-//         "middle",
-//         true
-//       );
-
-//     // measure text width by estimate (faster but less accurate)
-//     //htmlForm.fontWidthEstimate(true);
-//     htmlForm
-//       .font(widthResize(16, w))
-//       .alignText("left")
-//       .paragraphBox(
-//         grid[4],
-//         "'What's happened to me'?\nhe thought.\nIt wasn't a dream.\nHis room, a proper human room although a little too small, lay peacefully between its four familiar walls."
-//       );
-//     htmlForm
-//       .font(widthResize(11, w))
-//       .alignText("right")
-//       .paragraphBox(
-//         grid[4],
-//         "A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.",
-//         1,
-//         "bottom"
-//       );
-//     htmlForm.strokeOnly("#fff").rects(grid);
-//   },
-
-//   resize: (bound, evt) => {
-//     layout();
-//   }
-// });
-
-// htmlSpace.add(
-//   // For DOM, don't use arrow function so that `this` here will refer to this player
-//   function (time, ftime) {
-//     // DOM scope starts
-//     htmlForm.scope(this);
-
-//     let p = htmlSpace.pointer.$max(0, 0).$min(htmlSpace.size);
-//     let r1 = Rectangle.fromTopLeft([0, 0], htmlSpace.size);
-//     let r1Alt = Rectangle.fromTopLeft([10, 0], [p.x, p.y]);
-//     let r2 = Rectangle.fromTopLeft([p.x, 0], htmlSpace.size);
-
-//     // Draw first rectangle(s)
-//     htmlForm.strokeOnly("#36f", 1).fillText("#fe3").cls("r1").rect(r1);
-//     htmlForm.strokeOnly("#36f", 1).fillText("#fff").cls("r1a").rect(r1Alt);
-//     document.querySelector(".r1").textContent = "hello";
-//     document.querySelector(".r1a").textContent = "hello";
-
-//     // Draw second rectange
-//     htmlForm.fillOnly("#f03").fillText("#fff").cls("r2").rect(r2);
-//     document.querySelector(".r2").textContent = "world";
-//   }
-// );
-
-// // Add another player for testing. Again don't use arrow function => so as to bind the scope of "this" correctly.
-// htmlSpace.add(function (time, ftime) {
-//   // SVG scope starts
-//   htmlForm.text(new Pt(200, 200), "blah");
-//   //katex.render("blah", document.getElementById("pt"));
-//   htmlForm.scope(this);
-//   htmlForm.strokeOnly("#fff", 2).point(htmlSpace.pointer, 5, "circle");
-// });
-// katex.render(
-//   "\\begin{bmatrix} a & b \\ c & d \\end{bmatrix}",
-//   document.getElementById("blah")
-// );
-
-// katex.render(
-//   "c = \\pm\\sqrt{a^2 + b^2}\\in\\RR",
-//   document.getElementById("blah"),
-//   {
-//     displayMode: true,
-//     macros: {
-//       "\\RR": "\\mathbb{R}"
-//     }
-//   }
-// );
-
 space.add({
   start: (bound, space) => {
     let node_radius = 10;
@@ -1278,313 +1098,311 @@ space.add({
     }
     rdraw = Group.fromPtArray(rdraw);
 
-    
+    solveOpt();
 
-  //   solveOpt();
+    vi = viOpt.clone();
+    lam = lamOpt;
+    vo = vi.$add(lam);
+    v0 = vi.clone();
 
-  //   vi = viOpt.clone();
-  //   lam = lamOpt;
-  //   vo = vi.$add(lam);
-  //   v0 = vi.clone();
+    lamdraw = [viorigin.$subtract([0, -rwid * lam])];
 
-  //   lamdraw = [viorigin.$subtract([0, -rwid * lam])];
+    vidraw = [];
+    vodraw = [];
+    for (let s = 0; s < iaxes.length; s++) {
+      vidraw[s] = viorigin.$add([
+        iaxes[s].$subtract(ocenter)[0] * 0.25,
+        rwid * -vi[s]
+      ]);
+      vodraw[s] = voorigin.$add([
+        iaxes[s].$subtract(ocenter)[0] * 0.25,
+        rwid * -vo[s]
+      ]);
+    }
+    vidraw = Group.fromPtArray(vidraw);
+    vodraw = Group.fromPtArray(vodraw);
 
-  //   vidraw = [];
-  //   vodraw = [];
-  //   for (let s = 0; s < iaxes.length; s++) {
-  //     vidraw[s] = viorigin.$add([
-  //       iaxes[s].$subtract(ocenter)[0] * 0.25,
-  //       rwid * -vi[s]
-  //     ]);
-  //     vodraw[s] = voorigin.$add([
-  //       iaxes[s].$subtract(ocenter)[0] * 0.25,
-  //       rwid * -vo[s]
-  //     ]);
-  //   }
-  //   vidraw = Group.fromPtArray(vidraw);
-  //   vodraw = Group.fromPtArray(vodraw);
+    initsdraw = inits.$matrixMultiply(iaxes);
+    actions = W.$zip().$matrixMultiply(Ei.$zip().$matrixMultiply(iaxes));
+    pis = Pi.$zip().$matrixMultiply(actions);
 
-  //   initsdraw = inits.$matrixMultiply(iaxes);
-  //   actions = W.$zip().$matrixMultiply(Ei.$zip().$matrixMultiply(iaxes));
-  //   pis = Pi.$zip().$matrixMultiply(actions);
+    // HANDLERS  HANDLERS  HANDLERS  HANDLERS
+    // HANDLERS  HANDLERS  HANDLERS  HANDLERS
+    // HANDLERS  HANDLERS  HANDLERS  HANDLERS
+    // HANDLERS  HANDLERS  HANDLERS  HANDLERS
+    // HANDLERS  HANDLERS  HANDLERS  HANDLERS
 
-  //   // HANDLERS  HANDLERS  HANDLERS  HANDLERS
-  //   // HANDLERS  HANDLERS  HANDLERS  HANDLERS
-  //   // HANDLERS  HANDLERS  HANDLERS  HANDLERS
-  //   // HANDLERS  HANDLERS  HANDLERS  HANDLERS
-  //   // HANDLERS  HANDLERS  HANDLERS  HANDLERS
+    // rHandles = rdraw.map((h, i) => {
+    //   let ud = UIDragger.fromCircle([h, [10, 10]]);
+    //   ud.onDrag((ui, pt) => {
+    //     rr[i] = (space.pointer[1] - rorigin.$add(rbase[i])[1]) * (1 / rwid);
+    //     ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
+    //   });
+    // });
 
-  //   // rHandles = rdraw.map((h, i) => {
-  //   //   let ud = UIDragger.fromCircle([h, [10, 10]]);
-  //   //   ud.onDrag((ui, pt) => {
-  //   //     rr[i] = (space.pointer[1] - rorigin.$add(rbase[i])[1]) * (1 / rwid);
-  //   //     ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
-  //   //   });
-  //   // });
+    rHandles = rdraw.map((h, a) => {
+      var temp, tempx, tempy;
+      let ud = UIDragger.fromCircle([h, [2, 2]]);
+      ud.onDrop((ui, pt) => {
+        useVOpt = false;
+      });
+      ud.onDrag((ui, pt) => {
+        useVOpt = true;
+        // drag handling
+        tempy = space.pointer[1];
+        tempx = ui.group[0][0];
+        rr[a] = (rorigin[1] - tempy) * (1 / rwid);
+        ui.group[0].to([tempx, tempy - ui.state("offset")[1]]);
+        solveOpt();
+        solveUp();
+      });
 
-  //   rHandles = rdraw.map((h, a) => {
-  //     var temp, tempx, tempy;
-  //     let ud = UIDragger.fromCircle([h, [2, 2]]);
-  //     ud.onDrop((ui, pt) => {
-  //       useVOpt = false;
-  //     });
-  //     ud.onDrag((ui, pt) => {
-  //       useVOpt = true;
-  //       // drag handling
-  //       tempy = space.pointer[1];
-  //       tempx = ui.group[0][0];
-  //       rr[a] = (rorigin[1] - tempy) * (1 / rwid);
-  //       ui.group[0].to([tempx, tempy - ui.state("offset")[1]]);
-  //       solveOpt();
-  //       solveUp();
-  //     });
+      ud.onHover(
+        // hover handling
+        (ui) => ui.group[1].scale(10),
+        (ui) => ui.group[1].scale(1 / 10)
+      );
+      return ud;
+    });
 
-  //     ud.onHover(
-  //       // hover handling
-  //       (ui) => ui.group[1].scale(10),
-  //       (ui) => ui.group[1].scale(1 / 10)
-  //     );
-  //     return ud;
-  //   });
+    lamHandles = lamdraw.map((h, i) => {
+      var temp;
+      let ud = UIDragger.fromCircle([h, [10, 10]]);
+      ud.onDrag((ui, pt) => {
+        temp = space.pointer;
+        temp[1] = math.min(viorigin[1] - lamUp * rwid, temp[1]);
+        lam = (viorigin[1] - temp[1]) / rwid;
+        ui.group[0].to(temp.$subtract(ui.state("offset")));
+        //dt = math.min((lam - lamOpt) / (lam0 - lamOpt + 0.001), 1);
+        //vi = v0.$subtract(viOpt).$multiply(dt).$add(viOpt);
+        //vo = vi.$add(lam);
+        solveUp();
+      });
+      // ud.onDrop((ui, pt) => {
+      //   lam0 = lam;
+      // });
+      ud.onHover(
+        (ui) => {
+          ui.group[1].scale(2);
+        },
+        (ui) => {
+          ui.group[1].scale(1 / 2);
+        }
+      );
+      return ud;
+    });
 
-  //   lamHandles = lamdraw.map((h, i) => {
-  //     var temp;
-  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
-  //     ud.onDrag((ui, pt) => {
-  //       temp = space.pointer;
-  //       temp[1] = math.min(viorigin[1] - lamUp * rwid, temp[1]);
-  //       lam = (viorigin[1] - temp[1]) / rwid;
-  //       ui.group[0].to(temp.$subtract(ui.state("offset")));
-  //       //dt = math.min((lam - lamOpt) / (lam0 - lamOpt + 0.001), 1);
-  //       //vi = v0.$subtract(viOpt).$multiply(dt).$add(viOpt);
-  //       //vo = vi.$add(lam);
-  //       solveUp();
-  //     });
-  //     // ud.onDrop((ui, pt) => {
-  //     //   lam0 = lam;
-  //     // });
-  //     ud.onHover(
-  //       (ui) => {
-  //         ui.group[1].scale(2);
-  //       },
-  //       (ui) => {
-  //         ui.group[1].scale(1 / 2);
-  //       }
-  //     );
-  //     return ud;
-  //   });
+    viHandles = vidraw.map((h, s) => {
+      var tempx, tempy;
+      let ud = UIDragger.fromCircle([h, [2, 2]]);
+      ud.onDrag((ui, pt) => {
+        if (s == 0) {
+          tempy = viorigin[0][1];
+        } else {
+          tempy = space.pointer[1];
+          vi[s] = (viorigin[1] - tempy) * (1 / rwid);
+        }
+        tempx = ui.group[0][0];
+        ui.group[0].to([tempx, tempy - ui.state("offset")[1]]);
+        solveUp();
+      });
+      // ud.onDrop((ui, pt) => {
+      //   //xv0 = vi.clone();
+      //   lam0 = lam;
+      // });
+      ud.onHover(
+        (ui) => {
+          ui.group[1].scale(2);
+        },
+        (ui) => {
+          ui.group[1].scale(1 / 2);
+        }
+      );
+      return ud;
+    });
 
-  //   viHandles = vidraw.map((h, s) => {
-  //     var tempx, tempy;
-  //     let ud = UIDragger.fromCircle([h, [2, 2]]);
-  //     ud.onDrag((ui, pt) => {
-  //       if (s == 0) {
-  //         tempy = viorigin[0][1];
-  //       } else {
-  //         tempy = space.pointer[1];
-  //         vi[s] = (viorigin[1] - tempy) * (1 / rwid);
-  //       }
-  //       tempx = ui.group[0][0];
-  //       ui.group[0].to([tempx, tempy - ui.state("offset")[1]]);
-  //       solveUp();
-  //     });
-  //     // ud.onDrop((ui, pt) => {
-  //     //   //xv0 = vi.clone();
-  //     //   lam0 = lam;
-  //     // });
-  //     ud.onHover(
-  //       (ui) => {
-  //         ui.group[1].scale(2);
-  //       },
-  //       (ui) => {
-  //         ui.group[1].scale(1 / 2);
-  //       }
-  //     );
-  //     return ud;
-  //   });
+    initHandles = initsdraw.map((h, i) => {
+      let ud = UIDragger.fromCircle([h, [10, 10]]);
+      ud.onDrag((ui, pt) => {
+        var project = intersectPolyPt(iaxes, space.pointer);
+        ui.group[0].to(project.$subtract(ui.state("offset")));
+        inits[i] = convexComb2n(ui.group[0], iaxes.$zip());
+        updateTraj(depth, ["i"]);
+        //vi = vi.$subtract(vi.dot(inits[i]));
+        solveOpt();
+      });
+      // ud.onDrop((ui, pt) => {
+      //   updateTraj(5, ["i", "a"]);
+      // });
+      ud.onHover(
+        (ui) => {
+          ui.group[1].scale(2);
+          initHover = true;
+        },
+        (ui) => {
+          ui.group[1].scale(1 / 2);
+          initHover = false;
+        }
+      );
+      return ud;
+    });
 
-  //   initHandles = initsdraw.map((h, i) => {
-  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
-  //     ud.onDrag((ui, pt) => {
-  //       var project = intersectPolyPt(iaxes, space.pointer);
-  //       ui.group[0].to(project.$subtract(ui.state("offset")));
-  //       inits[i] = convexComb2n(ui.group[0], iaxes.$zip());
-  //       updateTraj(depth, ["i"]);
-  //       //vi = vi.$subtract(vi.dot(inits[i]));
-  //       solveOpt();
-  //     });
-  //     // ud.onDrop((ui, pt) => {
-  //     //   updateTraj(5, ["i", "a"]);
-  //     // });
-  //     ud.onHover(
-  //       (ui) => {
-  //         ui.group[1].scale(2);
-  //         initHover = true;
-  //       },
-  //       (ui) => {
-  //         ui.group[1].scale(1 / 2);
-  //         initHover = false;
-  //       }
-  //     );
-  //     return ud;
-  //   });
+    ihandles = iaxes.map((h) => {
+      let ud = UIDragger.fromCircle([h, [10, 10]]);
+      ud.onDrag((ui, pt) => {
+        // drag handling
+        ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
+      });
+      ud.onHover(
+        // hover handling
+        (ui) => ui.group[1].scale(2),
+        (ui) => ui.group[1].scale(1 / 2)
+      );
+      return ud;
+    });
 
-  //   ihandles = iaxes.map((h) => {
-  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
-  //     ud.onDrag((ui, pt) => {
-  //       // drag handling
-  //       ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
-  //     });
-  //     ud.onHover(
-  //       // hover handling
-  //       (ui) => ui.group[1].scale(2),
-  //       (ui) => ui.group[1].scale(1 / 2)
-  //     );
-  //     return ud;
-  //   });
+    pihandles = pis.map((h, i) => {
+      let ud = UIDragger.fromCircle([h, [10, 10]]);
+      ud.onDrag((ui, pt) => {
+        let temp = P.$zip().$matrixMultiply(iaxes);
+        var project;
+        if (i != 0) {
+          project = intersectPolyPt(
+            temp.slice(ainds[i][0], ainds[i][1]),
+            space.pointer
+          );
+        } else {
+          project = temp[0];
+        }
+        ui.group[0].to(project.$subtract(ui.state("offset")));
+        let Pslice = P.$zip().slice(ainds[i][0], ainds[i][1]);
+        Pslice = Pslice.$matrixMultiply(iaxes);
+        // console.log(ui.state("offset"))
+        let pii = convexComb2n(ui.group[0], Pslice.$zip());
+        for (let j = 0; j < ainds[i][1] - ainds[i][0]; j++) {
+          Pi[ainds[i][0] + j][i] = pii[j];
+        }
+        updateTraj(depth, ["i"]);
+      });
+      // ud.onDrop((ui, pt) => {
+      //   updateTraj(5, ["i"]);
+      // });
+      ud.onHover(
+        // hover handling
+        (ui) => ui.group[1].scale(2),
+        (ui) => ui.group[1].scale(1 / 2)
+      );
+      return ud;
+    });
 
-  //   pihandles = pis.map((h, i) => {
-  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
-  //     ud.onDrag((ui, pt) => {
-  //       let temp = P.$zip().$matrixMultiply(iaxes);
-  //       var project;
-  //       if (i != 0) {
-  //         project = intersectPolyPt(
-  //           temp.slice(ainds[i][0], ainds[i][1]),
-  //           space.pointer
-  //         );
-  //       } else {
-  //         project = temp[0];
-  //       }
-  //       ui.group[0].to(project.$subtract(ui.state("offset")));
-  //       let Pslice = P.$zip().slice(ainds[i][0], ainds[i][1]);
-  //       Pslice = Pslice.$matrixMultiply(iaxes);
-  //       // console.log(ui.state("offset"))
-  //       let pii = convexComb2n(ui.group[0], Pslice.$zip());
-  //       for (let j = 0; j < ainds[i][1] - ainds[i][0]; j++) {
-  //         Pi[ainds[i][0] + j][i] = pii[j];
-  //       }
-  //       updateTraj(depth, ["i"]);
-  //     });
-  //     // ud.onDrop((ui, pt) => {
-  //     //   updateTraj(5, ["i"]);
-  //     // });
-  //     ud.onHover(
-  //       // hover handling
-  //       (ui) => ui.group[1].scale(2),
-  //       (ui) => ui.group[1].scale(1 / 2)
-  //     );
-  //     return ud;
-  //   });
+    aHandles = actions.map((h, i) => {
+      let ud = UIDragger.fromCircle([h, [10, 10]]);
+      ud.onDrop((ui, pt) => {
+        useVOpt = false;
+      });
+      ud.onDrag((ui, pt) => {
+        useVOpt = true;
+        var temp;
+        let project = intersectPolyPt(iaxes, space.pointer);
+        ui.group[0].to(project.$subtract(ui.state("offset")));
+        let Pa = convexComb2n(ui.group[0], iaxes.$zip());
+        for (let j = 0; j < aeinds[i][1] - aeinds[i][0]; j++) {
+          P[j][i] = Pa[j];
+          W[aeinds[i][0] + j][i] = Pa[j];
+        }
+        updateTraj(depth, ["i", "a"]);
+        solveOpt();
+      });
+      // ud.onDrop((ui, pt) => {
+      //   updateTraj(5, ["i", "a"]);
+      // });
+      ud.onHover(
+        (ui) => {
+          ui.group[1].scale(2);
+          ashow[i] = true;
+        },
+        (ui) => {
+          ui.group[1].scale(1 / 2);
+          ashow[i] = false;
+        }
+      );
+      return ud;
+    });
 
-  //   aHandles = actions.map((h, i) => {
-  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
-  //     ud.onDrop((ui, pt) => {
-  //       useVOpt = false;
-  //     });
-  //     ud.onDrag((ui, pt) => {
-  //       useVOpt = true;
-  //       var temp;
-  //       let project = intersectPolyPt(iaxes, space.pointer);
-  //       ui.group[0].to(project.$subtract(ui.state("offset")));
-  //       let Pa = convexComb2n(ui.group[0], iaxes.$zip());
-  //       for (let j = 0; j < aeinds[i][1] - aeinds[i][0]; j++) {
-  //         P[j][i] = Pa[j];
-  //         W[aeinds[i][0] + j][i] = Pa[j];
-  //       }
-  //       updateTraj(depth, ["i", "a"]);
-  //       solveOpt();
-  //     });
-  //     // ud.onDrop((ui, pt) => {
-  //     //   updateTraj(5, ["i", "a"]);
-  //     // });
-  //     ud.onHover(
-  //       (ui) => {
-  //         ui.group[1].scale(2);
-  //         ashow[i] = true;
-  //       },
-  //       (ui) => {
-  //         ui.group[1].scale(1 / 2);
-  //         ashow[i] = false;
-  //       }
-  //     );
-  //     return ud;
-  //   });
+    rhoHandles = rhosdraw.map((h, i) => {
+      let ud = UIDragger.fromCircle([h, [10, 10]]);
+      ud.onHover(
+        (ui) => {
+          rhoshow[i] = true;
+        },
+        (ui) => {
+          rhoshow[i] = false;
+        }
+      );
+      return ud;
+    });
 
-  //   rhoHandles = rhosdraw.map((h, i) => {
-  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
-  //     ud.onHover(
-  //       (ui) => {
-  //         rhoshow[i] = true;
-  //       },
-  //       (ui) => {
-  //         rhoshow[i] = false;
-  //       }
-  //     );
-  //     return ud;
-  //   });
+    yHandles = ysdraw.map((h, i) => {
+      let ud = UIDragger.fromCircle([h, [10, 10]]);
+      ud.onHover(
+        (ui) => {
+          yshow[i] = true;
+        },
+        (ui) => {
+          yshow[i] = false;
+        }
+      );
+      return ud;
+    });
 
-  //   yHandles = ysdraw.map((h, i) => {
-  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
-  //     ud.onHover(
-  //       (ui) => {
-  //         yshow[i] = true;
-  //       },
-  //       (ui) => {
-  //         yshow[i] = false;
-  //       }
-  //     );
-  //     return ud;
-  //   });
+    origHandles = ORIG.map((h, i) => {
+      let ud = UIDragger.fromCircle([h, [10, 10]]);
+      ud.onDrag((ui, pt) => {
+        ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
+      });
+      ud.onHover(
+        (ui) => ui.group[1].scale(2),
+        (ui) => ui.group[1].scale(1 / 2)
+      );
+      return ud;
+    });
 
-  //   origHandles = ORIG.map((h, i) => {
-  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
-  //     ud.onDrag((ui, pt) => {
-  //       ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
-  //     });
-  //     ud.onHover(
-  //       (ui) => ui.group[1].scale(2),
-  //       (ui) => ui.group[1].scale(1 / 2)
-  //     );
-  //     return ud;
-  //   });
+    axesHandles = AXES.map((h, i) => {
+      let ud = UIDragger.fromCircle([h, [10, 10]]);
+      ud.onDrag((ui, pt) => {
+        ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
+      });
+      ud.onHover(
+        (ui) => ui.group[1].scale(2),
+        (ui) => ui.group[1].scale(1 / 2)
+      );
+      return ud;
+    });
 
-  //   axesHandles = AXES.map((h, i) => {
-  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
-  //     ud.onDrag((ui, pt) => {
-  //       ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
-  //     });
-  //     ud.onHover(
-  //       (ui) => ui.group[1].scale(2),
-  //       (ui) => ui.group[1].scale(1 / 2)
-  //     );
-  //     return ud;
-  //   });
+    iorigHandles = [iorigin].map((h, i) => {
+      let ud = UIDragger.fromCircle([h, [10, 10]]);
+      ud.onDrag((ui, pt) => {
+        ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
+      });
+      ud.onHover(
+        (ui) => ui.group[1].scale(2),
+        (ui) => ui.group[1].scale(1 / 2)
+      );
+      return ud;
+    });
 
-  //   iorigHandles = [iorigin].map((h, i) => {
-  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
-  //     ud.onDrag((ui, pt) => {
-  //       ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
-  //     });
-  //     ud.onHover(
-  //       (ui) => ui.group[1].scale(2),
-  //       (ui) => ui.group[1].scale(1 / 2)
-  //     );
-  //     return ud;
-  //   });
-
-  //   aorigHandles = [aorigin].map((h, i) => {
-  //     let ud = UIDragger.fromCircle([h, [10, 10]]);
-  //     ud.onDrag((ui, pt) => {
-  //       ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
-  //     });
-  //     ud.onHover(
-  //       (ui) => ui.group[1].scale(2),
-  //       (ui) => ui.group[1].scale(1 / 2)
-  //     );
-  //     return ud;
-  //   });
-  // },
+    aorigHandles = [aorigin].map((h, i) => {
+      let ud = UIDragger.fromCircle([h, [10, 10]]);
+      ud.onDrag((ui, pt) => {
+        ui.group[0].to(space.pointer.$subtract(ui.state("offset")));
+      });
+      ud.onHover(
+        (ui) => ui.group[1].scale(2),
+        (ui) => ui.group[1].scale(1 / 2)
+      );
+      return ud;
+    });
+  },
 
   //// ANIMATE //// ANIMATE //// ANIMATE //// ANIMATE //// ANIMATE //// ANIMATE ////
   //// ANIMATE //// ANIMATE //// ANIMATE //// ANIMATE //// ANIMATE //// ANIMATE ////

@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  font-size: 10px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,11 +18,29 @@ body {
   background: #f1f1f1;
 }
 
-header {
+/* header {
   background: #004064;
   padding: 16px 32px;
   min-height: 10px;
+} */
+
+header {
+  background: rgb(44, 116, 157);
+  padding: 16px 32px;
+  min-height: 10px;
 }
+
+header {
+  background: rgba(64, 106, 157, 1);
+  padding: 16px 32px;
+  min-height: 10px;
+}
+
+/* header {
+  background: #8658a5;
+  padding: 16px 32px;
+  min-height: 10px;
+} */
 
 header h1 {
   color: #ececec;
@@ -35,6 +60,7 @@ nav ul {
 
 nav li {
   float: left;
+  font-size: 20px;
 }
 
 nav li a {
@@ -71,4 +97,263 @@ footer {
 
 footer p {
   color: #808080;
+}
+
+.link {
+  float: left;
+  font-size: 20px;
+}
+
+.main1 {
+  height: 800px;
+  background-color: rgba(0, 0, 255, 0);
+  width: 800px;
+  position: absolute;
+  z-index: 10;
+}
+
+.EQN {
+  background-color: rgba(0, 0, 255, 0);
+  color: black;
+  position: absolute;
+  font-size: 20px;
+  top: 623px;
+  left: 150px;
+  z-index: 2;
+}
+
+.CANVAS {
+  background-color: rgb(0, 0, 255, 0);
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+}
+
+.katex-display {
+  font-size: 80%;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  opacity: 0.3;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 0fr 0.1fr 0.8fr 0fr;
+  background-color: #fff;
+  color: #444;
+}
+
+.CONTENTS {
+  grid-column: 2 / 3;
+  background-color: #444;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 150%;
+}
+
+.MAIN {
+  grid-column: 3 / 4;
+  background-color: #444;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 200%;
+}
+
+.CONTAINER {
+  background-color: "rgba(0,0,0,0)";
+  height: 800px;
+  width: 800px;
+  /* min-width: 400px;
+    height: auto;
+  width: auto;
+  max-width: 500px;
+  min-height: 400px;
+  max-height: 500px; */
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.EQNS {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 255, 0);
+  color: black;
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+}
+
+.IMAGE {
+  background-color: rgb(0, 0, 255, 0);
+  z-index: 2;
+  top: 0;
+  left: 0;
+}
+
+.SIDETEXT {
+  background-color: rgb(230, 55, 55);
+  width: 100%;
+  height: auto;
+}
+
+.TEXT {
+  float: left;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (min-width: 1000px) {
+  .IMAGE {
+    left: 0;
+    top: 0;
+    width: 70%;
+    min-width: 400px;
+    min-height: 400px;
+  }
+
+  .SIDETEXT {
+    top: 0;
+    right: 0;
+    width: 30%;
+    width: 70%;
+    min-width: 400px;
+    min-height: 400px;
+    overflow-y: scroll;
+    padding-top: 30px;
+  }
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+
+.box .box {
+  background-color: #ccc;
+  color: #444;
+}
+
+.a {
+  grid-column: col 0 / span 2;
+  grid-row: row;
+}
+
+.b {
+  grid-column: col 3 / span 2;
+  grid-row: row;
+}
+
+.c {
+  grid-column: col / span 2;
+  grid-row: row 2;
+}
+
+.d {
+  grid-column: col 3 / span 2;
+  grid-row: row 2;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.e {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+
+.f {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.g {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.gridy {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 0.2fr 1fr 1.1fr;
+  grid-template-rows: 50px auto 300px 75px;
+  grid-template-areas:
+    "headerCenter headerCenter headerSide"
+    "side main tipshead"
+    "side main tips"
+    "footer footer footer";
+}
+
+.side {
+  grid-area: side;
+  background-color: aquamarine;
+}
+
+.main {
+  grid-area: main;
+  background-color: royalblue;
+}
+
+.headerCenter {
+  grid-area: headerCenter;
+  background-color: DarkGoldenRod;
+}
+
+.headerSide {
+  grid-area: headerSide;
+  background-color: DarkOliveGreen;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: DarkCyan;
+}
+
+.tipshead {
+  grid-area: "tips";
+  background-color: FireBrick;
+}
+
+.tips {
+  grid-area: "tips";
+  background-color: rgb(250, 248, 248);
+}
+
+.item {
+  width: 100%;
+  height: 100%;
+}
+
+.colorized {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 960px;
+  margin: auto;
+}
+
+.math {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.explanation {
+  font-size: 1.65rem;
+  max-width: 75%;
 }

@@ -1,15 +1,11 @@
-var xx = math.ones(2);
-
 Pts.namespace(window);
-var space2 = new CanvasSpace("#donut").setup({
-  bgcolor: "#0c3",
+var space2 = new CanvasSpace("donut").setup({
+  bgcolor: f1.color,
   resize: true,
   retina: true
 });
 var form2 = space2.getForm();
-//// Demo code starts (anonymous function wrapper is optional) ---
-
-// (function () {
+//console.log("run donut");
 
 space2.add({
   animate: (time, ftime) => {
