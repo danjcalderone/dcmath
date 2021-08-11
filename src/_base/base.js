@@ -3,7 +3,7 @@ import {
   simpEdges,
   cubeCorners,
   cubeEdges
-} from "./../_module/ndim.js";
+} from "/src/_module/ndim.js";
 
 Pts.namespace(window);
 

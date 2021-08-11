@@ -6,18 +6,18 @@ import {
   simpEdges,
   v2aa,
   symEig
-} from "./../_module/ndim.js";
+} from "/src/_module/ndim.js";
 import {
   NDRAW,
   writeMatrix
   // img2math,
   // createDraggers,
   //updateDraggers
-} from "./../_module/ndraw.js";
+} from "/src/_module/ndraw.js";
 
 //import { pens } from "./../_pens/pens_work1.js";
-import { maxDim, SIMP, SIMPE, CUBE, CUBEE } from "./../_base/base.js";
-import { space, form, obj1 } from "./../_objects/_work1.js";
+import { maxDim, SIMP, SIMPE, CUBE, CUBEE } from "/src/_base/base.js";
+import { space, form, obj1 } from "/src/_objects/_work1.js";
 //export var space = new CanvasSpace("#work1"); //figs"); //document.getElementById("blip"));
 
 // <div class="EQN" id="eqntag" >

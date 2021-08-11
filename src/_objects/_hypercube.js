@@ -1,6 +1,6 @@
-import { intersectPtsPt } from "./../_module/ndim.js";
+import { intersectPtsPt } from "/src/_module/ndim.js";
 
-import { ndraw } from "./../_module/ndraw.js";
+import { ndraw } from "/src/_module/ndraw.js";
 
 Pts.namespace(window);
 

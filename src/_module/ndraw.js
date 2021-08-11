@@ -1,5 +1,5 @@
-import { maxDim, SIMP, SIMPE, CUBE, CUBEE } from "./../_base/base.js";
-import { v2aa, symEig } from "./ndim.js";
+import { maxDim, SIMP, SIMPE, CUBE, CUBEE } from "/src/_base/base.js";
+import { v2aa, symEig } from "/src/_module/ndim.js";
 Pts.namespace(window);
 // var form = space.getForm();
 
