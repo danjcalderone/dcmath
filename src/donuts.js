@@ -7,6 +7,9 @@ var space = new CanvasSpace("donut").setup({
 var form = space.getForm();
 //console.log("run donut");
 
+
+
+
 space.add({
   animate: (time, ftime) => {
     let c1 = Circle.fromCenter(space.pointer, space.size.y / 4);
