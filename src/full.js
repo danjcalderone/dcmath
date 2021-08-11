@@ -1,8 +1,9 @@
+//import { Pt } from "/src/pts.js";
 Pts.namespace(window);
 
-export const cumSum = ((sum) => (value) => (sum += value))(0);
+const cumSum = ((sum) => (value) => (sum += value))(0);
 
-export function intSlide(pos, start, end, div) {
+function intSlide(pos, start, end, div) {
   var pts = [];
   var diffs = [];
   for (let k = 0; k < div; k++) {
@@ -13,7 +14,7 @@ export function intSlide(pos, start, end, div) {
   return [pts[min_ind], min_ind];
 }
 
-export function aa2v(a1, a2, th) {
+function aa2v(a1, a2, th) {
   let U = Group.fromArray([
     [math.cos(theta), -math.sin(theta)],
     [math.sin(theta), math.cos(theta)]
@@ -29,7 +30,7 @@ export function aa2v(a1, a2, th) {
   return U.$matrixMultiply(D.$matrixMultiply(U.$zip()));
 }
 
-export function v2aa(A) {
+function v2aa(A) {
   let alph1 = A[0][0] * A[0][0] + A[0][1] * A[0][1];
   let alph2 = A[1][0] * A[1][0] + A[1][1] * A[1][1];
   let alph12 = A[0][0] * A[1][0] + A[0][1] * A[1][1];
@@ -43,7 +44,7 @@ export function v2aa(A) {
   return [lam1, lam2, angle];
 }
 
-export function symEig(A) {
+function symEig(A) {
   // may not work right for non symmetric matrices...
   let a = A[0][0];
   let b = A[0][1];
@@ -63,40 +64,7 @@ export function symEig(A) {
   return [E, [lam1, lam2]];
 }
 
-// export function P2AxisAngle(P) {
-//   // BROKEN BROKEN BROKEN
-//   let m = 0.5 * (P[0][0] + P[1][1]);
-//   let h = 0.5 * (P[0][0] - P[1][1]);
-//   let p = 0.5 * (P[0][1] + P[1][0]);
-//   let k = 0.5 * (P[1][0] - P[0][1]);
-//   let lam1 = m + math.sqrt(h * h + p * p);
-//   let lam2 = m - math.sqrt(h * h + p * p);
-//   let gam = h / p;
-//   let theta = math.arctan2(-gam + math.sqrt(gam * gam + 1.0), 1);
-//   return [math.sqrt(lam1), math.sqrt(lam2), theta];
-// }
-
-// export function eig2x2(A) {
-//   // Analytically diagonalizes a 2x2 matrix
-//   // INPUT: A
-//   // OUTPUT: V,D,Vi
-//   let a = A[0][0];
-//   let b = A[0][1];
-//   let c = A[1][0];
-//   let d = A[1][1];
-//   let m = 0.5 * (a + d);
-//   let h = 0.5 * (a - d);
-//   let p = 0.5 * (b + c);
-//   let k = 0.5 * (c - b);
-//   let lam1 = m + math.sqrt(m * m + p * p - k * k);
-//   let lam2 = m - math.sqrt(m * m + p * p - k * k);
-// }
-
-//// SIMPLEX //// SIMPLEX //// SIMPLEX //// SIMPLEX ////
-//// SIMPLEX //// SIMPLEX //// SIMPLEX //// SIMPLEX ////
-//// SIMPLEX //// SIMPLEX //// SIMPLEX //// SIMPLEX ////
-
-export function simpCorners(maxDim) {
+function simpCorners(maxDim) {
   let SIMP = [[]];
   for (let i = 1; i <= maxDim; i++) {
     SIMP[i] = Group.fromArray(math.identity(i)._data);
@@ -104,7 +72,7 @@ export function simpCorners(maxDim) {
   return SIMP;
 }
 
-export function simpEdges(simp, dim) {
+function simpEdges(simp, dim) {
   // INPUT: simp (list of simps), dim (up to dimension dim)
   // OUTPUT: simpe
   // MAY NOT WORK FOR 0 and 1
@@ -130,15 +98,15 @@ export function simpEdges(simp, dim) {
 //// SPHERES //// SPHERES //// SPHERES //// SPHERES ////
 //// SPHERES //// SPHERES //// SPHERES //// SPHERES ////
 
-// export function sphereCorners(maxDim) {}
-// export function sphereEdges(simp, dim) {}
+//  function sphereCorners(maxDim) {}
+//  function sphereEdges(simp, dim) {}
 // NOT NEEDED => USE simpEdges //
 
 //// CUBES //// CUBES //// CUBES //// CUBES ////
 //// CUBES //// CUBES //// CUBES //// CUBES ////
 //// CUBES //// CUBES //// CUBES //// CUBES ////
 
-export function cubeCorners(maxDim) {
+function cubeCorners(maxDim) {
   // INPUT:   maxdim = {0,1,2,3,...}
   // RETURNS: list of cube corners up to maxdim
   // CAUTION:  may run badly for dim too high
@@ -160,7 +128,7 @@ export function cubeCorners(maxDim) {
   return CUBE;
 }
 
-export function cubeEdges(cube, dim) {
+function cubeEdges(cube, dim) {
   // INPUT: cube, dim
   // RETURNS: cubee
   var cubee = [];
@@ -188,11 +156,11 @@ export function cubeEdges(cube, dim) {
 //// INTERSECT //////// INTERSECT //////// INTERSECT //////// INTERSECT //////// INTERSECT ////
 //// INTERSECT //////// INTERSECT //////// INTERSECT //////// INTERSECT //////// INTERSECT ////
 
-export function intersectPtsPt(pts, tip) {
+function intersectPtsPt(pts, tip) {
   return pts[Polygon.nearestPt(pts, tip)];
 }
 
-export function intersectPolyPt(poly, tip) {
+function intersectPolyPt(poly, tip) {
   let temp1 = poly.clone();
   temp1.push(poly[0]);
   let temp2 = Curve.cardinal(temp1, 100, 0);
@@ -214,10 +182,10 @@ export function intersectPolyPt(poly, tip) {
 //// COMPUTE ///////// COMPUTE ///////// COMPUTE ///////// COMPUTE ///////// COMPUTE //////
 //// COMPUTE ///////// COMPUTE ///////// COMPUTE ///////// COMPUTE ///////// COMPUTE //////
 
-export const indexOfAll = (arr, val) =>
+const indexOfAll = (arr, val) =>
   arr.reduce((acc, el, i) => (el === val ? [...acc, i] : acc), []);
 
-export function integrateMDP(inits, Pi, Pis, W, Ei, nT, n0, nk) {
+function integrateMDP(inits, Pi, Pis, W, Ei, nT, n0, nk) {
   var out = {};
   var Mts = [];
   var Nts = [];
@@ -306,7 +274,7 @@ export function integrateMDP(inits, Pi, Pis, W, Ei, nT, n0, nk) {
 //// DEVELOPMENTAL ////////// DEVELOPMENTAL ////////// DEVELOPMENTAL ////////// DEVELOPMENTAL //////
 //// DEVELOPMENTAL ////////// DEVELOPMENTAL ////////// DEVELOPMENTAL ////////// DEVELOPMENTAL //////
 
-export function convexComb2n(y, A) {
+function convexComb2n(y, A) {
   let iters = 50,
     sharp = 3,
     mu = 0.01,
@@ -438,7 +406,7 @@ export function convexComb2n(y, A) {
 ///// GRAPHING /////////// GRAPHING /////////// GRAPHING /////////// GRAPHING /////////// GRAPHING //////
 ///// GRAPHING /////////// GRAPHING /////////// GRAPHING /////////// GRAPHING /////////// GRAPHING //////
 
-export function tagEdges(oinds, iinds) {
+function tagEdges(oinds, iinds) {
   var out = {};
   out.selfLoops = [];
   out.bothWays = [];
@@ -460,7 +428,7 @@ export function tagEdges(oinds, iinds) {
   return out;
 }
 
-export function drawArrow(start, end, dcenter, perc, wid, tag) {
+function drawArrow(start, end, dcenter, perc, wid, tag) {
   var arrowHead, arrowTail;
   const div100 = new Pt(math.range(0, 1, 0.01)._data);
   var pto, pti, diff, arrow, phi, rotphi, ptoi;
@@ -599,7 +567,7 @@ export function drawArrow(start, end, dcenter, perc, wid, tag) {
   return [arrowHead, arrowTail];
 }
 
-export function drawGraph(
+function drawGraph(
   form,
   nodes,
   ocenter,
@@ -684,7 +652,7 @@ export function drawGraph(
   }
 }
 
-export function drawFlow(
+function drawFlow(
   form,
   nodes,
   ocenter,
@@ -739,7 +707,7 @@ export function drawFlow(
   }
 }
 
-export function markovOpt(rr, ys, P, Pis) {
+function markovOpt(rr, ys, P, Pis) {
   var temp, temp2, itemp;
   var out = {};
   var iones = new Pt(1, 1, 1);
@@ -773,7 +741,7 @@ export function markovOpt(rr, ys, P, Pis) {
   return out;
 }
 
-export function markovUp(rr, ys, vi, P, A, Pis) {
+function markovUp(rr, ys, vi, P, A, Pis) {
   var temp;
   var lamUp, lam, mu;
   var out = {};
@@ -806,9 +774,9 @@ export function markovUp(rr, ys, vi, P, A, Pis) {
 // markovOpt(rr,ys,P,Pis)
 // markovUp(rr,ys,P,A,Pis)
 
-export var maxDim = 10;
-export var SIMPE = [[], []];
-export var SIMP = simpCorners(maxDim);
+var maxDim = 10;
+var SIMPE = [[], []];
+var SIMP = simpCorners(maxDim);
 for (let i = 2; i <= maxDim; i++) {
   SIMPE[i] = simpEdges(SIMP[i], i);
 }
@@ -819,17 +787,17 @@ for (let i = 2; i <= maxDim; i++) {
 //   SPHEREE[i] = sphereEdges(SPHERE[i],i);
 // }
 
-export var CUBEE = [[]];
-export var CUBE = cubeCorners(maxDim);
+var CUBEE = [[]];
+var CUBE = cubeCorners(maxDim);
 for (let i = 0; i < maxDim; i++) {
   CUBEE[i] = cubeEdges(CUBE[i], i);
 }
 
-export function img2math(pointer, sx, orig) {
+function img2math(pointer, sx, orig) {
   return pointer.$subtract(orig).$multiply(1 / sx);
 }
 
-// export function createDraggers(pointer, A, obj, item) {
+//  function createDraggers(pointer, A, obj, item) {
 //   let draggers = A.map((h, i) => {
 //     let ud = UIDragger.fromCircle([h, [10, 10]]);
 //     ud.onDrag((ui, pt) => {
@@ -845,13 +813,13 @@ export function img2math(pointer, sx, orig) {
 //   return draggers;
 // }
 
-export function updateDraggers(draggers, As) {
+function updateDraggers(draggers, As) {
   draggers.map((h, i) => {
     draggers[i].map((g, j) => g.group[0].to(As[i][j]));
   });
 }
 
-export function ndraw(
+function ndraw(
   form,
   A,
   type,
@@ -982,16 +950,7 @@ export function ndraw(
   }
 }
 
-export function NDRAW(
-  A,
-  obj,
-  form,
-  ORIG,
-  AXES,
-  B = null,
-  SHIFT = [],
-  DIM = []
-) {
+function NDRAW(A, obj, form, ORIG, AXES, B = null, SHIFT = [], DIM = []) {
   //// CONSTRUCTION //// CONSTRUCTION //// CONSTRUCTION //// CONSTRUCTION ////
   //// CONSTRUCTION //// CONSTRUCTION //// CONSTRUCTION //// CONSTRUCTION ////
   //// CONSTRUCTION //// CONSTRUCTION //// CONSTRUCTION //// CONSTRUCTION ////
@@ -1093,7 +1052,7 @@ export function NDRAW(
   }
 }
 
-export function writeMatrix(m, n, sym, digits = false, A = null) {
+function writeMatrix(m, n, sym, digits = false, A = null) {
   let STRNG = " \\begin{bmatrix}";
   var SYM;
   for (let i = 0; i < m; i++) {
@@ -1119,10 +1078,10 @@ export function writeMatrix(m, n, sym, digits = false, A = null) {
   return STRNG;
 }
 
-export var space = new CanvasSpace("#work1");
-export var form = space.getForm();
+var space = new CanvasSpace("#work1");
+var form = space.getForm();
 
-export var pens = {
+var pens = {
   pen0: { sz: 10, lw: 2, lrgba: "rgba(0,0,0,0.7)", frgba: "rgba(0,0,0,0.1)" },
   pen1: { sz: 10, lw: 2, lrgba: "rgba(0,0,0,0.7)", frgba: "rgba(0,0,0,0.1)" },
   hpen1: { sz: 10, lw: 6, lrgba: "rgba(0,0,0,0.7)", frgba: "rgba(0,0,0,0.1)" },
@@ -1139,7 +1098,7 @@ export var pens = {
 //// OBJECTS //// OBJECTS //// OBJECTS //// OBJECTS //// OBJECTS //// OBJECTS //// OBJECTS ////
 //// OBJECTS //// OBJECTS //// OBJECTS //// OBJECTS //// OBJECTS //// OBJECTS //// OBJECTS ////
 //// OBJECTS //// OBJECTS //// OBJECTS //// OBJECTS //// OBJECTS //// OBJECTS //// OBJECTS ////
-export var obj1 = {
+var obj1 = {
   Aobj: {
     pens: pens,
     pts: {
