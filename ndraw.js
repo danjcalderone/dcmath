@@ -7,7 +7,7 @@ import {
   cubeEdges,
   v2aa,
   symEig
-} from "ndim.js"
+} from "./ndim.js"
 
 Pts.namespace(window);
 
