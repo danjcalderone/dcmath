@@ -1,5 +1,5 @@
-import { NDRAW, ndraw, writeMatrix } from "https://danjcalderone.github.io/dcmath/src/_module/ndraw.js"
-import { coord2n, cumSum, cumSum2 } from "https://danjcalderone.github.io/dcmath/src/_module/ndim.js"
+import { NDRAW, ndraw, writeMatrix } from "ndraw.js"
+import { coord2n, cumSum, cumSum2 } from "ndim.js"
 
 Pts.namespace(window);
 
