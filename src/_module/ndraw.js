@@ -7,7 +7,7 @@ import {
   cubeEdges,
   v2aa,
   symEig
-} from "/src/_module/ndim.js";
+} from "https://danjcalderone.github.io/dcmath/src/_module/ndim.js"
 
 Pts.namespace(window);
 

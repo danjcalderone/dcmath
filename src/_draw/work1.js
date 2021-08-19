@@ -1,5 +1,6 @@
-import { NDRAW, ndraw, writeMatrix } from "/src/_module/ndraw.js";
-import { coord2n, cumSum, cumSum2 } from "/src/_module/ndim.js";
+import { NDRAW, ndraw, writeMatrix } from "https://danjcalderone.github.io/dcmath/src/_module/ndraw.js"
+import { coord2n, cumSum, cumSum2 } from "https://danjcalderone.github.io/dcmath/src/_module/ndim.js"
+
 Pts.namespace(window);
 
 export var space = new CanvasSpace("#work1");
