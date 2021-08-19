@@ -1,7 +1,60 @@
-import { maxDim, SIMP, SIMPE, CUBE, CUBEE } from "/src/_base/base.js";
-import { v2aa, symEig } from "/src/_module/ndim.js";
+import {
+  simpCorners,
+  simpEdges,
+  ball1Corners,
+  ball1Edges,
+  cubeCorners,
+  cubeEdges,
+  v2aa,
+  symEig
+} from "/src/_module/ndim.js";
+
 Pts.namespace(window);
-// var form = space.getForm();
+
+export var maxDim = 10;
+export var SIMPE = [[], []];
+export var SIMP = simpCorners(maxDim);
+for (let i = 2; i <= maxDim; i++) {
+  SIMPE[i] = simpEdges(SIMP[i], i);
+}
+
+export var BALL1E = []; //[[], []];
+export var BALL1 = ball1Corners(maxDim);
+for (let i = 0; i <= maxDim; i++) {
+  BALL1E[i] = ball1Edges(i);
+}
+
+// var SPHEREE=[[]];
+// var SPHERE = sphereCorners(maxDim);
+// for (let i=0; i<maxDim; i++) {
+//   SPHEREE[i] = sphereEdges(SPHERE[i],i);
+// }
+
+export var CUBEE = [[]];
+export var CUBEEi = [[]];
+export var CUBE = cubeCorners(maxDim);
+
+//OLD //OLD //OLD //OLD //OLD //OLD  - WITH NETWORK
+// for (let i = 0; i < maxDim; i++) {
+//   let temp = cubeEdges(CUBE[i], i, "network");
+//   CUBEE[i] = temp["cubee"];
+//   CUBEEi[i] = temp["cubeei"];
+// }
+
+for (let i = 0; i < maxDim; i++) {
+  let temp = cubeEdges(CUBE, i, "regular");
+  ///console.log(teste.concat([temp["cubee"]]));
+  CUBEE[i] = temp["cubee"];
+  CUBEEi[i] = temp["cubeei"];
+}
+
+// console.log(CUBEEi[4]);
+// asdf;
+
+// console.log(CUBEE[7].length);
+// console.log(teste[7].length);
+// console.log(teste);
+// asdf;
 
 export const cumSum = ((sum) => (value) => (sum += value))(0);
 
@@ -39,7 +92,7 @@ export function ndraw(
   orig,
   axes,
   pen,
-  ind = "all",
+  ind_passin = "all",
   B = null,
   shifts = [],
   dims = []
@@ -55,19 +108,47 @@ export function ndraw(
   //// cubes:
   //// spheres:
   //// blocks:
-  let AA = A.$matrixMultiply(axes).multiply(sx);
+  //// 1space;
+  //// 2space;
+  //// infspace;
+  //// coords;
+  //// cube_highlights
+
+  var ind;
+  if (type == "cube_highlights") {
+    ind = "all";
+  } else {
+    ind = ind_passin;
+  }
+
+  let AA = A.$matrixMultiply(axes).map((h) => h.$multiply(sx));
   let sshifts = shifts;
   let ddims = dims;
-  if (!(ind.constructor === String)) {
+
+  if (!(typeof ind === "string" || ind instanceof String)) {
     AA = ind.map((i) => AA[i]);
     sshifts = ind.map((i) => shifts[i]);
     ddims = ind.map((i) => dims[i]);
   }
+
+  // console.log(BB);
+  // let AA = BB.$matrixMultiply(axes);
+
   let mx = AA.length;
   let nx = AA[0].length;
-
   let nn = AA.length;
 
+  //let spaces = [0.1, 0.13, 0.16, 0.19, 0.8, 0.9, 1.0, 1.1, 1.2];
+  //let spaces = [0.8, 0.9, 1.0, 1.1, 1.2];
+  var spaces = [0.7, 0.8, 0.9, 1, 1.1, 1.2];
+  spaces = spaces.map((t) => math.sqrt(t));
+  // var sspaces = [];
+  // var temp;
+  // for (let i = 8; i < 10; i++) {
+  //   temp = spaces.map((t) => t * 0.1 * i);
+  //   sspaces = sspaces.concat(temp);
+  // }
+  // spaces = sspaces;
   if (type == "pts") {
     //// POINTS //// POINTS //// POINTS //// POINTS ////
     //// POINTS //// POINTS //// POINTS //// POINTS ////
@@ -116,31 +197,67 @@ export function ndraw(
       SIMP[nn].$matrixMultiply(DD).map((h) => h.$add(orig))
     );
     form.fill(pen["frgba"]).polygon(simphull);
-  } else if (type == "spheres") {
+  } else if (type == "1ball" || type == "1space") {
+    //// 1BALL //// 1BALL //// 1BALL //// 1BALL //// 1BALL ////
+    //// 1BALL //// 1BALL //// 1BALL //// 1BALL //// 1BALL ////
+    let DD = AA;
+    let sizes = [1.0];
+    if (type == "1space") {
+      sizes = spaces;
+    }
+    for (let k = 0; k < sizes.length; k++) {
+      let DD = AA;
+      DD = DD.map((t) => t.$multiply(sizes[k]));
+      BALL1E[nn].map((t) => {
+        let bb = 0.4;
+        let rgba = "rgb(0,0,0," + String(bb + bb / (nn + 1)) + ")";
+        let lx = 3;
+        let lm = 0.1;
+        let xx = 11;
+        let lw = lx * (1 - nn / xx) + lm * (nn / xx);
+        form
+          .stroke(rgba, lw)
+          .line(t.$matrixMultiply(DD).map((h) => h.$add(orig)));
+      });
+    }
+  } else if (type == "spheres" || type == "2ball" || type == "2space") {
     //// SPHERES //// SPHERES //// SPHERES //// SPHERES ////
-    //// SPHERES //// SPHERES //// SPHERES //// SPHERES ////
-    let DD = AA; //.$matrixMultiply(axes);
-    SIMPE[nn].map((t, i) => {
-      let temp = v2aa(t.$matrixMultiply(DD).$zip());
-      form
-        .strokeOnly("rgba(0,0,0,0.4)", 2)
-        //pen["lrgba"], pen["lw"])
-        .ellipse(orig, [temp[0], temp[1]], temp[2]);
-    });
+    ////  2BALL  ////  2BALL  ////  2BALL  ////  2BALL  ////
+    //// 2SPACE  //// 2SPACE  //// 2SPACE  //// 2SPACE  ////
+    let sizes = [1.0];
+    if (type == "2space") {
+      sizes = spaces;
+    }
+    for (let k = 0; k < sizes.length; k++) {
+      let DD = AA; //.$matrixMultiply(axes);
+      DD = DD.map((t) => t.$multiply(sizes[k]));
+      SIMPE[nn].map((t, i) => {
+        let temp = v2aa(t.$matrixMultiply(DD).$zip());
+        form
+          .strokeOnly("rgba(0,0,0,0.4)", 2)
+          //pen["lrgba"], pen["lw"])
+          .ellipse(orig, [temp[0], temp[1]], temp[2]);
+      });
 
-    let temp = symEig(DD.$zip().$matrixMultiply(DD).$zip());
-    let angle = math.atan2(temp[0][0][1], temp[0][0][0]);
-    form
-      .stroke(pen["lrgba"], 2 * pen["lw"])
-      .fill(pen["frgba"])
-      .ellipse(orig, [math.sqrt(temp[1][0]), math.sqrt(temp[1][1])], angle);
+      if (k == sizes.length - 1) {
+        let temp = symEig(DD.$zip().$matrixMultiply(DD).$zip());
+        let angle = math.atan2(temp[0][0][1], temp[0][0][0]);
+        let ww = 2;
+        if (type == "2space") {
+          ww = 0.5;
+        }
+        form
+          .stroke(pen["lrgba"], ww * pen["lw"])
+          .fill(pen["frgba"])
+          .ellipse(orig, [math.sqrt(temp[1][0]), math.sqrt(temp[1][1])], angle);
+      }
+    }
   } else if (type == "cubes") {
     //// CUBES //// CUBES //// CUBES //// CUBES ////
     //// CUBES //// CUBES //// CUBES //// CUBES ////
     // DD = AA.map((h,i)=>h.$subtract(BB[i])).$matrixMultiply(axes)
     let DD = AA; //.$matrixMultiply(axes);
     CUBEE[nn].map((t) => {
-      // console.log(nn);
       //let rgba = pen["lrgba"];
       // let lw = pen['lw']
       let bb = 0.4;
@@ -157,8 +274,108 @@ export function ndraw(
     // let cubehull = CUBE[nn].$matrixMultiply(DD).map((h) => h.$add(orig));
     // form.fill(pen["frgba"]).polygon(Polygon.convexHull(cubehull));
     // let cubehull = CUBE[nn].$matrixMultiply(DD).map((h) => h.$add(orig));
-    // console.log(Polygon.convexHull(cubehull));
     // form.fill(pen["frgba"]).polygon(Polygon.convexHull(cubehull));
+  } else if (type == "coords") {
+    //// COORDS //// COORDS //// COORDS //// COORDS ////
+    //// COORDS //// COORDS //// COORDS //// COORDS ////
+    // console.log(A.$matrixMultiply(axes));
+
+    let DD = A;
+    // console.log("blig");
+    // if (!(typeof ind === "string" || ind instanceof String)) {
+    //   DD = ind.map((i) => DD[i]);
+    // }
+
+    // console.log(BB[0]);
+    // let DD = BB;
+
+    // asdf;
+
+    for (let k = 0; k < DD.length; k++) {
+      let nnn = DD[k].length;
+      let EE = Group.fromArray(math.diag(DD[k]));
+      //console.log(EE);
+      EE = EE.$matrixMultiply(axes).map((h) => h.$multiply(sx));
+      CUBEE[nnn].map((t) => {
+        //let rgba = pen["lrgba"];
+        // let lw = pen['lw']
+        let bb = 0.4;
+        let rgba = "rgb(0,0,0," + String(bb + bb / (nn + 1)) + ")";
+        let lx = 1.3;
+        let lm = 0.1;
+        let xx = 11;
+        let lw = lx * (1 - nn / xx) + lm * (nn / xx);
+        form
+          .stroke(rgba, lw)
+          .line(t.$matrixMultiply(EE).map((h) => h.$add(orig)));
+      });
+    }
+  } else if (type == "cube_highlights") {
+    //// CUBES HIGHLIGHTS //// CUBES HIGHLIGHTS //// CUBES HIGHLIGHTS ////
+    //// CUBES HIGHLIGHTS //// CUBES HIGHLIGHTS //// CUBES HIGHLIGHTS ////
+    // DD = AA.map((h,i)=>h.$subtract(BB[i])).$matrixMultiply(axes)
+    let DD = AA; //.$matrixMultiply(axes);
+    for (let k = 0; k < ind_passin.length; k++) {
+      let FULL_EDGES = CUBEE[nn];
+      let high_inds = CUBEEi[nn][ind_passin[k]];
+      let HEDGES = high_inds.toArray().map((i) => FULL_EDGES[i]);
+      HEDGES.map((t) => {
+        let rgba = pen["lrgba"];
+        let lw = pen["lw"];
+        form
+          .stroke(rgba, lw)
+          .line(t.$matrixMultiply(DD).map((h) => h.$add(orig)));
+      });
+    }
+  } else if (type == "infball" || type == "infspace") {
+    //// INF-BALL //// INF-BALL //// INF-BALL //// INF-BALL ////
+    //// INF-BALL //// INF-BALL //// INF-BALL //// INF-BALL ////
+    // DD = AA.map((h,i)=>h.$subtract(BB[i])).$matrixMultiply(axes)
+
+    let sizes = [1.0];
+    if (type == "infspace") {
+      sizes = spaces;
+    }
+    for (let k = 0; k < sizes.length; k++) {
+      let DD = AA; //.$matrixMultiply(axes);
+      DD = DD.map((t) => t.$multiply(sizes[k]));
+      CUBEE[nn].map((t) => {
+        let bb = 0.4;
+        let rgba = "rgb(0,0,0," + String(bb + bb / (nn + 1)) + ")";
+        let lx = 3;
+        let lm = 0.1;
+        let xx = 11;
+        let lw = lx * (1 - nn / xx) + lm * (nn / xx);
+        form.stroke(rgba, lw).line(
+          t
+            .map((g) => g.$multiply(2).$subtract(new Pt(math.ones(nn)._data)))
+            .$matrixMultiply(DD)
+            .map((h) => h.$add(orig))
+        );
+      });
+    }
+  } else if (type == "1space") {
+    //// 1-SUBSPACE //// 1-SUBSPACE //// 1-SUBSPACE //// 1-SUBSPACE ////
+    //// 1-SUBSPACE //// 1-SUBSPACE //// 1-SUBSPACE //// 1-SUBSPACE ////
+  } else if (type == "2space") {
+    //// 1-SUBSPACE //// 1-SUBSPACE //// 1-SUBSPACE //// 1-SUBSPACE ////
+    //// 1-SUBSPACE //// 1-SUBSPACE //// 1-SUBSPACE //// 1-SUBSPACE ////
+
+    let DD = AA;
+    CUBEE[nn].map((t) => {
+      let bb = 0.4;
+      let rgba = "rgb(0,0,0," + String(bb + bb / (nn + 1)) + ")";
+      let lx = 3;
+      let lm = 0.1;
+      let xx = 11;
+      let lw = lx * (1 - nn / xx) + lm * (nn / xx);
+      form.stroke(rgba, lw).line(
+        t
+          .map((g) => g.$multiply(2).$subtract(new Pt(math.ones(nn)._data)))
+          .$matrixMultiply(DD)
+          .map((h) => h.$add(orig))
+      );
+    });
   }
 }
 
@@ -190,26 +407,27 @@ export function NDRAW(
   }
   var pen, orig, axes, shifts, dims, sx;
 
-  if ("pen" in obj) {
-    pen = pens[obj.pen];
-  }
-  if ("orig" in obj) {
-    orig = ORIG[obj.orig];
-  }
-  if ("axes" in obj) {
-    axes = AXES[obj.axes];
-  }
-  if ("shifts" in obj) {
-    shifts = SHIFT[obj.shifts];
-  }
-  if ("dims" in obj) {
-    dims = DIM[obj.dims];
-  }
-
-  if ("sx" in obj) {
-    sx = obj.sx;
-  }
   for (const item_name in OBJ) {
+    ///// maybe not needed.... ///////
+    if ("pen" in obj) {
+      pen = pens[obj.pen];
+    }
+    if ("orig" in obj) {
+      orig = ORIG[obj.orig];
+    }
+    if ("axes" in obj) {
+      axes = AXES[obj.axes];
+    }
+    if ("shifts" in obj) {
+      shifts = SHIFT[obj.shifts];
+    }
+    if ("dims" in obj) {
+      dims = DIM[obj.dims];
+    }
+    if ("sx" in obj) {
+      sx = obj.sx;
+    }
+    ////////////////////
     if (!(["orig", "axes", "sx", "pens", "update"].indexOf(item_name) >= 0)) {
       shifts = []; //// HACKY AND BROKEN
       dims = []; //// HACKY AND BROKEN
@@ -249,10 +467,19 @@ export function NDRAW(
           dims
         );
       }
+
       if ("hon" in item) {
         if (item.hon) {
           if (item.hind.length > 0) {
-            // console.log(pens[item.hpen]);
+            /// multiple possible hinds
+            // let hhind;
+            // if (item.hind[0] instanceof Array) {
+            //   hhind = item.hind;
+            // } else {
+            //   hhind = [item.hind];
+            // }
+            // for (let k = 0; k < hhind.length; k++) {
+
             ndraw(
               form,
               A,
@@ -266,6 +493,7 @@ export function NDRAW(
               shifts,
               dims
             );
+            //}
           }
         }
       }
@@ -273,9 +501,16 @@ export function NDRAW(
   }
 }
 
-export function writeMatrix(m, n, sym, digits = false, A = null) {
+export function writeMatrix(
+  m,
+  n,
+  sym,
+  digits = false,
+  use2inds = true,
+  A = null
+) {
   let STRNG = " \\begin{bmatrix}";
-  var SYM;
+  var SYM, inds, ii;
   for (let i = 0; i < m; i++) {
     for (let j = 0; j < n; j++) {
       if (digits & (A != null)) {
@@ -285,7 +520,13 @@ export function writeMatrix(m, n, sym, digits = false, A = null) {
         STRNG = STRNG + " " + SYM + " ";
       } else {
         SYM = sym;
-        STRNG = STRNG + " " + SYM + "_{" + String(i + 1) + String(j + 1) + "} ";
+        if (use2inds) {
+          inds = "_{" + String(i + 1) + String(j + 1) + "} ";
+        } else {
+          ii = math.max(i, j);
+          inds = "_{" + String(ii + 1) + "} ";
+        }
+        inds = STRNG = STRNG + " " + SYM + inds;
       }
       if (j < n - 1) {
         STRNG = STRNG + " & ";

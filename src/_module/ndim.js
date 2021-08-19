@@ -1,5 +1,41 @@
 export const cumSum = ((sum) => (value) => (sum += value))(0);
 
+export function cumSum2(x, start0 = true) {
+  var y, end;
+  if (start0) {
+    y = [0];
+    end = x.length;
+  } else {
+    y = [x[0]];
+    end = x.length;
+  }
+  for (let i = 1; i < end; i++) {
+    if (start0) {
+      y[i] = y[i - 1] + x[i - 1];
+    } else {
+      y[i] = y[i - 1] + x[i];
+    }
+  }
+  return y;
+}
+
+export function meshgrid(xs, ys, shift = [0, 0], use_deltas = true) {
+  var m = ys.length;
+  var n = xs.length;
+  var cumx = cumSum(xs);
+  var cumy = cumSum(ys);
+  var X = Group.fromArray(math.zeros(m, n)._data);
+  var Y = Group.fromArray(math.zeros(m, n)._data);
+  if (use_deltas) {
+    for (let i = 0; i < m; i++) {
+      for (let j = 0; j < n; j++) {
+        X[i][j] = cumx[j] + shift[0];
+        X[i][j] = cumy[i] + shift[1];
+      }
+    }
+  }
+  return [X, Y];
+}
 export function intSlide(pos, start, end, div) {
   var pts = [];
   var diffs = [];
@@ -10,6 +46,10 @@ export function intSlide(pos, start, end, div) {
   var min_ind = diffs.min().index;
   return [pts[min_ind], min_ind];
 }
+
+//// ELLIPSE DRAWING //// ELLIPSE DRAWING //// ELLIPSE DRAWING //// ELLIPSE DRAWING ////
+//// ELLIPSE DRAWING //// ELLIPSE DRAWING //// ELLIPSE DRAWING //// ELLIPSE DRAWING ////
+//// ELLIPSE DRAWING //// ELLIPSE DRAWING //// ELLIPSE DRAWING //// ELLIPSE DRAWING ////
 
 export function aa2v(a1, a2, th) {
   let U = Group.fromArray([
@@ -40,6 +80,10 @@ export function v2aa(A) {
   let lam2 = math.sqrt(M - Z);
   return [lam1, lam2, angle];
 }
+
+//// EIGEN //// EIGEN //// EIGEN //// EIGEN //// EIGEN //// EIGEN /////
+//// EIGEN //// EIGEN //// EIGEN //// EIGEN //// EIGEN //// EIGEN /////
+//// EIGEN //// EIGEN //// EIGEN //// EIGEN //// EIGEN //// EIGEN /////
 
 export function symEig(A) {
   // may not work right for non symmetric matrices...
@@ -90,6 +134,446 @@ export function symEig(A) {
 //   let lam2 = m - math.sqrt(m * m + p * p - k * k);
 // }
 
+//// DEVELOPMENTAL ////////// DEVELOPMENTAL ////////// DEVELOPMENTAL ////////// DEVELOPMENTAL //////
+//// DEVELOPMENTAL ////////// DEVELOPMENTAL ////////// DEVELOPMENTAL ////////// DEVELOPMENTAL //////
+//// DEVELOPMENTAL ////////// DEVELOPMENTAL ////////// DEVELOPMENTAL ////////// DEVELOPMENTAL //////
+//// DEVELOPMENTAL ////////// DEVELOPMENTAL ////////// DEVELOPMENTAL ////////// DEVELOPMENTAL //////
+
+export function coord2n(
+  y,
+  AT,
+  vers = "2norm",
+  type = "dot",
+  sharp = "exp",
+  alpha = 0.1
+) {
+  let n = AT.length;
+  let m = AT[0].length;
+  let yy = y;
+  var z, x;
+  var AA, A, w, comp, temp0, temp1, Aw, M1, M2, M, Mi, det;
+  var BT, B, ww, W, BW, BWT;
+  if (vers == "softmax") {
+    // DOESN"T WORK ATM....
+    AA = AT.clone();
+    A = AT.$zip();
+    w = Group.fromArray([math.zeros(n)._data, math.zeros(n)._data]);
+    comp = Group.fromArray([math.zeros(n)._data, math.zeros(n)._data]);
+    comp[0] = AA.map((h) => math.abs(h.dot(y)));
+    w[0] = comp[0].map((h) => math.exp(alpha * h));
+    temp0 = math.sum(w[0]);
+    w[0] = w[0].map((h) => h / temp0);
+    Aw = AA.$zip().map((h) => h.dot(w[0]));
+    AA = AA.map((h) => h.subtract(Aw));
+    yy = y.subtract(Aw);
+    comp[1] = AA.map((h) => math.abs(h.dot(yy)));
+    w[1] = comp[1].map((h) => math.exp(alpha * h));
+    temp1 = math.sum(w[1]);
+    w[1] = w[1].map((g) => g / temp1);
+    M1 = A.map((h) => h.dot(w[0]));
+    M2 = A.map((h) => h.dot(w[1]));
+    M = Group.fromPtArray([M1, M2]);
+    M = M.$zip();
+    det = M[0][0] * M[1][1] - M[0][1] * M[1][0];
+    Mi = Group.fromArray([
+      [M[1][1] / det, -M[0][1] / det],
+      [-M[1][0] / det, M[0][0] / det]
+    ]);
+    z = Group.fromPtArray(Mi.map((h) => h.dot(y)));
+    x = Group.fromPtArray([w.$zip().map((h) => h.dot(z))]);
+  } else if (vers == "w2norm") {
+    BT = AT.clone();
+    B = BT.$zip();
+    ww = new Pt(BT.map((h) => math.sqrt(math.abs(h.dot(y)))));
+    W = Group.fromArray(math.diag(ww.toArray()));
+    B = B.$matrixMultiply(W);
+    BT = B.$zip();
+    M = B.$matrixMultiply(BT);
+    det = M[0][0] * M[1][1] - M[0][1] * M[1][0];
+    Mi = Group.fromArray([
+      [M[1][1] / det, -M[0][1] / det],
+      [-M[1][0] / det, M[0][0] / det]
+    ]);
+
+    x = Group.fromPtArray([
+      W.$matrixMultiply(BT)
+        .$matrixMultiply(Mi)
+        .map((h) => h.dot(y))
+    ]);
+  } else if (vers == "2norm") {
+    BT = AT.clone();
+    B = BT.$zip();
+    M = B.$matrixMultiply(BT);
+    det = M[0][0] * M[1][1] - M[0][1] * M[1][0];
+    Mi = Group.fromArray([
+      [M[1][1] / det, -M[0][1] / det],
+      [-M[1][0] / det, M[0][0] / det]
+    ]);
+    x = Group.fromPtArray([BT.$matrixMultiply(Mi).map((h) => h.dot(y))]);
+  }
+
+  return x;
+}
+
+// console.log("w1: ", w[0]);
+// console.log("w2: ", w[1]);
+
+// for (let k = 0; k <= 1; k++) {
+// if (type == "dot") {
+//   comp[k] = AA.map((h) => h.dot(y));
+// } else if (type == "absdot") {
+// comp[k] = AA.map((h) => math.abs(h.dot(y)));
+// } else if (type == "invdist") {
+//   comp[k] = AA.map((h) => {
+//     let dff = h.$subtract(y);
+//     return 1 / (math.sqrt(dff.dot(dff)) + 0.01);
+//   });
+// }
+// console.log("comp[0]: ", comp[0]);
+// console.log("comp[1]: ", comp[1]);
+// if (sharp == "exp") {
+// w[k] = comp[k].map((h) => math.exp(alpha * h));
+// let temp = math.sum(w[k]);
+// w[k] = w[k].map((h) => h / temp);
+//}
+// console.log("w[0]: ", w[0]);
+// console.log("w[1]: ", w[1]);
+// console.log("w: ", w[0]);
+//   var BB;
+//   if (k == 0) {
+//     let Aw = AA.$zip().map((h) => h.dot(w[0]));
+//     BB = AA.map((h) => {
+//       return h.$subtract(Aw);
+//     });
+//   }
+//   AA = BB;
+// }
+
+//   let M = new Group(M1, M2);
+//   let det = M[0][0] * M[1][1] - M[0][1] * M[1][0];
+//   let Mi = Group.fromArray([
+//     [M[1][1] / det, -M[0][1] / det],
+//     [-M[1][0] / det, M[0][0] / det]
+//   ]);
+//   let z = Mi.map((h) => h.dot(y));
+//   let x = w[0].$multiply(z[0]).$add(w[1].$multiply(z[1]));
+//   return x;
+// }
+//     let M = A.$matrixMultiply(Qi).$matrixMultiply(AT);
+//     let det = M[0][0] * M[1][1] - M[0][1] * M[1][0];
+//     let Mi = Group.fromArray([
+//       [M[1][1] / det, -M[0][1] / det],
+//       [-M[1][0] / det, M[0][0] / det]
+//     ]);
+
+//     // d2fx = ;
+//     Ax = A.map((h) => h.$dot(xs[t]));
+//     Adfx = A.map((h) => h.$dot(dfx));
+//     u = Mi.map((h) => h.dot(y.$subtract(Ax).$subtract(Adfx))).$zip()[0];
+//     xs.push(u.$multiply(-gam));
+//     vs.push(dfx.$subtract(AT.map((h) => h.dot(u))));
+//     mus.push(mu);
+//   }
+//   return xs.pop();
+// }
+
+// export function IPM(y, AT, frk = 0.5) {
+//   let n = AT.length;
+//   let m = AT[0].length;
+//   let ones = Group.fromArray(math.ones(n)._data);
+//   let a = (1 - frk) / frk;
+//   let TT = 100;
+//   let xs = Group.fromArray(math.zeros(1, n)._data);
+//   let vs = Group.fromArray(math.zeros(1, m)._data);
+//   let mus = new Pt([1]);
+//   let A = AT.$zip();
+//   var gam = 0.1;
+//   var dfx, Ax, Adfx, u, mu;
+//   for (let t = 0; t < TT; t++) {
+//     mu = mus[t];
+//     if (math.mod(t, 10) == 0) {
+//       mu = mu + 1;
+//     }
+//     dfx = xs[t].map((h) => math.pow(h, frk - 1)); // WROONNNGGG
+//     d2fx = xs[t].map((h) => math.pow(h, frk - 1)); // WROONNNGGG
+
+//     let Q =
+//     let Qi=
+
+//     let M = A.$matrixMultiply(Qi).$matrixMultiply(AT);
+//     let det = M[0][0] * M[1][1] - M[0][1] * M[1][0];
+//     let Mi = Group.fromArray([
+//       [M[1][1] / det, -M[0][1] / det],
+//       [-M[1][0] / det, M[0][0] / det]
+//     ]);
+
+//     // d2fx = ;
+//     Ax = A.map((h) => h.$dot(xs[t]));
+//     Adfx = A.map((h) => h.$dot(dfx));
+//     u = Mi.map((h) => h.dot(y.$subtract(Ax).$subtract(Adfx))).$zip()[0];
+//     xs.push(u.$multiply(-gam));
+//     vs.push(dfx.$subtract(AT.map((h) => h.dot(u))));
+//     mus.push(mu);
+//   }
+//   return xs.pop();
+// }
+
+// export function cvxComb2n(y, A) {
+//   //// can be editted...
+//   //// can be editted...
+//   let iters = 50,
+//     sharp = 3,
+//     mu = 0.01,
+//     gam = 0.1,
+//     scale = 0.01;
+//   let yy = new Pt(y[0], y[1], 1);
+//   let m = A.length,
+//     n = A[0].length;
+//   let dist = A.$zip().map((h) => {
+//     return h.$subtract(y).magnitude();
+//   });
+//   let exp = dist.map((t) => {
+//     return math.exp(sharp / (t * scale));
+//   });
+//   let sum = exp.reduce((a, b) => {
+//     return a + b;
+//   });
+//   let xb = new Pt(exp.map((t) => t / sum));
+//   let yb = yy.$subtract(A.map((t) => t.dot(xb)));
+//   let x = xb.clone();
+//   let v = new Pt(math.zeros(m + 1)._data);
+//   let B = A.clone();
+//   B.push(new Pt(math.ones(n)._data));
+
+//   if (n == 1) {
+//     x = new Pt([1]);
+//   } else if (n == 2) {
+//     let B00 = B[0][0],
+//       B01 = B[0][1];
+//     let B10 = B[1][0],
+//       B11 = B[1][1];
+//     let Bi = Group.fromArray([
+//       [B00 - B01, B10 - B11],
+//       [B11 - B10, B00 - B01]
+//     ]);
+//     Bi.divide((B00 - B01) * (B00 - B01) + (B11 - B10) * (B11 - B10));
+//     let temp = Bi.map((t) => t.dot(new Pt(yy[0] - B01, yy[1] - B11)))[0];
+//     temp = math.min(1, math.max(temp, 0));
+//     x = new Pt(temp, 1 - temp);
+//   } else if (n == 3) {
+//     let M00 = B[0][0],
+//       M01 = B[0][1],
+//       M02 = B[0][2];
+//     let M10 = B[1][0],
+//       M11 = B[1][1],
+//       M12 = B[1][2];
+//     let M20 = B[2][0],
+//       M21 = B[2][1],
+//       M22 = B[2][2];
+//     let Bi = Group.fromArray([
+//       [M11 * M22 - M12 * M21, M02 * M21 - M01 * M22, M01 * M12 - M02 * M11],
+//       [M12 * M20 - M10 * M22, M00 * M22 - M02 * M20, M02 * M10 - M00 * M12],
+//       [M10 * M21 - M11 * M20, M01 * M20 - M00 * M21, M00 * M11 - M01 * M10]
+//     ]);
+//     Bi.divide(
+//       M00 * (M11 * M22 - M12 * M21) -
+//         M01 * (M10 * M22 - M12 * M20) +
+//         M02 * (M10 * M21 - M11 * M20)
+//     );
+//     x = new Pt(Bi.map((t) => t.dot(new Pt(yy[0], yy[1], 1))));
+//   } else {
+//     for (let i = 0, len = iters; i < len; i++) {
+//       let temp = x.$add(xb);
+//       let temp2 = temp.$multiply(temp);
+//       let qi = temp2.$divide(temp2.$add(mu));
+//       let M = B.$matrixMultiply(B.map((t) => t.$multiply(qi)).$zip());
+//       // explicit 3x3 matrix inverse
+//       let M00 = M[0][0],
+//         M01 = M[0][1],
+//         M02 = M[0][2];
+//       let M10 = M[1][0],
+//         M11 = M[1][1],
+//         M12 = M[1][2];
+//       let M20 = M[2][0],
+//         M21 = M[2][1],
+//         M22 = M[2][2];
+//       let Mi = Group.fromArray([
+//         [M11 * M22 - M12 * M21, M02 * M21 - M01 * M22, M01 * M12 - M02 * M11],
+//         [M12 * M20 - M10 * M22, M00 * M22 - M02 * M20, M02 * M10 - M00 * M12],
+//         [M10 * M21 - M11 * M20, M01 * M20 - M00 * M21, M00 * M11 - M01 * M10]
+//       ]);
+//       Mi.divide(
+//         M00 * (M11 * M22 - M12 * M21) -
+//           M01 * (M10 * M22 - M12 * M20) +
+//           M02 * (M10 * M21 - M11 * M20)
+//       );
+//       let dfx = new Pt(B.$zip().map((t) => t.dot(v)));
+//       dfx.add(x.$subtract(temp2.map((t) => mu / t)));
+//       let dfv = new Pt(B.map((t) => t.dot(x)).subtract(yb));
+
+//       // ====================================
+//       // (Qi - QiB.TMiBQi)dfx + Qi B.T Mi dfv
+//       // Mi B Qi dfx          +    -Mi dfv
+//       // ====================================
+//       // console.log(qi.$multiply(dfx).$subtract(-1))
+//       let dx1 = new Pt(
+//         dfx.$subtract(
+//           B.$zip()
+//             .$matrixMultiply(Mi.$matrixMultiply(B))
+//             .map((t) => t.dot(dfx.$multiply(qi)))
+//         )
+//       );
+//       dx1.multiply(qi);
+//       let dx2 = new Pt(
+//         qi.$multiply(
+//           B.$zip()
+//             .$matrixMultiply(Mi)
+//             .map((t) => t.dot(dfv))
+//         )
+//       );
+//       let dv1 = new Pt(
+//         Mi.$matrixMultiply(B).map((t) => t.dot(dfx.$multiply(qi)))
+//       );
+//       let dv2 = new Pt(Mi.map((t) => t.dot(dfv.$multiply(-1))));
+//       x.subtract(dx1.$add(dx2).$multiply(gam));
+//       v.subtract(dv1.$add(dv2).$multiply(gam));
+//     }
+//     x.add(xb);
+//     let xmag = x.reduce((a, b) => {
+//       return a + b;
+//     });
+//     x = x.map((t) => t / xmag);
+//   }
+//   return x;
+// }
+
+export function OLD_convexComb2n(y, A) {
+  let iters = 50,
+    sharp = 3,
+    mu = 0.01,
+    gam = 0.1,
+    scale = 0.01;
+  let yy = new Pt(y[0], y[1], 1);
+  let m = A.length,
+    n = A[0].length;
+  let dist = A.$zip().map((h) => {
+    return h.$subtract(y).magnitude();
+  });
+  let exp = dist.map((t) => {
+    return math.exp(sharp / (t * scale));
+  });
+  let sum = exp.reduce((a, b) => {
+    return a + b;
+  });
+  let xb = new Pt(exp.map((t) => t / sum));
+  let yb = yy.$subtract(A.map((t) => t.dot(xb)));
+  let x = xb.clone();
+  let v = new Pt(math.zeros(m + 1)._data);
+  let B = A.clone();
+  B.push(new Pt(math.ones(n)._data));
+
+  if (n == 1) {
+    x = new Pt([1]);
+  } else if (n == 2) {
+    let B00 = B[0][0],
+      B01 = B[0][1];
+    let B10 = B[1][0],
+      B11 = B[1][1];
+    let Bi = Group.fromArray([
+      [B00 - B01, B10 - B11],
+      [B11 - B10, B00 - B01]
+    ]);
+    Bi.divide((B00 - B01) * (B00 - B01) + (B11 - B10) * (B11 - B10));
+    let temp = Bi.map((t) => t.dot(new Pt(yy[0] - B01, yy[1] - B11)))[0];
+    temp = math.min(1, math.max(temp, 0));
+    x = new Pt(temp, 1 - temp);
+  } else if (n == 3) {
+    let M00 = B[0][0],
+      M01 = B[0][1],
+      M02 = B[0][2];
+    let M10 = B[1][0],
+      M11 = B[1][1],
+      M12 = B[1][2];
+    let M20 = B[2][0],
+      M21 = B[2][1],
+      M22 = B[2][2];
+    let Bi = Group.fromArray([
+      [M11 * M22 - M12 * M21, M02 * M21 - M01 * M22, M01 * M12 - M02 * M11],
+      [M12 * M20 - M10 * M22, M00 * M22 - M02 * M20, M02 * M10 - M00 * M12],
+      [M10 * M21 - M11 * M20, M01 * M20 - M00 * M21, M00 * M11 - M01 * M10]
+    ]);
+    Bi.divide(
+      M00 * (M11 * M22 - M12 * M21) -
+        M01 * (M10 * M22 - M12 * M20) +
+        M02 * (M10 * M21 - M11 * M20)
+    );
+    x = new Pt(Bi.map((t) => t.dot(new Pt(yy[0], yy[1], 1))));
+  } else {
+    for (let i = 0, len = iters; i < len; i++) {
+      let temp = x.$add(xb);
+      let temp2 = temp.$multiply(temp);
+      let qi = temp2.$divide(temp2.$add(mu));
+      let M = B.$matrixMultiply(B.map((t) => t.$multiply(qi)).$zip());
+      // explicit 3x3 matrix inverse
+      let M00 = M[0][0],
+        M01 = M[0][1],
+        M02 = M[0][2];
+      let M10 = M[1][0],
+        M11 = M[1][1],
+        M12 = M[1][2];
+      let M20 = M[2][0],
+        M21 = M[2][1],
+        M22 = M[2][2];
+      let Mi = Group.fromArray([
+        [M11 * M22 - M12 * M21, M02 * M21 - M01 * M22, M01 * M12 - M02 * M11],
+        [M12 * M20 - M10 * M22, M00 * M22 - M02 * M20, M02 * M10 - M00 * M12],
+        [M10 * M21 - M11 * M20, M01 * M20 - M00 * M21, M00 * M11 - M01 * M10]
+      ]);
+      Mi.divide(
+        M00 * (M11 * M22 - M12 * M21) -
+          M01 * (M10 * M22 - M12 * M20) +
+          M02 * (M10 * M21 - M11 * M20)
+      );
+      let dfx = new Pt(B.$zip().map((t) => t.dot(v)));
+      dfx.add(x.$subtract(temp2.map((t) => mu / t)));
+      let dfv = new Pt(B.map((t) => t.dot(x)).subtract(yb));
+
+      // ====================================
+      // (Qi - QiB.TMiBQi)dfx + Qi B.T Mi dfv
+      // Mi B Qi dfx          +    -Mi dfv
+      // ====================================
+      // console.log(qi.$multiply(dfx).$subtract(-1))
+      let dx1 = new Pt(
+        dfx.$subtract(
+          B.$zip()
+            .$matrixMultiply(Mi.$matrixMultiply(B))
+            .map((t) => t.dot(dfx.$multiply(qi)))
+        )
+      );
+      dx1.multiply(qi);
+      let dx2 = new Pt(
+        qi.$multiply(
+          B.$zip()
+            .$matrixMultiply(Mi)
+            .map((t) => t.dot(dfv))
+        )
+      );
+      let dv1 = new Pt(
+        Mi.$matrixMultiply(B).map((t) => t.dot(dfx.$multiply(qi)))
+      );
+      let dv2 = new Pt(Mi.map((t) => t.dot(dfv.$multiply(-1))));
+      x.subtract(dx1.$add(dx2).$multiply(gam));
+      v.subtract(dv1.$add(dv2).$multiply(gam));
+    }
+    x.add(xb);
+    let xmag = x.reduce((a, b) => {
+      return a + b;
+    });
+    x = x.map((t) => t / xmag);
+  }
+  return x;
+}
+
 //// SIMPLEX //// SIMPLEX //// SIMPLEX //// SIMPLEX ////
 //// SIMPLEX //// SIMPLEX //// SIMPLEX //// SIMPLEX ////
 //// SIMPLEX //// SIMPLEX //// SIMPLEX //// SIMPLEX ////
@@ -122,6 +606,45 @@ export function simpEdges(simp, dim) {
   // temp = Group.fromArray(math.identity(dim)._data);
   // simpe = simpe.concat(Polygon.network(temp, dim - 1));
   return simpe;
+}
+
+export function ball1Corners(maxDim) {
+  let SIMP = [[]];
+  SIMP[1] = Group.fromArray([[1.0], [-1.0]]);
+  for (let i = 2; i <= maxDim; i++) {
+    let temp1 = Group.fromArray(math.identity(i)._data);
+    let temp2 = temp1.map((h) => h.$multiply(-1.0));
+    SIMP[i] = temp1.concat(temp2);
+  }
+  return SIMP;
+}
+
+export function ball1Edges(dim) {
+  // INPUT: (FROM PREVIOUS NOT USED) simp (list of simps)
+  // dim (up to dimension dim)
+  // OUTPUT: simpe
+  // MAY NOT WORK FOR 0 and 1
+  var temp, temp1, temp2, tempj, tempjm, ej, ball1e;
+  ball1e = [];
+  if (dim >= 2) {
+    for (let j = 2; j <= dim; j++) {
+      // adding 0 to each new point
+      for (let k = 0; k < ball1e.length; k++) {
+        ball1e[k][0] = ball1e[k][0].$concat(0);
+        ball1e[k][1] = ball1e[k][1].$concat(0);
+      }
+      temp = Group.fromArray(math.identity(j)._data);
+      tempj = temp.slice(0, j - 1);
+      tempjm = tempj.map((t) => t.$multiply(-1));
+      ej = temp[j - 1];
+      temp = tempj.concat(tempjm);
+      temp1 = temp.concat(ej);
+      temp2 = temp.concat(ej.$multiply(-1));
+      ball1e = ball1e.concat(Polygon.network(temp1, 2 * (j - 1)));
+      ball1e = ball1e.concat(Polygon.network(temp2, 2 * (j - 1)));
+    }
+  }
+  return ball1e;
 }
 
 //// SPHERES //// SPHERES //// SPHERES //// SPHERES ////
@@ -158,24 +681,84 @@ export function cubeCorners(maxDim) {
   return CUBE;
 }
 
-export function cubeEdges(cube, dim) {
+export function cubeEdges(cube, dim, vers = "network") {
   // INPUT: cube, dim
   // RETURNS: cubee
+
+  var cubeei = [[]]; /// inds
   var cubee = [];
   var X0, X1;
-  for (let j = 0; j < cube.length; j++) {
-    X0 = new Group(cube[j]);
-    for (let k = 0; k < X0[0].length; k++) {
-      if (X0[0][k] == 1) {
-        let temp = X0[0].clone();
-        temp[k] = 0;
-        X0.push(temp);
+  var CUBE, prevCUBE, newCUBE;
+  var EDGES, prevEDGES, newEDGES, connEDGES;
+  var INDS;
+  var prevNUM, newNUM;
+
+  if (vers == "network") {
+    for (let j = 0; j < cube.length; j++) {
+      X0 = new Group(cube[j]);
+      for (let k = 0; k < X0[0].length; k++) {
+        if (X0[0][k] == 1) {
+          let temp = X0[0].clone();
+          temp[k] = 0;
+          X0.push(temp);
+        }
+      }
+      let temp = Polygon.network(X0, 0);
+      cubee = cubee.concat(temp);
+    }
+  } else if (vers == "regular") {
+    ///// CONSTRUCTION/////
+    // EDGES = initialize....
+
+    if (dim == 0) {
+      EDGES = [[]];
+      INDS = [[]];
+    } else if (dim == 1) {
+      EDGES = Polygon.network(Group.fromPtArray(cube[1]), 0);
+      INDS = Group.fromArray([[0]]);
+    } else {
+      EDGES = Polygon.network(Group.fromPtArray(cube[1]), 0);
+      INDS = Group.fromArray([[], [0]]);
+      for (let j = 1; j < dim; j++) {
+        CUBE = cube[j];
+
+        // UPING DIMENSION...
+        prevCUBE = CUBE.map((h) => h.$concat(0));
+        newCUBE = CUBE.map((h) => h.$concat(1));
+
+        prevEDGES = EDGES.map((h) =>
+          Group.fromPtArray([h[0].$concat(0), h[1].$concat(0)])
+        );
+        newEDGES = EDGES.map((h) =>
+          Group.fromPtArray([h[0].$concat(1), h[1].$concat(1)])
+        );
+        connEDGES = CUBE.map((h, i) =>
+          Group.fromPtArray([prevCUBE[i], newCUBE[i]])
+        );
+        prevNUM = prevEDGES.length;
+        newNUM = newEDGES.length;
+        EDGES = prevEDGES.concat(newEDGES).concat(connEDGES);
+
+        for (let k = 1; k < j + 1; k++) {
+          // console.log(INDS[1].toArray().concat(INDS[1].map(()).toArray()));
+          // asdf;
+          INDS[k] = new Pt(
+            INDS[k].toArray().concat(INDS[k].map((h) => h + prevNUM).toArray())
+          );
+        }
+        INDS.push(new Pt(connEDGES.map((h, i) => prevNUM + newNUM + i)));
       }
     }
-    //console.log([].concat(Polygon.network(X0,0)))
-    cubee = cubee.concat(Polygon.network(X0, 0));
+
+    if (dim > 1) {
+      INDS = INDS.slice(1, INDS.length);
+    }
+    cubee = EDGES;
+    cubeei = INDS;
   }
-  return cubee;
+  var out = { cubee: cubee, cubeei: cubeei };
+  // console.log(out);
+  return out;
 }
 
 //// SPHERES //////// SPHERES //////// SPHERES //////// SPHERES ////
@@ -793,7 +1376,7 @@ export function markovUp(rr, ys, vi, P, A, Pis) {
 //// FUNCTION LIST //////// FUNCTION LIST //////// FUNCTION LIST //////// FUNCTION LIST ////
 
 // cubeCorners(maxdim)
-// cubeEdges(cube, dim)
+// cube(cube, dim)
 // intersectPolyPt(poly, tip)
 // integrateMDP(Ei,W,Pis,x0s,nT,nk,n0,tags,Ei,W)
 // convexComb2n(y, A)
