@@ -120,6 +120,26 @@ nav li a:active {
 }
 
 
+.EQN32 {
+  background-color: rgba(0, 0, 255, 0);
+  color: black;
+  position: absolute;
+  font-size: 28px;
+  top: 623px;
+  left: 150px;
+  z-index: -1;
+}
+
+.EQN20 {
+  background-color: rgba(0, 0, 255, 0);
+  color: black;
+  position: absolute;
+  font-size: 18px;
+  z-index: -1;
+}
+
+
+
   </style>
 
   </head>
@@ -138,20 +158,24 @@ nav li a:active {
   </nav>
 
 
-
-
-  <div id="main1" >
-    <canvas id='work1' class='CANVAS' ></canvas>
-  </div>
-  <div class="EQN" id="y" ></div>
-  <div class="EQN" id="A" ></div>
-  <div class="EQN" id="x" ></div>
+    <div id="main1" >
+      <canvas id='work1' class='CANVAS' ></canvas>
+    </div>
+    <div class="EQN32" id="yinR" ></div>
+    <div class="EQN32" id="xinR" ></div>
+    <div class="EQN32" id="Amaps" ></div>
+    <div class="EQN20" id="label2" ></div>
+    <div class="EQN20" id="warning2" ></div>
+    <div class="EQN20" id="usedigits" ></div>
+    <div class="EQN" id="y" ></div>
+    <div class="EQN" id="A" ></div>
+    <div class="EQN" id="x" ></div>
 
 
 
   <script type='module' src="./ndimo.js"> </script>
   <script type='module' src="./ndrawo.js"> </script>
-  <script type='module' src="./hypercubeo.js"> </script>
+  <script type='module' src="./matrixo.js"> </script>
 
   </body>
 </html>
