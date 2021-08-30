@@ -150,25 +150,27 @@ grid-template-columns:  400px, 300px;
   align-items: flex-start;
 }
 
-.blurb1 {
-  flex: 0 1 auto;
-    margin: 40px;
-    padding: 40px;
-    width: 260px;
-    background-color: rgba(64, 106, 157, 0.1);
-    font-size: 16px;
-  }
 
 .img1 {
   flex: 0 1 auto;
   padding: 0px;
-  width: 640px;
+  width: 250px;
 }
 
-@media all and (max-width: 910px) {
+.blurb1 {
+  flex: 0 1 auto;
+    margin: 40px;
+    padding: 40px;
+    width: 250px;
+    background-color: rgba(64, 106, 157, 0.1);
+    font-size: 16px;
+  }
+
+
+@media all and (max-width:890px) {
   .col2 {justify-content: center}
-  .blurb1 {width:900px}
-  .img1 {width:900px}
+  .blurb1 {width:500px}
+  .img1 {width:500px}
 }
 
 
