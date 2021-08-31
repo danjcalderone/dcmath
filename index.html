@@ -278,14 +278,20 @@ grid-template-columns:  400px, 300px;
   in multiple coordinates gets mapped to a weighted sum of the columns of \(A\)
 
   $$
-  y & = Ax  \\
-    & =  \begin{bmatrix}
+  y  = Ax
+  $$
+
+  $$
+  y =  \begin{bmatrix}
     | & & | \\
     A_1 & \cdots & A_n \\
     | & & | \\
     \end{bmatrix}
-    \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix} \\
-  & \begin{bmatrix} | \\ A_1 \\ | \end{bmatrix} x_1 + \cdots +
+    \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}
+  $$
+
+  $$
+  y = \begin{bmatrix} | \\ A_1 \\ | \end{bmatrix} x_1 + \cdots +
   \begin{bmatrix} | \\ A_n \\ | \end{bmatrix} x_n
   $$
 
