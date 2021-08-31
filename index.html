@@ -260,9 +260,13 @@ grid-template-columns:  400px, 300px;
 
   <b> LINEAR TRANSFORMS </b>
   <p>
-  A matrix can be used to represent a linear transformation from one
-  vector space to another.  Each standard basis vector gets mapped to
-  the corresponding column of the matrix \(A\).
+
+  $$ y = Ax$$
+
+  A matrix \( A \) can be used to represent a linear transformation from one
+  vector space another. Any point \(x\) in the domain maps to \(y=Ax\) in the co-domain.
+  Each standard basis vector gets mapped to
+  the corresponding column of \(A\). For example,
 
   $$
   Ae_1 =
@@ -274,12 +278,9 @@ grid-template-columns:  400px, 300px;
   \begin{bmatrix} 1 \\ \vdots \\ 0 \end{bmatrix}
   = A_1
   $$
+  
   A general vector \(x\) with nonzero components
   in multiple coordinates gets mapped to a weighted sum of the columns of \(A\)
-
-  $$
-  y  = Ax
-  $$
 
   $$
   y =  \begin{bmatrix}
