@@ -223,12 +223,7 @@ grid-template-columns:  400px, 300px;
     then becomes can we trick our brains into stitching those 2D/3D
     subspaces back together into some "nD" image.
     The answer remains unclear.
-    $A$
-    $$A$$
-    \begin{align}
-    y & = Ax \\
-    y & blah
-    \end{align}
+
   </p>
 
   </div>
@@ -236,9 +231,9 @@ grid-template-columns:  400px, 300px;
 
 
 
-  <!-- <div class=col2>
+  <div class=col2>
   <div class='img1' style="padding:0px" id="matrix-container">
-  <canvas id='matrix' class='CANVAS'></canvas>
+  <!-- <canvas id='matrix' class='CANVAS'></canvas> -->
   </div>
 
   <div class="blurb1" style="padding:40px">
@@ -247,46 +242,34 @@ grid-template-columns:  400px, 300px;
   <p>
   A matrix can be used to represent a linear transformation from one
   vector space to another.  Each standard basis vector gets mapped to
-  the corresponding column of the matrix $A$. A general vector $x$ with nonzero components
+  the corresponding column of the matrix $A$.
+  $$
+  A =
+  \begin{bmatrix}
+  | & & | \\
+  A_1 & \cdots & A_n \\
+  | & & | \\
+  \end{bmatrix}
+  $$
+  A general vector $x$ with nonzero components
   in multiple coordinates gets mapped to a weighted sum of the columns of $A$
-
-  $$
+  \begin{align*}
   y & = Ax \\
-  y & =
-  $$
-
-
-
-
-
-  We're used to drawing 2D projections of 3D shapes.
-  This process can be extended to n-dimensions by defining a
-  2D direction for each of the n coordinate axes.
-  Modifying these 2D directions gives a different perspective
-  on the nD shape.
-  This example shows the result for various shapes
-  including the unit simplex, unit cube, and unit sphere.
-</p>
-  <p>
-  "Depth" is(are) the dimension(s) that are lost in the 2D projection.
-  This number of dimensions is n-2.  When drawing a 3D shape, depth is 1-dimensional,
-  ie. there is a line of points (coming towards the camera) that are
-  indistinguishable in the picture.
-  When drawing a 4D shape, depth is 2-dimensional, there is a plane of points
-  (in the 4D space) that are indistinguishable.
-  When drawing 5D, depth is 3-dimensional, etc.
-</p>
-
-<p>
-  We can't fully "see" n-dimensions, but we can see 2D or 3D subspaces
-  of the nD space.  The question
-  then becomes can we trick our brains into stitching those 2D/3D
-  subspaces back together into some "nD" image.
-  The answer remains unclear.
+    & =  \begin{bmatrix}
+    | & & | \\
+    A_1 & \cdots & A_n \\
+    | & & | \\
+    \end{bmatrix}
+    \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix} \\
+  & \begin{bmatrix} | \\ A_1 \\ | \end{bmatrix} x_1 + \cdots +
+  \begin{bmatrix} | \\ A_n \\ | \end{bmatrix} x_n
+  \end{align*}
+  Note that we can map sets of x's (such as the simplex, unit sphere, etc) through
+  A as well as points.
 </p>
 
 </div>
-</div> -->
+</div>
 
 
 
