@@ -24,7 +24,9 @@
     src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
     integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
     crossorigin="anonymous"
-    onload="renderMathInElement(document.body,
+    onload="renderMathInElement(document.body)">
+    </script>
+<!-- 
     {delimiters: [
       {left: "$$", right: "$$", display: true},
       {left: "$", right: "$", display: false},
@@ -37,9 +39,7 @@
       ]
       }
       );">
-    </script>
-
-
+ -->
 
 
 
@@ -261,20 +261,22 @@ grid-template-columns:  400px, 300px;
   <b> LINEAR TRANSFORMS </b>
   <p>
   A matrix can be used to represent a linear transformation from one
-  vector space to another.  Each standard basis vector ![e] gets mapped to
-  the corresponding column of the matrix $A$.
+  vector space to another.  Each standard basis vector gets mapped to
+  the corresponding column of the matrix \(A\).
   $$
-  A =
+  Ae_1 =
   \begin{bmatrix}
   | & & | \\
   A_1 & \cdots & A_n \\
   | & & | \\
   \end{bmatrix}
+  \small{\begin{bmatrix} 0 \\ \vdots \\ 1 \\ \vdots \\ 0 \end{bmatrix}
+  = A_i
   $$
   A general vector $x$ with nonzero components
   in multiple coordinates gets mapped to a weighted sum of the columns of $A$
   $$
-  y & = Ax \notag \\
+  y & = Ax  \\
     & =  \begin{bmatrix}
     | & & | \\
     A_1 & \cdots & A_n \\
