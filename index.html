@@ -269,16 +269,15 @@ grid-template-columns:  400px, 300px;
   the corresponding column of \(A\). For example,
 
   $$
-  Ae_1 =
   \begin{bmatrix}
-  | & & | \\
-  A_1 & \cdots & A_n \\
-  | & & | \\
+  | & | & & | \\
+  A_1  & A_2  & \cdots & A_n \\
+  | & | & & | \\
   \end{bmatrix}
-  \begin{bmatrix} 1 \\ \vdots \\ 0 \end{bmatrix}
-  = A_1
+  \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
+  = \begin{bmatrix} | \\ A_2 \\ | \end{bmatrix}
   $$
-  
+
   A general vector \(x\) with nonzero components
   in multiple coordinates gets mapped to a weighted sum of the columns of \(A\)
 
