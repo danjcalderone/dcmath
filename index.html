@@ -253,17 +253,17 @@ grid-template-columns:  400px, 300px;
   $$
   A general vector $x$ with nonzero components
   in multiple coordinates gets mapped to a weighted sum of the columns of $A$
-  \begin{align*}
-  y & = Ax \\
+  \begin{align}
+  y & = Ax \notag \\
     & =  \begin{bmatrix}
     | & & | \\
     A_1 & \cdots & A_n \\
     | & & | \\
     \end{bmatrix}
-    \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix} \\
+    \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix} \notag \\
   & \begin{bmatrix} | \\ A_1 \\ | \end{bmatrix} x_1 + \cdots +
-  \begin{bmatrix} | \\ A_n \\ | \end{bmatrix} x_n
-  \end{align*}
+  \begin{bmatrix} | \\ A_n \\ | \end{bmatrix} x_n \notag
+  \end{align}
   Note that we can map sets of x's (such as the simplex, unit sphere, etc) through
   A as well as points.
 </p>
