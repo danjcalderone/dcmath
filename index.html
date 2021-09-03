@@ -128,6 +128,18 @@ nav li a:active {
   height: 800px;
 }
 
+.eqn1 {
+  background-color: rgba(0, 0, 255, 0);
+  color: black;
+  position: absolute;
+  font-size: 16px;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+}
+
+
+
 .EQN {
   background-color: rgba(0, 0, 255, 0);
   color: black;
@@ -162,7 +174,6 @@ grid-template-columns:  400px, 300px;
 }
 
 
-
 .col2 {
   display: flex;
   flex-flow: row wrap;
@@ -174,9 +185,11 @@ grid-template-columns:  400px, 300px;
 .img1 {
   flex: 0 1 auto;
   padding: 0px;
+  position: absolute;
   width: 800px;
   height: 800px;
 }
+
 
 .blurb1 {
   flex: 0 1 auto;
@@ -192,6 +205,19 @@ grid-template-columns:  400px, 300px;
   .blurb1 {width:800px; height: auto}
   .img1 {width:800px; height: 800px}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -228,13 +254,13 @@ grid-template-columns:  400px, 300px;
     including the unit simplex, unit cube, and unit sphere.
   </p>
     <p>
-    "Depth" is(are) the dimension(s) that are lost in the 2D projection.
-    This number of dimensions is n-2.  When drawing a 3D shape, depth is 1-dimensional,
+    "Depth" is the dimension(s) that are lost in the 2D projection.
+    For an n-dimensional shape, depth is n-2 dimensional.  When drawing a 3D shape, depth is 1-dimensional,
     ie. there is a line of points (coming towards the camera) that are
     indistinguishable in the picture.
-    When drawing a 4D shape, depth is 2-dimensional, there is a plane of points
+    When drawing a 4D shape, depth is 2-dimensional, ie. there is a plane of points
     (in the 4D space) that are indistinguishable.
-    When drawing 5D, depth is 3-dimensional, etc.
+    When drawing a 5D shape, depth is 3-dimensional...
   </p>
 
   <p>
@@ -252,61 +278,70 @@ grid-template-columns:  400px, 300px;
 
 
   <div class=col2>
-  <div class='img1' style="padding:0px" id="matrix-container">
-  <!-- <canvas id='matrix' class='CANVAS'></canvas> -->
-  </div>
+    <div class='img1' style="padding:0px" id="matrix-container">
+            <canvas id='matrix' class='CANVAS'></canvas>
+            <div class="eqn1" id="y" ></div>
+            <div class="eqn1" id="A" ></div>
+            <div class="eqn1" id="x" ></div>
+            <div class="eqn1" id="yinR" ></div>
+            <div class="eqn1" id="xinR" ></div>
+            <div class="eqn1" id="Amaps" ></div>
+            <div class="eqn1" id="label2" ></div>
+            <div class="eqn1" id="warning2" ></div>
+            <div class="eqn1" id="usedigits" ></div>
+    </div>
+    <div class="blurb1" style="padding:40px">
 
-  <div class="blurb1" style="padding:40px">
+          <b> LINEAR TRANSFORMATIONS </b>
+          <p>
 
-  <b> LINEAR TRANSFORMATIONS </b>
-  <p>
+          $$ y = Ax$$
 
-  $$ y = Ax$$
+          A matrix \( A \) can be used to represent a linear transformation from one
+          vector space another. Any point \(x\) in the domain maps to \(y=Ax\) in the co-domain.
+          Each standard basis vector gets mapped to
+          the corresponding column of \(A\). For example,
 
-  A matrix \( A \) can be used to represent a linear transformation from one
-  vector space another. Any point \(x\) in the domain maps to \(y=Ax\) in the co-domain.
-  Each standard basis vector gets mapped to
-  the corresponding column of \(A\). For example,
+          $$
+          \begin{bmatrix}
+          | & | & & | \\
+          A_1  & A_2  & \cdots & A_n \\
+          | & | & & | \\
+          \end{bmatrix}
+          \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
+          = \begin{bmatrix} | \\ A_2 \\ | \end{bmatrix}
+          $$
 
-  $$
-  \begin{bmatrix}
-  | & | & & | \\
-  A_1  & A_2  & \cdots & A_n \\
-  | & | & & | \\
-  \end{bmatrix}
-  \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
-  = \begin{bmatrix} | \\ A_2 \\ | \end{bmatrix}
-  $$
+          A general vector \(x\) with nonzero components
+          in multiple coordinates gets mapped to a weighted sum of the columns of \(A\)
 
-  A general vector \(x\) with nonzero components
-  in multiple coordinates gets mapped to a weighted sum of the columns of \(A\)
+          $$
+          y =  \begin{bmatrix}
+            | & & | \\
+            A_1 & \cdots & A_n \\
+            | & & | \\
+            \end{bmatrix}
+            \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}
+          $$
 
-  $$
-  y =  \begin{bmatrix}
-    | & & | \\
-    A_1 & \cdots & A_n \\
-    | & & | \\
-    \end{bmatrix}
-    \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}
-  $$
+          $$
+          y = \begin{bmatrix} | \\ A_1 \\ | \end{bmatrix} x_1 + \cdots +
+          \begin{bmatrix} | \\ A_n \\ | \end{bmatrix} x_n
+          $$
 
-  $$
-  y = \begin{bmatrix} | \\ A_1 \\ | \end{bmatrix} x_1 + \cdots +
-  \begin{bmatrix} | \\ A_n \\ | \end{bmatrix} x_n
-  $$
+          Note that we can map sets of \(x\)'s (such as the simplex, unit sphere, etc) through
+          \(A\) as well as points.
+        </p>
 
-  Note that we can map sets of \(x\)'s (such as the simplex, unit sphere, etc) through
-  \(A\) as well as points.
-</p>
-
-</div>
-</div>
+        </div>
+      </div>
 
 
 
   <script type='module' src="./ndimo.js"> </script>
   <script type='module' src="./ndrawo.js"> </script>
   <script type='module' src="./hypershapeo.js"> </script>
+  <script type='module' src="./matrixo.js"> </script>
 
   </body>
 </html>
