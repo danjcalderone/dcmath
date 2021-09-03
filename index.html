@@ -199,7 +199,7 @@
         top: 0px;
         left: 0px;
         z-index: -1;
-      }      
+      }
 
 
 
@@ -324,6 +324,67 @@
 
         </div>
       </div>
+
+
+
+      <div class=col2>
+        <div class='img1' style="padding:0px" id="matrix-container">
+                <canvas id='matrix' class='CANVAS'></canvas>
+                <div class="eqn1" id="y" ></div>
+                <div class="eqn1" id="A" ></div>
+                <div class="eqn1" id="x" ></div>
+                <div class="eqn1" id="yinR" ></div>
+                <div class="eqn1" id="xinR" ></div>
+                <div class="eqn1" id="Amaps" ></div>
+                <div class="eqn1" id="label2" ></div>
+                <div class="eqn1" id="warning2" ></div>
+                <div class="eqn1" id="usedigits" ></div>
+        </div>
+        <div class="blurb1" style="padding:40px">
+
+              <b> LINEAR TRANSFORMATIONS </b>
+              <p>
+
+              $$ y = Ax$$
+
+              A matrix \( A \) can be used to represent a linear transformation from one
+              vector space another. Any point \(x\) in the domain maps to \(y=Ax\) in the co-domain.
+              Each standard basis vector gets mapped to
+              the corresponding column of \(A\). For example,
+
+              $$
+              \begin{bmatrix}
+              | & | & & | \\
+              A_1  & A_2  & \cdots & A_n \\
+              | & | & & | \\
+              \end{bmatrix}
+              \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
+              = \begin{bmatrix} | \\ A_2 \\ | \end{bmatrix}
+              $$
+
+              A general vector \(x\) with nonzero components
+              in multiple coordinates gets mapped to a weighted sum of the columns of \(A\)
+
+              $$
+              y =  \begin{bmatrix}
+                | & & | \\
+                A_1 & \cdots & A_n \\
+                | & & | \\
+                \end{bmatrix}
+                \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}
+              $$
+
+              $$
+              y = \begin{bmatrix} | \\ A_1 \\ | \end{bmatrix} x_1 + \cdots +
+              \begin{bmatrix} | \\ A_n \\ | \end{bmatrix} x_n
+              $$
+
+              Note that we can map sets of \(x\)'s (such as the simplex, unit sphere, etc) through
+              \(A\) as well as points.
+            </p>
+
+            </div>
+          </div>
 
 
 
