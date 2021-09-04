@@ -627,44 +627,42 @@
                                   given below are in the nullspace of \(A\)
                                   $$
                                   AN =
-                                  \begin{bmatrix}
-                                  A' & A''
-                                  \end{bmatrix}
+                                  \bigg[\ \ A' \quad  A'' \bigg \ \ ]
                                   \begin{bmatrix}
                                   B \\ -I_{k+1}
                                   \end{bmatrix}
                                   = \bigg[ \ \ \mathbf{0} \ \ \bigg]
                                   $$
-                                  $$
-                                  AN = A'B - A'' = \mathbf{0}
-                                  $$
                                   where
+                                  $$
+                                  B =
+                                  \small{
+                                  \begin{bmatrix}
+                                  | &  & | & | & & | \\
+                                  B_{k+1} & \cdots & B_n \\
+                                  | &  & | & | & & | \\
+                                  \end{bmatrix}
+                                  }
+                                  $$
+                                  and
                                   $$
                                   A' =
                                   \footnotesize{
                                   \begin{bmatrix}
-                                  | &  & | & | & & | \\
+                                  | &  & | \\
                                   A_{1} & \cdots & A_k \\
-                                  | &  & | & | & & | \\
+                                  | &  & |
                                   \end{bmatrix}
                                   }
                                   \qquad
                                   A'' =
                                   \footnotesize{
                                   \begin{bmatrix}
-                                  | &  & | & | & & | \\
+                                  | &  & | \\
                                   A_{k+1} & \cdots & A_n \\
-                                  | &  & | & | & & | \\
+                                  | &  & |
                                   \end{bmatrix}
                                   }
-                                  $$
-                                  $$
-                                  B =
-                                  \begin{bmatrix}
-                                  | &  & | & | & & | \\
-                                  B_{k+1} & \cdots & B_n \\
-                                  | &  & | & | & & | \\
-                                  \end{bmatrix}
                                   $$
                                   We can actually show that the columns of \(N\) constructed
                                   this way are actually a basis for the nullspace of \(A\).
