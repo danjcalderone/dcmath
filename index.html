@@ -373,7 +373,8 @@
               combination of the columns of \(A\) with coefficients given by the elements of \(x\).
 
               Note that we can map sets of \(x\)'s (such as the simplex, unit sphere, etc) through
-              \(A\) as well as points.
+              \(A\) as well as points.  The span of the columns of \(A\) is called
+              the "column space" or the "range" of \(A\) (more below).
             </p>
 
             </div>
@@ -393,12 +394,15 @@
 
                   $$
                   AB =
-                  \Bigg[\ \ A \ \\Bigg]
+                  \Bigg[\ \ A \ \ \Bigg]
                   \begin{bmatrix}
                   | &   & | \\
                   B_1  & \cdots & B_n \\
                   | &  & | \\
                   \end{bmatrix}
+                  $$
+                  $$
+                  AB
                   =
                   \begin{bmatrix}
                   | &   & | \\
@@ -431,6 +435,7 @@
                   elements of the vector
 
                   $$ x =
+                  \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
                   \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix} x_1
                   +
                   \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix} x_2
@@ -446,7 +451,7 @@
                 <p>
                   A different set of vectors \(P_1,\dots,P_n\) could also be used as a basis for
                   \(\mathbb{R}^n\), meaning any vector \(x\) in the space can be written as a
-                  linear combination \(P_1,\dots,P_n\).  Writing these vectors as the columns of a matrix \(P\),
+                  linear combination of \(P_1,\dots,P_n\).  Writing these vectors as the columns of a matrix \(P\),
                   we can write this as
                   $$
                   x = Px'
@@ -456,9 +461,9 @@
                   \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}
                   =
                   \begin{bmatrix}
-                  | \\  \\ |
-                  P_1 \\ \cdots \\ P_n
-                  | \\  \\ |
+                  | &  & | \\
+                  P_1 & \cdots & P_n \\
+                  | &  & |
                    \end{bmatrix}
                    \begin{bmatrix} x'_1 \\ \vdots \\ x'_n \end{bmatrix}
                   $$
@@ -500,13 +505,11 @@
                           \Bigg[
                           \ \ P \ \
                           \Bigg]
-                          \underbrace{
                           \begin{bmatrix}
                           | &   & | \\
                           Q_1  & \cdots & Q_n \\
                           | &  & | \\
                           \end{bmatrix}
-                        }_{P^{-1}}
                         =
                         \begin{bmatrix}
                         | &   & | \\
@@ -514,6 +517,7 @@
                         | &  & | \\
                         \end{bmatrix}
                         $$
+
                         Thus, \(Q_i\), the \(i\)th column of \(P^{-1}\) is the coordinates of
                         the \(i\)th standard basis vector with respect to the columns of P.
                         Setting \(x' = P^{-1}x\) then gives that \(x=Px'\) will be satisfied.
