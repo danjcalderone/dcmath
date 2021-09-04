@@ -584,7 +584,7 @@
                                   $$
                                   \begin{bmatrix} | \\ A_3 \\ |\end{bmatrix} =
                                   \begin{bmatrix} | \\ A_1 \\ |\end{bmatrix} w_1 +
-                                  \begin{bmatrix} | \\ A_2 \\ |\end{bmatrix} w_2 +
+                                  \begin{bmatrix} | \\ A_2 \\ |\end{bmatrix} w_2
                                   $$
                                   Note then that we get \(Ax=\mathbf{0}\) if we choose \(x\) in the following way
                                   $$
@@ -597,10 +597,6 @@
                                   \begin{bmatrix}
                                   w_1 \\ w_2 \\ -1
                                   \end{bmatrix}
-                                  =
-                                  \begin{bmatrix} | \\ A_1 \\ |\end{bmatrix} w_1 +
-                                  \begin{bmatrix} | \\ A_2 \\ |\end{bmatrix} w_2 +
-                                  - \begin{bmatrix} | \\ A_3 \\ |\end{bmatrix}
                                   =
                                   \begin{bmatrix} | \\ \mathbf{0} \\ | \end{bmatrix}
                                   $$
@@ -631,24 +627,46 @@
                                   given below are in the nullspace of \(A\)
                                   $$
                                   AN =
+                                  \small{
                                   \begin{bmatrix}
                                   | &  & | & | & & | \\
-                                  A_1 & \cdots & A_k & A_{k+1} & \cdots & A_n \\
+                                  A_1 & \cdots & A_k &
+                                  A_{k+1} & \cdots & A_n \\
                                   | &  & | & | & & | \\
                                   \end{bmatrix}
+                                  }
                                   \begin{bmatrix}
-                                  | &  & | \\
-                                  B_{k+1} & \cdots & B_n \\
-                                  | &  & | \\
-                                  1 & \cdots & 0 \\
-                                  \vdots & & \vdots \\
-                                  0 & \cdots & 1
+                                  B \\ -I_{k+1}
                                   \end{bmatrix}
                                   =
                                   \begin{bmatrix}
                                   0 & \cdots & 0 \\
                                   \vdots & & \vdots \\
                                   0 & \cdots & 0
+                                  \end{bmatrix}
+                                  $$
+                                  where
+                                  <!-- $$
+                                  A' =
+                                  \begin{bmatrix}
+                                  | &  & | & | & & | \\
+                                  A_{1} & \cdots & A_k \\
+                                  | &  & | & | & & | \\
+                                  \end{bmatrix}
+                                  \qquad
+                                  A'' =
+                                  \begin{bmatrix}
+                                  | &  & | & | & & | \\
+                                  A_{k+1} & \cdots & A_n \\
+                                  | &  & | & | & & | \\
+                                  \end{bmatrix}
+                                  $$ -->
+                                  $$
+                                  B =
+                                  \begin{bmatrix}
+                                  | &  & | & | & & | \\
+                                  B_{k+1} & \cdots & B_n \\
+                                  | &  & | & | & & | \\
                                   \end{bmatrix}
                                   $$
                                   We can actually show that the columns of \(N\) constructed
