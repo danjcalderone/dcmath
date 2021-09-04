@@ -284,42 +284,31 @@
           <b> VECTORS & LINEAR COMBINATIONS </b>
           <p>
 
-          $$ y = Ax$$
+          The Cartesian representation of a mD vector is a string of \(m\) numbers that each
+          represent a distance in a different direction/dimension.
 
-          A matrix \( A \) can be used to represent a linear transformation from one
-          vector space another. Any point \(x\) in the domain maps to \(y=Ax\) in the co-domain.
-          Each standard basis vector gets mapped to
-          the corresponding column of \(A\). For example,
-
-          $$
-          \begin{bmatrix}
-          | & | & & | \\
-          A_1  & A_2  & \cdots & A_n \\
-          | & | & & | \\
-          \end{bmatrix}
-          \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
-          = \begin{bmatrix} | \\ A_2 \\ | \end{bmatrix}
-          $$
-
-          A general vector \(x\) with nonzero components
-          in multiple coordinates gets mapped to a weighted sum of the columns of \(A\)
+          Addition between two vectors \(x\) and \(z\) assumes \(x\) and \(z\) have the same length
+          and is done element-wise
 
           $$
-          y =  \begin{bmatrix}
-            | & & | \\
-            A_1 & \cdots & A_n \\
-            | & & | \\
-            \end{bmatrix}
-            \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}
+          x + z = \begin{bmatrix} x_1 \\ \vdots \\ x_m \end{bmatrix}
+          + \begin{bmatrix} z_1 \\ \vdots \\ z_m \end{bmatrix} =
+          \begin{bmatrix} x_1+z_1 \\ \vdots \\ x_m+z_m \end{bmatrix}
           $$
 
-          $$
-          y = \begin{bmatrix} | \\ A_1 \\ | \end{bmatrix} x_1 + \cdots +
-          \begin{bmatrix} | \\ A_n \\ | \end{bmatrix} x_n
-          $$
+          Visually, this sum is a new vector given by placing the two vectors "tip-to-tail."
 
-          Note that we can map sets of \(x\)'s (such as the simplex, unit sphere, etc) through
-          \(A\) as well as points.
+          "Scaling" \(x\) by a number \(\lambda\) involves multiplying each element in \(x\) by \(\lambda\).
+          Visually this expands, shrinks, or even flips \(x\) without changing the direction.
+
+          Scaling multiple vectors \(x^1,\dots,x^n\) and then adding them together is referred to as
+          taking a "linear combination" of the vectors.
+
+
+
+
+
+
         </p>
 
         </div>
@@ -378,6 +367,9 @@
               y = \begin{bmatrix} | \\ A_1 \\ | \end{bmatrix} x_1 + \cdots +
               \begin{bmatrix} | \\ A_n \\ | \end{bmatrix} x_n
               $$
+
+              Another way of saying this is that \(Ax\) is a short hand for a linear
+              combination of the columns of \(A\) with coefficients given by the elements of \(x\).
 
               Note that we can map sets of \(x\)'s (such as the simplex, unit sphere, etc) through
               \(A\) as well as points.
