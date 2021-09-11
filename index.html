@@ -279,7 +279,7 @@
     </div>
     <div class="blurb1" style="padding:40px">
 
-          <b> VECTORS & LINEAR COMBINATIONS </b>
+          <b> VECTOR & LINEAR COMBINATIONS </b>
           <p>
 
           The Cartesian representation of a mD vector is a string of \(m\) numbers that each
@@ -307,12 +307,34 @@
           is called the "span" of those vectors.  If a set of vectors span a whole space that means
           any vector in that space can be written as a linear combination of those vectors.
 
+        </p>
+        <p>
+          Subtraction between two vectors is also done element-wise.  It could
+          also be thought of as taking a linear combination of two vectors with
+          weights \(1\) and \(-1\). If we think of the vector as floating rather
+          than attached to the origin, the difference vector points from the end of
+          one vector to the other.
 
         </p>
 
         </div>
       </div>
+      <div class=col2>
+        <div class='img1' style="padding:0px">
+        </div>
+        <div class="blurb1" style="padding:40px">
 
+              <b> CONVEX COMBINATIONS </b>
+              <p>
+              A linear combination of vectors where the weights are all
+              positive and sum to 1 is called a "convex combination".  This linear
+              combination will lie "in between" the tips of the vectors.  For example,
+              a linear combination of two vectors each with weights 0.5 will exactly
+              between the two vectors.  If one of the weights is 1 (and the other 0),
+              it will just be that vector.
+              </p>
+            </div>
+          </div>
 
 
       <div class=col2>
@@ -377,45 +399,6 @@
           </div>
 
 
-          <div class=col2>
-            <div class='img1' style="padding:0px" id="multiply-container">
-            </div>
-            <div class="blurb1" style="padding:40px">
-
-                  <b> MATRIX MULTIPLICATION </b>
-                  <p>
-
-                  When we multiply two matrices \(A\) and \(B\) together \(AB\)
-                  we can think of \(A\) as acting on each of the columns of \(B\) separately
-
-                  $$
-                  AB =
-                  \Bigg[\ \ A \ \ \Bigg]
-                  \begin{bmatrix}
-                  | &   & | \\
-                  B_1  & \cdots & B_n \\
-                  | &  & | \\
-                  \end{bmatrix}
-                  $$
-                  $$
-                  AB
-                  =
-                  \begin{bmatrix}
-                  | &   & | \\
-                  AB_1  & \cdots & AB_n \\
-                  | &  & | \\
-                  \end{bmatrix}
-                  $$
-                  One can use this to visualize the columns of many matrices
-                  multiplied together
-                  $$
-                  M = ABCD...
-                  $$.
-
-                </p>
-
-                </div>
-              </div>
 
 
           <div class=col2>
@@ -478,6 +461,141 @@
 
 
 
+              <div class=col2>
+                <div class='img1' style="padding:0px" id="inverse-container">
+                </div>
+                <div class="blurb1" style="padding:40px">
+
+                      <b> INVERSES </b>
+                      <p>
+
+                      We say \(P\) is invertible if there is a unique \(x'\) that
+                      solves \(x=Px'\) for any \(x \in \mathbb{R}^n \).  The phrase
+                      "for any \(x\)" requires that the columns of \(P\) span \(\mathbb{R}^n \).
+                      For \(x'\) to be unique, we need each column of \(P\) to point in a different
+                      direction in \(\mathbb{R}^n\) (again more later).
+
+                      The inverse of \(P\) is the matrix \(P^{-1}\) such that \(PP^{-1} = I \)
+                      Expanding this equation we have that
+                      $$
+                      I = PP^{-1} =
+                      \Bigg[
+                      \ \ P \ \
+                      \Bigg]
+                      \begin{bmatrix}
+                      | &   & | \\
+                      Q_1  & \cdots & Q_n \\
+                      | &  & |
+                      \end{bmatrix}
+                    =
+                    \begin{bmatrix}
+                    | &   & | \\
+                    PQ_1  & \cdots & PQ_n \\
+                    | &  & |
+                    \end{bmatrix}
+                    $$
+
+                    Thus, \(Q_i\), the \(i\)th column of \(P^{-1}\) is the coordinates of
+                    the \(i\)th standard basis vector with respect to the columns of P.
+                    Setting \(x' = P^{-1}x\) then gives that \(x=Px'\) will be satisfied.
+                    Note that for square, invertible \(P\), \(P^{-1}\) is unique and \(P^{-1}P=I\).
+                    While maybe not surprising, proving these facts is slightly more involved.
+
+                  </p>
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+          <div class=col2>
+            <div class='img1' style="padding:0px" id="multiply-container">
+            </div>
+            <div class="blurb1" style="padding:40px">
+
+                  <b> MATRIX ADDITION </b>
+                  <p>
+
+                  Matrix addition happens columnwise (or row-wise).  Placing the
+                  columns (or rows) tip-to-tail produces the final result.
+                  In order for addition to be possible the matrices must
+                  have the same dimensions (both row and cols).
+                  Since addition is commutative, we can reorder the matrices without
+                  changing the result
+
+
+                  $$
+                  A + B + C =
+                  \Bigg[\ \ A \ \ \Bigg]
+                  \begin{bmatrix}
+                  | &   & | \\
+                  A_1 + B_1 + C_1  & \cdots & A_n + B_n + C_n \\
+                  | &  & | \\
+                  \end{bmatrix}
+                  $$
+
+                  Matrix subtraction is just matrix addition where the second matrix
+                  is negated.  If we allow the columns (or rows) to "float" as opposed
+                  to being attached to the origin the difference between two matrices
+                  can be thought of as the vectors going from the second matrix
+                  to the first matrix.
+
+                </p>
+
+                </div>
+              </div>
+
+
+              <div class=col2>
+                <div class='img1' style="padding:0px" id="multiply-container">
+                </div>
+                <div class="blurb1" style="padding:40px">
+
+                      <b> MATRIX MULTIPLICATION </b>
+                      <p>
+
+                      When we multiply two matrices \(A\) and \(B\) together \(AB\)
+                      we can think of \(A\) as acting on each of the columns of \(B\) separately
+
+                      $$
+                      AB =
+                      \Bigg[\ \ A \ \ \Bigg]
+                      \begin{bmatrix}
+                      | &   & | \\
+                      B_1  & \cdots & B_n \\
+                      | &  & | \\
+                      \end{bmatrix}
+                      $$
+                      $$
+                      AB
+                      =
+                      \begin{bmatrix}
+                      | &   & | \\
+                      AB_1  & \cdots & AB_n \\
+                      | &  & | \\
+                      \end{bmatrix}
+                      $$
+                      Visually, the columns of the matrix \(A\) give the vectors
+                      that the standard bases vectors map to under the transformation
+                      \(A\).  If we can picture the columns of \(B\) by themselves,
+                      the columns of \(AB\) are just where the columns of \(B\) would be
+                      relative to the basis of the columns of \(A\).  Squinting our eyes
+                      in this way we can see each of the successive transformations
+                      represented by a multiplication of the form.
+                      $$
+                      M = ABCD...
+                      $$.
+
+                    </p>
+
+                    </div>
+                  </div>
 
 
                   <div class=col2>
@@ -485,44 +603,107 @@
                     </div>
                     <div class="blurb1" style="padding:40px">
 
-                          <b> INVERSES </b>
+                          <b> INNER PRODUCTS & ORTHOGONALITY </b>
                           <p>
 
-                          We say \(P\) is invertible if there is a unique \(x'\) that
-                          solves \(x=Px'\) for any \(x \in \mathbb{R}^n \).  The phrase
-                          "for any \(x\)" requires that the columns of \(P\) span \(\mathbb{R}^n \).
-                          For \(x'\) to be unique, we need each column of \(P\) to point in a different
-                          direction in \(\mathbb{R}^n\) (again more later).
-
-                          The inverse of \(P\) is the matrix \(P^{-1}\) such that \(PP^{-1} = I \)
-                          Expanding this equation we have that
+                          Vectors contain both the notion of length and direction.
+                          While magnitude is a property that vectors share with regular numbers,
+                          direction is a uniquely vector property.
+                          As such we can talk about the relative magnitude of two vectors
+                          and we can also talk about whether or not they point in similar directions,
+                          opposite directions or whether they are "perpendicular"
+                          or "orthogonal" to each other.  The "inner product" or "dot product"
+                          of two vectors is at the heart of this direction comparison.  Using matrix
+                          multiplication notation, if we think of one vector as a row and one as a column,
+                          the inner product is given by
                           $$
-                          I = PP^{-1} =
-                          \Bigg[
-                          \ \ P \ \
-                          \Bigg]
-                          \begin{bmatrix}
-                          | &   & | \\
-                          Q_1  & \cdots & Q_n \\
-                          | &  & |
-                          \end{bmatrix}
-                        =
-                        \begin{bmatrix}
-                        | &   & | \\
-                        PQ_1  & \cdots & PQ_n \\
-                        | &  & |
-                        \end{bmatrix}
-                        $$
+                          y^Tx = \sum_i y_ix_i = |y||x|cos(\theta)
+                          $$
+                          where \(\theat\) is the angle between two vectors.
 
-                        Thus, \(Q_i\), the \(i\)th column of \(P^{-1}\) is the coordinates of
-                        the \(i\)th standard basis vector with respect to the columns of P.
-                        Setting \(x' = P^{-1}x\) then gives that \(x=Px'\) will be satisfied.
-                        Note that for square, invertible \(P\), \(P^{-1}\) is unique and \(P^{-1}P=I\).
-                        While maybe not surprising, proving these facts is slightly more involved.
+                          Needs more.  I'm bored.
+
+
 
                       </p>
                         </div>
                       </div>
+
+
+
+
+
+
+                  <div class=col2>
+                    <div class='img1' style="padding:0px" id="inverse-container">
+                    </div>
+                    <div class="blurb1" style="padding:40px">
+
+                          <b> ROWS </b>
+                          <p>
+
+                          Multiplying a matrix by a vector can also be thought of
+                          in terms of the rows of the matrix as opposed to the columns.
+                          Given the equation \(y=Ax\), \(y_i\) is determined by the
+                          inner product between \(x\) and the \(i\)th row of \(A\)
+
+                          $$
+                          y = Ax
+                          $$
+                          $$
+                          \begin{bmatrix} y_1 \\ \vdots \\ y_m \end{bmatrix
+                          =
+                          \begin{bmatrix}
+                          -- & a_1^T & -- \\
+                          & \vdots &  \\
+                          -- & a_m^T & --
+                          \end{bmatrix}
+                          \begin{bmatrix }
+                          | \\ x \\ |
+                          \end{bmatrix}
+                          =
+                          \begin{bmatrix}
+                          a_1^Tx \\ \vdots \\ a_m^Tx
+                          \end{bmatrix}
+                          $$
+
+                          As such the direction of the \(i\)th row of \(A\) can be thought
+                          of as the direction in the domain which \(x\) should point to have
+                          the greatest impact on \(y_i\), ie. the rows of \(A\) could be thought
+                          of as input directions of \(A\).
+
+                          A slightly more insightful way to define input directions of
+                          matrix is not to think about \(a_i^T\) as an input direction
+                          but rather to think about the direction(s) orthogonal to the other
+                          \(m-1\) rows as defining an input direction for \(y_i\).
+                          For example, suppose \(x\) is chosen to be orthogonal to all but
+                          the second row \(a_2^T\).  \(Ax\) is then given by
+
+                          $$
+                          Ax =
+                          \begin{bmatrix}
+                          a_1^Tx \\ a_2^Tx \\ \vdots \\ a_m^Tx
+                          \end{bmatrix}
+                          =
+                          \begin{bmatrix} 0 \\ a_2^Tx \\ \vdots \\ 0 \end{bmatrix
+                          $$
+
+                          \(a_i^T\) (in this case \(a_2^T\)) then determines how much \(y_i\)
+                          changes for a given magnitude \(x\) (based on both magnitude and relative orientation)
+                          and also helps define an orthogonal input direction for all the other indices of \(y\).
+
+
+                          </p>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
 
                       <div class=col2>
                         <div class='img1' style="padding:0px" id="range-container">
@@ -692,6 +873,27 @@
                                 </div>
                               </div>
 
+
+                              <div class=col2>
+                                <div class='img1' style="padding:0px" id="range-container">
+                                </div>
+                                <div class="blurb1" style="padding:40px">
+
+                                      <b> FUNDAMENTAL THEOREM OF LINEAR ALGEBRA </b>
+                                      <p>
+
+                                      As discussed above, any matrix \(A \in \mathbb{R}^{m \times n}\)
+                                      divides up the domain and co-domain into two orthogonal subspaces respectively.
+                                      \(\mathcal{R}(A^T)\) and \(\mathcal{N}(A)\) together span the domain.
+                                      \(\mathcal{R}(A)\) and \(\mathcal{N}(A^T)\) together span the co-domain.
+
+                                      Each of these four subspaces can be visualized in the co-domain - in terms
+                                      of columns of the matrix \(A\) and also in the domain - in terms of the rows
+                                      of the matrix \(A\).
+
+                                  </p>
+                                    </div>
+                                  </div>
 
 
 
