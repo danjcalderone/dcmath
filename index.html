@@ -38,28 +38,18 @@
 
 
 
-
-
-
-
-
-
-
   <div class="wrapper">
     <div class="sidebar">
     <div w3-include-html="nav/sidebarLinalg.html"></div>
-  </div>
-</div>
+    </div>
 
 
-
-    <div class=col2>
-
-      <div class='img1' style="padding:0px" id="hypershape-container">
-        <canvas id='hypershape' class='CANVAS'></canvas>
+    <div class=content>
+      <div class='img' style="padding:0px" id="hypershape-container">
+        <canvas class='CANVAS' id='hypershape' ></canvas>
       </div>
 
-      <div class="blurb1" style="padding:40px">
+      <div class="text" style="padding:40px">
 
     <b> HYPERSHAPES </b>
     <p>
@@ -91,25 +81,22 @@
   </p>
 
         </div>
-
-
-
   </div>
 
 
 
-  <div class=col2>
-    <div class='img1' style="padding:0px" id="vector-container">
+  <div class=content>
+    <div class='img' style="padding:0px" id="vector-container">
             <canvas id='vector' class='CANVAS'></canvas>
-            <div class="eqn1" id="y_vec" ></div>
-            <div class="eqn1" id="A_vec" ></div>
-            <div class="eqn1" id="x_vec" ></div>
-            <div class="eqn1" id="Amaps_vec" ></div>
-            <div class="eqn1" id="label2_vec" ></div>
-            <div class="eqn1" id="warning2_vec" ></div>
-            <div class="eqn1" id="usedigits_vec" ></div>
+            <div class="eqn" id="y_vec" ></div>
+            <div class="eqn" id="A_vec" ></div>
+            <div class="eqn" id="x_vec" ></div>
+            <div class="eqn" id="Amaps_vec" ></div>
+            <div class="eqn" id="label2_vec" ></div>
+            <div class="eqn" id="warning2_vec" ></div>
+            <div class="eqn" id="usedigits_vec" ></div>
     </div>
-    <div class="blurb1" style="padding:40px">
+    <div class="text" style="padding:40px">
 
           <b> VECTOR & LINEAR COMBINATIONS </b>
           <p>
@@ -151,10 +138,13 @@
 
         </div>
       </div>
-      <div class=col2>
-        <div class='img1' style="padding:0px">
+
+
+
+      <div class=content>
+        <div class='img' style="padding:0px">
         </div>
-        <div class="blurb1" style="padding:40px">
+        <div class="text" style="padding:40px">
 
               <b> CONVEX COMBINATIONS </b>
               <p>
@@ -169,18 +159,18 @@
           </div>
 
 
-      <div class=col2>
-        <div class='img1' style="padding:0px" id="matrix-container">
+      <div class=content>
+        <div class='img' style="padding:0px" id="matrix-container">
                 <canvas id='matrix' class='CANVAS'></canvas>
-                <div class="eqn1" id="y_mat" ></div>
-                <div class="eqn1" id="A_mat" ></div>
-                <div class="eqn1" id="x_mat" ></div>
-                <div class="eqn1" id="Amaps_mat" ></div>
-                <div class="eqn1" id="label2_mat" ></div>
-                <div class="eqn1" id="warning2_mat" ></div>
-                <div class="eqn1" id="usedigits_mat" ></div>
+                <div class="eqn" id="y_mat" ></div>
+                <div class="eqn" id="A_mat" ></div>
+                <div class="eqn" id="x_mat" ></div>
+                <div class="eqn" id="Amaps_mat" ></div>
+                <div class="eqn" id="label2_mat" ></div>
+                <div class="eqn" id="warning2_mat" ></div>
+                <div class="eqn" id="usedigits_mat" ></div>
         </div>
-        <div class="blurb1" style="padding:40px">
+        <div class="text" style="padding:40px">
 
               <b> LINEAR TRANSFORMATIONS </b>
               <p>
@@ -233,10 +223,10 @@
 
 
 
-          <div class=col2>
-            <div class='img1' style="padding:0px" id="coord-container">
+          <div class=content>
+            <div class='img' style="padding:0px" id="coord-container">
             </div>
-            <div class="blurb1" style="padding:40px">
+            <div class="text" style="padding:40px">
 
                   <b> COORDINATES & BASES </b>
                   <p>
@@ -293,10 +283,10 @@
 
 
 
-              <div class=col2>
-                <div class='img1' style="padding:0px" id="inverse-container">
+              <div class=content>
+                <div class='img' style="padding:0px" id="inverse-container">
                 </div>
-                <div class="blurb1" style="padding:40px">
+                <div class="text" style="padding:40px">
 
                       <b> INVERSES </b>
                       <p>
@@ -346,10 +336,10 @@
 
 
 
-          <div class=col2>
-            <div class='img1' style="padding:0px" id="multiply-container">
+          <div class=content>
+            <div class='img' style="padding:0px" id="multiply-container">
             </div>
-            <div class="blurb1" style="padding:40px">
+            <div class="text" style="padding:40px">
 
                   <b> MATRIX ADDITION </b>
                   <p>
@@ -384,10 +374,10 @@
               </div>
 
 
-              <div class=col2>
-                <div class='img1' style="padding:0px" id="multiply-container">
+              <div class=content>
+                <div class='img' style="padding:0px" id="multiply-container">
                 </div>
-                <div class="blurb1" style="padding:40px">
+                <div class="text" style="padding:40px">
 
                       <b> MATRIX MULTIPLICATION </b>
                       <p>
@@ -430,10 +420,10 @@
                   </div>
 
 
-                  <div class=col2>
-                    <div class='img1' style="padding:0px" id="inverse-container">
+                  <div class=content>
+                    <div class='img' style="padding:0px" id="inverse-container">
                     </div>
-                    <div class="blurb1" style="padding:40px">
+                    <div class="text" style="padding:40px">
 
                           <b> INNER PRODUCTS & ORTHOGONALITY </b>
                           <p>
@@ -466,10 +456,10 @@
 
 
 
-                  <div class=col2>
-                    <div class='img1' style="padding:0px" id="inverse-container">
+                  <div class=content>
+                    <div class='img' style="padding:0px" id="inverse-container">
                     </div>
-                    <div class="blurb1" style="padding:40px">
+                    <div class="text" style="padding:40px">
 
                           <b> ROWS </b>
                           <p>
@@ -537,10 +527,10 @@
 
 
 
-                      <div class=col2>
-                        <div class='img1' style="padding:0px" id="range-container">
+                      <div class=content>
+                        <div class='img' style="padding:0px" id="range-container">
                         </div>
-                        <div class="blurb1" style="padding:40px">
+                        <div class="text" style="padding:40px">
 
                               <b> RANGE </b>
                               <p>
@@ -580,10 +570,10 @@
                             </div>
                           </div>
 
-                          <div class=col2>
-                            <div class='img1' style="padding:0px" id="range-container">
+                          <div class=content>
+                            <div class='img' style="padding:0px" id="range-container">
                             </div>
-                            <div class="blurb1" style="padding:40px">
+                            <div class="text" style="padding:40px">
 
                                   <b> NULLSPACE </b>
                                   <p>
@@ -706,10 +696,10 @@
                               </div>
 
 
-                              <div class=col2>
-                                <div class='img1' style="padding:0px" id="range-container">
+                              <div class=content>
+                                <div class='img' style="padding:0px" id="range-container">
                                 </div>
-                                <div class="blurb1" style="padding:40px">
+                                <div class="text" style="padding:40px">
 
                                       <b> FUNDAMENTAL THEOREM OF LINEAR ALGEBRA </b>
                                       <p>
@@ -727,7 +717,7 @@
                                     </div>
                                   </div>
 
-
+</div>
 
   <script type='module' src="./ndimo.js"> </script>
   <script type='module' src="./ndrawo.js"> </script>
