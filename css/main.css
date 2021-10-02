@@ -80,13 +80,9 @@ body{
 
 .wrapper .sidebar {
   position: relative;
-  top: 0px;
-  min-width: 200px;
-  max-width: 300px;
+  width: 500px;
   height: 100%;
   background: #bac3c9c7;
-  /* overflow: scroll;  */
-    /* overflow: scroll;  */
 }
 
 
