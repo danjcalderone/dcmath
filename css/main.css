@@ -90,7 +90,7 @@ body{
 }
 
 
-.wrapper .sidebar h4{
+.wrapper .sidebar ul h4{
   color: rgba(34, 76, 127, 0.9);
   text-transform: uppercase;
   font-size: 18px;
@@ -98,7 +98,7 @@ body{
   padding: 60px 0px 10px;
 }
 
-.wrapper .sidebar h1{
+.wrapper .sidebar ul h1{
   color: rgba(34, 76, 127, 0.9);
   text-transform: uppercase;
   font-size: 24px;
@@ -106,7 +106,7 @@ body{
   padding: 40px 30px 20px;
 }
 
-.wrapper .sidebar h2{
+.wrapper .sidebar ul h2{
   color: rgba(34, 76, 127, 0.9);
   text-transform: uppercase;
   font-size: 16px;
@@ -146,6 +146,16 @@ body{
 .wrapper .sidebar ul li:hover a{
   color: #fff;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 .wrapper .content{
