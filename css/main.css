@@ -89,11 +89,7 @@ body{
 }
 
 .wrapper .sidebar ul {
-  padding: 0;
-  margin: 0;
-  background: #6c98b6c7;
   list-style: none;
-  overflow: hidden;
 }
 
 .wrapper .sidebar h4{
