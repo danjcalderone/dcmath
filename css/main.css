@@ -227,16 +227,21 @@ body{
   left: 0;
   margin: 0px;
   padding: 0px;
-  width: 600px;
-  height: 600px;
+  min-width: 600px;
+  min-height: 600px;
+  max-width: 800px;
+  max-height: 800px;
 }
 
 .wrapper .content .module .img {
   flex: 0 1 auto;
   padding: 0px;
+  margin: 0px;
   position: relative;
-  width: 600px;
-  height: 600px;
+  min-width: 600px;
+  min-height: 600px;
+  max-width: 800px;
+  max-height: 800px;
 }
 
 
