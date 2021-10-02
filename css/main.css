@@ -255,14 +255,12 @@ body{
   }
 
 
-
-@media all and (max-width:2000px) {
-  .module {justify-content: center}
-  .text {width:100%; height: auto}
-  .img {width:800px; height: 800px}
-  .CANVAS {width:800px; height: 800px}
+@media all and (max-width:1700px) {
+  .wrapper .content .module {justify-content: center}
+  .wrapper .content .module .text {width:900px; height: auto}
+  .wrapper .content .module .img {width:900px; height: 900px}
+  .wrapper .content .module .CANVAS {width:900px; height: 900px}
 }
-
 
 
 
