@@ -256,10 +256,11 @@ body{
 
 
 
-@media all and (max-width:1500px) {
+@media all and (max-width:2000px) {
   .module {justify-content: center}
-  .text {width:900px; height: auto}
-  .img {width:900px; height: 900px}
+  .text {width:100%; height: auto}
+  .img {width:800px; height: 800px}
+  .CANVAS {width:800px; height: 800px}
 }
 
 
