@@ -235,6 +235,8 @@ body{
     font-size: 16px;
   }
 
+
+
 @media all and (max-width:1500px) {
   .module {justify-content: center}
   .text {width:900px; height: auto}
@@ -262,7 +264,7 @@ body{
   z-index: -1;
 }
 
-/*
+
 .col2-container {
 display: grid;
 padding: 0px;
@@ -271,7 +273,7 @@ grid-template-columns:  400px, 300px;
 
 
 
- */
+
 
 
 
