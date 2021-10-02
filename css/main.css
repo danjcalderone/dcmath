@@ -1,4 +1,4 @@
-/* asdf */
+/* as */
 
 html {
   font-family: "Montserrat", sans-serif;
@@ -89,6 +89,8 @@ body{
 }
 
 .wrapper .sidebar ul {
+  padding: 0;
+  margin: 0;
   list-style: none;
 }
 
@@ -150,6 +152,10 @@ body{
 .wrapper .sidebar li:hover a{
   color: #fff;
 }
+
+
+
+
 
 
 .wrapper .content{
