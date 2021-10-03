@@ -227,6 +227,7 @@ body{
   left: 0;
   margin: 0px;
   padding: 0px;
+  border-style: solid;
   min-width: 600px;
   min-height: 600px;
   max-width: 800px;
