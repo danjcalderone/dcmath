@@ -237,7 +237,7 @@ body{
 .wrapper .content .module .img {
   flex: 0 1 auto;
   padding: 0px;
-  margin: 0px;
+  margin: 10px;
   position: relative;
   width: 800px;
   height: 800px;
