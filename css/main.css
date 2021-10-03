@@ -241,10 +241,8 @@ body{
   padding: 0px;
   margin: 0px;
   position: relative;
-  min-width: 600px;
-  min-height: 600px;
-  max-width: 800px;
-  max-height: 800px;
+  width: 800px;
+  height: 800px;
 }
 
 
@@ -253,8 +251,7 @@ body{
     margin: 0px;
     padding: 40px;
     width: 300px;
-    min-height: 600px;
-    max-height: 800px;
+    height: 800px;
     background-color: rgba(64, 106, 157, 0.1);
     font-size: 16px;
   }
