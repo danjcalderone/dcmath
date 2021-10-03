@@ -259,7 +259,7 @@ body{
   }
 
 
-@media all and (max-width:1700px) {
+@media all and (max-width:1600px) {
   .wrapper .content .module {justify-content: center}
   .wrapper .content .module .text {width:900px; height: auto}
   .wrapper .content .module .img {width:900px; height: 900px}
