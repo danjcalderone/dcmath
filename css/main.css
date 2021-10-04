@@ -120,7 +120,7 @@ body{
 
 .wrapper .sidebar h3 {
   color: rgba(34, 76, 127,0.9);
-  padding: 35px 55px 10px;
+  padding: 35px 55px 5px;
   font-size: 16px;
   border-bottom: 1px solid rb;
 }
