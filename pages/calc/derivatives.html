@@ -49,7 +49,41 @@
 
       <div class="text" style="padding:40px, width:100%">
 
-      <b> Derivatives </b>
+
+
+        <b> DERIVATIVES CHEATSHEET </b>
+        <p>
+
+        $$
+          \left[ \ \frac{\partial f}{\partial x } \ \right] =
+          \left[ \ \frac{\partial f}{\partial g} \ \right]
+          \left[ \ \frac{\partial g}{\partial h} \ \right]
+          \left[ \ \frac{\partial h}{\partial x} \ \right]
+        $$
+        $$
+        f(x) = c^Tx \quad \Rightarrow \quad \frac{\partial f}{\partial x} = c^T
+        $$
+        $$
+        f(x) = Ax \quad \Rightarrow \quad \frac{\partial f}{\partial x} = A
+        $$
+        $$
+        f(x) = x^TQx \quad \Rightarrow \quad \frac{\partial f}{\partial x} = x^T(Q+Q^T) = 2x^T(Q)
+        $$
+        $$
+        f(Q) = x^TQx
+        \quad \Rightarrow \quad
+        \frac{\partial f}{\partial Q} = xx^T
+        $$
+        $$
+        f(A) = y^TAx
+        \quad \Rightarrow \quad
+        \frac{\partial f}{\partial A} = yx^T
+        $$
+
+      </p>
+
+
+      <b> Intuition </b>
       <p>
 
       A derivative of a function  \(f:x\mapsto y\) gives a linear approximation
@@ -222,36 +256,6 @@
 
 
 
-    <b> Cheatsheet </b>
-    <p>
-
-    $$
-      \left[ \ \frac{\partial f}{\partial x } \ \right] =
-      \left[ \ \frac{\partial f}{\partial g} \ \right]
-      \left[ \ \frac{\partial g}{\partial h} \ \right]
-      \left[ \ \frac{\partial h}{\partial x} \ \right]
-    $$
-    $$
-    f(x) = c^Tx \quad \Rightarrow \quad \frac{\partial f}{\partial x} = c^T
-    $$
-    $$
-    f(x) = Ax \quad \Rightarrow \quad \frac{\partial f}{\partial x} = A
-    $$
-    $$
-    f(x) = x^TQx \quad \Rightarrow \quad \frac{\partial f}{\partial x} = x^T(Q+Q^T) = 2x^T(Q)
-    $$
-    $$
-    f(Q) = x^TQx
-    \quad \Rightarrow \quad
-    \frac{\partial f}{\partial Q} = xx^T
-    $$
-    $$
-    f(A) = y^TAx
-    \quad \Rightarrow \quad
-    \frac{\partial f}{\partial A} = yx^T
-    $$
-
-  </p>
 
 
 
