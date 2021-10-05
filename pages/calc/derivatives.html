@@ -158,7 +158,25 @@
 
     <b> Derivatives w.r.t. Matrices </b>
 
+    <b> Cheatsheet </b>
+    <p>
 
+    $$
+      \left[ \ \frac{\partial f}{\partial x } \ \right] =
+      \left[ \ \frac{\partial f}{\partial g} \ \right]
+      \left[ \ \frac{\partial g}{\partial h} \ \right]
+      \left[ \ \frac{\partial h}{\partial x} \ \right]
+    $$
+    $$
+    f(x) = c^Tx \quad \Rightarrow \quad \frac{\partial f}{\partial x} = c^T
+    $$
+    $$
+    f(x) = Ax \quad \Rightarrow \quad \frac{\partial f}{\partial x} = A
+    $$
+    $$
+    f(x) = x^TQx \quad \Rightarrow \quad \frac{\partial f}{\partial x} = x^T(Q+Q^T) = 2x^T(Q)
+    $$
+  </p>
 
 
 
