@@ -143,11 +143,12 @@
     if \(f:\mathbb{R}^k \rightarrow \mathbb{R}^m \),
     \(g:\mathbb{R}^l \rightarrow \mathbb{R}^k \),
     and \(h:\mathbb{R}^n \rightarrow \mathbb{R}^l \), then
-    $$
-    \frac{\partial f}{\partial g} \in \mathbb{R}^{m \times k}, \ \
-    \frac{\partial g}{\partial h} \in \mathbb{R}^{k \times l}, \ \
+    <!-- $$
+    \frac{\partial f}{\partial g} \in \mathbb{R}^{m \times k}, \  \
+    \frac{\partial g}{\partial h} \in \mathbb{R}^{k \times l}, \  \
     \frac{\partial h}{\partial x} \in \mathbb{R}^{l \times n},
-    \quad \Rightarrow \quad
+    \quad \Rightarrow \quad -->
+    $$
     \left[ \ \frac{\partial f}{\partial x } \ \right] =
     \left[ \ \frac{\partial f}{\partial g} \ \right]
     \left[ \ \frac{\partial g}{\partial h} \ \right]
@@ -157,33 +158,6 @@
     </p>
 
     <b> Derivatives w.r.t. Matrices </b>
-    <p>
-    For linear function \(f:\mathbb{R}^n \rightarrow \mathbb{R}\), \(f(x) = c^Tx\)
-    $$
-    \Delta y = c^T\Delta x  \quad \Rightarrow \quad \frac{\partial f}{\partial x} = c^T
-    $$
-    </p>
-    <p>
-    For linear function \(f:\mathbb{R}^n \rightarrow \mathbb{R}^m\), \(f(x) = Ax\)
-    $$
-    \Delta y = A\Delta x  \quad \Rightarrow \quad \frac{\partial f}{\partial x} = A
-    $$
-    </p>
-
-    <p>
-    For quadratic functions \(f:\mathbb{R}^n \rightarrow \mathbb{R}\), \(f(x) = x^TQx\)
-    $$
-    \Delta y =\Delta x^T Q x + x^TQ\Delta x =
-    (\Delta x^T Q x)^T + x^TQ\Delta x =
-    x^T (Q^T + Q) \Delta x
-    $$
-    Note that transposing scalar values can often be useful in calculations.
-    Since \(\tfrac{1}{2}(Q+Q^T)\) is the symmetric component of \(Q\), we always assume \(Q\)
-    is symmetric and thus we often write
-    $$
-    \frac{\partial f}{\partial x} = x^T(Q+Q^T) = 2x^T(Q)
-    $$
-    </p>
 
 
 
