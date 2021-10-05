@@ -37,7 +37,7 @@
   <!-- <div w3-include-html="nav/topics.html"></div> -->
     <div class="wrapper">
     <div class="sidebar">
-    <div w3-include-html="/dcmath/nav/sidebarMECH.html"></div>
+    <div w3-include-html="/dcmath/nav/sidebarCALC.html"></div>
     </div>
     <div class=content>
       <div w3-include-html="/dcmath/nav/topics.html"></div>
@@ -47,47 +47,138 @@
         <canvas class='CANVAS' id='hypershape' ></canvas>
       </div> -->
 
-      <div class="text" style="padding:40px">
+      <div class="text" style="padding:40px, width:100%">
 
-    <b> HYPERSHAPES </b>
+      <b> Derivatives </b>
+      <p>
+
+      A derivative of a function  \(f:x\mapstoy\) gives a linear approximation
+      of how a perturbation in \(\Delta x\) translates into a pertubation in \(\Delta y\).
+      The notation
+      $$
+
+
+      If some of the columns of \(A\) are linear
+      combinations of other columns, then different sets of coordinates
+      \(x\) could(will) produce the same resulting \(Ax\).
+      For example, suppose for a \(3\times3\) matrix \(A\)
+      the third column is a linear combination of the first two columns,
+      ie.
+      $$
+      \begin{bmatrix} | \\ A_3 \\ |\end{bmatrix} =
+      \begin{bmatrix} | \\ A_1 \\ |\end{bmatrix} w_1 +
+      \begin{bmatrix} | \\ A_2 \\ |\end{bmatrix} w_2
+      $$
+      Note then that we get \(Ax=\mathbf{0}\) if we choose \(x\) in the following way
+      $$
+      Ax =
+      \begin{bmatrix}
+      | & | & | \\
+      A_1 & A_2 & A_3 \\
+      | & | & | \\
+      \end{bmatrix}
+      \begin{bmatrix}
+      w_1 \\ w_2 \\ -1
+      \end{bmatrix}
+      =
+      \begin{bmatrix} | \\ \mathbf{0} \\ | \end{bmatrix}
+      $$
+      The vector \(x\) is said to be in the "nullspace" of
+      \(A\) since \(Ax=\mathbf{0}\). In other words,
+      elements in the nullspace are coordinates of 0.
+    </p>
+
     <p>
-    We're used to drawing 2D projections of 3D shapes.
-    This process can be extended to n-dimensions by defining a
-    2D direction for each of the n coordinate axes.
-    Modifying these 2D directions gives a different perspective
-    on the nD shape.
-    This example shows the result for various shapes
-    including the unit simplex, unit cube, and unit sphere.
-  </p>
+      In general for an \(m \times n\) matrix \(A\),
+      suppose that all the columns of \(A\)
+      lie in the span of the first \(k\) columns. we
+      can extend the above technique to construct elements
+      in the nullspace of \(A\) as follows.  Let \(B_j \in \mathbb{R}^k\)
+      be the coordinates of column \(A_j\) with respect
+      to the first \(k\) columns of \(A\), ie.
+
+      $$
+      \begin{bmatrix} | \\ A_j \\ |\end{bmatrix} =
+      \begin{bmatrix}
+      | &  & | \\
+      A_1 & \cdots & A_k \\
+      | &  & | \\
+      \end{bmatrix}
+      \begin{bmatrix} | \\ B_j \\ |\end{bmatrix}
+      $$
+      It follows then all the columns of the a matrix \(N \in \mathbb{R}^{n \times n-k}\)
+      given below are in the nullspace of \(A\)
+      $$
+      AN =
+      \Bigg[ \ \ A' \quad  A'' \ \ \Bigg]
+      \begin{bmatrix}
+      B \\ -I_{k+1}
+      \end{bmatrix}
+      = \Bigg[ \ \ \mathbf{0} \ \ \Bigg]
+      $$
+      where
+      $$
+      B =
+      \small{
+      \begin{bmatrix}
+      | &  & | \\
+      B_{k+1} & \cdots & B_n \\
+      | &  & |
+      \end{bmatrix}
+      }
+      $$
+      and
+      $$
+      \tiny{
+      A' =
+      \begin{bmatrix}
+      | &  & | \\
+      A_{1} & \cdots & A_k \\
+      | &  & |
+      \end{bmatrix}
+      \ \
+      A'' =
+      \begin{bmatrix}
+      | &  & | \\
+      A_{k+1} & \cdots & A_n \\
+      | &  & |
+      \end{bmatrix}
+      }
+      $$
+      We can actually show that the columns of \(N\) constructed
+      this way are actually a basis for the nullspace of \(A\).
+      If we chose other columns (rather than the first \(k\)) to
+      span the column space of \(A\), we could do the same construction
+      but we would have to reorder the rows of \(N\).
+
+    </p>
+
+
     <p>
-    "Depth" is the dimension(s) that are lost in the 2D projection.
-    For an n-dimensional shape, depth is n-2 dimensional.  When drawing a 3D shape, depth is 1-dimensional,
-    ie. there is a line of points (coming towards the camera) that are
-    indistinguishable in the picture.
-    When drawing a 4D shape, depth is 2-dimensional, ie. there is a plane of points
-    (in the 4D space) that are indistinguishable.
-    When drawing a 5D shape, depth is 3-dimensional...
+      We say the nullspace of a matrix is "non-trivial"
+      if it contains more than the zero-vector.
+      (The zero-vector is obviously always in the nullspace.)
+    </p>
+    <p>
+      If two sets of coordinates \(x\) and \(x'\) differ
+      by an element of the nullspace, ie. \(x-x'\) is in the
+      nullspace then they will both map through \(A\)
+      to the same point
+      $$
+      0 = A(x-x') \qquad \Rightarrow \qquad Ax = Ax'
+      $$
+      This means equations of the form \(y=Ax\) do not have unique
+      solutions when \(A\) has a non-trivial nullspace.
+
+
   </p>
-
-  <p>
-    We can't fully "see" n-dimensions, but we can see 2D or 3D subspaces
-    of the nD space.  The question
-    then becomes can we trick our brains into stitching those 2D/3D
-    subspaces back together into some "nD" image.
-    The answer remains unclear.
-
-  </p>
-
-  </div>
-  </div>
-  </div>
+    </div>
   </div>
 
-  <!-- <script type='module' src="/dcmath/src/matrix/hypershapeo.js"> </script> -->
-  <script src="/dcmath/src/extra/includeHTML.js"> </script>
 
-
-
-
-  </body>
+</div>
+</div>
+<!-- <script type='module' src="./matrixo.js"> </script> -->
+<script src="/dcmath/src/extra/includeHTML.js"> </script>
+</body>
 </html>
