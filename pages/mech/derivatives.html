@@ -97,9 +97,12 @@
     <p>
     The above shows that derivatives should always be conceptualized as row vectors (covectors).
     If this is done, the chain rule can often be applied in a straightforward manner.
-    Consider \( f(g(h(x))) \).  The chain rule gives that
+    Consider the composition of functions \( f(g(h(x))) \).  The chain rule gives that
     $$
-    \Delta y = \frac{\partial f}{\partial x}\Delta x = \frac{\partial f}{\partial g}\frac{\partial g}{\partial h}\frac{\partial h}{\partial x} \Delta x
+    \Delta y = \frac{\partial f}{\partial x}\Delta x =
+    \big[\frac{\partial f}{\partial g}\big]
+    \big[\frac{\partial g}{\partial h}\big]
+    \big[\frac{\partial h}{\partial x}\big]\Delta x
     $$
     Note that the dimensions work out correctly. For example
     if \(f:\mathbb{R}^k \rightarrow \mathbb{R}^m \),
