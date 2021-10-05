@@ -187,12 +187,12 @@
     functions of the form \(f(X) = \sum_{ij}C_{ij}X_{ij}\) which can be represented
     compactly using the trace operator
     $$
-    f(X) = \sum_{ij}C_{ij}X_{ij} = \text{tr}(C^TX)
+    f(X) = \sum_{ij}C_{ij}X_{ij} = Tr(C^TX)
     $$
     Along these lines, the inner-product between two matrices is often given by
-    \(\langle C,X\rangle = \text{tr}(C^TX)\).  As a result a perturbation analysis would given
+    \(\langle C,X\rangle = Tr(C^TX)\).  As a result a perturbation analysis would given
     $$
-    \Delta f = \langle \frac{\partial f}{\partial X}, \Delta X \rangle = \text{tr}(C^T \Delta X)
+    \Delta f = \langle \frac{\partial f}{\partial X}, \Delta X \rangle = Tr(C^T \Delta X)
     $$
     and thus \(\frac{\partial f}{\partial X} = C\). Elementwise, we have that
     \(\frac{\partial f}{\partial X_{ij}} = C_{ij}\).
@@ -201,12 +201,12 @@
     as illustrated by the following examples.
     examples illustrate
     $$
-    f(Q) = x^TQx = \text{tr}(x^TQx) = \text{tr}(xx^TQ)
+    f(Q) = x^TQx = Tr(x^TQx) = Tr(xx^TQ)
     \quad \Rightarrow \quad
     \frac{\partial f}{\partial Q} = xx^T
     $$
     $$
-    f(A) = y^TAx = \text{tr}(y^TAx) = \text{tr}(xy^TA)
+    f(A) = y^TAx = Tr(y^TAx) = Tr(xy^TA)
     \quad \Rightarrow \quad
     \frac{\partial f}{\partial A} = yx^T
     $$
