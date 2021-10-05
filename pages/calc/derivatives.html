@@ -57,7 +57,7 @@
       The derivative notation was in fact designed by Leibniz to ellicit this idea of
       ratios of perturbations
       $$
-      \Delta y = \frac{\partial f}{\partial x} \Delta x
+      \Delta y =  \left[ \ \frac{\partial f}{\partial x} \ \right] \Delta x
       $$
       Remembering this form can be quite useful in taking derivatives.  The other critical piece
       is the product rule, ie. if the function has multiple arguments perturb each of them separately and sum.
@@ -73,7 +73,7 @@
     <p>
     For linear function \(f:\mathbb{R}^n \rightarrow \mathbb{R}^m\), \(f(x) = Ax\)
     $$
-    \Delta y = A\Delta x  \quad \Rightarrow \quad \frac{\partial f}{\partial x} = A
+    \Delta y = A\Delta x  \quad \Rightarrow \quad \left[ \ \frac{\partial f}{\partial x} \ \right] = A
     $$
     </p>
 
@@ -92,6 +92,40 @@
     $$
     </p>
 
+    <b> Explicit Matrix Form</b>
+    <p>
+    For \(f:\mathbb{R}^n \rightarrow \mathbb{R}\)
+    $$
+    \Delta y = \frac{\partial f}{\partial x} \Delta x =
+    \begin{bmatrix}
+    \frac{\partial f}{\partial x_1} & \cdots & \frac{\partial f}{\partial x_n}
+    \end{bmatrix}
+    \begin{bmatrix}
+    \Delta x_1 \\ \vdots \\ \Delta x_n
+    \end{bmatrix} =
+    \frac{\partial f}{\partial x_1}\Delta x_1  + \cdots + \frac{\partial f}{\partial x_n}\Delta x_n
+    $$
+    </p>
+    <p>
+    For \(f:\mathbb{R}^n \rightarrow \mathbb{R}^m\)
+    $$
+    f(x) =
+    \begin{bmatrix} f_1(x) \\ \vdots \\ f_m(x) \end{bmatrix}
+    \quad \Rightarrow \quad
+    \left[ \ \frac{\partial f}{\partial x} \ \right] =
+    \begin{bmatrix}
+    - & \frac{\partial f_1}{\partial x} & - \\
+    & \vdots &  \\
+    - & \frac{\partial f_m}{\partial x} & -
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+    \vdots & & \vdots \\
+    \frac{\partial f_m}{\partial x_1} & \cdots & \frac{\partial f_m}{\partial x_n}
+    \end{bmatrix}
+    $$
+  </p>
 
     <b> Chain Rule and Covectors</b>
     <p>
@@ -99,7 +133,7 @@
     If this is done, the chain rule can often be applied in a straightforward manner.
     Consider the composition of functions \( f(g(h(x))) \).  The chain rule gives that
     $$
-    \Delta y = \frac{\partial f}{\partial x}\Delta x =
+    \Delta y = \left[ \ \frac{\partial f}{\partial x} \ \right] \Delta x =
     \left[ \ \frac{\partial f}{\partial g} \ \right]
     \left[ \ \frac{\partial g}{\partial h} \ \right]
     \left[ \ \frac{\partial h}{\partial x} \ \right]
@@ -114,7 +148,7 @@
     \frac{\partial g}{\partial h} \in \mathbb{R}^{k \times l}, \ \
     \frac{\partial h}{\partial x} \in \mathbb{R}^{l \times n},
     \quad \Rightarrow \quad
-    \frac{\partial f}{\partial x }=
+    \left[ \ \frac{\partial f}{\partial x } \ \right] =
     \left[ \ \frac{\partial f}{\partial g} \ \right]
     \left[ \ \frac{\partial g}{\partial h} \ \right]
     \left[ \ \frac{\partial h}{\partial x} \ \right]
