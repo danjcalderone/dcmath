@@ -158,6 +158,68 @@
 
     <b> Derivatives w.r.t. Matrices </b>
 
+    <p>
+    Writing the deritives for functions of matrices such as
+    \(f:\mathbb{R}^{m \times n} \rightarrow \mathbb{R}^m\) (ex: \(f(X) = Xz\))
+    or \(f:\mathbb{R}^{m \times n} \rightarrow \mathbb{R}^{k \times n}\) (ex.
+    \(f(X) = AX\)) are difficult to write because technically they are best represented
+    as 3-tensors and 4-tensors respectively.  This leaves two options.
+    1) Store the derivative as the appropriate tensor.  Perturbation computations
+    must then be written using sums
+    or Einstein summation notation.  For example \(Y=F(X)\)
+    $$
+    \Delta Y_{kl}
+    = \sum_{ij}\frac{\partial F_{kl}}{\partial X_{ij}} \Delta X_{ij}
+    = \frac{\partial F}{\partial X}_{klij} \Delta X_{ij}
+    $$
+    2) Flatten out the tensor by vectorizing each matrix and writing
+    the derivative as a large matrix (see below).
+    </p>
+    <p>
+    The one exception is for scalar-valued functions of matrices. In tensor form for \(y = f(X)\)
+    \(f:\mathbb{R}^{m \times n} \rightarrow \mathbb{R} \), \(\frac{\partial f}{\partial X}
+    is simply a 2-tensor and so we can still store it easily as a matrix.  (Alternatively, if the input matrix
+    is vectorized, the derivative will be a row vector.) Using the trace to represent
+    matrix inner products is conceptually and computationally useful in these cases.
+    Analogous to the function \(f(x)=c^Tx=\sum_i c_ix_i\) for matrices we often have
+    functions of the form \(f(X) = \sum_{ij}C_{ij}X_{ij}\) which can be represented
+    compactly using the trace operator
+    $$
+    f(X) = \sum_{ij}C_{ij}X_{ij} = \text{tr}(C^TX)
+    $$
+    Along these lines, the inner-product between two matrices is often given by
+    \(\langle C,X\rangle = \text{tr}(C^TX)\).  As a result a perturbation analysis would given
+    $$
+    \Delta f = \langle \frac{\partial f}{\partial X}, \Delta X \rangle = \text{tr}(C^T \Delta X)
+    $$
+    and thus \(\frac{\partial f}{\partial X} = C\). Elementwise, we have that
+    \(\frac{\partial f}{\partial X_{ij}} = C_{ij}\).
+    This trace form can be quite useful for algebraic manipulations (since traces
+    are quite pleasantly behaved algebraically)
+    as illustrated by the following examples.
+    examples illustrate
+    $$
+    f(Q) = x^TQx = \text{tr}(x^TQx) = \text{tr}(xx^TQ)
+    \quad \Rightarrow \quad
+    \frac{\partial f}{\partial Q} = xx^T
+    $$
+    $$
+    f(A) = y^TAx = \text{tr}(y^TAx) = \text{tr}(xy^TA)
+    \quad \Rightarrow \quad
+    \frac{\partial f}{\partial A} = yx^T
+    $$
+  </p>
+
+
+    <b> Vectorization </b>
+
+    <p>      
+    (NEEDS TO BE ADDED)
+    </p>
+
+
+
+
     <b> Cheatsheet </b>
     <p>
 
@@ -176,6 +238,17 @@
     $$
     f(x) = x^TQx \quad \Rightarrow \quad \frac{\partial f}{\partial x} = x^T(Q+Q^T) = 2x^T(Q)
     $$
+    $$
+    f(Q) = x^TQx
+    \quad \Rightarrow \quad
+    \frac{\partial f}{\partial Q} = xx^T
+    $$
+    $$
+    f(A) = y^TAx
+    \quad \Rightarrow \quad
+    \frac{\partial f}{\partial A} = yx^T
+    $$
+
   </p>
 
 
