@@ -54,124 +54,46 @@
 
       A derivative of a function  \(f:x\mapstoy\) gives a linear approximation
       of how a perturbation in \(\Delta x\) translates into a pertubation in \(\Delta y\).
-      The notation
+      The derivative notation was in fact designed by Leibniz to ellicit this idea of
+      ratios of perturbations
       $$
+      \Delta y = \frac{\partial f}{\partial x} \Delta x
+      $$
+      Remembering this form can be quite useful in taking derivatives.  The other critical piece
+      is the product rule, ie. if the function has multiple arguments perturb each of them separately and sum.
 
-
-      If some of the columns of \(A\) are linear
-      combinations of other columns, then different sets of coordinates
-      \(x\) could(will) produce the same resulting \(Ax\).
-      For example, suppose for a \(3\times3\) matrix \(A\)
-      the third column is a linear combination of the first two columns,
-      ie.
+      <b> Vector Derivatives </b>
+      <p>
+      For linear function \(f:\mathbb{R}^n \rightarrow \mathbb{R}\), \(f(x) = c^Tx\)
       $$
-      \begin{bmatrix} | \\ A_3 \\ |\end{bmatrix} =
-      \begin{bmatrix} | \\ A_1 \\ |\end{bmatrix} w_1 +
-      \begin{bmatrix} | \\ A_2 \\ |\end{bmatrix} w_2
+      \Delta y = c^T\Delta x  \quad \Rightarrow \quad \frac{\partial f}{\partial x} = c^T
       $$
-      Note then that we get \(Ax=\mathbf{0}\) if we choose \(x\) in the following way
-      $$
-      Ax =
-      \begin{bmatrix}
-      | & | & | \\
-      A_1 & A_2 & A_3 \\
-      | & | & | \\
-      \end{bmatrix}
-      \begin{bmatrix}
-      w_1 \\ w_2 \\ -1
-      \end{bmatrix}
-      =
-      \begin{bmatrix} | \\ \mathbf{0} \\ | \end{bmatrix}
-      $$
-      The vector \(x\) is said to be in the "nullspace" of
-      \(A\) since \(Ax=\mathbf{0}\). In other words,
-      elements in the nullspace are coordinates of 0.
+    </p>
+    <p>
+    For linear function \(f:\mathbb{R}^n \rightarrow \mathbb{R}^m\), \(f(x) = Ax\)
+    $$
+    \Delta y = A\Delta x  \quad \Rightarrow \quad \frac{\partial f}{\partial x} = A
+    $$
     </p>
 
     <p>
-      In general for an \(m \times n\) matrix \(A\),
-      suppose that all the columns of \(A\)
-      lie in the span of the first \(k\) columns. we
-      can extend the above technique to construct elements
-      in the nullspace of \(A\) as follows.  Let \(B_j \in \mathbb{R}^k\)
-      be the coordinates of column \(A_j\) with respect
-      to the first \(k\) columns of \(A\), ie.
-
-      $$
-      \begin{bmatrix} | \\ A_j \\ |\end{bmatrix} =
-      \begin{bmatrix}
-      | &  & | \\
-      A_1 & \cdots & A_k \\
-      | &  & | \\
-      \end{bmatrix}
-      \begin{bmatrix} | \\ B_j \\ |\end{bmatrix}
-      $$
-      It follows then all the columns of the a matrix \(N \in \mathbb{R}^{n \times n-k}\)
-      given below are in the nullspace of \(A\)
-      $$
-      AN =
-      \Bigg[ \ \ A' \quad  A'' \ \ \Bigg]
-      \begin{bmatrix}
-      B \\ -I_{k+1}
-      \end{bmatrix}
-      = \Bigg[ \ \ \mathbf{0} \ \ \Bigg]
-      $$
-      where
-      $$
-      B =
-      \small{
-      \begin{bmatrix}
-      | &  & | \\
-      B_{k+1} & \cdots & B_n \\
-      | &  & |
-      \end{bmatrix}
-      }
-      $$
-      and
-      $$
-      \tiny{
-      A' =
-      \begin{bmatrix}
-      | &  & | \\
-      A_{1} & \cdots & A_k \\
-      | &  & |
-      \end{bmatrix}
-      \ \
-      A'' =
-      \begin{bmatrix}
-      | &  & | \\
-      A_{k+1} & \cdots & A_n \\
-      | &  & |
-      \end{bmatrix}
-      }
-      $$
-      We can actually show that the columns of \(N\) constructed
-      this way are actually a basis for the nullspace of \(A\).
-      If we chose other columns (rather than the first \(k\)) to
-      span the column space of \(A\), we could do the same construction
-      but we would have to reorder the rows of \(N\).
-
+    For quadratic functions \(f:\mathbb{R}^n \rightarrow \mathbb{R}\), \(f(x) = x^TQx\)
+    $$
+    \Delta y =\Delta x^T Q x + x^TQ\Delta x =
+    (\Delta x^T Q x)^T + x^TQ\Delta x =
+    x^T (Q^T + Q) \Delta x
+    $$
+    Note that transposing scalar values can often be useful in calculations.
+    Since \(\tfrac{1}{2}(Q+Q^T)\) is the symmetric component of \(Q\), we always assume \(Q\)
+    is symmetric and thus we often write
+    $$
+    \frac{\partial f}{\partial x} = x^T(Q+Q^T) = 2x^T(Q)
+    $$
     </p>
 
 
-    <p>
-      We say the nullspace of a matrix is "non-trivial"
-      if it contains more than the zero-vector.
-      (The zero-vector is obviously always in the nullspace.)
-    </p>
-    <p>
-      If two sets of coordinates \(x\) and \(x'\) differ
-      by an element of the nullspace, ie. \(x-x'\) is in the
-      nullspace then they will both map through \(A\)
-      to the same point
-      $$
-      0 = A(x-x') \qquad \Rightarrow \qquad Ax = Ax'
-      $$
-      This means equations of the form \(y=Ax\) do not have unique
-      solutions when \(A\) has a non-trivial nullspace.
 
 
-  </p>
     </div>
   </div>
 
