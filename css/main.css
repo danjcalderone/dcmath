@@ -190,6 +190,10 @@ body{
 
 
 
+
+
+
+
 .wrapper .content{
   position: relative;
   width: 100%;
@@ -346,10 +350,10 @@ body{
   height: 600px;
 }
 .wrapper .content .seg .text {
-    flex: 2 1 auto;
+    flex: 3 1 auto;
       margin: 20px;
       padding: 40px;
-      width: 600px;
+      width: 200px;
       height: auto;
       background-color: rgba(64, 106, 157, 0.1);
       font-size: 16px;
