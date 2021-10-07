@@ -130,24 +130,64 @@
       $$
       \Delta y =  \left[ \ \frac{\partial f}{\partial x} \ \right] \Delta x
       $$
-      Remembering this form can be quite useful in taking derivatives.  In order
-      for the dimensions work out correct, the derivative of a scalar function
+      Remembering this form can be quite useful in taking derivatives.
+    </p>
+
+      <p>
+        In order for the dimensions to work out correct, the derivative of a scalar function
       \(f \in \mathbb{R}\) with respect to a vector \(x \in \mathbb{R}^n\)should be an
-      a row vector \(\frac{\partial f}{\partial x} \in \mathbb{R}^{1 \times n} \);
-      the derivative of
+      a row vector \(\frac{\partial f}{\partial x} \in \mathbb{R}^{1 \times n} \).
+      For example for a linear function \(f:\mathbb{R}^n \rightarrow \mathbb{R}\), \(f(x) = c^Tx\)
+      $$
+      \Delta y = c^T\Delta x  \quad \Rightarrow \quad \frac{\partial f}{\partial x} = c^T
+      $$
+    </p>
+
+      <p>
+      The derivative of
       a vector-valued function \(f \in \mathbb{R}^m\) with respect to a vector
       \(x \in \mathbb{R}^n\) should be an \(m \times n\) matrix
-      \(\frac{\partial f}{\partial x} \in \mathbb{R}^{m \times n} \); etc.
+      \(\frac{\partial f}{\partial x} \in \mathbb{R}^{m \times n} \).
+      For example, for linear function \(f:\mathbb{R}^n \rightarrow \mathbb{R}^m\), \(f(x) = Ax\)
+      $$
+      \Delta y = A\Delta x  \quad \Rightarrow \quad \left[ \ \frac{\partial f}{\partial x} \ \right] = A
+      $$
       </p>
 
       <p>
       The other critical piece is the rule of partial derivatives:
-       only pertub one variable at a time while holding the others fixed and then
-       sum to get the full perturbation.
-     </p>
+      to compute the full perturbation,
+      pertub one variable at a time while holding the others fixed and then sum
+      over all perturbations.  This applies to copies of the same variable as well
+      as totally different variables.  Consider for example the quadratic function
+       \(f:\mathbb{R}^n \rightarrow \mathbb{R}\), \(f(x) = x^TQx\).
+      $$
+      \Delta y =\Delta x^T Q x + x^TQ\Delta x =
+      (\Delta x^T Q x)^T + x^TQ\Delta x =
+      x^T (Q^T + Q) \Delta x
+      $$
+      Note that transposing scalar values can often be useful in calculations.
+      Since \(\tfrac{1}{2}(Q+Q^T)\) is the symmetric component of \(Q\), we always assume \(Q\)
+      is symmetric and thus we often write
+      $$
+      \frac{\partial f}{\partial x} = x^T(Q+Q^T) = 2x^T(Q)
+      $$
+      In the scalar case \(f:\mathbb{R}\rightarrow \mathbb{R}\)
+      consider \(f(x) = x^2\).
+
+
+      </p>
+      </div>
     </div>
+    <div class='seg'>
     <div class='img'>
     <iframe href="./figs/deriv_scalar.pdf"></iframe>
+    </div>
+    <div class='img'>
+    <iframe href="./figs/deriv_vector.pdf"></iframe>
+    </div>
+    <div class='img'>
+    <iframe href="./figs/deriv_product.pdf"></iframe>
     </div>
     </div>
 
@@ -155,33 +195,8 @@
   <div class=seg>
     <div class="text" style="padding:40px, width:100%">
       <b> Derivatives w.r.t. vectors </b>
-      <p>
-      For linear function \(f:\mathbb{R}^n \rightarrow \mathbb{R}\), \(f(x) = c^Tx\)
-      $$
-      \Delta y = c^T\Delta x  \quad \Rightarrow \quad \frac{\partial f}{\partial x} = c^T
-      $$
-    </p>
-    <p>
-    For linear function \(f:\mathbb{R}^n \rightarrow \mathbb{R}^m\), \(f(x) = Ax\)
-    $$
-    \Delta y = A\Delta x  \quad \Rightarrow \quad \left[ \ \frac{\partial f}{\partial x} \ \right] = A
-    $$
-    </p>
 
-    <p>
-    For quadratic functions \(f:\mathbb{R}^n \rightarrow \mathbb{R}\), \(f(x) = x^TQx\)
-    $$
-    \Delta y =\Delta x^T Q x + x^TQ\Delta x =
-    (\Delta x^T Q x)^T + x^TQ\Delta x =
-    x^T (Q^T + Q) \Delta x
-    $$
-    Note that transposing scalar values can often be useful in calculations.
-    Since \(\tfrac{1}{2}(Q+Q^T)\) is the symmetric component of \(Q\), we always assume \(Q\)
-    is symmetric and thus we often write
-    $$
-    \frac{\partial f}{\partial x} = x^T(Q+Q^T) = 2x^T(Q)
-    $$
-    </p>
+
 
     <b> Explicit Matrix Form</b>
     <p>
