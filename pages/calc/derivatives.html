@@ -120,8 +120,8 @@
 
   <div class=seg>
   <div class="text" style="padding:40px, width:100%">
-      <b> Intuition </b>
-      <p>
+  <b> Intuition </b>
+  <p>
 
       A derivative of a function  \(f:x\mapsto y\) gives a linear approximation
       of how a perturbation in \(\Delta x\) translates into a pertubation in \(\Delta y\).
@@ -130,15 +130,27 @@
       $$
       \Delta y =  \left[ \ \frac{\partial f}{\partial x} \ \right] \Delta x
       $$
-      Remembering this form can be quite useful in taking derivatives.  The other critical piece
-      is the product rule, ie. if the function has multiple arguments perturb each of them separately and sum.
-    </p>
+      Remembering this form can be quite useful in taking derivatives.  In order
+      for the dimensions work out correct, the derivative of a scalar function
+      \(f \in \mathbb{R}\) with respect to a vector \(x \in \mathbb{R}^n\)should be an
+      a row vector \(\frac{\partial f}{\partial x} \in \mathbb{R}^{1 \times n} \);
+      the derivative of
+      a vector-valued function \(f \in \mathbb{R}^m\) with respect to a vector
+      \(x \in \mathbb{R}^n\) should be an \(m \times n\) matrix
+      \(\frac{\partial f}{\partial x} \in \mathbb{R}^{m \times n} \); etc.
+      </p>
 
-  </div>
-  <div class='img'>
-  <div href="./figs/deriv_scalar.pdf"></div>
-  </div>
-  </div>
+      <p>
+      The other critical piece is the rule of partial derivatives:
+       only pertub one variable at a time while holding the others fixed and then
+       sum to get the full perturbation.
+     </p>
+    </div>
+    <div class='img'>
+    <iframe href="./figs/deriv_scalar.pdf"></iframe>
+    </div>
+    </div>
+
 
   <div class=seg>
     <div class="text" style="padding:40px, width:100%">
