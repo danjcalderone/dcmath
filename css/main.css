@@ -311,7 +311,7 @@ body{
 }
 
 
-.eqn1 {
+.wrapper .content .module .eqn1 {
   background-color: rgba(0, 0, 255, 0);
   color: black;
   position: absolute;
