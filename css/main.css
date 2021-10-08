@@ -310,6 +310,18 @@ body{
   z-index: 1;
 }
 
+
+.eqn1 {
+  background-color: rgba(0, 0, 255, 0);
+  color: black;
+  position: absolute;
+  font-size: 16px;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+}
+
+
 .wrapper .content .module .EQN {
   background-color: rgba(0, 0, 255, 0);
   color: black;
