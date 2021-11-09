@@ -339,6 +339,26 @@ body{
 
 
 
+.wrapper .content .left{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.wrapper .content .left .img {
+  flex: 0 1 auto;
+  padding: 0px;
+  margin: 10px;
+  position: relative;
+  /* width: 400px;
+  height: 400px; */
+}
+
+
+
 .wrapper .content .seg{
   display: flex;
   flex-flow: row wrap;
@@ -347,6 +367,7 @@ body{
   position: relative;
   width: 100%;
 }
+
 
 .wrapper .content .seg .text {
     flex: 3 1 auto;
