@@ -43,45 +43,67 @@
       <div w3-include-html="/dcmath/nav/topics.html"></div>
 
       <div class=module>
-      <div class='img' style="padding:0px" id="hypershape-container">
-        <canvas class='CANVAS' id='hypershape' ></canvas>
+
+
+        <div class=seg>
+        <div class="text" style="padding:40px, width:100%">
+        <b> Quadrotor Dynamics </b>
+        <p> </p>
+        </div>
+        </div>
+
+        <div class='left'>
+        <div class='img'>
+        <img src="/dcmath/figs/dynamics_quad.png" type="application/pdf"></img>
+        </div>
+        </div>
+
+        <div class=seg>
+        <div class="text" style="padding:40px, width:100%">
+        <b> Inverted Pendulum Dynamics</b>
+        <p> </p>
+        </div>
+        </div>
+
+        <div class='left'>
+        <div class='img'>
+        <img src="/dcmath/figs/dynamics_invertedpend.png" type="application/pdf"></img>
+        </div>
+        </div>
+
+
+        <div class=seg>
+        <div class="text" style="padding:40px, width:100%">
+        <b> Two-Link Robot Arm Dynamics </b>
+        <p> </p>
+        </div>
+        </div>
+
+        <div class='left'>
+        <div class='img'>
+        <img src="/dcmath/figs/dynamics_2linkarm.png" type="application/pdf"></img>
+        </div>
+        </div>
+
+
       </div>
 
-      <div class="text" style="padding:40px">
-
-    <b> HYPERSHAPES </b>
-    <p>
-    We're used to drawing 2D projections of 3D shapes.
-    This process can be extended to n-dimensions by defining a
-    2D direction for each of the n coordinate axes.
-    Modifying these 2D directions gives a different perspective
-    on the nD shape.
-    This example shows the result for various shapes
-    including the unit simplex, unit cube, and unit sphere.
-  </p>
-    <p>
-    "Depth" is the dimension(s) that are lost in the 2D projection.
-    For an n-dimensional shape, depth is n-2 dimensional.  When drawing a 3D shape, depth is 1-dimensional,
-    ie. there is a line of points (coming towards the camera) that are
-    indistinguishable in the picture.
-    When drawing a 4D shape, depth is 2-dimensional, ie. there is a plane of points
-    (in the 4D space) that are indistinguishable.
-    When drawing a 5D shape, depth is 3-dimensional...
-  </p>
-
-  <p>
-    We can't fully "see" n-dimensions, but we can see 2D or 3D subspaces
-    of the nD space.  The question
-    then becomes can we trick our brains into stitching those 2D/3D
-    subspaces back together into some "nD" image.
-    The answer remains unclear.
-
-  </p>
-
+    </div>
   </div>
-  </div>
-  </div>
-  </div>
+
+
+    <!--
+
+
+
+
+
+
+ -->
+
+
+
+
 
   <script type='module' src="/dcmath/src/sim/hypershapeo.js"> </script>
   <script src="/dcmath/src/extra/includeHTML.js"> </script>
