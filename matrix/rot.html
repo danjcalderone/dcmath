@@ -158,6 +158,43 @@
               </p>
 
 
+              <p>
+              A rotation matrix can be decomposed into multiple individual planes (and angles)
+              of rotation.  This "semi-diagonalization" can be written as
+
+
+              $$
+              R = UDU^T
+              $$
+
+              $$
+              R =
+              \begin{bmatrix}
+              | & | & & | & |  & | \\
+              U_1 & V_1 & \cdots & U_k & V_k & x \\
+              | & | & & | & |  & | \\
+              \end{bmatrix}
+              \begin{bmatrix}
+              c\theta_1 & -s\theta_1 & \cdots & 0 & 0 & 0 \\
+              s\theta_1 & c\theta_1 & \cdots & 0 & 0 & 0 \\
+              \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
+              0 & 0 & \cdots & c\theta_1 & -s\theta_1 & 0 \\
+              0 & 0 & \cdots & s\theta_1 & c\theta_1 & 0  \\
+              0 & 0 & \dcots & 0 & 0 & 1
+              \end{bmatrix}
+              \begin{bmatrix}
+              - & U_1^T & - \\
+              - & V_1^T & - \\
+              & \vdots & \\
+              - & U_k^T & - \\
+              - & V_k^T & - \\
+              - & x^T &
+              \end{bmatrix}
+              $$
+
+              </p>
+
+
 
 
                   </div>
