@@ -59,10 +59,6 @@ nav li a:active {
   color: #ececec;
 }
 
-nav li un {
-  color: rgb(100,100,100);
-}
-
 
 
 
@@ -150,6 +146,13 @@ body{
   display: block;
   text-decoration: none;
 }
+
+.wrapper .sidebar li un{
+  color: rgba(34, 76.0, 127, 0.3);
+  display: block;
+  text-decoration: none;
+}
+
 
 .wrapper .sidebar li a .fas{
   width: 25px;
