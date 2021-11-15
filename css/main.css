@@ -63,22 +63,22 @@ nav li a:active {
 
 
 
-nav li b {
+nav li aa {
   display: block;
   padding: 10px 15px;
   text-decoration: none;
   color: rgb(200,200,200);
 }
 
-nav li:hover b{
+nav li:hover aa{
   /* color: #583d72; */
   background: #594f8d;
 }
-nav li b:hover{
+nav li aa:hover{
   color: #fff;
 }
 
-nav li b:active {
+nav li aa:active {
   color: #ececec;
 }
 
