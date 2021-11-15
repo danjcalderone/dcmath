@@ -51,7 +51,7 @@
 
           <div class=module>
             <div style:'flex:1'>
-            <div class=header style="font-size:40"> Symmetric Matrix </div>
+            <div class=header style="font-size:40"> TRANSPOSE OPERATION </div>
             <div class='img' style="padding:0px" id="matrices-container">
                 <canvas class='CANVAS' id='matrices'  ></canvas>
                 <div class="eqn" id="eqn1y" ></div>
@@ -75,36 +75,11 @@
 
             <div class="text" style="padding:40px">
 
-              <b> SYMMETRIC MATRIX </b>
+              <b> TRANSPOSE OPERATION </b>
               <p>
 
-              A symmetric matrix equals its transpose.
-
-              $$  S = S^T $$
-
-              Elementwise: \(S_{ij}=S_{ji}\)
-
-              Matrix form:
-              $$
-              S =
-              \begin{bmatrix}
-              S_{11} & S_{12} & \cdots & S_{1n} \\
-              S_{12}& S_{22} & \cdots & S_{2n} \\
-              \vdots & \vdots & \ddots & \vdots \\
-              S_{1n} & S_{2n} & \cdots & S_{nn}
-              \end{bmatrix}
-              $$
-              </p>
-
-              <p>
-              The eigenvalues of a symmetric matrix are purely real and there exists an orthonormal basis of eigenvectors.
-              The diagonalization is given
-
-              $$
-              S = RDR^T
-              $$
-
-
+              The transpose of a matrix, \(A^T\) involves switching the role of the rows and columns
+              This operation is the heart of vector space duality.
 
               </p>
 
@@ -116,7 +91,7 @@
 
         </div>
         </div>
-        <script type='module' src="/dcmath/src/symo.js"> </script>
+        <script type='module' src="/dcmath/src/transo.js"> </script>
         <script src="/dcmath/src/extra/includeHTML.js"> </script>
       </body>
     </html>
