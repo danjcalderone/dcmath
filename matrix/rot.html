@@ -187,10 +187,10 @@
               \begin{bmatrix}
               - & - & U_1^T & - & -\\
               - & - & V_1^T & - & -\\
-              & \vdots & \\
+              & & \vdots & & \\
               - & - & U_k^T & - & -\\
               - & - & V_k^T & - & -\\
-              - & - & u^T &- & -
+              - & - & u^T & - & -
               \end{bmatrix}
               $$
               The last column, \(u\) is an axis of rotation which most exist for
@@ -201,7 +201,8 @@
               </p>
               <p>
               The columns of \(U\) are orthonormal, ie. \(U^TU =I\).  Each pair \(U_j,V_j\)
-              form an orthonormal basis for a plane of rotation.  The matrix \(R\) rotates
+              form an orthonormal basis for a plane of rotation and are not unique within
+              that plane (any orthonormal basis for that plane will do).  The matrix \(R\) rotates
               by an angle of \(\theta_j\) within that plane.  Each plane of rotation is
               orthonormal to the others (and any axes of rotation).
               In 2D, there is just one plane of rotation. In 3D, there is one plane
@@ -216,6 +217,39 @@
               $$
 
               $$
+
+              The full diagonalization is given by
+              $$
+              R =
+              \frac{1}{\sqrt{2}}
+              \begin{bmatrix}
+              | & | & & | & |  & | \\
+              | & | & & | & |  & | \\
+              U_1+iV_1 & U_1-V_1i & \cdots & U_k+V_ki & U_k-V_ki & u \\
+              | & | & & | & |  & | \\
+              | & | & & | & |  & |
+              \end{bmatrix}
+              \begin{bmatrix}
+              c\theta_1 & -s\theta_1 & \cdots & 0 & 0 & 0 \\
+              s\theta_1 & c\theta_1 & \cdots & 0 & 0 & 0 \\
+              \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
+              0 & 0 & \cdots & c\theta_k & -s\theta_k & 0 \\
+              0 & 0 & \cdots & s\theta_k & c\theta_k & 0  \\
+              0 & 0 & \cdots & 0 & 0 & 1
+              \end{bmatrix}
+              \begin{bmatrix}
+              - & - & U_1^T-V_1^Ti & - & -\\
+              - & - & U_1^T + V_1^Ti & - & -\\
+              & & \vdots & & \\
+              - & - & U_k^T-V_k^Ti & - & -\\
+              - & - & U_k^T+V_k^Ti & - & -\\
+              - & - & u^T & - & -
+              \end{bmatrix}
+              \frac{1}{\sqrt{2}}
+              $$
+              Note that \(V\) is unitary, ie. \(V^*V = I\).
+
+
 
               </p>
 
