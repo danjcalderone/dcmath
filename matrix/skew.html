@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+
+
+
+
+      <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+      </head>
+
+      <body>
+      <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+      <!-- <div w3-include-html="nav/topics.html"></div> -->
+      <div class="wrapper">
+        <div class="sidebar">
+        <div w3-include-html="/dcmath/nav/sidebarLinalg.html"></div>
+        </div>
+        <div class=content>
+          <div w3-include-html="/dcmath/nav/topics.html"></div>
+
+
+          <div class=module>
+
+            <div class='img' style="padding:0px" id="matrices-container">
+                <canvas class='CANVAS' id='matrices'  ></canvas>
+                <div class="eqn" id="eqn1y" ></div>
+                <div class="eqn" id="eqn1A" ></div>
+                <div class="eqn" id="eqn1B" ></div>
+                <div class="eqn" id="eqn1C" ></div>
+                <div class="eqn" id="eqn1D" ></div>
+                <div class="eqn" id="eqn1x" ></div>
+
+                <div class="eqn" id="y_vec" ></div>
+                <div class="eqn" id="A_vec" ></div>
+                <div class="eqn" id="x_vec" ></div>
+                <div class="eqn" id="Amaps_vec" ></div>
+                <div class="eqn" id="label2_vec" ></div>
+                <div class="eqn" id="warning2_vec" ></div>
+                <div class="eqn" id="usedigits_vec" ></div>
+              </div>
+
+
+
+            <div class="text" style="padding:40px">
+
+                  <b> MATRIX MULTIPLICATION </b>
+                  <p>
+
+                  When we multiply two matrices \(A\) and \(B\) together \(AB\)
+                  we can think of \(A\) as acting on each of the columns of \(B\) separately
+
+                  $$
+                  AB =
+                  \Bigg[\ \ A \ \ \Bigg]
+                  \begin{bmatrix}
+                  | &   & | \\
+                  B_1  & \cdots & B_n \\
+                  | &  & | \\
+                  \end{bmatrix}
+                  $$
+                  $$
+                  AB
+                  =
+                  \begin{bmatrix}
+                  | &   & | \\
+                  AB_1  & \cdots & AB_n \\
+                  | &  & | \\
+                  \end{bmatrix}
+                  $$
+                  Visually, the columns of the matrix \(A\) give the vectors
+                  that the standard bases vectors map to under the transformation
+                  \(A\).  If we can picture the columns of \(B\) by themselves,
+                  the columns of \(AB\) are just where the columns of \(B\) would be
+                  relative to the basis of the columns of \(A\).  Squinting our eyes
+                  in this way we can see each of the successive transformations
+                  represented by a multiplication of the form.
+                  $$
+                  M = ABCD...
+                  $$.
+
+                </p>
+
+                </div>
+              </div>
+
+
+
+        </div>
+        </div>
+        <script type='module' src="/dcmath/src/skewo.js"> </script>
+        <script src="/dcmath/src/extra/includeHTML.js"> </script>
+      </body>
+    </html>

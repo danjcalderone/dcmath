@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+    <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+    </head>
+
+    <body>
+    <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+    <!-- <div w3-include-html="nav/topics.html"></div> -->
+    <div class="wrapper">
+      <div class="sidebar">
+      <div w3-include-html="/dcmath/nav/sidebarLinalg.html"></div>
+      </div>
+      <div class=content>
+        <div w3-include-html="/dcmath/nav/topics.html"></div>
+
+
+        <div class=module>
+          <div class='img' style="padding:0px" id="matrix-container">
+                  <canvas id='matrix' class='CANVAS'></canvas>
+                  <div class="eqn" id="y_mat" ></div>
+                  <div class="eqn" id="A_mat" ></div>
+                  <div class="eqn" id="x_mat" ></div>
+                  <div class="eqn" id="Amaps_mat" ></div>
+                  <div class="eqn" id="label2_mat" ></div>
+                  <div class="eqn" id="warning2_mat" ></div>
+                  <div class="eqn" id="usedigits_mat" ></div>
+          </div>
+          <div class="text" style="padding:40px">
+
+                <b> LINEAR TRANSFORMATIONS </b>
+                <p>
+
+                $$ y = Ax$$
+
+                A matrix \( A \) can be used to represent a linear transformation from one
+                vector space another. Any point \(x\) in the domain maps to \(y=Ax\) in the co-domain.
+                Each standard basis vector gets mapped to
+                the corresponding column of \(A\). For example,
+
+                $$
+                \begin{bmatrix}
+                | & | & & | \\
+                A_1  & A_2  & \cdots & A_n \\
+                | & | & & | \\
+                \end{bmatrix}
+                \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
+                = \begin{bmatrix} | \\ A_2 \\ | \end{bmatrix}
+                $$
+
+                A general vector \(x\) with nonzero components
+                in multiple coordinates gets mapped to a weighted sum of the columns of \(A\)
+
+                $$
+                y =  \begin{bmatrix}
+                  | & & | \\
+                  A_1 & \cdots & A_n \\
+                  | & & | \\
+                  \end{bmatrix}
+                  \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}
+                $$
+
+                $$
+                y = \begin{bmatrix} | \\ A_1 \\ | \end{bmatrix} x_1 + \cdots +
+                \begin{bmatrix} | \\ A_n \\ | \end{bmatrix} x_n
+                $$
+
+                Another way of saying this is that \(Ax\) is a short hand for a linear
+                combination of the columns of \(A\) with coefficients given by the elements of \(x\).
+
+                Note that we can map sets of \(x\)'s (such as the simplex, unit sphere, etc) through
+                \(A\) as well as points.  The span of the columns of \(A\) is called
+                the "column space" or the "range" of \(A\) (more below).
+              </p>
+
+              </div>
+            </div>
+
+
+
+
+      </div>
+      </div>
+    <!-- <script type='module' src="./matrixo.js"> </script> -->
+    <script src="/dcmath/src/extra/includeHTML.js"> </script>
+    </body>
+  </html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+
+
+      <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+      </head>
+
+      <body>
+      <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+      <!-- <div w3-include-html="nav/topics.html"></div> -->
+      <div class="wrapper">
+        <div class="sidebar">
+        <div w3-include-html="/dcmath/nav/sidebarLinalg.html"></div>
+        </div>
+        <div class=content>
+          <div w3-include-html="/dcmath/nav/topics.html"></div>
+
+
+          <div class=module>
+            <div class='img' style="padding:0px" id="inverse-container">
+            </div>
+            <div class="text" style="padding:40px">
+
+                  <b> INVERSES </b>
+                  <p>
+
+                  We say \(P\) is invertible if there is a unique \(x'\) that
+                  solves \(x=Px'\) for any \(x \in \mathbb{R}^n \).  The phrase
+                  "for any \(x\)" requires that the columns of \(P\) span \(\mathbb{R}^n \).
+                  For \(x'\) to be unique, we need each column of \(P\) to point in a different
+                  direction in \(\mathbb{R}^n\) (again more later).
+
+                  The inverse of \(P\) is the matrix \(P^{-1}\) such that \(PP^{-1} = I \)
+                  Expanding this equation we have that
+                  $$
+                  I = PP^{-1} =
+                  \Bigg[
+                  \ \ P \ \
+                  \Bigg]
+                  \begin{bmatrix}
+                  | &   & | \\
+                  Q_1  & \cdots & Q_n \\
+                  | &  & |
+                  \end{bmatrix}
+                =
+                \begin{bmatrix}
+                | &   & | \\
+                PQ_1  & \cdots & PQ_n \\
+                | &  & |
+                \end{bmatrix}
+                $$
+
+                Thus, \(Q_i\), the \(i\)th column of \(P^{-1}\) is the coordinates of
+                the \(i\)th standard basis vector with respect to the columns of P.
+                Setting \(x' = P^{-1}x\) then gives that \(x=Px'\) will be satisfied.
+                Note that for square, invertible \(P\), \(P^{-1}\) is unique and \(P^{-1}P=I\).
+                While maybe not surprising, proving these facts is slightly more involved.
+
+              </p>
+                </div>
+              </div>
+
+
+
+        </div>
+        </div>
+      <!-- <script type='module' src="./matrixo.js"> </script> -->
+      <script src="/dcmath/src/extra/includeHTML.js"> </script>
+      </body>
+    </html>
