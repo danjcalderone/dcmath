@@ -252,8 +252,8 @@ body{
   left: 0;
   margin: 0px;
   padding: 0px;
-  width: 1000px;
-  height: 1000px;
+  width: 900px;
+  height: 9000px;
   border-style: solid;
 }
 
@@ -262,8 +262,8 @@ body{
   padding: 0px;
   margin: 10px;
   position: relative;
-  width: 1000px;
-  height: 1000px;
+  width: 900px;
+  height: 9000px;
 }
 
 
@@ -281,7 +281,7 @@ body{
 
 .wrapper .content .module .text {
   flex: 0 1 auto;
-    margin: 20px;
+    margin: 100px 20px 20px;
     padding: 40px;
     /* width: 350px;
     height: */
@@ -303,8 +303,8 @@ body{
 @media all and (max-width:1800px) {
   .wrapper .content .module {justify-content: center}
   .wrapper .content .module .text {width:100%; height: auto}
-  .wrapper .content .module .img {width:1000px; height: 1000px}
-  .wrapper .content .module .CANVAS {width:1000px; height: 1000px}
+  .wrapper .content .module .img {width:900px; height: 900px}
+  .wrapper .content .module .CANVAS {width:900px; height: 900px}
 }
 
 
