@@ -300,11 +300,11 @@ body{
     }
 
 
-@media all and (max-width:1600px) {
+@media all and (max-width:1700px) {
   .wrapper .content .module {justify-content: center}
   .wrapper .content .module .text {width:100%; height: auto}
-  .wrapper .content .module .img {width:900px; height: 900px}
-  .wrapper .content .module .CANVAS {width:900px; height: 900px}
+  .wrapper .content .module .img {width:1000px; height: 1000px}
+  .wrapper .content .module .CANVAS {width:1000px; height: 1000px}
 }
 
 
@@ -360,7 +360,7 @@ body{
   justify-content: center;
   align-items: center;
   position: relative;
-  max-width: 1200px;
+  max-width: 1300px;
 
 }
 
