@@ -100,10 +100,18 @@ body{
   list-style: none;
 }
 
+
+
+
+
+
+
+
+
 .wrapper .sidebar h4{
   color: rgba(34, 76, 127, 0.9);
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 22px;
   text-align: center;
   padding: 60px 0px 10px;
 }
@@ -111,7 +119,7 @@ body{
 .wrapper .sidebar h1{
   color: rgba(34, 76, 127, 0.9);
   text-transform: uppercase;
-  font-size: 24px;
+  font-size: 30px;
   text-align: center;
   padding: 40px 30px 20px;
 }
@@ -129,7 +137,7 @@ body{
 .wrapper .sidebar h3 {
   color: rgba(34, 76, 127,0.9);
   padding: 35px 55px 5px;
-  font-size: 16px;
+  font-size: 24px;
   border-bottom: 1px solid rb;
 }
 
@@ -145,6 +153,7 @@ body{
   color: rgba(34, 76.0, 127, 0.9);
   display: block;
   text-decoration: none;
+  font-size: 20px;
 }
 
 .wrapper .sidebar li un{
