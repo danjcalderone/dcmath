@@ -283,7 +283,7 @@ body{
   flex: 0 1 auto;
     margin: 20px;
     padding: 40px;
-    width: 300px;
+    width: 350px;
     height: 800px;
     background-color: rgba(64, 106, 157, 0.1);
     font-size: 16px;
@@ -303,8 +303,8 @@ body{
 @media all and (max-width:1800px) {
   .wrapper .content .module {justify-content: center}
   .wrapper .content .module .text {width:100%; height: auto}
-  .wrapper .content .module .img {width:1000px; height: 1000px}
-  .wrapper .content .module .CANVAS {width:1000px; height: 1000px}
+  .wrapper .content .module .img {width:1050px; height: 1050px}
+  .wrapper .content .module .CANVAS {width:1050px; height: 1050px}
 }
 
 
