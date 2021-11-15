@@ -57,14 +57,36 @@
       <div class=module>
         <div style:'flex:1'>
         <div class=header > Highlighted Visualization </div>
-        <div class='img' style="padding:0px" id="hypershape-container">
+
+        <!-- <div class='img' style="padding:0px" id="hypershape-container">
         <canvas class='CANVAS' id='hypershape' ></canvas>
+      </div>
+    </div> -->
+
+
+    <div class='img' style="padding:0px" id="matrices-container">
+        <canvas class='CANVAS' id='matrices'  ></canvas>
+        <div class="eqn" id="eqn1y" ></div>
+        <div class="eqn" id="eqn1A" ></div>
+        <div class="eqn" id="eqn1B" ></div>
+        <div class="eqn" id="eqn1C" ></div>
+        <div class="eqn" id="eqn1D" ></div>
+        <div class="eqn" id="eqn1x" ></div>
+
+        <div class="eqn" id="y_vec" ></div>
+        <div class="eqn" id="A_vec" ></div>
+        <div class="eqn" id="x_vec" ></div>
+        <div class="eqn" id="Amaps_vec" ></div>
+        <div class="eqn" id="label2_vec" ></div>
+        <div class="eqn" id="warning2_vec" ></div>
+        <div class="eqn" id="usedigits_vec" ></div>
       </div>
     </div>
 
+
       <div class="text" style="padding:40px">
 
-    <b> HYPERSHAPES </b>
+    <!-- <b> HYPERSHAPES </b>
     <p>
     We're used to drawing 2D projections of 3D shapes.
     This process can be extended to n-dimensions by defining a
@@ -91,14 +113,77 @@
     subspaces back together into some "nD" image.
     The answer remains unclear.
 
-  </p>
+  </p> -->
+
+
+    <b> ROTATION MATRIX </b>
+    <p>
+
+    The inverse of a rotation matrix is its transpose
+
+    $$  R^{-1} = R^T $$
+    This relationship is equivalent to the columns being orthonormal.
+    Explicitly
+    $$ R^{-1}R = R^TR =I $$
+
+    $$ R^TR =
+    \begin{bmatrix}
+    - & R_1^T & - \\
+    & \vdots & \\
+    - & R_n^T & - \\
+    \end{bmatrix}
+    \begin{bmatrix}
+    | & & | \\
+    R_1 & \cdots & R_n \\
+    | & & |
+    \end{bmatrix}
+    $$
+    $$
+    \begin{bmatrix}
+    R_1^TR_1 & \cdots & R_1^TR_n \\
+    \vdots & \ddots  & \vdots \\
+    R_n^TR_1 & \cdots & R_n^TR_n
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    1 & \cdots & 0 \\
+    \vdots & \ddots & \vdots \\
+    0 & \cdots  & 1
+    \end{bmatrix}
+    $$
+    Elementwise:
+
+    $$ R_i^TR_j =
+    \begin{cases}
+    1 & i = j \textbf{ (normal)} \\
+    0 & i \neq j \textbf{ (orthogonal)}
+    \end{cases}
+    $$
+
+    Visually this means the columns (and rows) of \(R\) are orthogonal vectors on the unit sphere.
+
+    </p>
+
+    <p>
+    Example: a counter-clockwise 2D rotation given by
+    $$
+    R_{2 \times 2} =
+    \begin{bmatrix}
+    \cos \theta & - \sin \theta \\
+    \sin \theta & \cos \theta
+    \end{bmatrix}
+    $$
+    </p>
+
+      </div>
+
 
 </div>
 </div>
 </div>
 </div>
 
-  <script type='module' src="/dcmath/src/hypershapeo.js"> </script>
+  <script type='module' src="/dcmath/src/roto.js"> </script>
   <script src="/dcmath/src/extra/includeHTML.js"> </script>
 
 
