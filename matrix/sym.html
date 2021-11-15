@@ -73,42 +73,34 @@
 
             <div class="text" style="padding:40px">
 
-                  <b> MATRIX MULTIPLICATION </b>
-                  <p>
+              <b> SYMMETRIC </b>
+              <p>
 
-                  When we multiply two matrices \(A\) and \(B\) together \(AB\)
-                  we can think of \(A\) as acting on each of the columns of \(B\) separately
+              A symmetric matrix equals its transpose.
 
-                  $$
-                  AB =
-                  \Bigg[\ \ A \ \ \Bigg]
-                  \begin{bmatrix}
-                  | &   & | \\
-                  B_1  & \cdots & B_n \\
-                  | &  & | \\
-                  \end{bmatrix}
-                  $$
-                  $$
-                  AB
-                  =
-                  \begin{bmatrix}
-                  | &   & | \\
-                  AB_1  & \cdots & AB_n \\
-                  | &  & | \\
-                  \end{bmatrix}
-                  $$
-                  Visually, the columns of the matrix \(A\) give the vectors
-                  that the standard bases vectors map to under the transformation
-                  \(A\).  If we can picture the columns of \(B\) by themselves,
-                  the columns of \(AB\) are just where the columns of \(B\) would be
-                  relative to the basis of the columns of \(A\).  Squinting our eyes
-                  in this way we can see each of the successive transformations
-                  represented by a multiplication of the form.
-                  $$
-                  M = ABCD...
-                  $$.
+              $$  S = S^T $$
 
-                </p>
+              Elementwise:
+              $ S_{ij}=S_{ji}$
+
+              Matrix form:
+              $$
+              S =
+              \begin{bmatrix}
+              S_{11} & S_{12} & \cdots & S_{1n} \\
+              S_{12}& S_{22} & \cdots & S_{2n} \\
+              \vdots & \vdots & \ddots & \vdots \\
+              S_{1n} & S_{2n} & \cdots & S_{nn}
+              \end{bmatrix}
+              $$
+              </p>
+
+              <p>
+              The eigenvalues of a symmetric matrix are purely real and there exists an orthonormal basis of eigenvectors.
+              The diagonalization is given
+
+              </p>
+
 
                 </div>
               </div>
