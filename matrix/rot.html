@@ -172,7 +172,7 @@
               \begin{bmatrix}
               | & | & & | & |  & | \\
               | & | & & | & |  & | \\
-              U_1 & V_1 & \cdots & U_k & V_k & u \\
+              U_1 & V_1 & \cdots & U_k & V_k & \sqrt{2}u \\
               | & | & & | & |  & | \\
               | & | & & | & |  & |
               \end{bmatrix}
@@ -190,7 +190,7 @@
               & & \vdots & & \\
               - & - & U_k^T & - & -\\
               - & - & V_k^T & - & -\\
-              - & - & u^T & - & -
+              - & - & \sqrt{2}u^T & - & -
               \end{bmatrix}
               $$
               The last column, \(u\) is an axis of rotation which most exist for
@@ -215,17 +215,42 @@
               eigenvalues and eigenvectors) through the relationship
 
               $$
+              \begin{bmatrix}
+              c\theta & s\theta \\
+              s \theta & c\theta
+              \end{bmatrix}
+              =
+              \underbrace{\frac{1}{\sqrt{2}}
+              \begin{bmatrix}
+              1 & 1 \\
+              -i & i
+              \end{bmatrix}
+              }_{W}
+              \begin{bmatrix}
+              c\theta+is\theta & 0 \\
+              0 & c\theta-is\theta
+              \end{bmatrix}
+              \underbrace{
+              \begin{bmatrix}
+              1 & i\\
+              1 & -i
+              \end{bmatrix}
+              \frac{1}{\sqrt{2}}}_{W^*}
+              $$
+              Note that this is the diagonalization of a 2D rotation matrix and that \(W\)
+              is unitary, ie. \(W^*W =I\).
+
 
               $$
 
-              The full diagonalization is given by
+              Plugging in, we can compute the full diagonalization.
               $$
               R =
               \frac{1}{\sqrt{2}}
               \begin{bmatrix}
               | & | & & | & |  & | \\
               | & | & & | & |  & | \\
-              U_1+iV_1 & U_1-V_1i & \cdots & U_k+V_ki & U_k-V_ki & u \\
+              U_1-iV_1 & U_1+V_1i & \cdots & U_k-V_ki & U_k+V_ki & u \\
               | & | & & | & |  & | \\
               | & | & & | & |  & |
               \end{bmatrix}
