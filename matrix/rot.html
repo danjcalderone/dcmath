@@ -50,6 +50,9 @@
 
 
           <div class=module>
+            <div style:'flex:1'>
+            <div class=header style="font-size:40"> Rotation Matrix </div>
+
 
             <div class='img' style="padding:0px" id="matrices-container">
                 <canvas class='CANVAS' id='matrices'  ></canvas>
@@ -69,46 +72,77 @@
                 <div class="eqn" id="usedigits_vec" ></div>
               </div>
 
-
+            </div>
 
             <div class="text" style="padding:40px">
 
-                  <b> MATRIX MULTIPLICATION </b>
-                  <p>
+              <b> SYMMETRIC MATRIX </b>
+              <p>
 
-                  When we multiply two matrices \(A\) and \(B\) together \(AB\)
-                  we can think of \(A\) as acting on each of the columns of \(B\) separately
+              The inverse of a rotation matrix is its transpose
 
-                  $$
-                  AB =
-                  \Bigg[\ \ A \ \ \Bigg]
-                  \begin{bmatrix}
-                  | &   & | \\
-                  B_1  & \cdots & B_n \\
-                  | &  & | \\
-                  \end{bmatrix}
-                  $$
-                  $$
-                  AB
-                  =
-                  \begin{bmatrix}
-                  | &   & | \\
-                  AB_1  & \cdots & AB_n \\
-                  | &  & | \\
-                  \end{bmatrix}
-                  $$
-                  Visually, the columns of the matrix \(A\) give the vectors
-                  that the standard bases vectors map to under the transformation
-                  \(A\).  If we can picture the columns of \(B\) by themselves,
-                  the columns of \(AB\) are just where the columns of \(B\) would be
-                  relative to the basis of the columns of \(A\).  Squinting our eyes
-                  in this way we can see each of the successive transformations
-                  represented by a multiplication of the form.
-                  $$
-                  M = ABCD...
-                  $$.
+              $$  R^{-1} = R^T $$
+              This relationship is equivalent to the columns being orthonormal.
+              Explicitly
+              $$ R^{-1}R = R^TR =I $$
 
-                </p>
+              $$ R^TR =
+              \begin{bmatrix}
+              - & R_1^T & - \\
+              & \vdots & \\
+              - & R_n^T & - \\
+              \end{bmatrix}
+              \begin{bmatrix}
+              | & & | \\
+              R_1 & \cdots & R_n \\
+              | & & |
+              \end{bmatrix}
+              $$
+              $$
+              \begin{bmatrix}
+              R_1^TR_1 & \cdots & R_1^TR_n \\
+              \vdots & \ddots  & \vdots \\
+              R_n^TR_1 & \cdots & R_n^TR_n
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+              1 & \cdots & 0 \\
+              \vdots & \ddots & \vdots \\
+              0 & \cdots  & 1
+              \end{bmatrix}
+              $$
+              Elementwise:
+
+              $$ R_i^TR_j =
+              \begin{cases}
+              1 & i = j \text{ (normal)} \\
+              0 & i \neq j \text{ (orthogonal)}
+              \end{cases}
+              $$
+
+              </p>
+
+              <p>
+              Example: a counter-clockwise 2D rotation given by
+              $$
+              R_{2 \times 2} =
+              \begin{bmatrix}
+              \cos \theta & - \sin \theta \\
+              \sin \theta & \cos \theta
+              \end{bmatrix}
+              $$
+              </p>
+
+              <p>
+
+              The eigenvalues of a rotation matrix take the form
+              $$ \lambda_{k,k+} = \cos \theta_k \pm \sin \theta_k $$
+              For dimensions greater than \(2 \times 2\), there may be multiple angles
+              \(\theta_k\)
+
+              </p>
+
+
 
                 </div>
               </div>
