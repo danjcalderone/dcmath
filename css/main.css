@@ -149,6 +149,12 @@ body{
   border-bottom: 1px solid rb;
 }
 
+.wrapper .sidebar h5 {
+  color: rgba(34, 76, 127,0.9);
+  padding: 5px 55px 5px;
+  font-size: 22px;
+  border-bottom: 1px solid rb;
+}
 
 
 .wrapper .sidebar li{
