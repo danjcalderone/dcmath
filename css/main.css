@@ -97,7 +97,7 @@ body{
   position: relative;
   min-width: 200px;
   max-width: 400px;
-  height: 100%;
+  /* height: 100%; */
   background-color: #bac3c9c7;
 }
 
