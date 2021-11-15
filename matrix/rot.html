@@ -171,7 +171,9 @@
               R =
               \begin{bmatrix}
               | & | & & | & |  & | \\
+              | & | & & | & |  & | \\
               U_1 & V_1 & \cdots & U_k & V_k & u \\
+              | & | & & | & |  & | \\
               | & | & & | & |  & |
               \end{bmatrix}
               \begin{bmatrix}
@@ -183,12 +185,12 @@
               0 & 0 & \cdots & 0 & 0 & 1
               \end{bmatrix}
               \begin{bmatrix}
-              - & U_1^T & - \\
-              - & V_1^T & - \\
+              - & - & U_1^T & - & -\\
+              - & - & V_1^T & - & -\\
               & \vdots & \\
-              - & U_k^T & - \\
-              - & V_k^T & - \\
-              - & u^T &
+              - & - & U_k^T & - & -\\
+              - & - & V_k^T & - & -\\
+              - & - & u^T &- & -
               \end{bmatrix}
               $$
 

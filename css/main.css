@@ -367,8 +367,8 @@ body{
 
 .wrapper .content .seg .text {
     flex: 3 1 auto;
+    padding: 40px;
       margin: 10px;
-      padding: 40px;
       height: auto;
       background-color: rgba(64, 106, 157, 0.1);
       font-size: 16px;
