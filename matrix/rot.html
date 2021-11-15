@@ -260,17 +260,32 @@
               0 & 0 & \cdots & 0 & 0 & 1
               \end{bmatrix}
               \begin{bmatrix}
-              - & - & U_1^T-V_1^Ti & - & -\\
-              - & - & U_1^T + V_1^Ti & - & -\\
+              - & - & U_1^T+V_1^Ti & - & -\\
+              - & - & U_1^T - V_1^Ti & - & -\\
               & & \vdots & & \\
-              - & - & U_k^T-V_k^Ti & - & -\\
               - & - & U_k^T+V_k^Ti & - & -\\
+              - & - & U_k^T-V_k^Ti & - & -\\
               - & - & u^T & - & -
               \end{bmatrix}
               \frac{1}{\sqrt{2}}
               $$
               Note that \(V\) is unitary, ie. \(V^*V = I\).
 
+              \(U\) and \(V\) are relate via \(W\):
+
+              $$
+              V = U
+              \underbrace{
+              \begin{bmatrix}
+              W & \cdots & 0 & 0 \\
+              \vdots & \ddots & \vdots & \vdots \\
+              0 & \cdots & W & 0 \\
+              0 & \cdots & 0 & 1
+              \end{bmatrix}
+            }_{\tilde{W}}
+              $$
+              The fact that \(V\) is unitary can then be shown as
+              \(V^*V = U^T\tilde{W}^*\tilde{W}U = U^TIU = I\)
 
 
               </p>
