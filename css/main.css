@@ -252,8 +252,8 @@ body{
   left: 0;
   margin: 0px;
   padding: 0px;
-  width: 800px;
-  height: 800px;
+  width: 1000px;
+  height: 1000px;
   border-style: solid;
 }
 
@@ -262,8 +262,8 @@ body{
   padding: 0px;
   margin: 10px;
   position: relative;
-  width: 800px;
-  height: 800px;
+  width: 1000px;
+  height: 1000px;
 }
 
 
