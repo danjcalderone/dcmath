@@ -45,6 +45,8 @@ nav li a {
   color: #ececec;
 }
 
+
+
 nav li:hover a{
   /* color: #583d72; */
   background: #594f8d;
@@ -57,32 +59,9 @@ nav li a:active {
   color: #ececec;
 }
 
-
-
-
-
-
-
-nav li aa {
-  display: block;
-  padding: 10px 15px;
-  text-decoration: none;
-  color: rgb(200,200,200);
+nav li un {
+  color: rgb(100,100,100);
 }
-
-nav li:hover aa{
-  /* color: #583d72; */
-  background: #594f8d;
-}
-nav li aa:hover{
-  color: #fff;
-}
-
-nav li aa:active {
-  color: #ececec;
-}
-
-
 
 
 
