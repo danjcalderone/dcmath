@@ -180,8 +180,8 @@
               c\theta_1 & -s\theta_1 & \cdots & 0 & 0 & 0 \\
               s\theta_1 & c\theta_1 & \cdots & 0 & 0 & 0 \\
               \vdots & \vdots & \ddots & \vdots & \vdots & \vdots \\
-              0 & 0 & \cdots & c\theta_1 & -s\theta_1 & 0 \\
-              0 & 0 & \cdots & s\theta_1 & c\theta_1 & 0  \\
+              0 & 0 & \cdots & c\theta_k & -s\theta_k & 0 \\
+              0 & 0 & \cdots & s\theta_k & c\theta_k & 0  \\
               0 & 0 & \cdots & 0 & 0 & 1
               \end{bmatrix}
               \begin{bmatrix}
@@ -193,10 +193,33 @@
               - & - & u^T &- & -
               \end{bmatrix}
               $$
+              The last column, \(u\) is an axis of rotation which most exist for
+              odd dimensional matrices since the eigenvalues must come in conjugate pairs.
+              Note that if some of the angles \(\theta_j = 0\) then the "axis" of rotation
+              may actually be a higher-dimensional subspace.  For even dimensional matrices
+              there may be no axis of rotation
+              </p>
+              <p>
+              The columns of \(U\) are orthonormal, ie. \(U^TU =I\).  Each pair \(U_j,V_j\)
+              form an orthonormal basis for a plane of rotation.  The matrix \(R\) rotates
+              by an angle of \(\theta_j\) within that plane.  Each plane of rotation is
+              orthonormal to the others (and any axes of rotation).
+              In 2D, there is just one plane of rotation. In 3D, there is one plane
+              of rotation and an axis of rotation.  In 4D, there are two a separate
+              planes of rotation.  In 5D, there are two planes and one axis, etc.
+              </p>
 
-              asdfasdf
+              <p>
+              The above "semi"-diagonalization is related to the full diagonalization (with complex
+              eigenvalues and eigenvectors) through the relationship
+
+              $$
+
+              $$
 
               </p>
+
+
 
 
 
