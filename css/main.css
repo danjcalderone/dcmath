@@ -67,8 +67,7 @@ nav li b {
   display: block;
   padding: 10px 15px;
   text-decoration: none;
-  color: #ececec;
-  background: rgba(100,0,0,0.2);
+  color: rgb(200,200,200);
 }
 
 nav li:hover b{
