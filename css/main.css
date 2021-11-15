@@ -86,7 +86,7 @@ body{
 } */
 
 .wrapper {
-  display: flex;
+  display: flex-grow;
   justify-content: flex-start;
   align-items: flex-start;
   position: relative;
