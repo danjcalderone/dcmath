@@ -122,46 +122,58 @@
                     1 & e^{\tfrac{2\pi(n-1)}{n}i} & e^{\tfrac{2\pi(n-1)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(n-1)(n-2)}{n}i} & e^{\tfrac{2\pi(n-1)(n-1)}{n}i} \\
                     \end{bmatrix}
                     $$
-                    Note the columns
-
                     Note the symmetries of this matrix.
+                  </p>
+                  <b> Alternative Forms </b>
 
-                  As representations of periodic signals, all circulant matrices can be diagonalized
-                  by the discrete Fourier transform (DFT) matrix, \(F \in \mathbb{C}^{n \times n}\).
-                  The DFT matrix is composed of roots of unity and has many symmetries.
-                  Perhaps most significantly it is unitary, \(F^*F = I\).
+                  Although, the DFT matrix is complex, it forms of the eigenvectors of many real matrices
+                  and thus the columns (and rows) of the matrix must come in conjugate pairs.
+                  To see the conjugate pairs, we note that roots of unity can be defined
+                  rotating in either direction and thus we have the relationship
+                  $$
+                  e^{\tfrac{2\pi(k)(\ell)}{n}i} =
+                  e^{\tfrac{2\pi(k)(\ell-n)}{n}i}
+                  e^{\tfrac{2\pi k n}{n}i}
+                  =
+                  e^{\tfrac{2\pi(k)(\ell-n)}{n}i}
+                  $$
+                  This allows us to express the DFT matrix as
                   $$
                   F =
                   \begin{bmatrix}
                   1 & 1 & 1 & \cdots & 1 & 1 \\
-                  1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)}{n}i} & \cdots & e^{\tfrac{2\pi(n-2)}{n}i} & e^{\tfrac{2\pi(n-1)}{n}i} \\
-                  1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(2)(n-2)}{n}i} & e^{\tfrac{2\pi(2)(n-1)}{n}i} \\
+                  1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)}{n}i} & \cdots & e^{\tfrac{2\pi(-2)}{n}i} & e^{\tfrac{2\pi(-1)}{n}i} \\
+                  1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(2)(-2)}{n}i} & e^{\tfrac{2\pi(2)(-1)}{n}i} \\
                   \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-                  1 & e^{\tfrac{2\pi(n-2)}{n}i} & e^{\tfrac{2\pi(n-2)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(n-2)(n-2)}{n}i} & e^{\tfrac{2\pi(n-2)(n-1)}{n}i} \\
-                  1 & e^{\tfrac{2\pi(n-1)}{n}i} & e^{\tfrac{2\pi(n-1)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(n-1)(n-2)}{n}i} & e^{\tfrac{2\pi(n-1)(n-1)}{n}i} \\
+                  1 & e^{\tfrac{2\pi(-2)}{n}i} & e^{\tfrac{2\pi(-2)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(-2)(-2)}{n}i} & e^{\tfrac{2\pi(-2)(-1)}{n}i} \\
+                  1 & e^{\tfrac{2\pi(-1)}{n}i} & e^{\tfrac{2\pi(-1)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(-1)(-2)}{n}i} & e^{\tfrac{2\pi(-1)(-1)}{n}i} \\
+                  \end{bmatrix}
+                  $$
+                  and to note that columns \(\ell\) and \(n-\ell\) are conjugate pairs
+                  (1 and \(n-1\) are pairs, 2 and \(n-2\) are pairs, etc).
+                  We can rearrange the columns of \(F\) to put conjugate pairs together.
+                  $$
+                  F' =
+                  \begin{bmatrix}
+                  1 & 1 & 1 & 1 & 1 & \cdots  \\
+                  1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(-1)}{n}i}& e^{\tfrac{2\pi(2)}{n}i} & e^{\tfrac{2\pi(-1)}{n}i} & \cdots  \\
+                  1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)(-1)}{n}i}& e^{\tfrac{2\pi(2)(2)}{n}i} & e^{\tfrac{2\pi(2)(-2)}{n}i} & \cdots  \\
+                  \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                  1 & e^{\tfrac{2\pi(n-2)}{n}i} & e^{\tfrac{2\pi(n-2)(-1)}{n}i}& e^{\tfrac{2\pi(n-2)(2)}{n}i} & e^{\tfrac{2\pi(n-2)(-2)}{n}i}  & \cdots \\
+                  1 & e^{\tfrac{2\pi(n-1)}{n}i} & e^{\tfrac{2\pi(n-1)(-1)}{n}i}& e^{\tfrac{2\pi(n-1)(2)}{n}i} & e^{\tfrac{2\pi(n-1)(-2)}{n}i}  & \cdots \\
                   \end{bmatrix}
                   $$
                   Elementwise:
                   $$
-                  \Big[\ F \ \Big]_{k\ell} =
-                  e^{\tfrac{2\pi(k)(\ell)}{n}i}, \qquad k,\ell = 0,1,\dots, n-1
+                  \Big[ \ F' \Big]_{k\ell}
                   $$
-                  The DFT matrix is the eigenvectors of the shift matrix
+
                   $$
-                  S = FDF^*
+                  F' = FP
                   $$
-                  Intuitively, the DFT vectors are eigenvectors of forward motion in time.
-                  Since a circulant matrix is a sum of powers of the shift matrix it also can be diagonalized by
-                  the DFT matrix
-                  $$
-                  C =c_0I + c_1S + c_2 S^2 + \cdots + c_{n-1} S^{n-1}
-                  $$
-                  $$
-                  C =c_0FF^* + c_1FDF^* + c_2 FD^2F^* + \cdots + c_{n-1} FD^{n-1}F^*
-                  $$
-                  $$
-                  C =F\Big[c_0I + c_1D + c_2 D^2 + \cdots + c_{n-1}D^{n-1}\Big]F^*
-                  $$
+
+
+
                   </p>
 
 
