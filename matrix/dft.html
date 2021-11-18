@@ -126,6 +126,7 @@
                   </p>
                   <b> Alternative Forms </b>
 
+                  <p>
                   Although, the DFT matrix is complex, it forms of the eigenvectors of many real matrices
                   and thus the columns (and rows) of the matrix must come in conjugate pairs.
                   To see the conjugate pairs, we note that roots of unity can be defined
@@ -142,8 +143,8 @@
                   F =
                   \begin{bmatrix}
                   1 & 1 & 1 & \cdots & 1 & 1 \\
-                  1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)}{n}i} & \cdots & e^{\tfrac{2\pi(-2)}{n}i} & e^{\tfrac{2\pi(-1)}{n}i} \\
-                  1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(2)(-2)}{n}i} & e^{\tfrac{2\pi(2)(-1)}{n}i} \\
+                  1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)}{n}i} & \cdots & e^{\tfrac{2\pi(-2)}{n}i} & e^{\tfrac{2\pi(2)(-1)}{n}i} \\
+                  1 & e^{\tfrac{2\pi(2)}{n}i} & e^{\tfrac{2\pi(2)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(2)(-2)}{n}i} & e^{\tfrac{2\pi(2)(-1)}{n}i} \\
                   \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
                   1 & e^{\tfrac{2\pi(-2)}{n}i} & e^{\tfrac{2\pi(-2)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(-2)(-2)}{n}i} & e^{\tfrac{2\pi(-2)(-1)}{n}i} \\
                   1 & e^{\tfrac{2\pi(-1)}{n}i} & e^{\tfrac{2\pi(-1)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(-1)(-2)}{n}i} & e^{\tfrac{2\pi(-1)(-1)}{n}i} \\
@@ -156,8 +157,8 @@
                   F' =
                   \begin{bmatrix}
                   1 & 1 & 1 & 1 & 1 & \cdots  \\
-                  1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(-1)}{n}i}& e^{\tfrac{2\pi(2)}{n}i} & e^{\tfrac{2\pi(-1)}{n}i} & \cdots  \\
-                  1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)(-1)}{n}i}& e^{\tfrac{2\pi(2)(2)}{n}i} & e^{\tfrac{2\pi(2)(-2)}{n}i} & \cdots  \\
+                  1 & e^{\tfrac{2\pi(1)}{n}i} & e^{\tfrac{2\pi(1)(-1)}{n}i}& e^{\tfrac{2\pi(1)(2)}{n}i} & e^{\tfrac{2\pi(1)(-2)}{n}i} & \cdots  \\
+                  1 & e^{\tfrac{2\pi(2)}{n}i} & e^{\tfrac{2\pi(2)(-1)}{n}i}& e^{\tfrac{2\pi(2)(2)}{n}i} & e^{\tfrac{2\pi(2)(-2)}{n}i} & \cdots  \\
                   \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
                   1 & e^{\tfrac{2\pi(n-2)}{n}i} & e^{\tfrac{2\pi(n-2)(-1)}{n}i}& e^{\tfrac{2\pi(n-2)(2)}{n}i} & e^{\tfrac{2\pi(n-2)(-2)}{n}i}  & \cdots \\
                   1 & e^{\tfrac{2\pi(n-1)}{n}i} & e^{\tfrac{2\pi(n-1)(-1)}{n}i}& e^{\tfrac{2\pi(n-1)(2)}{n}i} & e^{\tfrac{2\pi(n-1)(-2)}{n}i}  & \cdots \\
@@ -165,14 +166,46 @@
                   $$
                   Elementwise:
                   $$
-                  \Big[ \ F' \Big]_{k\ell}
+                  \Big[ \ F' \Big]_{k\ell} = e^{\tfrac{2\pi(k\ell)}}, \qquad k,\ell =0,\pm 1,\pm 2, \cdots, \pm n/2
                   $$
-
+                  Note that \(F'\) and \(F\) are related by
                   $$
                   F' = FP
                   $$
-
-
+                  for the appropriate permutation matrix \(P\).
+                  Circulant matrices can be semi-diagaonlized by the real orthonormal matrix \(\bar{F} = F'\bar{W}\)
+                  $$
+                  \tilde{F} =
+                  \begin{bmatrix}
+                  1 & 1 & 1 & 1 & 1 & \cdots  \\
+                  1 & e^{\tfrac{2\pi(1)}{n}i} & e^{\tfrac{2\pi(1)(-1)}{n}i}& e^{\tfrac{2\pi(1)(2)}{n}i} & e^{\tfrac{2\pi(1)(-2)}{n}i} & \cdots  \\
+                  1 & e^{\tfrac{2\pi(2)}{n}i} & e^{\tfrac{2\pi(2)(-1)}{n}i}& e^{\tfrac{2\pi(2)(2)}{n}i} & e^{\tfrac{2\pi(2)(-2)}{n}i} & \cdots  \\
+                  \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                  1 & e^{\tfrac{2\pi(n-2)}{n}i} & e^{\tfrac{2\pi(n-2)(-1)}{n}i}& e^{\tfrac{2\pi(n-2)(2)}{n}i} & e^{\tfrac{2\pi(n-2)(-2)}{n}i}  & \cdots \\
+                  1 & e^{\tfrac{2\pi(n-1)}{n}i} & e^{\tfrac{2\pi(n-1)(-1)}{n}i}& e^{\tfrac{2\pi(n-1)(2)}{n}i} & e^{\tfrac{2\pi(n-1)(-2)}{n}i}  & \cdots \\
+                  \end{bmatrix}
+                  $$
+                  Elementwise:
+                  $$
+                  \Big[ \ \tilde{F} \Big]_{k\ell} = e^{\tfrac{2\pi(k\ell)}}, \qquad k,\ell =0,\pm 1,\pm 2, \cdots, \pm n/2
+                  $$
+                  where
+                  $$
+                  \tilde{W} =
+                  \begin{bmatrix}
+                  W & \cdots & 0 & 0 \\
+                  \vdots & \ddots & \vdots & \vdots \\
+                  0 & \cdots & W & 0 \\
+                  0 & \cdots & 0 & 1
+                  \end{bmatrix}, \qquad
+                  W =
+                  \frac{1}{\sqrt{2}}
+                  \begin{bmatrix}
+                  1 & 1 \\
+                  -i & i
+                  \end{bmatrix}
+                  $$
+                  Note that both \(W\) and \(\tilde{W}\) are unitary.
 
                   </p>
 
