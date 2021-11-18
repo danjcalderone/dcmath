@@ -166,7 +166,7 @@
                   $$
                   Elementwise:
                   $$
-                  \Big[ \ F' \Big]_{k\ell} = e^{\tfrac{2\pi(k\ell)}}, \qquad k,\ell =0,\pm 1,\pm 2, \cdots, \pm n/2
+                  \Big[ \ F' \Big]_{k\ell} = e^{\tfrac{2\pi(k\ell)}{n}i}, \qquad k,\ell =0,\pm 1,\pm 2, \cdots, \pm n/2
                   $$
                   Note that \(F'\) and \(F\) are related by
                   $$
@@ -178,16 +178,32 @@
                   \tilde{F} =
                   \begin{bmatrix}
                   1 & 1 & 1 & 1 & 1 & \cdots  \\
-                  1 & e^{\tfrac{2\pi(1)}{n}i} & e^{\tfrac{2\pi(1)(-1)}{n}i}& e^{\tfrac{2\pi(1)(2)}{n}i} & e^{\tfrac{2\pi(1)(-2)}{n}i} & \cdots  \\
-                  1 & e^{\tfrac{2\pi(2)}{n}i} & e^{\tfrac{2\pi(2)(-1)}{n}i}& e^{\tfrac{2\pi(2)(2)}{n}i} & e^{\tfrac{2\pi(2)(-2)}{n}i} & \cdots  \\
+                  1 & \sqrt{2}\cos\left(\tfrac{2\pi(1)}{n}\right)
+                  & \sqrt{2}\sin\left(\tfrac{2\pi(1)}{n}\right)
+                  & \sqrt{2}\cos\left(\tfrac{2\pi(1)(2)}{n}\right)
+                  & \sqrt{2}\sin\left(\tfrac{2\pi(1)(-2)}{n}\right) & \cdots  \\
+                  1 & \sqrt{2}\cos\left(\tfrac{2\pi(2)}{n}\right) & \sqrt{2}\sin\left(\tfrac{2\pi(2)(-1)}{n}\right)
+                  & \sqrt{2}\cos\left(\tfrac{2\pi(2)(2)}{n}\right) &
+                  \sqrt{2}\sin\left(\tfrac{2\pi(2)(-2)}{n}\right)
+                   & \cdots  \\
                   \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-                  1 & e^{\tfrac{2\pi(n-2)}{n}i} & e^{\tfrac{2\pi(n-2)(-1)}{n}i}& e^{\tfrac{2\pi(n-2)(2)}{n}i} & e^{\tfrac{2\pi(n-2)(-2)}{n}i}  & \cdots \\
-                  1 & e^{\tfrac{2\pi(n-1)}{n}i} & e^{\tfrac{2\pi(n-1)(-1)}{n}i}& e^{\tfrac{2\pi(n-1)(2)}{n}i} & e^{\tfrac{2\pi(n-1)(-2)}{n}i}  & \cdots \\
+                  1 & \sqrt{2}\cos\left(\tfrac{2\pi(n-2)}{n}\right)
+                   & \sqrt{2}\sin\left(\tfrac{2\pi(n-2)(-1)}{n}\right)
+                   & \sqrt{2}\cos\left(\tfrac{2\pi(n-2)(2)}{n}\right)
+                   & \sqrt{2}\sin\left(\tfrac{2\pi(n-2)(-2)}{n}\right)  & \cdots \\
+                  1 & \sqrt{2}\cos\left(\tfrac{2\pi(n-1)}{n}\right) &
+                  \sqrt{2}\sin\left(\tfrac{2\pi(n-1)(-1)}{n}\right)
+                  & \sqrt{2}\cos\left(\tfrac{2\pi(n-1)(2)}{n}\right)
+                   & \sqrt{2}\sin\left(\tfrac{2\pi(n-1)(-2)}{n}\right)  & \cdots \\
                   \end{bmatrix}
                   $$
                   Elementwise:
                   $$
-                  \Big[ \ \tilde{F} \Big]_{k\ell} = e^{\tfrac{2\pi(k\ell)}}, \qquad k,\ell =0,\pm 1,\pm 2, \cdots, \pm n/2
+                  \Big[ \ \tilde{F} \Big]_{k\ell} =
+                  \begin{cases}
+                  \sqrt{2}\cos\left(\tfrac{2\pi(k\ell)}{n}\right) & \ell \ even \\
+                  \sqrt{2}\sin\left(\tfrac{2\pi(k\ell)}{n}\right) & \ell \ odd
+                  \end{cases}
                   $$
                   where
                   $$
