@@ -51,7 +51,7 @@
 
           <div class=module>
             <div style:'flex:1'>
-            <div class=header style="font-size:40"> TRANSPOSE OPERATION </div>
+            <div class=header style="font-size:40"> MATRIX EXPONENTIAL </div>
             <div class='img' style="padding:0px" id="matrices-container">
                 <canvas class='CANVAS' id='matrices'  ></canvas>
                 <div class="eqn" id="eqn1y" ></div>
@@ -75,11 +75,27 @@
 
             <div class="text" style="padding:40px">
 
-              <b> TRANSPOSE OPERATION </b>
+              <b> Matrix Exponential </b>
               <p>
 
-              The transpose of a matrix, \(A^T\) involves switching the role of the rows and columns
-              This operation is the heart of vector space duality.
+              The matrix exponential gives the solution to the linear differential EQUATION
+
+              $$
+              \dot{x} = Ax, \qquad x(0)=x_0
+              $$
+              as
+              $$
+              x(t) = e^{At} x_0
+              $$
+              and is defined as the Taylor expansion
+
+              $$
+              e^{At} = I + At + \frac{1}{2!}A^2t^2 + \frac{1}{3!}A^3t^3 + \cdots
+              $$
+              $$
+              e^{At} = \sum_{k=0}^\infty \frac{1}{k!}A^kt^k
+              $$
+
 
               </p>
 
@@ -91,7 +107,7 @@
 
         </div>
         </div>
-        <script type='module' src="/dcmath/src/transo.js"> </script>
+        <script type='module' src="/dcmath/src/expmo.js"> </script>
         <script src="/dcmath/src/extra/includeHTML.js"> </script>
       </body>
     </html>
