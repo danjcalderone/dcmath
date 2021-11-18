@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+
+
+
+
+      <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+      </head>
+
+      <body>
+      <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+      <!-- <div w3-include-html="nav/topics.html"></div> -->
+      <div class="wrapper">
+        <div class="sidebar">
+        <div w3-include-html="/dcmath/nav/sidebarMATRIX.html"></div>
+        </div>
+        <div class=content>
+          <div w3-include-html="/dcmath/nav/topics.html"></div>
+
+
+          <div class=module>
+            <div style:'flex:1'>
+            <div class=header style="font-size:40"> GRAMMIANS - MATRIX SHAPE </div>
+            <div class='img' style="padding:0px" id="matrices-container">
+                <canvas class='CANVAS' id='matrices'  ></canvas>
+                <div class="eqn" id="eqn1y" ></div>
+                <div class="eqn" id="eqn1A" ></div>
+                <div class="eqn" id="eqn1B" ></div>
+                <div class="eqn" id="eqn1C" ></div>
+                <div class="eqn" id="eqn1D" ></div>
+                <div class="eqn" id="eqn1x" ></div>
+
+                <div class="eqn" id="y_vec" ></div>
+                <div class="eqn" id="A_vec" ></div>
+                <div class="eqn" id="x_vec" ></div>
+                <div class="eqn" id="Amaps_vec" ></div>
+                <div class="eqn" id="label2_vec" ></div>
+                <div class="eqn" id="warning2_vec" ></div>
+                <div class="eqn" id="usedigits_vec" ></div>
+              </div>
+            </div>
+
+
+
+            <div class="text" style="padding:40px">
+
+              <b> Grammians </b>
+              <p>
+
+              The Grammians of a matrix
+              $$ AA^T \qquad \qquad A^TA$$
+              define its the "shape" separate from it's orientation.
+              The Grammians are always symmetric, positive semi-definite since
+              $$ y^TAA^Ty = |A^Ty|_2^2 \geq 0 $$
+              $$x^TA^TAx = |Ax|_2^2 \geq 0 $$
+
+              Given this, the matrix square roots are always well-defined.
+              $$
+              (AA^T)^{\tfrac{1}{2}}, \qquad \qquad (A^TA)^{\tfrac{1}{2}}
+              $$
+              and actually more fundamental than the Grammians themselves.  The parallels
+              with the two norm of a vector \(x \in \mathbb{R}^n\) or the magnitude
+              of a complex number \(z \in \mathbb{C}\) are strong.
+              $$
+              |x|_2 = \sqrt{x^Tx}, \qquad |z| = \sqrt{z^*z}
+              $$
+              </p>
+
+
+              <b> Polar Decomposition </b>
+              <p>
+              Grammians relate closely to the polar decompositions which break down
+              a matrix into it's shape and orientation and is a precursor to the
+              singular value decomposition (SVD).
+
+              $$ A = (AA^T)^{\tfrac{1}{2}}(AA^T)^{-\tfrac{1}{2}}A $$
+              and, alternatively
+              $$ A = A(A^TA)^{-\tfrac{1}{2}}(A^TA)^{\tfrac{1}{2}} $$
+              </p>
+
+              <b> Pairwise Inner Products </b>
+              <p>
+              Explicitly,
+              for example, the elements of \(A^TA\) are given by the pairwise
+              inner products between columns of \(A\).
+              $$
+              A^TA =
+              \begin{bmatrix}
+              |A_1|_2|A_1|_2 & \cdots & |A_1|_2|A_n|_2\cos\theta_{1n} \\
+              \vdots & & \vdots \\
+              |A_n|_2|A_1|_2\cos\theta_{n1}& \cdots & |A_n|_2|A_n|_2
+              \end{bmatrix}
+              $$
+              where
+              $$
+              A =
+              \begin{bmatrix}
+              | & & | \\
+              A_1 & \cdots & A_n \\
+              | & & |
+              \end{bmatrix}
+              $$
+              and \(\theta_{ij}\) are the angles between the columns.
+              Note that this matrix would stay the same if all the columns were rotated
+              by the same amount.  Explicitly, \(A^TR^T RA = A^TA \) for any rotation \(R\).
+              Similarly, \(AA^T\) is defined by the relative orientation of the rows.
+              </p>
+
+
+                </div>
+              </div>
+
+
+
+        </div>
+        </div>
+        <script type='module' src="/dcmath/src/gramo.js"> </script>
+        <script src="/dcmath/src/extra/includeHTML.js"> </script>
+      </body>
+    </html>
