@@ -78,12 +78,23 @@
               <b> Grammians </b>
               <p>
 
-              The grammians of a matrix \(AA^T\), \(A^TA\) and the corresponding
-              square roots define the shape of a matrix separate from it's orientation.
-              They are always symmetric, positive semi-definite since
+              The Grammians of a matrix
+              $$ AA^T \qquad \qquad A^TA$$
+              define its the "shape" separate from it's orientation.
+              The Grammians are always symmetric, positive semi-definite since
+              $$ y^TAA^Ty = |A^Ty|_2^2 \geq 0 $$
+              $$x^TA^TAx = |Ax|_2^2 \geq 0 $$
 
-              $$ y^TAA^Ty = |A^Ty|_2^2 \geq 0, \qquad \qquad x^TA^TAx = |Ax|_2^2 \geq 0 $$
-
+              Given this, the matrix square roots are always well-defined.
+              $$
+              (AA^T)^{\tfrac{1}{2}}, \qquad \qquad (A^TA)^{\tfrac{1}{2}}
+              $$
+              and actually more fundamental than the Grammians themselves.  The parallels
+              with the two norm of a vector \(x \in \mathbb{R}^n\) or the magnitude
+              of a complex number \(z \in \mathbb{C}\) are strong.
+              $$
+              |x|_2 = \sqrt{x^Tx}, \qquad |z| = \sqrt{z^*z}
+              $$
               </p>
 
 
@@ -96,6 +107,34 @@
               $$ A = (AA^T)^{\tfrac{1}{2}}(AA^T)^{-\tfrac{1}{2}}A $$
               and, alternatively
               $$ A = A(A^TA)^{-\tfrac{1}{2}}(A^TA)^{\tfrac{1}{2}} $$
+              </p>
+
+              <b> Pairwise Inner Products </b>
+              <p>
+              Explicitly,
+              for example, the elements of \(A^TA\) are given by the pairwise
+              inner products between columns of \(A\).
+              $$
+              A^TA =
+              \begin{bmatrix}
+              |A_1|_2|A_1|_2 & \cdots & |A_1|_2|A_n|_2\cos\theta_{1n}
+              \vdots & & \vdots
+              |A_n|_2|A_1|_2\cos\theta_{n1}& \cdots & |A_n|_2|A_n|_2
+              \end{bmatrix}
+              $$
+              where
+              $$
+              A =
+              \begin{bmatrix}
+              | & & | \\
+              A_1 & \cdots & A_n \\
+              | & & |
+              \end{bmatrix}
+              $$
+              and \(\theta_{ij}\) are the angles between the columns.
+              Note that this matrix would stay the same if all the columns were rotated
+              by the same amount.  Explicitly, \(A^TR^T RA = A^TA \) for any rotation \(R\).
+              Similarly, \(AA^T\) is defined by the relative orientation of the rows.
               </p>
 
 
