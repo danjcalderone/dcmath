@@ -86,7 +86,7 @@
               Elementwise, the DFT matrix is given by
               $$
               \Big[\ F \ \Big]_{k\ell} =
-              e^{\tfrac{2\pi(k)(\ell)}{n}i}, \qquad k,\ell = 0,1,\dots, n-1
+              \tfrac{1}{\sqrt{n}}e^{\tfrac{2\pi(k)(\ell)}{n}i}, \qquad k,\ell = 0,1,\dots, n-1
               $$
               (For the expanded form, see below.)
               As representations of periodic signals, all circulant matrices can be diagonalized
@@ -113,6 +113,7 @@
 
                     $$
                     F =
+                    \frac{1}{\sqrt{n}}
                     \begin{bmatrix}
                     1 & 1 & 1 & \cdots & 1 & 1 \\
                     1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)}{n}i} & \cdots & e^{\tfrac{2\pi(n-2)}{n}i} & e^{\tfrac{2\pi(n-1)}{n}i} \\
@@ -141,6 +142,7 @@
                   This allows us to express the DFT matrix as
                   $$
                   F =
+                  \frac{1}{\sqrt{n}}
                   \begin{bmatrix}
                   1 & 1 & 1 & \cdots & 1 & 1 \\
                   1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)}{n}i} & \cdots & e^{\tfrac{2\pi(-2)}{n}i} & e^{\tfrac{2\pi(2)(-1)}{n}i} \\
@@ -176,6 +178,7 @@
                   Circulant matrices can be semi-diagaonlized by the real orthonormal matrix \(\bar{F} = F'\tilde{W}^*\)
                   $$
                   \tilde{F} =
+                  \frac{1}{\sqrt{n}}
                   \begin{bmatrix}
                   1 & 1 & 1 & 1 & 1 & \cdots  \\
                   1 & \sqrt{2}\cos\left(\tfrac{2\pi(1)}{n}\right)
@@ -201,8 +204,9 @@
                   $$
                   \Big[ \ \tilde{F} \Big]_{k\ell} =
                   \begin{cases}
-                  \sqrt{2}\cos\left(\tfrac{2\pi(k\ell)}{n}\right) & \ell \ even \\
-                  \sqrt{2}\sin\left(\tfrac{2\pi(k\ell)}{n}\right) & \ell \ odd
+                  \frac{\sqrt{2}}{\sqrt{n}}
+                  \cos\left(\tfrac{2\pi(k\ell)}{n}\right) & \ell \ even \\
+                  \frac{\sqrt{2}}{\sqrt{n}}\sin\left(\tfrac{2\pi(k\ell)}{n}\right) & \ell \ odd
                   \end{cases}
                   $$
                   where
@@ -222,7 +226,6 @@
                   \end{bmatrix}
                   $$
                   Note that both \(W\) and \(\tilde{W}\) are unitary.
-
                   </p>
 
 
