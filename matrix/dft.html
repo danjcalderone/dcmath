@@ -81,28 +81,17 @@
 
               The discrete Fourier transform matrix forms the eigenvectors for
               circulant matrices which can be used to represent periodic signals.
-
-              $$
-              F =
-              \begin{bmatrix}
-              1 & 1 & 1 & \cdots & 1 & 1 \\
-              1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)}{n}i} & \cdots & e^{\tfrac{2\pi(n-2)}{n}i} & e^{\tfrac{2\pi(n-1)}{n}i} \\
-              1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(2)(n-2)}{n}i} & e^{\tfrac{2\pi(2)(n-1)}{n}i} \\
-              \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-              1 & e^{\tfrac{2\pi(n-2)}{n}i} & e^{\tfrac{2\pi(n-2)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(n-2)(n-2)}{n}i} & e^{\tfrac{2\pi(n-2)(n-1)}{n}i} \\
-              1 & e^{\tfrac{2\pi(n-1)}{n}i} & e^{\tfrac{2\pi(n-1)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(n-1)(n-2)}{n}i} & e^{\tfrac{2\pi(n-1)(n-1)}{n}i} \\
-              \end{bmatrix}
-              $$
-              Elementwise:
+              The DFT matrix is composed of roots of unity and has many symmetries.
+              Perhaps most significantly it is unitary, \(F^*F = I\).
+              Elementwise, the DFT matrix is given by
               $$
               \Big[\ F \ \Big]_{k\ell} =
               e^{\tfrac{2\pi(k)(\ell)}{n}i}, \qquad k,\ell = 0,1,\dots, n-1
               $$
+              (For the expanded form, see below.)
               As representations of periodic signals, all circulant matrices can be diagonalized
               by the discrete Fourier transform (DFT) matrix.
-              The DFT matrix is composed of roots of unity and has many symmetries.
-              Perhaps most significantly it is unitary, \(F^*F = I\).  The unitary
-              nature of the DFT matrix is the finite dimensional version of Parseval's theorem,
+               The unitary nature of the DFT matrix is the finite dimensional version of Parseval's theorem,
               ie. that a signal has the same magnitude in the time and frequency domains.
 
               The DFT matrix is the eigenvectors of the shift matrix
@@ -114,6 +103,72 @@
               </div>
               </div>
 
+
+                  <div class=seg>
+                  <div class="text" style="padding:40px, width:100%">
+                  <b> DFT Matrix Expanded </b>
+
+                  <p>
+
+
+                    $$
+                    F =
+                    \begin{bmatrix}
+                    1 & 1 & 1 & \cdots & 1 & 1 \\
+                    1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)}{n}i} & \cdots & e^{\tfrac{2\pi(n-2)}{n}i} & e^{\tfrac{2\pi(n-1)}{n}i} \\
+                    1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(2)(n-2)}{n}i} & e^{\tfrac{2\pi(2)(n-1)}{n}i} \\
+                    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                    1 & e^{\tfrac{2\pi(n-2)}{n}i} & e^{\tfrac{2\pi(n-2)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(n-2)(n-2)}{n}i} & e^{\tfrac{2\pi(n-2)(n-1)}{n}i} \\
+                    1 & e^{\tfrac{2\pi(n-1)}{n}i} & e^{\tfrac{2\pi(n-1)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(n-1)(n-2)}{n}i} & e^{\tfrac{2\pi(n-1)(n-1)}{n}i} \\
+                    \end{bmatrix}
+                    $$
+                    Note the columns
+
+                    Note the symmetries of this matrix.
+
+                  As representations of periodic signals, all circulant matrices can be diagonalized
+                  by the discrete Fourier transform (DFT) matrix, \(F \in \mathbb{C}^{n \times n}\).
+                  The DFT matrix is composed of roots of unity and has many symmetries.
+                  Perhaps most significantly it is unitary, \(F^*F = I\).
+                  $$
+                  F =
+                  \begin{bmatrix}
+                  1 & 1 & 1 & \cdots & 1 & 1 \\
+                  1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)}{n}i} & \cdots & e^{\tfrac{2\pi(n-2)}{n}i} & e^{\tfrac{2\pi(n-1)}{n}i} \\
+                  1 & e^{\tfrac{2\pi}{n}i} & e^{\tfrac{2\pi(2)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(2)(n-2)}{n}i} & e^{\tfrac{2\pi(2)(n-1)}{n}i} \\
+                  \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+                  1 & e^{\tfrac{2\pi(n-2)}{n}i} & e^{\tfrac{2\pi(n-2)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(n-2)(n-2)}{n}i} & e^{\tfrac{2\pi(n-2)(n-1)}{n}i} \\
+                  1 & e^{\tfrac{2\pi(n-1)}{n}i} & e^{\tfrac{2\pi(n-1)(2)}{n}i} & \cdots & e^{\tfrac{2\pi(n-1)(n-2)}{n}i} & e^{\tfrac{2\pi(n-1)(n-1)}{n}i} \\
+                  \end{bmatrix}
+                  $$
+                  Elementwise:
+                  $$
+                  \Big[\ F \ \Big]_{k\ell} =
+                  e^{\tfrac{2\pi(k)(\ell)}{n}i}, \qquad k,\ell = 0,1,\dots, n-1
+                  $$
+                  The DFT matrix is the eigenvectors of the shift matrix
+                  $$
+                  S = FDF^*
+                  $$
+                  Intuitively, the DFT vectors are eigenvectors of forward motion in time.
+                  Since a circulant matrix is a sum of powers of the shift matrix it also can be diagonalized by
+                  the DFT matrix
+                  $$
+                  C =c_0I + c_1S + c_2 S^2 + \cdots + c_{n-1} S^{n-1}
+                  $$
+                  $$
+                  C =c_0FF^* + c_1FDF^* + c_2 FD^2F^* + \cdots + c_{n-1} FD^{n-1}F^*
+                  $$
+                  $$
+                  C =F\Big[c_0I + c_1D + c_2 D^2 + \cdots + c_{n-1}D^{n-1}\Big]F^*
+                  $$
+                  </p>
+
+
+
+
+                </div>
+              </div>
 
 
 
