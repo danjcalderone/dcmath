@@ -277,6 +277,10 @@
               </p>
 
 
+              <div class=seg>
+              <div class="text" style="padding:40px, width:100%">
+
+
               <b> Case 4: Pairwise Inner Products </b>
               <p>
                 If \(A\) is segmented into rows and \(B\) is segmented into columns,
@@ -305,7 +309,43 @@
                 $$
               </p>
 
-              <b> Case 5: Sum of Outer Products </b>
+              <b> Case 5: Inner Products Around Matrix </b>
+              <p>
+                If \(A\) is segmented into rows, \(B\) is segmented into cols,
+                and \(D\) is some matrix of appropriate dimension, the product
+                \(ADB\) is given by
+
+
+                $$
+                ADB =
+                \begin{bmatrix}
+                - & a_1^T & - \\
+                \vdots & & \vdots \\
+                - & a_N^T & -
+                \end{bmatrix}
+                \Bigg[ \ \ \ D \ \ \ \Bigg]
+                \begin{bmatrix}
+                | & & |\\
+                B_1 & \cdots & B_n \\
+                | & & |\\
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                \underbrace{a_1^TDB_1}_{1 \times 1} & \cdots & a_1^TDB_K \\
+                \vdots & & \vdots  \\
+                a_M^TDB_1 & \cdots & a_M^TDB_K
+                \end{bmatrix}
+                $$
+              </p>
+            </div>
+          </div>
+
+          <div class=seg>
+          <div class="text" style="padding:40px, width:100%">
+
+
+
+              <b> Case 6: Sum of Outer Products </b>
               <p>
                 If \(A\) is segmented into cols and \(B\) is segmented into rows,
                 \(AB\) is a sum of outer-products.
@@ -348,37 +388,10 @@
               </p>
 
 
-              <b> Case 6: Inner Products Around Matrix </b>
-              <p>
-                If \(A\) is segmented into rows, \(B\) is segmented into cols,
-                and \(D\) is some matrix of appropriate dimension, the product
-                \(ADB\) is given by
 
 
-                $$
-                ADB =
-                \begin{bmatrix}
-                - & a_1^T & - \\
-                \vdots & & \vdots \\
-                - & a_N^T & -
-                \end{bmatrix}
-                \Bigg[ \ \ \ D \ \ \ \Bigg]
-                \begin{bmatrix}
-                | & & |\\
-                B_1 & \cdots & B_n \\
-                | & & |\\
-                \end{bmatrix}
-                =
-                \begin{bmatrix}
-                \underbrace{a_1^TDB_1}_{1 \times 1} & \cdots & a_1^TDB_K \\
-                \vdots & & \vdots  \\
-                a_M^TDB_1 & \cdots & a_M^TDB_K
-                \end{bmatrix}
-                $$
-              </p>
 
-
-              <b> Case 6: Outer Products Around Matrix </b>
+              <b> Case 7: Outer Products Around Matrix </b>
               <p>
                 If \(A\) is segmented into cols, \(B\) is segmented into rows,
                 and \(D\) is some matrix of appropriate dimension, the product
@@ -418,6 +431,44 @@
                 $$
               </p>
 
+              <b> Case 8: Diagonal \(D\) </b>
+              <p>
+                If \(D\) is diagonal (as in the case of a diagonalization),
+                we have one sum of outer products
+                $$
+                ADB =
+                \begin{bmatrix}
+                | & & |\\
+                A_1 & \cdots & A_N \\
+                | & & |\\
+                \end{bmatrix}
+                \underbrace{
+                \begin{bmatrix}
+                d_{11} & \cdots & 0 \\
+                \vdots & & \vdots \\
+                0 & \cdots & d_{NN}
+                \end{bmatrix}
+                }_{D}
+                \begin{bmatrix}
+                - & b_1^T & - \\
+                \vdots & & \vdots \\
+                - & b_N^T & -
+                \end{bmatrix}
+                =
+                \sum_j
+                \underbrace{
+                \begin{bmatrix}
+                | \\
+                A_j\\
+                |
+                \end{bmatrix}
+                d_{jj}
+                \begin{bmatrix}
+                - & b_j^T & -
+                \end{bmatrix}
+              }_{M \times L}
+                $$
+              </p>
 
 
               </div>
