@@ -485,7 +485,30 @@
               P = \tfrac{\partial^2 f}{\partial x^2}, \qquad B = \tfrac{\partial g}{\partial x}, \qquad C = \tfrac{\partial h}{x}
               $$
 
-
+              $$
+              AQ^{-1}A^T
+              =
+              \begin{bmatrix}
+              B & 0 \\
+              C & -I
+              \end{bmatrix}
+              \begin{bmatrix}
+              P^{-1} & 0 \\
+              0 & dg(s)^{2}
+              \end{bmatrix}
+              \begin{bmatrix}
+              B^T & C^T \\
+              0 & -I
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+              BP^{-1}B^T & BP^{-1}C^T \\
+              CP^{-1}B^T & CP^{-1}C^T + dg(s)^2
+              \end{bmatrix}
+              $$
+              Block matrix formulas can be applied to invert above.
+              The most efficient computations will depend on the problem parametrs,
+              ie. which matrices are easiest to invert.
 
               <!-- Explicitly checking gives
               $$
@@ -572,6 +595,22 @@
                 =
                 A^T(AA^T)^{-1}A + N(N^TN)^{-1}N^T = I
                 $$
+              </p>
+              <p>
+              Note the close relationship between this inverse and the transpose of the matrix
+              since the two sets of columns are orthogonal.
+              $$
+              \begin{bmatrix}
+               A  \\
+               N^T
+              \end{bmatrix}
+              \bigg[ \ A^T \ \ N \ \bigg]
+              =
+              \begin{bmatrix}
+               AA^T & 0  \\
+              0 &  N^TN
+              \end{bmatrix}
+              $$
               </p>
 
 
