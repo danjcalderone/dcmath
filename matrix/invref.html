@@ -380,7 +380,7 @@
               problem with linear equality constraints
 
               $$
-              \min \quad \tfrac{1}{2}x^TQx - c^Tx, \qquad \text{s.t.} \quad Ax = b
+              \min \quad \tfrac{1}{2}x^TQx - c^Tx, \qquad s.t. \quad Ax = b
               $$
 
               The solution to this system of equations can be given explicitly by inverting the matrix
@@ -399,7 +399,7 @@
               Similar systems of equations arise in using Newton's method for gradient descent.
               In particular, for a general nonlinear equality constrained optimization problem,
               $$
-              \min_x \quad f(x), \qquad \text{s.t.} \quad g(x)=0
+              \min_x \quad f(x), \qquad s.t. \quad g(x)=0
               $$
               The Newton step direction is given by
               $$
@@ -435,11 +435,11 @@
               Interior point methods reframe the equality/inequality constraicned
                optimization problem
                $$
-               \min_{x} \quad f(x) \qquad \text{s.t.} \quad g(x)=0, \ \ h(x) \geq 0
+               \min_{x} \quad f(x) \qquad s.t. \quad g(x)=0, \ \ h(x) \geq 0
                $$
                with barrier functions as
                $$
-               \min_{x,s} \quad tf(x)-\sum_i\ln(s_i) \qquad \text{s.t.} \quad g(x)=0, \ \ h(x)-s = 0
+               \min_{x,s} \quad tf(x)-\sum_i\ln(s_i) \qquad s.t. \quad g(x)=0, \ \ h(x)-s = 0
                $$
 
               The Newton update for this problem is then given by
