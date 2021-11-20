@@ -49,7 +49,7 @@
           <div w3-include-html="/dcmath/nav/topics.html"></div>
 
           <div style:'flex:1'>
-          <div class=header style="font-size:40"> Inverse References </div>
+          <div class=header style="font-size:40"> Block Matrix Structures </div>
         </div>
 <!--
           <div class=module>
@@ -146,50 +146,45 @@
 
               <div class=seg>
               <div class="text" style="padding:40px, width:100%">
-              <b> Orthogonal Principal </b>
+              <b> General Block Matrix Multiplication </b>
               <p>
               $$
               A =
               \begin{bmatrix}
-              | & & | \\
-              A_1 & \cdots & A_n \\
-              | & & |
-              \end{bmatrix},\qquad \qquad
-              A^{-1} =
+              A_{11} & \cdots & A_{1J} \\
+              \vdots & & \vdots \\
+              A_{I1} & \cdots & A_{IJ}
+              \end{bmatrix},\qquad
+              B =
               \begin{bmatrix}
-              - & b_1^T & - \\
-              & \vdots & \\
-              - & b_n^T & -
+              B_{11} & \cdots & B_{1K} \\
+              \vdots & & \vdots \\
+              B_{J1} & \cdots & B_{JK}
               \end{bmatrix}
               $$
+
               $$
-              A^{-1} A =
+              AB =
               \begin{bmatrix}
-              - & b_1^T & - \\
-              & \vdots & \\
-              - & b_n^T & -
-              \end{bmatrix}
-              \begin{bmatrix}
-              | & & | \\
-              A_1 & \cdots & A_n \\
-              | & & |
-              \end{bmatrix}
-              =
-              \begin{bmatrix}
-              b_1^TA_1 & \cdots & b_1^TA_n \\
-              \vdots & \ddots & \vdots \\
-              b_n^TA_1 & \cdots & b_n^TA_n
-              \end{bmatrix}
-              =
-              \begin{bmatrix}
-              1 & \cdots & 0 \\
-              \vdots & \ddots & \vdots \\
-              0 & \cdots & 1
+              A_{11}B_{11}+\cdots+ A_{1J}B_{J1} & \cdots & A_{11}B_{1K}+\cdots+ A_{1J}B_{JK} \\
+              \vdots & & \vdots \\
+              A_{I1}B_{11}+\cdots+ A_{IJ}B_{J1} & \cdots & A_{I1}B_{1K}+\cdots+ A_{IJ}B_{JK}
               \end{bmatrix}
               $$
+
               $$
-              \Rightarrow \qquad \qquad b_i^TA_i = 1, \qquad b_i^TA_j =0, \quad i\neq j
+              AB =
+              \begin{bmatrix}
+              \sum_j A_{1j}B_{j1} & \cdots & \sum_j A_{1j}B_{jK} \\
+              \vdots & & \vdots \\
+              \sum_j A_{Ij}B_{j1} & \cdots & \sum_jA_{Ij}B_{jK}
+              \end{bmatrix}
               $$
+              The inner blocks can be any dimensions as long as dimensions that need to match up are the same.
+              For example \(A_{ij}\) and \(B_{jk}\) need to have matching inner dimensions (the \(j\) dimension)
+              so that the multiplication \(A_{ij}B_{jk}\) makes sense.
+
+
               </p>
               </div>
               </div>
@@ -197,8 +192,93 @@
 
               <div class=seg>
               <div class="text" style="padding:40px, width:100%">
-              <b> Block Matrix Inverse </b>
+              <b> Case 1: Linear Combination of Columns - MOST IMPORTANT </b>
               <p>
+                For matrix \(A \in \mathbb{R}^{m \times n}\) and vector \(x \in \mathbb{R}^n \)
+                $$
+                Ax =
+                \begin{bmatrix}
+                | & & |\\
+                A_1 & \cdots & A_n \\
+                | & & |\\
+                \end{bmatrix}
+                \begin{bmatrix}
+                x_1 \\ \vdots \\ x_n
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                | \\
+                A_1 \\
+                |
+                \end{bmatrix}
+                x_1
+                + \cdots +
+                \begin{bmatrix}
+                | \\
+                A_n \\
+                |
+                \end{bmatrix}
+                x_n
+                $$
+                Here, the interpretation is that the product \(Ax\) is taking linear combinations
+                of the columns of \(A\) with coefficients given by the coordinates of \(x\).
+                Being comfortable with this interpretation is critical to fluency in linear algebra.
+              </p>
+
+              <b> Case 2: Each Column a Set of Coordinates - 2ND MOST IMPORTANT </b>
+              <p>
+                Multiplying a matrix \(A\) with a matrix \(B\) can be thought of as applying
+                the tranformation \(A\) to each column of the matrix \(B\) separately.
+                For matrix \(A \in \mathbb{R}^{M \times N}\) and matrix \(B \in \mathbb{R}^{N \times K}\)
+                $$
+                AB = \bigg[ \ A \ \bigg]
+                \begin{bmatrix}
+                | & & |\\
+                B_1 & \cdots & B_n \\
+                | & & |\\
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                | & & |\\
+                AB_1 & \cdots & AB_n \\
+                | & & |\\
+                \end{bmatrix}
+                $$
+                Each column of \(B\) is a different linear combination of the
+                columns of \(A\).
+              </p>
+
+              <b> Case 3: Projection Onto Rows </b>
+              <p>
+                For matrix \(A \in \mathbb{R}^{M \times N}\) and vector \(x \in \mathbb{R}^N \)
+                if we think of the matrix as rows, the product \(Ax\) is the inner product of
+                \(x\) with each of the rows.
+
+
+                $$
+                Ax = \bigg[ \ A \ \bigg]
+                \begin{bmatrix}
+                - & a_1^T & - \\
+                \vdots & & \vdots \\
+                - & a_N^T & -
+                \end{bmatrix}
+
+                \begin{bmatrix}
+                | \\
+                x \\
+                |
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                 a_1^Tx \\
+                \vdots \\
+                a_N^Tx 
+                \end{bmatrix}
+                $$
+              </p>
+
+
+
                 If \(A\) and \(D-CA^{-1}B\) are invertible:
                 $$
                 \begin{bmatrix}
