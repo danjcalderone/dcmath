@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+
+
+
+
+      <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+      </head>
+
+      <body>
+      <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+      <!-- <div w3-include-html="nav/topics.html"></div> -->
+      <div class="wrapper">
+        <div class="sidebar">
+        <div w3-include-html="/dcmath/nav/sidebarMATRIX.html"></div>
+        </div>
+        <div class=content>
+          <div w3-include-html="/dcmath/nav/topics.html"></div>
+
+          <div style:'flex:1'>
+          <div class=header style="font-size:40"> Inverse References </div>
+        </div>
+<!--
+          <div class=module>
+            <div style:'flex:1'>
+            <div class=header style="font-size:40"> Inverse Reference </div>
+
+
+            <div class='img' style="padding:0px" id="matrices-container">
+                <canvas class='CANVAS' id='matrices'  ></canvas>
+                <div class="eqn" id="eqn1y" ></div>
+                <div class="eqn" id="eqn1A" ></div>
+                <div class="eqn" id="eqn1B" ></div>
+                <div class="eqn" id="eqn1C" ></div>
+                <div class="eqn" id="eqn1D" ></div>
+                <div class="eqn" id="eqn1x" ></div>
+
+                <div class="eqn" id="y_vec" ></div>
+                <div class="eqn" id="A_vec" ></div>
+                <div class="eqn" id="x_vec" ></div>
+                <div class="eqn" id="Amaps_vec" ></div>
+                <div class="eqn" id="label2_vec" ></div>
+                <div class="eqn" id="warning2_vec" ></div>
+                <div class="eqn" id="usedigits_vec" ></div>
+              </div>
+
+            </div>
+
+            <div class="text" >
+
+              <b> ROTATION MATRIX </b>
+              <p>
+
+              The inverse of a rotation matrix is its transpose
+
+              $$  R^{-1} = R^T $$
+              This relationship is equivalent to the columns being orthonormal.
+              Explicitly
+              $$ R^{-1}R = R^TR =I $$
+
+              $$ R^TR =
+              \begin{bmatrix}
+              - & R_1^T & - \\
+              & \vdots & \\
+              - & R_n^T & - \\
+              \end{bmatrix}
+              \begin{bmatrix}
+              | & & | \\
+              R_1 & \cdots & R_n \\
+              | & & |
+              \end{bmatrix}
+              $$
+              $$
+              \begin{bmatrix}
+              R_1^TR_1 & \cdots & R_1^TR_n \\
+              \vdots & \ddots  & \vdots \\
+              R_n^TR_1 & \cdots & R_n^TR_n
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+              1 & \cdots & 0 \\
+              \vdots & \ddots & \vdots \\
+              0 & \cdots  & 1
+              \end{bmatrix}
+              $$
+              Elementwise:
+
+              $$ R_i^TR_j =
+              \begin{cases}
+              1 & i = j
+              0 & i \neq j
+              \end{cases}
+              $$
+
+              Visually this means the columns (and rows) of \(R\) are orthogonal vectors on the unit sphere.
+
+              </p>
+
+              <p>
+              Example: a counter-clockwise 2D rotation given by
+              $$
+              R_{2 \times 2} =
+              \begin{bmatrix}
+              \cos \theta & - \sin \theta \\
+              \sin \theta & \cos \theta
+              \end{bmatrix}
+              $$
+              </p>
+
+                </div>
+              </div> -->
+
+
+
+
+              <div class=seg>
+              <div class="text" style="padding:40px, width:100%">
+              <b> Orthogonal Principal </b>
+              <p>
+              $$
+              A =
+              \begin{bmatrix}
+              | & & | \\
+              A_1 & \cdots & A_n \\
+              | & & |
+              \end{bmatrix},\qquad \qquad
+              A^{-1} =
+              \begin{bmatrix}
+              - & b_1^T & - \\
+              & \vdots & \\
+              - & b_n^T & -
+              \end{bmatrix}
+              $$
+              $$
+              A^{-1} A =
+              \begin{bmatrix}
+              - & b_1^T & - \\
+              & \vdots & \\
+              - & b_n^T & -
+              \end{bmatrix}
+              \begin{bmatrix}
+              | & & | \\
+              A_1 & \cdots & A_n \\
+              | & & |
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+              b_1^TA_1 & \cdots & b_1^TA_n \\
+              \vdots & \ddots & \vdots \\
+              b_n^TA_1 & \cdots & b_n^TA_n
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+              1 & \cdots & 0 \\
+              \vdots & \ddots & \vdots \\
+              0 & \cdots & 1
+              \end{bmatrix}
+              $$
+              $$
+              \Rightarrow \qquad \qquad b_i^TA_i = 1, \qquad b_i^TA_j =0, \quad i\neq j
+              $$
+              </p>
+              </div>
+              </div>
+
+
+              <div class=seg>
+              <div class="text" style="padding:40px, width:100%">
+              <b> Block Matrix Inverse </b>
+              <p>
+                If \(A\) and \(D-CA^{-1}B\) are invertible:
+                $$
+                \begin{bmatrix}
+                A & B \\
+                C & D
+                \end{bmatrix}^{-1}
+                =
+                \begin{bmatrix}
+                I & 0 \\
+                CA^{-1} & I
+                \end{bmatrix}
+                \begin{bmatrix}
+                A & 0 \\
+                0 & D-CA^{-1}B
+                \end{bmatrix}
+                \begin{bmatrix}
+                I & A^{-1}B \\
+                0 & I
+                \end{bmatrix}
+                $$
+              $$
+              \begin{bmatrix}
+              A & B \\
+              C & D
+              \end{bmatrix}^{-1}
+              =
+              \begin{bmatrix}
+              A^{-1} + A^{-1}B(D-CA^{-1}B)^{-1}CA^{-1} & -A^{-1}B(D-CA^{-1}B)^{-1} \\
+              -(D-CA^{-1}B)^{-1}CA^{-1} &  (D-CA^{-1}B)^{-1}
+              \end{bmatrix}
+              $$
+              If \(D\) and \(A-BD^{-1}C\) are invertible:
+              $$
+              \begin{bmatrix}
+              A & B \\
+              C & D
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+              I & BD^{-1} \\
+              0 & I
+              \end{bmatrix}
+              \begin{bmatrix}
+              (A-BD^{-1}C)^{-1} & 0 \\
+              0 & D
+              \end{bmatrix}
+              \begin{bmatrix}
+              I & 0 \\
+              D^{-1}C & I
+              \end{bmatrix}
+
+              $$
+              $$
+              \begin{bmatrix}
+              A & B \\
+              C & D
+              \end{bmatrix}^{-1}
+              =
+              \begin{bmatrix}
+              (A-BD^{-1}C)^{-1} & -(A-BD^{-1}C)^{-1}BD^{-1} \\
+              -D^{-1}C(A-BD^{-1}C)^{-1} & D^{-1} + D^{-1}C(A-BD^{-1}C)^{-1}BD^{-1}
+              \end{bmatrix}
+              $$
+
+
+              If both \(A\) and \(D\) are invertible:
+              $$
+              \begin{bmatrix}
+              A & B \\
+              C & D
+              \end{bmatrix}^{-1}
+              =
+              \begin{bmatrix}
+              (A-BD^{-1}C)^{-1} & 0 \\
+              0 & D-CA^{-1}B)^{-1}
+              \end{bmatrix}
+              \begin{bmatrix}
+              I & -BD^{-1} \\
+              -CA^{-1} & I
+              \end{bmatrix}
+              $$
+
+
+              </p>
+              </div>
+              </div>
+
+              <div class=seg>
+              <div class="text" style="padding:40px, width:100%">
+              <b> Woodbury Matrix Identity </b>
+              <p>
+              This identity is particularly useful for a low-rank inverse updates.
+              $$
+              (A+UCV)^{-1} = A^{-1} - A^{-1}U(C+VA^{-1}U)^{-1}VA^{-1}
+              $$
+              </p>
+              </div>
+              </div>
+
+
+
+
+              <div class=seg>
+              <div class="text" style="padding:40px, width:100%">
+              <b> Block Example 1: Block Triangular </b>
+              <p>
+              $$
+              \begin{bmatrix}
+              I & B \\
+              0 & I
+              \end{bmatrix}^{-1}
+              =
+              \begin{bmatrix}
+              I & -B \\
+              0 & I
+              \end{bmatrix},\qquad
+              \begin{bmatrix}
+              I & 0 \\
+              C & I
+              \end{bmatrix}^{-1}
+              =
+              \begin{bmatrix}
+              I & 0 \\
+              -C & I
+              \end{bmatrix}
+              $$
+
+              $$
+              \begin{bmatrix}
+              A & B \\
+              0 & D
+              \end{bmatrix}^{-1}
+              =
+              \begin{bmatrix}
+              A^{-1} & -A^{-1}BD^{-1} \\
+              0 & D^{-1}
+              \end{bmatrix},\qquad
+              \begin{bmatrix}
+              A & 0 \\
+              C & D
+              \end{bmatrix}^{-1}
+              =
+              \begin{bmatrix}
+              A^{-1} & 0 \\
+              -D^{-1}CA^{-1} & D^{-1}
+              \end{bmatrix}
+              $$
+
+
+              </p>
+              </div>
+              </div>
+
+
+              <div class=seg>
+              <div class="text" style="padding:40px, width:100%">
+              <b> Block Example 2: KKT Conditions </b>
+              <b> Quadratic Programs </b>
+              <p>
+              The following system of equations frequently shows up in
+              constrained optimization.
+
+              $$
+              \begin{bmatrix}
+              Q & A^T \\
+              A & 0
+              \end{bmatrix}
+              \begin{bmatrix}
+              x \\ v
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+              c \\
+              b
+              \end{bmatrix}
+              $$
+
+              In particular this is the KKT conditions for a quadratic optimization
+              problem with linear equality constraints
+
+              $$
+              \min \quad \tfrac{1}{2}x^TQx - c^Tx, \qquad s.t. \quad Ax = b
+              $$
+
+              The solution to this system of equations can be given explicitly by inverting the matrix
+
+              $$
+              \begin{bmatrix}
+              Q & A^T \\
+              A & 0
+              \end{bmatrix}^{-1}
+              =
+              \begin{bmatrix}
+              Q^{-1}-Q^{-1}A^T(AQ^{-1}A)^{-1}AQ^{-1} & Q^{-1}A^T(AQ^{-1}A)^{-1} \\
+              (AQ^{-1}A)^{-1}AQ^{-1} & (AQ^{-1}A^T)^{-1}
+              \end{bmatrix}
+              $$
+            </p>
+            <b> Newton's Method for Gradient Descent </b>
+            <p>
+
+
+
+              Similar systems of equations arise in using Newton's method for gradient descent.
+              In particular, for a general nonlinear equality constrained optimization problem,
+              $$
+              \min_x \quad f(x), \qquad s.t. \quad g(x)=0
+              $$
+              The Newton step direction is given by
+              $$
+              \begin{bmatrix}
+              \Delta x \\ \\ \Delta v
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+              Q & A^T  \\
+              & \\
+              A & 0
+              \end{bmatrix}^{-1}
+              \begin{bmatrix}
+              \tfrac{\partial f}{\partial x}+\tfrac{\partial g}{\partial x}^Tv \\  \\ g(x)
+              \end{bmatrix}, \qquad
+              Q = \tfrac{\partial^2 f}{\partial x^2}, \quad A = \tfrac{\partial g}{\partial x}
+              $$
+
+              <!-- $$
+              =
+              \begin{bmatrix}
+              \left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}-\left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}
+              A^T(A\left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}A)^{-1}A\left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}
+              & \left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}A^T(A\left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}A)^{-1} \\
+              (A\left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}A)^{-1}A\left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}
+              & A\left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}A^T
+              \end{bmatrix}
+              \begin{bmatrix}
+              \tfrac{\partial f}{\partial x} \\  \\ g(x)
+              \end{bmatrix}
+              $$ -->
+            </p>
+
+            <b> Interior Point/Barrier Methods </b>
+            <p>
+
+
+              Interior point methods reframe the equality/inequality constrained
+               optimization problem
+               $$
+               \min_{x} \quad f(x) \qquad s.t. \quad g(x)=0, \ \ h(x) \geq 0
+               $$
+               with barrier functions as
+               $$
+               \min_{x,s} \quad tf(x)-\sum_i\ln(s_i) \qquad s.t. \quad g(x)=0, \ \ h(x)-s = 0
+               $$
+
+              The Newton update for this problem is then given by
+
+
+              $$
+              \begin{bmatrix}
+              \Delta x \\
+              \Delta v \\
+              \Delta s \\
+              \Delta w
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+              P & 0 & B^T & C^T \\
+              0 & dg(s)^{-2}  & 0 & -I \\
+              B & 0 & 0 & 0 \\
+              C & -I & 0 & 0
+              \end{bmatrix}^{-1}
+              \begin{bmatrix}
+              \tfrac{\partial f}{\partial x} + B^Tv + C^Tw\\
+              -s^{-1}-w \\
+              g(x) \\
+              h(x)-s
+              \end{bmatrix}
+              $$
+
+
+
+              where
+              $$
+              P = \tfrac{\partial^2 f}{\partial x^2}, \qquad B = \tfrac{\partial g}{\partial x}, \qquad C = \tfrac{\partial h}{x}
+              $$
+
+              $$
+              AQ^{-1}A^T
+              =
+              \begin{bmatrix}
+              B & 0 \\
+              C & -I
+              \end{bmatrix}
+              \begin{bmatrix}
+              P^{-1} & 0 \\
+              0 & dg(s)^{2}
+              \end{bmatrix}
+              \begin{bmatrix}
+              B^T & C^T \\
+              0 & -I
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+              BP^{-1}B^T & BP^{-1}C^T \\
+              CP^{-1}B^T & CP^{-1}C^T + dg(s)^2
+              \end{bmatrix}
+              $$
+              Block matrix formulas can be applied to invert above.
+              The most efficient computations will depend on the problem parametrs,
+              ie. which matrices are easiest to invert.
+
+              <!-- Explicitly checking gives
+              $$
+              \begin{bmatrix}
+              Q & A^T \\
+              A & 0
+              \end{bmatrix}
+              \begin{bmatrix}
+              Q^{-1}-Q^{-1}A^T(AQ^{-1}A)^{-1}AQ^{-1} & Q^{-1}A^T(AQ^{-1}A)^{-1} \\
+              (AQ^{-1}A)^{-1}AQ^{-1} & -(AQ^{-1}A^T)^{-1}
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+              Q & A^T \\
+              A & 0
+              \end{bmatrix}
+              \begin{bmatrix}
+              I-A^T(AQ^{-1}A)^{-1}AQ^{-1}+A^T(AQ^{-1}A)^{-1}AQ^{-1} & A^T(AQ^{-1}A)^{-1}-A^T(AQ^{-1}A^T)^{-1} \\
+              (AQ^{-1}A)^{-1}AQ^{-1} & (AQ^{-1}A^T)^{-1}
+              \end{bmatrix}
+              $$ -->
+
+
+
+              </div>
+              </div>
+
+
+
+
+              <div class=seg>
+              <div class="text" style="padding:40px, width:100%">
+              <b> Fundamental Theorem Basis </b>
+
+              <p>
+              Given a matrix a full row rank matrix \(A\) and basis for its
+              nullspace given by the columns of \(N\),
+              we might want to choose \(\big[A^T \ N\big]\) as a basis
+              for the domain.  As a coordinate tranformation we will often want to
+              invert this.
+
+
+
+                $$
+                \bigg[ \ A^T \ \ N \ \bigg]^{-1}
+                =
+                \begin{bmatrix}
+                 (AA^T)^{-1}A   \\
+                 (N^TN)^{-1}N^T
+                \end{bmatrix}
+                $$
+
+              </p>
+              <p>
+                One can check
+                $$
+                \begin{bmatrix}
+                (AA^T)^{-1}A   \\
+                (N^TN)^{-1}N^T
+                \end{bmatrix}
+                \bigg[ \ A^T \ \ N \ \bigg] =
+                \begin{bmatrix}
+                (AA^T)^{-1}AA^T & (AA^T)^{-1}AN   \\
+                (N^TN)^{-1}N^TA^T & (N^TN)^{-1}N^TN
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                I & 0 \\
+                0 & I
+                \end{bmatrix}
+                $$
+              </p>
+              <p>
+              Note, also that this leads to the fact that the sum of two projection matrices
+              onto orthogonal subspaces (who's direct sum is the whole space) is the identity.
+              (This is, perhaps, not obvious immmediately algebraically.)
+
+                $$
+                \bigg[ \ A^T \ \ N \ \bigg]
+                \begin{bmatrix}
+                (AA^T)^{-1}A   \\
+                 (N^TN)^{-1}N^T
+                \end{bmatrix}
+                =
+                A^T(AA^T)^{-1}A + N(N^TN)^{-1}N^T = I
+                $$
+              </p>
+              <p>
+              Note the close relationship between this inverse and the transpose of the matrix
+              since the two sets of columns are orthogonal.
+              $$
+              \begin{bmatrix}
+               A  \\
+               N^T
+              \end{bmatrix}
+              \bigg[ \ A^T \ \ N \ \bigg]
+              =
+              \begin{bmatrix}
+               AA^T & 0  \\
+              0 &  N^TN
+              \end{bmatrix}
+              $$
+              </p>
+
+
+              </div>
+              </div>
+
+
+
+
+              <div class=seg>
+              <div class="text" style="padding:40px, width:100%">
+              <b> Average and Differences </b>
+              <p>
+              Given any set of basis vectors \(A \in \mathbb{R^{n \times n}}\),
+              a new basis can be obtained by right multiplying by an invertible
+              transformation \(W \in \mathbb{R}^{n \times n}\).  This creates a new
+              basis where each new vector is a linear combination of the previous
+              vectors
+
+              $$
+              W =
+              \begin{bmatrix}
+              | & & | \\
+              W_1 & \cdots & W_n \\
+              | & & |
+              \end{bmatrix}, \qquad
+              AW = \bigg[ \ AW_1 \ \cdots \ AW_n \ \bigg]
+              $$
+              We now give several choices for \(W\) and the resulting \(W^{-1}\)
+              and the physical meaning for each.
+
+
+
+              $$
+              W =
+              \begin{bmatrix}
+              1 & -\mathbf{1}^T \\
+              0 & I
+              \end{bmatrix},
+              \qquad
+              W^{-1} =
+              \begin{bmatrix}
+              1 & \mathbf{1}^T \\
+              0 & I
+              \end{bmatrix}
+              $$
+              \(W\) chooses one vector (the first one) and measures all other
+              vectors from that vector.
+              \(W^{-1}\) says every other vector is the main vector plus a difference.
+
+
+              $$
+              W =
+              \begin{bmatrix}
+              \tfrac{1}{n} & -\tfrac{1}{n} \mathbf{1}^T \\
+              & \\
+              \tfrac{1}{n} \mathbf{1} & I- \tfrac{1}{n}\mathbf{1}\mathbf{1}^T
+              \end{bmatrix}, \qquad
+              W^{-1} =
+              \begin{bmatrix}
+              1 & \mathbf{1}^T \\
+              & \\
+              -\mathbf{1} & I
+              \end{bmatrix}
+              $$
+              \(W\) computes the arithmetic mean of the vecors and measures each point
+              (except for one (the first) from that mean.) \(W^{-1}\) selects the mean
+              and adds differences to get the points.  The one exception is the first point
+              which must be recovered from the the mean and the differences with all the other points.
+
+
+
+
+
+
+              </p>
+              </div>
+              </div>
+
+
+
+
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        </div>
+        <!-- <script type='module' src="/dcmath/src/roto.js"> </script> -->
+        <script src="/dcmath/src/extra/includeHTML.js"> </script>
+      </body>
+    </html>
