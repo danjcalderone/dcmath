@@ -195,6 +195,8 @@
               <b> Case 1: Linear Combination of Columns - MOST IMPORTANT </b>
               <p>
                 For matrix \(A \in \mathbb{R}^{m \times n}\) and vector \(x \in \mathbb{R}^n \)
+                the product \(Ax\) can be thought of as a linear combination
+                of the columns of \(A\) with coefficients given by the coordinates of \(x\).
                 $$
                 Ax =
                 \begin{bmatrix}
@@ -220,8 +222,6 @@
                 \end{bmatrix}
                 x_n
                 $$
-                Here, the interpretation is that the product \(Ax\) is taking linear combinations
-                of the columns of \(A\) with coefficients given by the coordinates of \(x\).
                 Being comfortable with this interpretation is critical to fluency in linear algebra.
               </p>
 
@@ -231,7 +231,7 @@
                 the tranformation \(A\) to each column of the matrix \(B\) separately.
                 For matrix \(A \in \mathbb{R}^{M \times N}\) and matrix \(B \in \mathbb{R}^{N \times K}\)
                 $$
-                AB = \bigg[ \ A \ \bigg]
+                AB = \bigg[ \ \  A \  \ \bigg]
                 \begin{bmatrix}
                 | & & |\\
                 B_1 & \cdots & B_n \\
@@ -244,8 +244,8 @@
                 | & & |\\
                 \end{bmatrix}
                 $$
-                Each column of \(B\) is a different linear combination of the
-                columns of \(A\).
+                Combining this with the first case, we have that each column, \(B_j\)
+                corresponds to a different linear combination of the columns of \(A\).
               </p>
 
               <b> Case 3: Projection Onto Rows </b>
@@ -256,13 +256,12 @@
 
 
                 $$
-                Ax = \bigg[ \ A \ \bigg]
+                Ax =
                 \begin{bmatrix}
                 - & a_1^T & - \\
                 \vdots & & \vdots \\
                 - & a_N^T & -
                 \end{bmatrix}
-
                 \begin{bmatrix}
                 | \\
                 x \\
@@ -272,8 +271,77 @@
                 \begin{bmatrix}
                  a_1^Tx \\
                 \vdots \\
-                a_N^Tx 
+                a_N^Tx
                 \end{bmatrix}
+                $$
+              </p>
+
+
+              <b> Case 4: Pairwise Inner Products </b>
+              <p>
+                If \(A\) is segmented into rows and \(B\) is segmented into columns,
+                \(AB\) is the pairwise inner products between rows of \(A\) and
+                columns of \(B\).
+
+
+                $$
+                AB =
+                \begin{bmatrix}
+                - & a_1^T & - \\
+                \vdots & & \vdots \\
+                - & a_N^T & -
+                \end{bmatrix}
+                \begin{bmatrix}
+                | & & |\\
+                B_1 & \cdots & B_n \\
+                | & & |\\
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                \underbrace{a_1^TB_1}_{1 \times 1} & \cdots & a_1^TB_K \\
+                \vdots & & \vdots  \\
+                a_M^TB_1 & \cdots & a_M^TB_K
+                \end{bmatrix}
+                $$
+              </p>
+
+              <b> Case 5: Sum of Outer Products </b>
+              <p>
+                If \(A\) is segmented into cols and \(B\) is segmented into rows,
+                \(AB\) is a sum of outer-products.
+
+
+                $$
+                AB =
+                \begin{bmatrix}
+                | & & |\\
+                A_1 & \cdots & A_M \\
+                | & & |\\
+                \end{bmatrix}
+                \begin{bmatrix}
+                - & b_1^T & - \\
+                \vdots & & \vdots \\
+                - & b_N^T & -
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                | \\
+                A_1 \\
+                |
+                \end{bmatrix}
+                \begin{bmatrix}
+                - & b_1^T & -
+                \end{bmatrix}
+                + \cdots +
+                \begin{bmatrix}
+                | \\
+                A_N \\
+                |
+                \end{bmatrix}
+                \begin{bmatrix}
+                - & b_N^T & -
+                \end{bmatrix}
+                = \sum_j A_jb_j^T
                 $$
               </p>
 
