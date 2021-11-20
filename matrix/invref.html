@@ -454,13 +454,13 @@
               \end{bmatrix}
               =
               \begin{bmatrix}
-              Q & 0 & A^T & C^T \\
+              P & 0 & B^T & C^T \\
               0 & dg(s)^{-2}  & 0 & -I \\
-              A & 0 & 0 & 0 \\
+              B & 0 & 0 & 0 \\
               C & -I & 0 & 0
               \end{bmatrix}^{-1}
               \begin{bmatrix}
-              \tfrac{\partial f}{\partial x} + A^Tv + C^Tw\\
+              \tfrac{\partial f}{\partial x} + B^Tv + C^Tw\\
               -s^{-1}-w \\
               g(x) \\
               h(x)-s
@@ -471,7 +471,7 @@
 
               where
               $$
-              Q = \tfrac{\partial^2 f}{\partial x^2}, \qquad A = \tfrac{\partial g}{\partial x}, \qquad C = \tfrac{\partial h}{x}
+              P = \tfrac{\partial^2 f}{\partial x^2}, \qquad B = \tfrac{\partial g}{\partial x}, \qquad C = \tfrac{\partial h}{x}
               $$
 
 
