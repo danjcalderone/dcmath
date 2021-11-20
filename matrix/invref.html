@@ -343,7 +343,7 @@
               =
               \begin{bmatrix}
               A^{-1} & 0 \\
-              -D^{-1}YA^{-1} & D^{-1}
+              -D^{-1}CA^{-1} & D^{-1}
               \end{bmatrix}
               $$
 
@@ -355,8 +355,8 @@
 
               <div class=seg>
               <div class="text" style="padding:40px, width:100%">
-              <b> Block Example 2: Linear Quadratic KKT Conditions </b>
-
+              <b> Block Example 2: KKT Conditions </b>
+              <b> Quadratic Programs </b>
               <p>
               The following system of equations frequently shows up in
               constrained optimization.
@@ -396,6 +396,12 @@
               (AQ^{-1}A)^{-1}AQ^{-1} & (AQ^{-1}A^T)^{-1}
               \end{bmatrix}
               $$
+            </p>
+            <b> Newton's Method for Gradient Descent </b>
+            <p>
+
+
+
               Similar systems of equations arise in using Newton's method for gradient descent.
               In particular, for a general nonlinear equality constrained optimization problem,
               $$
@@ -431,8 +437,13 @@
               \tfrac{\partial f}{\partial x} \\  \\ g(x)
               \end{bmatrix}
               $$ -->
+            </p>
 
-              Interior point methods reframe the equality/inequality constraicned
+            <b> Interior Point/Barrier Methods </b>
+            <p>
+
+
+              Interior point methods reframe the equality/inequality constrained
                optimization problem
                $$
                \min_{x} \quad f(x) \qquad s.t. \quad g(x)=0, \ \ h(x) \geq 0
