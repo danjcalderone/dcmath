@@ -315,7 +315,7 @@
                 AB =
                 \begin{bmatrix}
                 | & & |\\
-                A_1 & \cdots & A_M \\
+                A_1 & \cdots & A_N \\
                 | & & |\\
                 \end{bmatrix}
                 \begin{bmatrix}
@@ -324,6 +324,7 @@
                 - & b_N^T & -
                 \end{bmatrix}
                 =
+                \underbrace{
                 \begin{bmatrix}
                 | \\
                 A_1 \\
@@ -332,6 +333,7 @@
                 \begin{bmatrix}
                 - & b_1^T & -
                 \end{bmatrix}
+              }_{M \times K}
                 + \cdots +
                 \begin{bmatrix}
                 | \\
@@ -346,338 +348,75 @@
               </p>
 
 
+              <b> Case 6: Inner Products Around Matrix </b>
+              <p>
+                If \(A\) is segmented into rows, \(B\) is segmented into cols,
+                and \(D\) is some matrix of appropriate dimension, the product
+                \(ADB\) is given by
 
-                If \(A\) and \(D-CA^{-1}B\) are invertible:
+
                 $$
+                ADB =
                 \begin{bmatrix}
-                A & B \\
-                C & D
-                \end{bmatrix}^{-1}
+                - & a_1^T & - \\
+                \vdots & & \vdots \\
+                - & a_N^T & -
+                \end{bmatrix}
+                \Bigg[ \ \ \ D \ \ \ \Bigg]
+                \begin{bmatrix}
+                | & & |\\
+                B_1 & \cdots & B_n \\
+                | & & |\\
+                \end{bmatrix}
                 =
                 \begin{bmatrix}
-                I & 0 \\
-                CA^{-1} & I
-                \end{bmatrix}
-                \begin{bmatrix}
-                A & 0 \\
-                0 & D-CA^{-1}B
-                \end{bmatrix}
-                \begin{bmatrix}
-                I & A^{-1}B \\
-                0 & I
+                \underbrace{a_1^TDB_1}_{1 \times 1} & \cdots & a_1^TDB_K \\
+                \vdots & & \vdots  \\
+                a_M^TDB_1 & \cdots & a_M^TDB_K
                 \end{bmatrix}
                 $$
-              $$
-              \begin{bmatrix}
-              A & B \\
-              C & D
-              \end{bmatrix}^{-1}
-              =
-              \begin{bmatrix}
-              A^{-1} + A^{-1}B(D-CA^{-1}B)^{-1}CA^{-1} & -A^{-1}B(D-CA^{-1}B)^{-1} \\
-              -(D-CA^{-1}B)^{-1}CA^{-1} &  (D-CA^{-1}B)^{-1}
-              \end{bmatrix}
-              $$
-              If \(D\) and \(A-BD^{-1}C\) are invertible:
-              $$
-              \begin{bmatrix}
-              A & B \\
-              C & D
-              \end{bmatrix}
-              =
-              \begin{bmatrix}
-              I & BD^{-1} \\
-              0 & I
-              \end{bmatrix}
-              \begin{bmatrix}
-              (A-BD^{-1}C)^{-1} & 0 \\
-              0 & D
-              \end{bmatrix}
-              \begin{bmatrix}
-              I & 0 \\
-              D^{-1}C & I
-              \end{bmatrix}
-
-              $$
-              $$
-              \begin{bmatrix}
-              A & B \\
-              C & D
-              \end{bmatrix}^{-1}
-              =
-              \begin{bmatrix}
-              (A-BD^{-1}C)^{-1} & -(A-BD^{-1}C)^{-1}BD^{-1} \\
-              -D^{-1}C(A-BD^{-1}C)^{-1} & D^{-1} + D^{-1}C(A-BD^{-1}C)^{-1}BD^{-1}
-              \end{bmatrix}
-              $$
-
-
-              If both \(A\) and \(D\) are invertible:
-              $$
-              \begin{bmatrix}
-              A & B \\
-              C & D
-              \end{bmatrix}^{-1}
-              =
-              \begin{bmatrix}
-              (A-BD^{-1}C)^{-1} & 0 \\
-              0 & D-CA^{-1}B)^{-1}
-              \end{bmatrix}
-              \begin{bmatrix}
-              I & -BD^{-1} \\
-              -CA^{-1} & I
-              \end{bmatrix}
-              $$
-
-
               </p>
-              </div>
-              </div>
 
-              <div class=seg>
-              <div class="text" style="padding:40px, width:100%">
-              <b> Woodbury Matrix Identity </b>
+
+              <b> Case 6: Outer Products Around Matrix </b>
               <p>
-              This identity is particularly useful for a low-rank inverse updates.
-              $$
-              (A+UCV)^{-1} = A^{-1} - A^{-1}U(C+VA^{-1}U)^{-1}VA^{-1}
-              $$
+                If \(A\) is segmented into cols, \(B\) is segmented into rows,
+                and \(D\) is some matrix of appropriate dimension, the product
+                \(ADB\) is given by
+                $$
+                AB =
+                \begin{bmatrix}
+                | & & |\\
+                A_1 & \cdots & A_N \\
+                | & & |\\
+                \end{bmatrix}
+                \underbrace{
+                \begin{bmatrix}
+                d_{11} & \cdots & d_{1K} \\
+                \vdots & & \vdots \\
+                d_{N1} & \cdots & d_{NK}
+                \end{bmatrix}
+              }_{D}
+                \begin{bmatrix}
+                - & b_1^T & - \\
+                \vdots & & \vdots \\
+                - & b_K^T & -
+                \end{bmatrix}
+                =
+                \sum_j \sum_k
+                \underbrace{
+                \begin{bmatrix}
+                | \\
+                A_j\\
+                |
+                \end{bmatrix}
+                d_{jk}
+                \begin{bmatrix}
+                - & b_k^T & -
+                \end{bmatrix}
+              }_{M \times L}
+                $$
               </p>
-              </div>
-              </div>
-
-
-
-
-              <div class=seg>
-              <div class="text" style="padding:40px, width:100%">
-              <b> Block Example 1: Block Triangular </b>
-              <p>
-              $$
-              \begin{bmatrix}
-              I & B \\
-              0 & I
-              \end{bmatrix}^{-1}
-              =
-              \begin{bmatrix}
-              I & -B \\
-              0 & I
-              \end{bmatrix},\qquad
-              \begin{bmatrix}
-              I & 0 \\
-              C & I
-              \end{bmatrix}^{-1}
-              =
-              \begin{bmatrix}
-              I & 0 \\
-              -C & I
-              \end{bmatrix}
-              $$
-
-              $$
-              \begin{bmatrix}
-              A & B \\
-              0 & D
-              \end{bmatrix}^{-1}
-              =
-              \begin{bmatrix}
-              A^{-1} & -A^{-1}BD^{-1} \\
-              0 & D^{-1}
-              \end{bmatrix},\qquad
-              \begin{bmatrix}
-              A & 0 \\
-              C & D
-              \end{bmatrix}^{-1}
-              =
-              \begin{bmatrix}
-              A^{-1} & 0 \\
-              -D^{-1}CA^{-1} & D^{-1}
-              \end{bmatrix}
-              $$
-
-
-              </p>
-              </div>
-              </div>
-
-
-              <div class=seg>
-              <div class="text" style="padding:40px, width:100%">
-              <b> Block Example 2: KKT Conditions </b>
-              <b> Quadratic Programs </b>
-              <p>
-              The following system of equations frequently shows up in
-              constrained optimization.
-
-              $$
-              \begin{bmatrix}
-              Q & A^T \\
-              A & 0
-              \end{bmatrix}
-              \begin{bmatrix}
-              x \\ v
-              \end{bmatrix}
-              =
-              \begin{bmatrix}
-              c \\
-              b
-              \end{bmatrix}
-              $$
-
-              In particular this is the KKT conditions for a quadratic optimization
-              problem with linear equality constraints
-
-              $$
-              \min \quad \tfrac{1}{2}x^TQx - c^Tx, \qquad s.t. \quad Ax = b
-              $$
-
-              The solution to this system of equations can be given explicitly by inverting the matrix
-
-              $$
-              \begin{bmatrix}
-              Q & A^T \\
-              A & 0
-              \end{bmatrix}^{-1}
-              =
-              \begin{bmatrix}
-              Q^{-1}-Q^{-1}A^T(AQ^{-1}A)^{-1}AQ^{-1} & Q^{-1}A^T(AQ^{-1}A)^{-1} \\
-              (AQ^{-1}A)^{-1}AQ^{-1} & (AQ^{-1}A^T)^{-1}
-              \end{bmatrix}
-              $$
-            </p>
-            <b> Newton's Method for Gradient Descent </b>
-            <p>
-
-
-
-              Similar systems of equations arise in using Newton's method for gradient descent.
-              In particular, for a general nonlinear equality constrained optimization problem,
-              $$
-              \min_x \quad f(x), \qquad s.t. \quad g(x)=0
-              $$
-              The Newton step direction is given by
-              $$
-              \begin{bmatrix}
-              \Delta x \\ \\ \Delta v
-              \end{bmatrix}
-              =
-              \begin{bmatrix}
-              Q & A^T  \\
-              & \\
-              A & 0
-              \end{bmatrix}^{-1}
-              \begin{bmatrix}
-              \tfrac{\partial f}{\partial x}+\tfrac{\partial g}{\partial x}^Tv \\  \\ g(x)
-              \end{bmatrix}, \qquad
-              Q = \tfrac{\partial^2 f}{\partial x^2}, \quad A = \tfrac{\partial g}{\partial x}
-              $$
-
-              <!-- $$
-              =
-              \begin{bmatrix}
-              \left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}-\left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}
-              A^T(A\left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}A)^{-1}A\left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}
-              & \left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}A^T(A\left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}A)^{-1} \\
-              (A\left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}A)^{-1}A\left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}
-              & A\left(\tfrac{\partial^2 f}{\partial x^2}\right)^{-1}A^T
-              \end{bmatrix}
-              \begin{bmatrix}
-              \tfrac{\partial f}{\partial x} \\  \\ g(x)
-              \end{bmatrix}
-              $$ -->
-            </p>
-
-            <b> Interior Point/Barrier Methods </b>
-            <p>
-
-
-              Interior point methods reframe the equality/inequality constrained
-               optimization problem
-               $$
-               \min_{x} \quad f(x) \qquad s.t. \quad g(x)=0, \ \ h(x) \geq 0
-               $$
-               with barrier functions as
-               $$
-               \min_{x,s} \quad tf(x)-\sum_i\ln(s_i) \qquad s.t. \quad g(x)=0, \ \ h(x)-s = 0
-               $$
-
-              The Newton update for this problem is then given by
-
-
-              $$
-              \begin{bmatrix}
-              \Delta x \\
-              \Delta v \\
-              \Delta s \\
-              \Delta w
-              \end{bmatrix}
-              =
-              \begin{bmatrix}
-              P & 0 & B^T & C^T \\
-              0 & dg(s)^{-2}  & 0 & -I \\
-              B & 0 & 0 & 0 \\
-              C & -I & 0 & 0
-              \end{bmatrix}^{-1}
-              \begin{bmatrix}
-              \tfrac{\partial f}{\partial x} + B^Tv + C^Tw\\
-              -s^{-1}-w \\
-              g(x) \\
-              h(x)-s
-              \end{bmatrix}
-              $$
-
-
-
-              where
-              $$
-              P = \tfrac{\partial^2 f}{\partial x^2}, \qquad B = \tfrac{\partial g}{\partial x}, \qquad C = \tfrac{\partial h}{x}
-              $$
-
-              $$
-              AQ^{-1}A^T
-              =
-              \begin{bmatrix}
-              B & 0 \\
-              C & -I
-              \end{bmatrix}
-              \begin{bmatrix}
-              P^{-1} & 0 \\
-              0 & dg(s)^{2}
-              \end{bmatrix}
-              \begin{bmatrix}
-              B^T & C^T \\
-              0 & -I
-              \end{bmatrix}
-              =
-              \begin{bmatrix}
-              BP^{-1}B^T & BP^{-1}C^T \\
-              CP^{-1}B^T & CP^{-1}C^T + dg(s)^2
-              \end{bmatrix}
-              $$
-              Block matrix formulas can be applied to invert above.
-              The most efficient computations will depend on the problem parametrs,
-              ie. which matrices are easiest to invert.
-
-              <!-- Explicitly checking gives
-              $$
-              \begin{bmatrix}
-              Q & A^T \\
-              A & 0
-              \end{bmatrix}
-              \begin{bmatrix}
-              Q^{-1}-Q^{-1}A^T(AQ^{-1}A)^{-1}AQ^{-1} & Q^{-1}A^T(AQ^{-1}A)^{-1} \\
-              (AQ^{-1}A)^{-1}AQ^{-1} & -(AQ^{-1}A^T)^{-1}
-              \end{bmatrix}
-              =
-              \begin{bmatrix}
-              Q & A^T \\
-              A & 0
-              \end{bmatrix}
-              \begin{bmatrix}
-              I-A^T(AQ^{-1}A)^{-1}AQ^{-1}+A^T(AQ^{-1}A)^{-1}AQ^{-1} & A^T(AQ^{-1}A)^{-1}-A^T(AQ^{-1}A^T)^{-1} \\
-              (AQ^{-1}A)^{-1}AQ^{-1} & (AQ^{-1}A^T)^{-1}
-              \end{bmatrix}
-              $$ -->
 
 
 
@@ -692,161 +431,12 @@
               <b> Fundamental Theorem Basis </b>
 
               <p>
-              Given a matrix a full row rank matrix \(A\) and basis for its
-              nullspace given by the columns of \(N\),
-              we might want to choose \(\big[A^T \ N\big]\) as a basis
-              for the domain.  As a coordinate tranformation we will often want to
-              invert this.
 
-
-
-                $$
-                \bigg[ \ A^T \ \ N \ \bigg]^{-1}
-                =
-                \begin{bmatrix}
-                 (AA^T)^{-1}A   \\
-                 (N^TN)^{-1}N^T
-                \end{bmatrix}
-                $$
-
-              </p>
-              <p>
-                One can check
-                $$
-                \begin{bmatrix}
-                (AA^T)^{-1}A   \\
-                (N^TN)^{-1}N^T
-                \end{bmatrix}
-                \bigg[ \ A^T \ \ N \ \bigg] =
-                \begin{bmatrix}
-                (AA^T)^{-1}AA^T & (AA^T)^{-1}AN   \\
-                (N^TN)^{-1}N^TA^T & (N^TN)^{-1}N^TN
-                \end{bmatrix}
-                =
-                \begin{bmatrix}
-                I & 0 \\
-                0 & I
-                \end{bmatrix}
-                $$
-              </p>
-              <p>
-              Note, also that this leads to the fact that the sum of two projection matrices
-              onto orthogonal subspaces (who's direct sum is the whole space) is the identity.
-              (This is, perhaps, not obvious immmediately algebraically.)
-
-                $$
-                \bigg[ \ A^T \ \ N \ \bigg]
-                \begin{bmatrix}
-                (AA^T)^{-1}A   \\
-                 (N^TN)^{-1}N^T
-                \end{bmatrix}
-                =
-                A^T(AA^T)^{-1}A + N(N^TN)^{-1}N^T = I
-                $$
-              </p>
-              <p>
-              Note the close relationship between this inverse and the transpose of the matrix
-              since the two sets of columns are orthogonal.
-              $$
-              \begin{bmatrix}
-               A  \\
-               N^T
-              \end{bmatrix}
-              \bigg[ \ A^T \ \ N \ \bigg]
-              =
-              \begin{bmatrix}
-               AA^T & 0  \\
-              0 &  N^TN
-              \end{bmatrix}
-              $$
               </p>
 
 
               </div>
               </div>
-
-
-
-
-              <div class=seg>
-              <div class="text" style="padding:40px, width:100%">
-              <b> Average and Differences </b>
-              <p>
-              Given any set of basis vectors \(A \in \mathbb{R^{n \times n}}\),
-              a new basis can be obtained by right multiplying by an invertible
-              transformation \(W \in \mathbb{R}^{n \times n}\).  This creates a new
-              basis where each new vector is a linear combination of the previous
-              vectors
-
-              $$
-              W =
-              \begin{bmatrix}
-              | & & | \\
-              W_1 & \cdots & W_n \\
-              | & & |
-              \end{bmatrix}, \qquad
-              AW = \bigg[ \ AW_1 \ \cdots \ AW_n \ \bigg]
-              $$
-              We now give several choices for \(W\) and the resulting \(W^{-1}\)
-              and the physical meaning for each.
-
-
-
-              $$
-              W =
-              \begin{bmatrix}
-              1 & -\mathbf{1}^T \\
-              0 & I
-              \end{bmatrix},
-              \qquad
-              W^{-1} =
-              \begin{bmatrix}
-              1 & \mathbf{1}^T \\
-              0 & I
-              \end{bmatrix}
-              $$
-              \(W\) chooses one vector (the first one) and measures all other
-              vectors from that vector.
-              \(W^{-1}\) says every other vector is the main vector plus a difference.
-
-
-              $$
-              W =
-              \begin{bmatrix}
-              \tfrac{1}{n} & -\tfrac{1}{n} \mathbf{1}^T \\
-              & \\
-              \tfrac{1}{n} \mathbf{1} & I- \tfrac{1}{n}\mathbf{1}\mathbf{1}^T
-              \end{bmatrix}, \qquad
-              W^{-1} =
-              \begin{bmatrix}
-              1 & \mathbf{1}^T \\
-              & \\
-              -\mathbf{1} & I
-              \end{bmatrix}
-              $$
-              \(W\) computes the arithmetic mean of the vecors and measures each point
-              (except for one (the first) from that mean.) \(W^{-1}\) selects the mean
-              and adds differences to get the points.  The one exception is the first point
-              which must be recovered from the the mean and the differences with all the other points.
-
-
-
-
-
-
-              </p>
-              </div>
-              </div>
-
-
-
-
-                  </div>
-                </div>
-
-
-
-
 
 
 
