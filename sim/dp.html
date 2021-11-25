@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+  <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+  </head>
+
+  <body>
+  <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+  <!-- <div w3-include-html="nav/topics.html"></div> -->
+    <div class="wrapper">
+    <div class="sidebar">
+    <div w3-include-html="/dcmath/nav/sidebarSIM.html"></div>
+    </div>
+    <div class=content>
+      <div w3-include-html="/dcmath/nav/topics.html"></div>
+
+      <div class=module>
+
+
+        <div class=seg>
+        <div class="text" style="padding:40px, width:100%">
+        <b> Dynamic Programming Principle </b>
+        <p>
+        Dynamic programming and related methods are the core of time domain
+        optimization.  The key idea is that since time only flows forward
+        the best way to optimize actions over time is to figure out what is best
+        to do at later times first then plan one's actions in the present considering
+        both how much they will cost immediately and how well they will position
+        one for actions in the future.
+
+        The central optimization principle is represented using the famous
+        Bellman equation.
+        $$
+        V_{x,t} = \min_{u \in \mathcal{U}_{x,t}} \Big[\ell_{x,u,t} + V_{x^+,t+1} \ |
+        \ x^+ = f(x,u,t) \Big]
+        $$
+        Here, \(\mathcal{X}\) is some abstract state space and \(\mathcal{U}_x\)
+        is some abstract set of actions that can be taken from
+        any state \(x \in \mathcal{X}\).  \(x^+\) is the next state we reach when
+        we take action \(u\)
+
+        \(\ell_{x,u,t}\) is an immediate cost
+        that we incur when taking action \(u\) from state \(x\) at time \(t\)
+
+        \( V_{x,t} \) is what we call a value function or cost-to-go
+        at state \(x\) at time \(t\).  This value function encodes how much we will
+        pay from the current state at time \(t\) till the end of the time horizon
+        if we do the optimal thing from now on.
+
+        We notice that this equation is iterative in that
+        the current value \(V_{x,t}\) depends on \(V_{x,t+1}\), the value at the next
+        time step.  This encodes the idea that we must optimize our current action
+        based on both the current cost we will incur \(\ell_{x,u,t}\) and
+        how that action positions us in the future.
+
+        The final piece in this modeling framework is the dynamics of
+        the system, ie. a description of how the system evolves given our actions
+
+        Dynamics are often represented using some function
+        $$
+        x^+ = f(x,u,t)
+        $$
+        that tells us where the system will end up at the next time step \(t+1\)
+        if we apply action \(u\) from state \(x\) at time \(t\).
+        </p>
+
+        <p>
+        The key idea of dynamic programming is that in order to computer
+        \(V_{x,t}\) we need to first know \(V_{x^+,t+1}\).  This leads to the
+        optimality principle that we need to optimize starting at furthest time
+        step that we can and working backwards in time.
+        </p>
+
+        <p>
+        Many of these principles are best illustrated initially using examples with
+        finite state spaces and finite actions.
+        Optimization on a graph is an excellent simple example. Consider the optimization
+        problem represented by the graph in the figure below.  Our goal is to travel
+        from an initial node on the left (at the initial time) to a final node on the
+        right (at the final time).  The number on each link or edge of the graph is
+        the cost of traveling on that specific edge.
+        </p>
+        </div>
+        </div>
+
+
+        <div class='left'>
+        <div class='img'>
+        <!-- <img src="/dcmath/figs/dynamics_quad.png" width="1000px" type="application/pdf"></img> -->
+        <img src="./../figs/dp_graph1.png" width="1000px" type="application/pdf"></img>
+        </div>
+        </div>
+
+        <div class=seg>
+        <div class="text" style="padding:40px, width:100%">
+        <p>
+        The optimal solution is given in the following image.
+      </p>
+      </div>
+      </div>
+
+        <div class='left'>
+        <div class='img'>
+        <!-- <img src="/dcmath/figs/dynamics_quad.png" width="1000px" type="application/pdf"></img> -->
+        <img src="./../figs/dp_graph1_solved.png" width="1000px" type="application/pdf"></img>
+        </div>
+        </div>
+
+        <div class=seg>
+        <div class="text" style="padding:40px, width:100%">
+        <p>
+        The dynamic programming results can also be performed in a fixed point setting.
+        </p>
+        </div>
+        </div>
+
+        <div class='left'>
+        <div class='img'>
+        <!-- <img src="/dcmath/figs/dynamics_quad.png" width="1000px" type="application/pdf"></img> -->
+        <img src="./../figs/dp_graph2.png" width="1000px" type="application/pdf"></img>
+        </div>
+        </div>
+
+        <div class=seg>
+        <div class="text" style="padding:40px, width:100%">
+        <p>
+        The solution updates are given by
+        </p>
+        </div>
+        </div>
+
+        <div class='left'>
+        <div class='img'>
+        <!-- <img src="/dcmath/figs/dynamics_quad.png" width="1000px" type="application/pdf"></img> -->
+        <img src="./../figs/dp_graph2_solved.png" width="1000px" type="application/pdf"></img>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+      </div>
+
+    </div>
+  </div>
+
+
+    <!--
+
+
+
+
+
+
+ -->
+
+
+
+
+
+  <script type='module' src="/dcmath/src/sim/hypershapeo.js"> </script>
+  <script src="/dcmath/src/extra/includeHTML.js"> </script>
+
+
+
+
+  </body>
+</html>
