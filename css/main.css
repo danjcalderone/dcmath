@@ -94,7 +94,8 @@ body{
   width: 100%;
 }
 
-.wrapper .sidebar {
+/* .wrapper */
+.sidebar {
   position: relative;
   min-width: 200px;
   max-width: 400px;
@@ -102,7 +103,8 @@ body{
   background-color: #bac3c9c7;
 }
 
-.wrapper .sidebar ul {
+/* .wrapper */
+.sidebar ul {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -116,7 +118,8 @@ body{
 
 
 
-.wrapper .sidebar h4{
+/* .wrapper */
+.sidebar h4{
   color: rgba(34, 76, 127, 0.9);
   text-transform: uppercase;
   font-size: 20px;
@@ -124,7 +127,8 @@ body{
   padding: 60px 0px 10px;
 }
 
-.wrapper .sidebar h1{
+/* .wrapper */
+.sidebar h1{
   color: rgba(34, 76, 127, 0.9);
   text-transform: uppercase;
   font-size: 28px;
@@ -132,7 +136,8 @@ body{
   padding: 40px 30px 20px;
 }
 
-.wrapper .sidebar h2{
+/* .wrapper */
+.sidebar h2{
   color: rgba(34, 76, 127, 0.9);
   text-transform: uppercase;
   font-size: 16px;
@@ -142,14 +147,16 @@ body{
 }
 
 
-.wrapper .sidebar h3 {
+/* .wrapper */
+.sidebar h3 {
   color: rgba(34, 76, 127,0.9);
   padding: 35px 55px 5px;
   font-size: 22px;
   border-bottom: 1px solid rb;
 }
 
-.wrapper .sidebar h5 {
+/* .wrapper */
+.sidebar h5 {
   color: rgba(34, 76, 127,0.9);
   padding: 5px 55px 5px;
   font-size: 22px;
@@ -157,35 +164,41 @@ body{
 }
 
 
-.wrapper .sidebar li{
+/* .wrapper */
+.sidebar li{
   padding: 2px 55px ;
   border-bottom: 1px solid rb
 
 }
 
-.wrapper .sidebar li a{
+/* .wrapper */
+.sidebar li a{
   color: rgba(34, 76.0, 127, 0.9);
   display: block;
   text-decoration: none;
   font-size: 16px;
 }
 
-.wrapper .sidebar li un{
+/* .wrapper */
+.sidebar li un{
   color: rgba(34, 76.0, 127, 0.3);
   display: block;
   text-decoration: none;
 }
 
 
-.wrapper .sidebar li a .fas{
+/* .wrapper */
+.sidebar li a .fas{
   width: 25px;
 }
 
-.wrapper .sidebar li:hover {
+/* .wrapper */
+.sidebar li:hover {
   background: #594f8d;
 }
 
-.wrapper .sidebar li:hover a{
+/* .wrapper */
+.sidebar li:hover a{
   color: #fff;
 }
 
@@ -198,7 +211,8 @@ body{
 
 
 
-.wrapper .content{
+/* .wrapper */
+.content{
   position: relative;
   width: 100%;
   /* margin-left: 200px; */
@@ -227,7 +241,8 @@ body{
   margin-bottom: 20px;
 } */
 
-.wrapper .content .module{
+/* .wrapper .content */
+.module{
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
