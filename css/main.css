@@ -244,7 +244,8 @@ body{
 }
 
 
-.wrapper .content .module .img {
+/* .wrapper .content .module */
+.img {
   flex: 0 1 auto;
   padding: 0px;
   margin: 0px;
@@ -255,7 +256,8 @@ body{
   height: 900px;
 }
 
-.wrapper .content .module .img .CANVAS {
+/* .wrapper .content .module .img */
+.CANVAS {
   background-color: rgb(0, 0, 255, 0);
   z-index: 1;
   top: 0;
@@ -271,7 +273,8 @@ body{
 
 
 
-.wrapper .content .module .img .eqn {
+/* .wrapper .content .module .img */
+.eqn {
   background-color: rgba(0, 0, 255, 0);
   color: black;
   position: absolute;
