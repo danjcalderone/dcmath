@@ -313,8 +313,8 @@ body{
 
 .wrapper .content .module .main {
   background-color: rgba(0, 0, 255, 0);
-  height: 800px;
-  width: 800px;
+  height: 900px;
+  width: 900px;
   position: absolute;
   z-index: 1;
 }
