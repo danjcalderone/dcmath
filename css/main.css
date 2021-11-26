@@ -261,6 +261,8 @@ body{
   padding: 0px;
   margin: 0px;
   position: relative;
+  top: 0px;
+  left: 0px;
   width: 900px;
   height: 900px;
 }
@@ -269,10 +271,8 @@ body{
 .wrapper .content .module .img .eqn {
   background-color: rgba(0, 0, 255, 0);
   color: black;
-  /* position: relative; */
+  position: absolute;
   font-size: 16px;
-  top: 0px;
-  left: 0px;
   z-index: -1;
 }
 
