@@ -302,7 +302,8 @@ body{
 
 
 
-.wrapper .content .module .txt {
+/* .wrapper .content .module */
+.txt {
   flex: 0 1 auto;
     margin: 20px;
     padding: 40px;
@@ -311,7 +312,8 @@ body{
     font-size: 16px;
   }
 
-.wrapper .content .module .txt1 {
+/* .wrapper .content .module */
+.txt1 {
     flex: 0 1 auto;
       margin: 20px;
       padding: 40px;
@@ -356,7 +358,8 @@ body{
 
 
 
-.wrapper .content .left{
+/* .wrapper .content */
+.left{
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
@@ -365,7 +368,8 @@ body{
   width: 100%;
 }
 
-.wrapper .content .left .img {
+/* .wrapper .content */
+.left .img {
   flex: 0 1 auto;
   padding: 0px;
   margin: 20px;
@@ -376,7 +380,8 @@ body{
 
 
 
-.wrapper .content .seg{
+/* .wrapper .content */
+.seg{
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -387,7 +392,8 @@ body{
 }
 
 
-.wrapper .content .seg .txt {
+/* .wrapper .content */
+.seg .txt {
     flex: 3 1 auto;
     padding: 40px;
       margin: 20px;
@@ -397,7 +403,8 @@ body{
     }
 
 
-.wrapper .content .seg .img {
+/* .wrapper .content */
+.seg .img {
   flex: 0 1 auto;
   padding: 0px;
   margin: 0px;
@@ -405,7 +412,8 @@ body{
   width: 400px;
   height: 400px;
 }
-.wrapper .content .seg .imgBig {
+/* .wrapper .content */
+.seg .imgBig {
   flex: 0 1 auto;
   padding: 0px;
   margin: 0px;
