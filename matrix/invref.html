@@ -204,7 +204,7 @@
 
               <div class=seg>
               <div class="text" style="padding:40px, width:100%">
-              <b> Block Matrix Inverse </b>
+              <b> Block Matrix Inverse (2\(\times\)2)</b>
               <p>
                 If \(A\) and \(D-CA^{-1}B\) are invertible:
                 $$
@@ -288,6 +288,79 @@
               \end{bmatrix}
               $$
 
+
+              </p>
+              <p>
+              These formulas can be obtained by doing "block" row reduction on the matrix.
+              </p>
+              </div>
+              </div>
+
+              <div class=seg>
+              <div class="text" style="padding:40px, width:100%">
+              <b> Block Matrix Inverse (General)</b>
+              <p>
+
+                This block row-reduction could be applied to larger block matrices as well
+                to develop formulas for inverses of matrices with more blocks \(3 \times 3\),
+                \(4 \times 4\), etc.  We illustrate the start of the procedure for a
+                \(3 \times 3\) block case below.  Deriving the full formulas
+                would be messy but straightforward.
+
+                $$
+                Step \  1: \qquad \qquad
+                \begin{bmatrix}
+                I & 0 & 0 \\
+                -DA^{-1} & I & 0 \\
+                -GA^{-1} & 0 & I
+                \end{bmatrix}
+                \begin{bmatrix}
+                A & B & C\\
+                D & E & F\\
+                G & H & J\\
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                A & B & C \\
+                0 & E-DA^{-1}B & F-DA^{-1}C \\
+                0 & H-GA^{-1}B & J-GA^{-1}C
+                \end{bmatrix}
+                $$
+
+
+                $$
+                Step \ 2: \qquad \qquad
+                \begin{bmatrix}
+                I & 0 & 0 \\
+                0 & I & 0 \\
+                0 & -(H-GA^{-1}B)(E-DA^{-1}B)^{-1} & I
+                \end{bmatrix}
+                \begin{bmatrix}
+                I & 0 & 0 \\
+                -DA^{-1} & I & 0 \\
+                -GA^{-1} & 0 & I
+                \end{bmatrix}
+                \begin{bmatrix}
+                A & B & C\\
+                D & E & F\\
+                G & H & J\\
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                A & B & C \\
+                0 & E-DA^{-1}B & F-DA^{-1}C \\
+                0 & 0 & M
+                \end{bmatrix}
+                $$
+                where the bottom right block is given by
+                $$
+                M = J-GA^{-1}C - (H-GA^{-1}B)(E-DA^{-1}B)^{-1}(F-DA^{-1}C)
+                $$
+                Note here we've done block row-reductions on to make the matrix upper triangular.
+                We could do similar block column-reduction operations to make
+                the matrix block diagonal and then computing the inverse is straightforward.
+                The inverses of each block elementary matrix are trivial to compute
+                given the formulas in Block Example 1 below.
 
               </p>
               </div>
