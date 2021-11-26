@@ -216,7 +216,7 @@ body{
 }
 
 
-
+/*
 .wrapper .content .info{
   margin: 20px;
   color: #717171;
@@ -225,7 +225,7 @@ body{
 
 .wrapper .content .info div{
   margin-bottom: 20px;
-}
+} */
 
 .wrapper .content .module{
   display: flex;
