@@ -11,7 +11,7 @@ body {
 }
 
 header {
-  background: rgba(100,10,30,1);
+  background: rgba(10,10,30,1);
   padding: 16px 32px;
   min-height: 10px;
   display: flex;
