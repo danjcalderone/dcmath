@@ -178,6 +178,74 @@ body{
 
 
 
+
+
+
+  /* .wrapper .content */
+  .left{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    width: 100%;
+  }
+
+  /* .wrapper .content */
+  .left .img {
+    flex: 0 1 auto;
+    padding: 0px;
+    margin: 20px;
+    position: relative;
+    /* width: 400px;
+    height: 400px; */
+  }
+
+
+
+  /* .wrapper .content */
+  .seg{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 80%;
+    /* max-width: 1400px; */
+  }
+
+
+  /* .wrapper .content */
+  .seg .txt {
+      flex: 3 1 auto;
+      padding: 40px;
+        margin: 20px;
+        height: auto;
+        background-color: rgba(64, 106, 157, 0.1);
+        font-size: 16px;
+      }
+
+
+  /* .wrapper .content */
+  .seg .img {
+    flex: 0 1 auto;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    width: 400px;
+    height: 400px;
+  }
+  /* .wrapper .content */
+  .seg .imgBig {
+    flex: 0 1 auto;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    width: 600px;
+    height: 600px;
+  }
+
+
 /* old version  */
 
   /* .content{
@@ -447,70 +515,3 @@ body{
   z-index: -1;
 }
  */
-
-
-
-
-/* .wrapper .content */
-.left{
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-  width: 100%;
-}
-
-/* .wrapper .content */
-.left .img {
-  flex: 0 1 auto;
-  padding: 0px;
-  margin: 20px;
-  position: relative;
-  /* width: 400px;
-  height: 400px; */
-}
-
-
-
-/* .wrapper .content */
-.seg{
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  max-width: 1400px;
-
-}
-
-
-/* .wrapper .content */
-.seg .txt {
-    flex: 3 1 auto;
-    padding: 40px;
-      margin: 20px;
-      height: auto;
-      background-color: rgba(64, 106, 157, 0.1);
-      font-size: 16px;
-    }
-
-
-/* .wrapper .content */
-.seg .img {
-  flex: 0 1 auto;
-  padding: 0px;
-  margin: 0px;
-  position: relative;
-  width: 400px;
-  height: 400px;
-}
-/* .wrapper .content */
-.seg .imgBig {
-  flex: 0 1 auto;
-  padding: 0px;
-  margin: 0px;
-  position: relative;
-  width: 600px;
-  height: 600px;
-}
