@@ -116,7 +116,17 @@ body{
   /* width: 100%; */
   /* margin-left: 200px; */
 }
-
+.pdfview {
+  flex: 0 1 auto;
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  aspect-ratio: 100 / 63 ;
+  /* height: 900px; */ */
+}
 
 /* .wrapper .content .module */
 .img {
