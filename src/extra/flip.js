@@ -33,8 +33,6 @@ function loopSlides() {
 }
 
 
-var path = "/dcmath/figs/slides/KALMAN/KALMAN1024_"
-addSlides(path,10)
 let slideIndex = 1;
 showSlides(slideIndex);
 // Next/previous controls
@@ -62,6 +60,8 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 
+var path = "/dcmath/figs/slides/KALMAN/KALMAN1024_"
+addSlides(path,10)
 
 
 
