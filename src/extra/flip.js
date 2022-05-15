@@ -4,8 +4,19 @@
 
 
 function addSlides(path,maxNum) {
-  // for (let i = 0; i < maxNum; i++) {
-  //   var node = slideDecks[i].createElement('p');
+  let slideDecks = document.getElementsByClassName("slide-container");
+  var node = slideDecks[0].createElement('p');
+  for (let i = 0; i < maxNum; i++) {
+
+    //   let i;
+    //
+    //   for (let i = 0; i < slideDecks.length; i++) {
+    //     let path = slideDecks[i].pathtofile
+    //     let maxNum = slideDecks[i].maxNum
+    //     addSlides(path,maxNum)
+
+
+  //
   //   var newNode = document.createElement('p');
   //   var htmlText = 'yo'
   //     //
@@ -16,7 +27,7 @@ function addSlides(path,maxNum) {
   //     // </div>"
   //     newNode.appendChild(document.createTextNode(htmlText));
   //     node.appendChild(newNode);
-  //   }
+    }
   }
 
 function loopSlides() {
