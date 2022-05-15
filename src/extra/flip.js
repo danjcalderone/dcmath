@@ -1,6 +1,24 @@
 // let slideIndex = 0;
 // showSlides();
 
+
+
+function addSlides(path,maxNum) {
+  // for (let i = 0; i < maxNum; i++) {
+  //   var node = slideDecks[i].createElement('p');
+  //   var newNode = document.createElement('p');
+  //   var htmlText = 'yo'
+  //     //
+  //     // "<div class="mySlides fade">
+  //     //   <div class="numbertext">1 / 3</div>
+  //     //   <img src="./img1.png" style="width:100%">
+  //     // <div class="text">Caption Text</div>
+  //     // </div>"
+  //     newNode.appendChild(document.createTextNode(htmlText));
+  //     node.appendChild(newNode);
+  //   }
+  }
+
 function loopSlides() {
   let i;
   let slides = document.getElementsByClassName("mySlides");
@@ -14,16 +32,14 @@ function loopSlides() {
 }
 
 
-
-
+var path = "/dcmath/figs/slides/KALMAN/KALMAN1024_"
+addSlides(path,10)
 let slideIndex = 1;
 showSlides(slideIndex);
-
 // Next/previous controls
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
-
 // Thumbnail image controls
 function currentSlide(n) {
   showSlides(slideIndex = n);
@@ -44,6 +60,32 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
 }
+
+
+
+
+
+//
+//
+//
+// function addSlideDecks() {
+//   let i;
+//   let slideDecks = document.getElementsByClassName("slide-container");
+//   for (let i = 0; i < slideDecks.length; i++) {
+//     let path = slideDecks[i].pathtofile
+//     let maxNum = slideDecks[i].maxNum
+//     addSlides(path,maxNum)
+//   }
+//
+//
+//
+//   }
+//
+
+
+
+
+
 
 //
 // let slideIndex = [1,1];
