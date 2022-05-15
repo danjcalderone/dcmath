@@ -1,5 +1,25 @@
 /* asfasdfasdf */
 
+
+        /* #pdfview {
+            width: 500px;
+            height: 500px;
+            overflow-y: auto;
+            overflow-x: auto;
+            resize: both;
+            position: relative;
+            scrolling: 0;
+            z-index: 2;
+        } */
+
+        /* iframe {
+            width: 50%
+            height: 20%;
+            border: none;
+            allow: "fullscreen";
+        } */
+
+
 html {
   font-family: "Avenir", sans-serif;
 }
@@ -193,8 +213,13 @@ body{
 
 
 
-
-
+  #the-canvas {
+    border: 1px solid black;
+    direction: ltr;
+  }
+  #pdf-example {
+      border: 1px solid black;
+  }
 
 
 
