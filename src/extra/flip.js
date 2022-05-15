@@ -4,8 +4,8 @@
 
 
 function addSlides(path,maxNum) {
-  let slideDecks = document.getElementsByClassName("slide-container");
-  var node = slideDecks[0].createElement('p');
+  let slideDecks = document.getElementById("slide-container1");
+  var node = slideDecks.createElement('p');
   for (let i = 0; i < maxNum; i++) {
     var newNode = document.createElement('p');
     var htmlText = 'yo'
