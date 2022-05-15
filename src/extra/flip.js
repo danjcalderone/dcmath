@@ -7,26 +7,16 @@ function addSlides(path,maxNum) {
   let slideDecks = document.getElementsByClassName("slide-container");
   var node = slideDecks[0].createElement('p');
   for (let i = 0; i < maxNum; i++) {
-
-    //   let i;
-    //
-    //   for (let i = 0; i < slideDecks.length; i++) {
-    //     let path = slideDecks[i].pathtofile
-    //     let maxNum = slideDecks[i].maxNum
-    //     addSlides(path,maxNum)
-
-
-  //
-  //   var newNode = document.createElement('p');
-  //   var htmlText = 'yo'
+    var newNode = document.createElement('p');
+    var htmlText = 'yo'
   //     //
   //     // "<div class="mySlides fade">
   //     //   <div class="numbertext">1 / 3</div>
   //     //   <img src="./img1.png" style="width:100%">
   //     // <div class="text">Caption Text</div>
   //     // </div>"
-  //     newNode.appendChild(document.createTextNode(htmlText));
-  //     node.appendChild(newNode);
+      newNode.appendChild(document.createTextNode(htmlText));
+      node.appendChild(newNode);
     }
   }
 
