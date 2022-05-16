@@ -141,6 +141,7 @@ function addSlideDecks() {
 function showSlides(name,n) {
   let slides = document.getElementsByClassName(name);
   let dots = document.getElementsByClassName("dot");
+  slideIndexes[name] = n
   if (n > slides.length) {slideIndexes[name] = 1}
   if (n < 1) {slideIndexes[name] = slides.length}
   for (let i = 0; i < slides.length; i++) {
