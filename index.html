@@ -55,9 +55,9 @@
     <div w3-include-html="/dcmath/nav/sidebarMAIN.html"></div>
     </div>
     <div class=content>
-      <p> funasdfasdfasdfasdfasdcgnized <p>
+      <p> functionized <p>
 
-      <div class="slideshow-container flips" id='KALMAN1024'></div>
+      <div class="slideshow-container flips" id='KALMAN1024' any='9'></div>
       <!-- Slideshow container -->
 
 
@@ -264,10 +264,12 @@ height="100%">
       // let slideDecks = document.getElementById("slide-container1");
       // var node = slideDecks.createElement('p');
       var name = 'KALMAN1024'
-      var maxNum = 'maxNum9';
-      function addSlide(name,maxNum){
+      // var maxNum = 'maxNum9';
+      function addSlide(name){
 
       var path = '/dcmath/figs/flips/' + name + '/' + name + '_'
+      // document.getElementById("id1").getAttribute("any");
+      var maxNum = document.getElementById(name).getAttribute("any");
 
       for (let i = 1; i < maxNum; i++) {
         // var newNode = document.createElement('p');
@@ -349,7 +351,7 @@ height="100%">
     }
     // addSlide(name,maxNum)
 
-    addSlide(name,parseInt(maxNum[6]))
+    addSlide(name); //,parseInt(maxNum[6]))
 
 
       // <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
