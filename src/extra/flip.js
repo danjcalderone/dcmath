@@ -102,12 +102,13 @@ document.getElementById(name).appendChild(nextButton)
 }
 
 
-
+var slideIndexes = {}
 
 function addSlideDecks() {
   let x = document.getElementsByClassName('flips')
   for (let i = 0; i < x.length; i++) {
     addSlides(x.id)
+    slideIndexes[x.id] = 1;
   }
 }
 
@@ -154,35 +155,33 @@ function showSlides(name,n) {
 }
 
 
-
-
-
-function loopSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}
-  slides[slideIndex-1].style.display = "block";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
-}
-
-
-let slideIndex = 1;
-var name = 'specific1'
 // showSlides(name,slideIndex);
-showSlides('specific1',slideIndex);
-showSlides('KALMAN1024',1);
+slideIndexes ={'specific1':1,'KALMAN1024':1}
+showSlides('specific1',slideIndexes['specific1']);
+showSlides('KALMAN1024',slideIndexes['KALMAN1024']);
 // Next/previous controls
 function plusSlides(name,n) {
-  showSlides(name,slideIndex += n);
+  showSlides(name,slideIndexes[name] += n);
 }
 // Thumbnail image controls
 function currentSlide(name,n) {
-  showSlides(name,slideIndex = n);
+  showSlides(name,slideIndexes[name] = n);
 }
+
+
+//
+// function loopSlides() {
+//   let i;
+//   let slides = document.getElementsByClassName("mySlides");
+//   for (i = 0; i < slides.length; i++) {
+//     slides[i].style.display = "none";
+//   }
+//   slideIndex++;
+//   if (slideIndex > slides.length) {slideIndex = 1}
+//   slides[slideIndex-1].style.display = "block";
+//   setTimeout(showSlides, 2000); // Change image every 2 seconds
+// }
+
 
 
 
