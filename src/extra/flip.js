@@ -3,7 +3,7 @@
 
 
 
-function addSlides(path,maxNum) {
+export function addSlides(path,maxNum) {
   // let slideDecks = document.getElementById("slide-container1");
   // var node = slideDecks.createElement('p');
   for (let i = 0; i < maxNum; i++) {

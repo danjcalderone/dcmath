@@ -56,23 +56,19 @@
     </div>
     <div class=content>
       <p> updated op <p>
-        <div id='slide-container1'></div>
+        <div class = "slideshow-container" id='slide-container1'></div>
       <!-- Slideshow container -->
       <div class="slideshow-container">
-
-        <!-- Full-width images with number and caption text -->
         <div class="mySlides fade">
           <div class="numbertext">1 / 3</div>
           <img src="./img1.png" style="width:100%">
           <div class="text">Caption Text</div>
         </div>
-
         <div class="mySlides fade">
           <div class="numbertext">2 / 3</div>
           <img src="./img2.png" style="width:100%">
           <div class="text">Caption Two</div>
         </div>
-
         <div class="mySlides fade">
           <div class="numbertext">3 / 3</div>
           <img src="./img3.png" style="width:100%">
@@ -249,7 +245,7 @@ height="100%">
 
   <!-- <script type='module' src='Users/dan/Documents/dcmath/pdf1.js'> </script> -->
   <!-- <script defer src='pdf1.js'> </script> -->
-  <script type='module' src="/dcmath/src/roto.js"> </script>
+
 
 
   <script>
@@ -258,14 +254,53 @@ height="100%">
 
     // let slideDecks = document.getElementById("slide-container1");
     // var node = slideDecks.createElement('p');
+    var path = '/dcmath/figs/_flips/KALMAN/KALMAN1024_'
     var maxNum = 5;
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < maxNum; i++) {
       // var newNode = document.createElement('p');
       var htmlText = 'yo'
       var newNode = document.createElement('p');
-      var textNode = document.createTextNode(htmlText);
-      newNode.append(textNode);
-      document.getElementById('slide-container1').appendChild(newNode)
+      var frag = document.createDocumentFragment();
+      var newFig = document.createElement('div');
+      newFig.classList.add("mySlides","fade")
+      document.getElementById('slide-container1').appendChild(newFig)
+      var newNumText = document.createElement('div')
+      var newImg = document.createElement('img')
+      var newCaption = document.createElement('div')
+      newNumText.classList.add("numbertext")
+      newCaption.classList.add('text')
+
+
+
+
+
+
+
+
+      //
+      // <div class="mySlides fade">
+      //   <div class="numbertext">1 / 3</div>
+      //   <img src="./img1.png" style="width:100%">
+      //   <div class="text">Caption Text</div>
+      // </div>
+      //
+      // newNumText.textContent= String(i) +' / ' + String(maxNum)
+      newImg.src = path+String(i)+'png'
+      newImg.style = "width:100%"
+      newNumText.textContent= '1 / 5'
+      newCaption.textContent='Caption Text'
+      newFig.append(newNumText)
+      newFig.append(newImg)
+      newFig.append(newCaption)
+      document.getElementById('slide-container1').appendChild(newFig)
+      // document.getElementById('slide-container1').appendChild(newNumText)
+      // document.getElementById('slide-container1').appendChild(newImg)
+      // document.getElementById('slide-container1').appendChild(newCaption)
+
+      //
+      // var textNode = document.createTextNode(htmlText);
+      // newNode.append(textNode);
+      // document.getElementById('slide-container1').appendChild(newNode)
     //     // "<div class="mySlides fade">
     //     //   <div class="numbertext">1 / 3</div>
     //     //   <img src="./img1.png" style="width:100%">
@@ -274,12 +309,34 @@ height="100%">
 
     }
 
+    var prevButton = document.createElement('a')
+    var nextButton = document.createElement('a')
+
+    prevButton.class="prev"
+    prevButton.classList.add("prev")
+    prevButton.setAttribute('onclick',"plusSlides(-1)")
+    prevButton.innerHTML = "&#10094;"
+
+    nextButton.class="next"
+    nextButton.classList.add("next")
+    nextButton.setAttribute('onclick',"plusSlides(1)")
+    nextButton.innerHTML = "&#10095;"
+
+    document.getElementById('slide-container1').appendChild(prevButton)
+    document.getElementById('slide-container1').appendChild(nextButton)
+
+
+    // <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    // <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+
 
 
   </script>
 
   <script src="/dcmath/src/extra/includeHTML.js"> </script>
   <script src="/dcmath/src/extra/flip.js"> </script>
+  <script type='module' src="/dcmath/src/roto.js"> </script>
 
 
 
