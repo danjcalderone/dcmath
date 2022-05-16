@@ -59,6 +59,10 @@
 
       <div id='slide-container1'></div>
       <!-- Slideshow container -->
+
+
+
+
       <div class="slideshow-container">
         <div class="mySlides fade specific1">
           <div class="numbertext">1 / 3</div>
@@ -259,7 +263,8 @@ height="100%">
 
       // let slideDecks = document.getElementById("slide-container1");
       // var node = slideDecks.createElement('p');
-      var path = '/dcmath/figs/flips/KALMAN/KALMAN1024_'
+      var name = 'KALMAN1024'
+      var path = '/dcmath/figs/flips/' + name + '/' + name + '_'
       var maxNum = 9;
       for (let i = 1; i < maxNum; i++) {
         // var newNode = document.createElement('p');
@@ -267,7 +272,7 @@ height="100%">
         // var newNode = document.createElement('p');
         // var frag = document.createDocumentFragment();
         var newFig = document.createElement('div');
-        // newFig.classList.add("mySlides","fade")
+        newFig.classList.add("mySlides","fade",)
         // document.getElementById('slide-container1').appendChild(newFig)
         var newNumText = document.createElement('div')
         var newImg = document.createElement('img')
@@ -283,7 +288,7 @@ height="100%">
         // </div>
         //
         // newNumText.textContent= String(i) +' / ' + String(maxNum)
-        newImg.src = path+String(i)+'.png'
+        newImg.src = path + String(i) + '.png'
         newImg.style = "width:100%"
         newNumText.textContent= '1 / 5'
         newCaption.textContent='Caption Text'
