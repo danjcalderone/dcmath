@@ -102,7 +102,7 @@ document.getElementById(name).appendChild(nextButton)
 }
 
 
-var slideIndexes = {}
+
 
 function addSlideDecks() {
   let x = document.getElementsByClassName('flips')
@@ -156,7 +156,7 @@ function showSlides(name,n) {
 
 
 // showSlides(name,slideIndex);
-slideIndexes ={'specific1':1,'KALMAN1024':1}
+var slideIndexes ={'specific1':1,'KALMAN1024':1}
 showSlides('specific1',slideIndexes['specific1']);
 showSlides('KALMAN1024',slideIndexes['KALMAN1024']);
 // Next/previous controls
