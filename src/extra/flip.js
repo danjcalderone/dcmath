@@ -172,7 +172,9 @@ function loopSlides() {
 
 let slideIndex = 1;
 var name = 'specific1'
-showSlides(name,slideIndex);
+// showSlides(name,slideIndex);
+showSlides('specific1',slideIndex);
+showSlides('KALMAN1024',1);
 // Next/previous controls
 function plusSlides(name,n) {
   showSlides(name,slideIndex += n);
