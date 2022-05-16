@@ -61,8 +61,8 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 
-var path = "/dcmath/figs/slides/KALMAN/KALMAN1024_"
-addSlides(path,10)
+//var path = "/dcmath/figs/slides/KALMAN/KALMAN1024_"
+addSlides("blig",10)
 
 
 
