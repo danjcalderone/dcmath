@@ -3,23 +3,23 @@
 
 
 
-export function addSlides(path,maxNum) {
-  // let slideDecks = document.getElementById("slide-container1");
-  // var node = slideDecks.createElement('p');
-  for (let i = 0; i < maxNum; i++) {
-    // var newNode = document.createElement('p');
-    var htmlText = 'yo'
-    var newNode = document.createElement('p');
-    var textNode = document.createTextNode(htmlText);
-    newNode.append(textNode);
-    document.getElementById('slide-container1').appendChild(newNode)
-  //     // "<div class="mySlides fade">
-  //     //   <div class="numbertext">1 / 3</div>
-  //     //   <img src="./img1.png" style="width:100%">
-  //     // <div class="text">Caption Text</div>
-  //     // </div>"
-    }
-  }
+// export function addSlides(path,maxNum) {
+//   // let slideDecks = document.getElementById("slide-container1");
+//   // var node = slideDecks.createElement('p');
+//   for (let i = 0; i < maxNum; i++) {
+//     // var newNode = document.createElement('p');
+//     var htmlText = 'yo'
+//     var newNode = document.createElement('p');
+//     var textNode = document.createTextNode(htmlText);
+//     newNode.append(textNode);
+//     document.getElementById('slide-container1').appendChild(newNode)
+//   //     // "<div class="mySlides fade">
+//   //     //   <div class="numbertext">1 / 3</div>
+//   //     //   <img src="./img1.png" style="width:100%">
+//   //     // <div class="text">Caption Text</div>
+//   //     // </div>"
+//     }
+//   }
 
 function loopSlides() {
   let i;
