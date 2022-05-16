@@ -62,7 +62,7 @@ function showSlides(n) {
 }
 
 //var path = "/dcmath/figs/slides/KALMAN/KALMAN1024_"
-addSlides("blig",10)
+// addSlides("blig",10)
 
 
 
