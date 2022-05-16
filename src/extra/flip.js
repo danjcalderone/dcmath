@@ -21,6 +21,106 @@
 //     }
 //   }
 
+function addSlides(name,maxNum){
+
+var path = '/dcmath/figs/flips/' + name + '/' + name + '_'
+
+for (let i = 1; i < maxNum; i++) {
+  // var newNode = document.createElement('p');
+  // var htmlText = 'yo'
+  // var newNode = document.createElement('p');
+  // var frag = document.createDocumentFragment();
+  var newFig = document.createElement('div');
+  // newFig.classList.add("mySlides","fade")
+  newFig.classList.add(name)
+
+  // document.getElementById('slide-container1').appendChild(newFig)
+  var newNumText = document.createElement('div')
+  var newImg = document.createElement('img')
+  var newCaption = document.createElement('div')
+  newNumText.classList.add("numbertext")
+  newCaption.classList.add('text')
+
+
+  // <div class="mySlides fade">
+  //   <div class="numbertext">1 / 3</div>
+  //   <img src="./img1.png" style="width:100%">
+  //   <div class="text">Caption Text</div>
+  // </div>
+  //
+  // newNumText.textContent= String(i) +' / ' + String(maxNum)
+  newImg.src = path + String(i) + '.png'
+  newImg.style = "width:100%"
+  newNumText.textContent= '1 / 5'
+  newCaption.textContent='Caption Text'
+  newFig.append(newNumText)
+  newFig.append(newImg)
+  newFig.append(newCaption)
+  document.getElementById(name).appendChild(newFig)
+  // document.getElementById('slide-container1').appendChild(newNumText)
+  // document.getElementById('slide-container1').appendChild(newImg)
+  // document.getElementById('slide-container1').appendChild(newCaption)
+
+  //
+  // var textNode = document.createTextNode(htmlText);
+  // newNode.append(textNode);
+  // document.getElementById('slide-container1').appendChild(newNode)
+//     // "<div class="mySlides fade">
+//     //   <div class="numbertext">1 / 3</div>
+//     //   <img src="./img1.png" style="width:100%">
+//     // <div class="text">Caption Text</div>
+//     // </div>"
+
+}
+
+var prevButton = document.createElement('a')
+var nextButton = document.createElement('a')
+
+prevButton.class="prev"
+prevButton.classList.add("prev")
+prevButton.setAttribute('onclick',"plusSlides(-1)")
+prevButton.innerHTML = "&#10094;"
+
+nextButton.class="next"
+nextButton.classList.add("next")
+nextButton.setAttribute('onclick',"plusSlides(1)")
+nextButton.innerHTML = "&#10095;"
+
+document.getElementById(name).appendChild(prevButton)
+document.getElementById(name).appendChild(nextButton)
+
+
+
+
+// <div style="text-align:center">
+//   <span class="dot" onclick="currentSlide(1)"></span>
+//   <span class="dot" onclick="currentSlide(2)"></span>
+//   <span class="dot" onclick="currentSlide(3)"></span>
+// </div>
+
+
+}
+
+
+
+
+function addSlideDecks(n, no) {
+  let i;
+  let x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex[no]-1].style.display = "block";
+}
+
+function showSlideDecks() {
+
+
+}
+
+
 function showSlides(n) {
   let i;
   let slides = document.getElementsByClassName("specific1");
@@ -38,16 +138,7 @@ function showSlides(n) {
 }
 
 
-function showMSlides(n, no) {
-  let i;
-  let x = document.getElementsByClassName(slideId[no]);
-  if (n > x.length) {slideIndex[no] = 1}
-  if (n < 1) {slideIndex[no] = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  x[slideIndex[no]-1].style.display = "block";
-}
+
 
 
 function loopSlides() {
