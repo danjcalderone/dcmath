@@ -137,9 +137,9 @@ function addSlideDecks() {
 
 
 
-function showSlides(n) {
+function showSlides(name,n) {
   let i;
-  let slides = document.getElementsByClassName("specific1");
+  let slides = document.getElementsByClassName(name);
   let dots = document.getElementsByClassName("dot");
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
@@ -171,14 +171,15 @@ function loopSlides() {
 
 
 let slideIndex = 1;
-showSlides(slideIndex);
+var name = 'specific1'
+showSlides(name,slideIndex);
 // Next/previous controls
 function plusSlides(name,n) {
-  showSlides(slideIndex += n);
+  showSlides(name,slideIndex += n);
 }
 // Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+function currentSlide(name,n) {
+  showSlides(name,slideIndex = n);
 }
 
 
