@@ -57,7 +57,7 @@
     <div class=content>
       <p> shlimshlob <p>
 
-      <div id='slide-container1'></div>
+      <div id='KALMAN1024'></div>
       <!-- Slideshow container -->
 
 
@@ -272,7 +272,9 @@ height="100%">
         // var newNode = document.createElement('p');
         // var frag = document.createDocumentFragment();
         var newFig = document.createElement('div');
-        newFig.classList.add("mySlides","fade",)
+        // newFig.classList.add("mySlides","fade")
+        newFig.classList.add(name)
+
         // document.getElementById('slide-container1').appendChild(newFig)
         var newNumText = document.createElement('div')
         var newImg = document.createElement('img')
@@ -295,7 +297,7 @@ height="100%">
         newFig.append(newNumText)
         newFig.append(newImg)
         newFig.append(newCaption)
-        document.getElementById('slide-container1').appendChild(newFig)
+        document.getElementById(name).appendChild(newFig)
         // document.getElementById('slide-container1').appendChild(newNumText)
         // document.getElementById('slide-container1').appendChild(newImg)
         // document.getElementById('slide-container1').appendChild(newCaption)
@@ -325,8 +327,8 @@ height="100%">
       nextButton.setAttribute('onclick',"plusSlides(1)")
       nextButton.innerHTML = "&#10095;"
 
-      document.getElementById('slide-container1').appendChild(prevButton)
-      document.getElementById('slide-container1').appendChild(nextButton)
+      document.getElementById(name).appendChild(prevButton)
+      document.getElementById(name).appendChild(nextButton)
 
 
       // <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
