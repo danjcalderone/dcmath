@@ -55,7 +55,7 @@
     <div w3-include-html="/dcmath/nav/sidebarMAIN.html"></div>
     </div>
     <div class=content>
-      <p> asdf asdf asdf asdf asdf asdf  <p>
+      <p> asdf asdf asasdfasdfadsfasdfdf asdf asdf asdf  <p>
 
       <div class="slideshow-container flips" id='KALMAN1024' any='9'></div>
       <!-- Slideshow container -->
@@ -324,12 +324,14 @@ height="100%">
 
       prevButton.class="prev"
       prevButton.classList.add("prev")
-      prevButton.setAttribute('onclick',"plusSlides(-1)")
+      var onClickString = "plusSlides('"+name+"',-1)"
+      prevButton.setAttribute('onclick',onClickString)
       prevButton.innerHTML = "&#10094;"
 
       nextButton.class="next"
       nextButton.classList.add("next")
-      nextButton.setAttribute('onclick',"plusSlides(1)")
+      onClickString = "plusSlides('"+name+"',1)"
+      nextButton.setAttribute('onclick',onClickString)
       nextButton.innerHTML = "&#10095;"
 
       document.getElementById(name).appendChild(prevButton)
