@@ -87,8 +87,8 @@ addSlides("blig",10)
 
 
 
-
-
+//
+//
 //
 // let slideIndex = [1,1];
 // /* Class the members of each slideshow group with different CSS classes */
