@@ -31,7 +31,22 @@ function addSlides(name){
     // var maxNum = 'maxNum9';
     let path = '/dcmath/figs/flips/' + name + '/' + name + '_'
     let maxNum = document.getElementById(name).getAttribute("any");
+
+
+    var newDots = document.createElement('div')
+    newDots.style = "text-align:center"
+
+
     for (let i = 1; i < maxNum; i++) {
+
+      var newDot = document.createElement('span')
+      newDot.classList.add('dot');
+      var onDotClickString = "currentSlide('"+name+"',"+String(i)+")"
+      newDot.setAttribute('onclick',onDotClickString)
+      newDots.append(newDot)
+      // outcome:
+      // <span class="dot" onclick="currentSlide('specific1',1)"></span>
+
       // var newNode = document.createElement('p');
       // var htmlText = 'yo'
       // var newNode = document.createElement('p');
@@ -91,6 +106,8 @@ function addSlides(name){
 
     document.getElementById(name).appendChild(prevButton)
     document.getElementById(name).appendChild(nextButton)
+    document.getElementById(name).appendChild(newDots)
+
 
 }
 
