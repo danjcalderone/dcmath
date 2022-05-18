@@ -164,8 +164,9 @@ var maxNum = 'maxNum9';
 var slideIndexes ={'specific1':1,'KALMAN1024':1}
 
 addSlides(name); //,parseInt(maxNum[6
-showSlides('specific1',slideIndexes['specific1']);
 showSlides('KALMAN1024',slideIndexes['KALMAN1024']);
+// showSlides('specific1',slideIndexes['specific1']);
+
 
 
 // showSlides(name,slideIndexes[name]);
