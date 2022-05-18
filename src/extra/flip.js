@@ -22,21 +22,15 @@
 //   }
 
 
-var name = 'KALMAN1024'
-var maxNum = 'maxNum9';
 // let slideDecks = document.getElementById("slide-container1");
 // var node = slideDecks.createElement('p');
 
-function addSlide(name){
+function addSlides(name){
     // let slideDecks = document.getElementById("slide-container1");
     // var node = slideDecks.createElement('p');
-
     // var maxNum = 'maxNum9';
-
-    var path = '/dcmath/figs/flips/' + name + '/' + name + '_'
-    // document.getElementById("id1").getAttribute("any");
-    var maxNum = document.getElementById(name).getAttribute("any");
-
+    let path = '/dcmath/figs/flips/' + name + '/' + name + '_'
+    let maxNum = document.getElementById(name).getAttribute("any");
     for (let i = 1; i < maxNum; i++) {
       // var newNode = document.createElement('p');
       // var htmlText = 'yo'
@@ -45,15 +39,12 @@ function addSlide(name){
       var newFig = document.createElement('div');
       // newFig.classList.add("mySlides","fade")
       newFig.classList.add(name)
-
       // document.getElementById('slide-container1').appendChild(newFig)
       var newNumText = document.createElement('div')
       var newImg = document.createElement('img')
       var newCaption = document.createElement('div')
       newNumText.classList.add("numbertext")
       newCaption.classList.add('text')
-
-
       // <div class="mySlides fade">
       //   <div class="numbertext">1 / 3</div>
       //   <img src="./img1.png" style="width:100%">
@@ -83,7 +74,6 @@ function addSlide(name){
     //     // <div class="text">Caption Text</div>
     //     // </div>"
     }
-
     var prevButton = document.createElement('a')
     var nextButton = document.createElement('a')
 
@@ -102,10 +92,7 @@ function addSlide(name){
     document.getElementById(name).appendChild(prevButton)
     document.getElementById(name).appendChild(nextButton)
 
-
-
 }
-
 
 
 
@@ -142,8 +129,6 @@ function addSlideDecks() {
 // }
 
 
-
-
 function showSlides(name,n) {
   let slides = document.getElementsByClassName(name);
   let dots = document.getElementsByClassName("dot");
@@ -162,9 +147,7 @@ function showSlides(name,n) {
 
 
 // showSlides(name,slideIndex);
-var slideIndexes ={'specific1':1,'KALMAN1024':1}
-showSlides('specific1',slideIndexes['specific1']);
-showSlides('KALMAN1024',slideIndexes['KALMAN1024']);
+
 // Next/previous controls
 function plusSlides(name,n) {
   showSlides(name,slideIndexes[name] += n);
@@ -176,8 +159,16 @@ function currentSlide(name,n) {
 
 
 
-addSlide(name); //,parseInt(maxNum[6
-showSlides(name,slideIndexes[name]);
+var name = 'KALMAN1024'
+var maxNum = 'maxNum9';
+var slideIndexes ={'specific1':1,'KALMAN1024':1}
+
+addSlides(name); //,parseInt(maxNum[6
+showSlides('specific1',slideIndexes['specific1']);
+showSlides('KALMAN1024',slideIndexes['KALMAN1024']);
+
+
+// showSlides(name,slideIndexes[name]);
 
 
 //
