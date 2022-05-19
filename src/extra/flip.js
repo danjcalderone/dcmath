@@ -178,9 +178,13 @@ function currentSlide(name,n) {
 
 var name = 'KALMAN1024'
 var maxNum = 'maxNum9';
-var slideIndexes ={'specific1':1,'KALMAN1024':1}
+var slideIndexes ={'specific1':1,
+                   'KALMAN1024':1,
+                   'EVECS2X2-000'}
 
-addSlides(name); //,parseInt(maxNum[6
+addSlides('KALMAN1024'); //,parseInt(maxNum[6
+addSlides('EVECS2X2-000'); //,parseInt(maxNum[6
+showSlides('EVECS2X2-000',slideIndexes['EVECS2X2-000']);
 showSlides('KALMAN1024',slideIndexes['KALMAN1024']);
 // showSlides('specific1',slideIndexes['specific1']);
 
