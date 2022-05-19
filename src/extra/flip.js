@@ -180,13 +180,13 @@ var name = 'KALMAN1024'
 var maxNum = 'maxNum9';
 var slideIndexes ={'specific1':1,
                    'KALMAN1024':1,
-                   'EVECS2X2-000'}
+                   'EVECS2X2'}
 
 addSlides('KALMAN1024'); //,parseInt(maxNum[6
 showSlides('KALMAN1024',slideIndexes['KALMAN1024']);
 
-addSlides('EVECS2X2-000'); //,parseInt(maxNum[6
-showSlides('EVECS2X2-000',slideIndexes['EVECS2X2-000']);
+addSlides('EVECS2X2'); //,parseInt(maxNum[6
+showSlides('EVECS2X2',slideIndexes['EVECS2X2']);
 // showSlides('specific1',slideIndexes['specific1']);
 
 
