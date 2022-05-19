@@ -27,7 +27,7 @@
 
 var slideIndexes ={'KALMAN1024':1, 'EVECS2X2':1}
 
-function addSlides(name){
+function addSlides(name,slideIndexes){
     // let slideDecks = document.getElementById("slide-container1");
     // var node = slideDecks.createElement('p');
     // var maxNum = 'maxNum9';
@@ -43,7 +43,7 @@ function addSlides(name){
 
       var newDot = document.createElement('span')
       newDot.classList.add('dot');
-      var onDotClickString = "currentSlide('"+name+"',"+String(i)+")"
+      var onDotClickString = "currentSlide('"+name+"',"+String(i)+",slideIndexes)"
       newDot.setAttribute('onclick',onDotClickString)
       newDots.append(newDot)
       // outcome:
@@ -96,13 +96,13 @@ function addSlides(name){
 
     prevButton.class="prev"
     prevButton.classList.add("prev")
-    var onClickString = "plusSlides('"+name+"',-1)"
+    var onClickString = "plusSlides('"+name+"',-1,slideIndexes)"
     prevButton.setAttribute('onclick',onClickString)
     prevButton.innerHTML = "&#10094;"
 
     nextButton.class="next"
     nextButton.classList.add("next")
-    onClickString = "plusSlides('"+name+"',1)"
+    onClickString = "plusSlides('"+name+"',1,slideIndexes)"
     nextButton.setAttribute('onclick',onClickString)
     nextButton.innerHTML = "&#10095;"
 
@@ -169,11 +169,11 @@ function showSlides(name,n,slideIndexes) {
 
 // Next/previous controls
 function plusSlides(name,n,slideIndexes) {
-  showSlides(name,slideIndexes[name] += n);
+  showSlides(name,slideIndexes[name] += n,slideIndexes);
 }
 // Thumbnail image controls
 function currentSlide(name,n,slideIndexes) {
-  showSlides(name,slideIndexes[name] = n);
+  showSlides(name,slideIndexes[name] = n,slideIndexes);
 }
 
 addSlides('KALMAN1024'); //,parseInt(maxNum[6
