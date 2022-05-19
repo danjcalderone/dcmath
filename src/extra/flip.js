@@ -180,7 +180,7 @@ var name = 'KALMAN1024'
 var maxNum = 'maxNum9';
 var slideIndexes ={'specific1':1,
                    'KALMAN1024':1,
-                   'EVECS2X2'}
+                   'EVECS2X2':1}
 
 addSlides('KALMAN1024'); //,parseInt(maxNum[6
 showSlides('KALMAN1024',slideIndexes['KALMAN1024']);
