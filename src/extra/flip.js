@@ -114,7 +114,7 @@ export function addSlides(name){
 
 
 
-function addSlideDecks() {
+export function addSlideDecks() {
   let x = document.getElementsByClassName('flips')
   for (let i = 0; i < x.length; i++) {
     addSlides(x.id)
@@ -146,7 +146,7 @@ function addSlideDecks() {
 // }
 
 
-function showSlides(name,n,slideIndexes) {
+export function showSlides(name,n,slideIndexes) {
   let slides = document.getElementsByClassName(name);
   let dots = document.getElementsByClassName("dot");
   slideIndexes[name] = n
@@ -166,11 +166,11 @@ function showSlides(name,n,slideIndexes) {
 // showSlides(name,slideIndex);
 
 // Next/previous controls
-function plusSlides(name,n,slideIndexes) {
+export function plusSlides(name,n,slideIndexes) {
   showSlides(name,slideIndexes[name] += n);
 }
 // Thumbnail image controls
-function currentSlide(name,n,slideIndexes) {
+export function currentSlide(name,n,slideIndexes) {
   showSlides(name,slideIndexes[name] = n);
 }
 
