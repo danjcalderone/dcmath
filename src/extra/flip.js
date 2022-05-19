@@ -25,7 +25,7 @@
 // let slideDecks = document.getElementById("slide-container1");
 // var node = slideDecks.createElement('p');
 
-function addSlides(name){
+export function addSlides(name){
     // let slideDecks = document.getElementById("slide-container1");
     // var node = slideDecks.createElement('p');
     // var maxNum = 'maxNum9';
@@ -146,7 +146,7 @@ function addSlideDecks() {
 // }
 
 
-function showSlides(name,n) {
+function showSlides(name,n,slideIndexes) {
   let slides = document.getElementsByClassName(name);
   let dots = document.getElementsByClassName("dot");
   slideIndexes[name] = n
@@ -166,28 +166,14 @@ function showSlides(name,n) {
 // showSlides(name,slideIndex);
 
 // Next/previous controls
-function plusSlides(name,n) {
+function plusSlides(name,n,slideIndexes) {
   showSlides(name,slideIndexes[name] += n);
 }
 // Thumbnail image controls
-function currentSlide(name,n) {
+function currentSlide(name,n,slideIndexes) {
   showSlides(name,slideIndexes[name] = n);
 }
 
-
-
-var name = 'KALMAN1024'
-var maxNum = 'maxNum9';
-var slideIndexes ={'specific1':1,
-                   'KALMAN1024':1,
-                   'EVECS2X2':1}
-
-addSlides('KALMAN1024'); //,parseInt(maxNum[6
-showSlides('KALMAN1024',slideIndexes['KALMAN1024']);
-
-addSlides('EVECS2X2'); //,parseInt(maxNum[6
-showSlides('EVECS2X2',slideIndexes['EVECS2X2']);
-// showSlides('specific1',slideIndexes['specific1']);
 
 
 
