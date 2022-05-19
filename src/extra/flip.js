@@ -25,9 +25,9 @@
 // let slideDecks = document.getElementById("slide-container1");
 // var node = slideDecks.createElement('p');
 
-var slideIndexes ={'KALMAN1024':1, 'EVECS2X2':1}
 
-function addSlides(name,slideIndexes){
+
+export function addSlides(name,slideIndexes){
     // let slideDecks = document.getElementById("slide-container1");
     // var node = slideDecks.createElement('p');
     // var maxNum = 'maxNum9';
@@ -116,7 +116,7 @@ function addSlides(name,slideIndexes){
 
 
 
-function addSlideDecks() {
+export function addSlideDecks() {
   let x = document.getElementsByClassName('flips')
   for (let i = 0; i < x.length; i++) {
     addSlides(x.id)
@@ -148,7 +148,7 @@ function addSlideDecks() {
 // }
 
 
-function showSlides(name,n,slideIndexes) {
+export function showSlides(name,n,slideIndexes) {
   let slides = document.getElementsByClassName(name);
   let dots = document.getElementsByClassName("dot");
   slideIndexes[name] = n
@@ -168,18 +168,14 @@ function showSlides(name,n,slideIndexes) {
 // showSlides(name,slideIndex);
 
 // Next/previous controls
-function plusSlides(name,n,slideIndexes) {
+export function plusSlides(name,n,slideIndexes) {
   showSlides(name,slideIndexes[name] += n,slideIndexes);
 }
 // Thumbnail image controls
-function currentSlide(name,n,slideIndexes) {
+export function currentSlide(name,n,slideIndexes) {
   showSlides(name,slideIndexes[name] = n,slideIndexes);
 }
 
-addSlides('KALMAN1024'); //,parseInt(maxNum[6
-addSlides('EVECS2X2'); //,parseInt(maxNum[6
-showSlides('KALMAN1024',slideIndexes['KALMAN1024'],slideIndexes);
-showSlides('EVECS2X2',slideIndexes['EVECS2X2'],slideIndexes);
 
 
 
