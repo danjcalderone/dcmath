@@ -25,6 +25,8 @@
 // let slideDecks = document.getElementById("slide-container1");
 // var node = slideDecks.createElement('p');
 
+var slideIndexes ={'KALMAN1024':1, 'EVECS2X2':1}
+
 export function addSlides(name){
     // let slideDecks = document.getElementById("slide-container1");
     // var node = slideDecks.createElement('p');
