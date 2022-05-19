@@ -176,6 +176,10 @@ export function currentSlide(name,n,slideIndexes) {
   showSlides(name,slideIndexes[name] = n);
 }
 
+addSlides('KALMAN1024'); //,parseInt(maxNum[6
+addSlides('EVECS2X2'); //,parseInt(maxNum[6
+showSlides('KALMAN1024',slideIndexes['KALMAN1024'],slideIndexes);
+showSlides('EVECS2X2',slideIndexes['EVECS2X2'],slideIndexes);
 
 
 
