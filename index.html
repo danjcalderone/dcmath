@@ -247,15 +247,18 @@ height="100%">
   <!-- <script defer src='pdf1.js'> </script> -->
 
   <script src="/dcmath/src/extra/includeHTML.js"> </script>
-  <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
   <script type='module' src="/dcmath/src/roto.js"> </script>
-
+  <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
   <script>
+
   const slideIndexes ={'KALMAN1024':1, 'EVECS2X2':1}
-  addSlides('KALMAN1024',slideIndexes); //,parseInt(maxNum[6
-  addSlides('EVECS2X2',slideIndexes); //,parseInt(maxNum[6
+
+  addSlides('KALMAN1024',slideIndexes);
   showSlides('KALMAN1024',slideIndexes['KALMAN1024'],slideIndexes);
+
+  addSlides('EVECS2X2',slideIndexes);
   showSlides('EVECS2X2',slideIndexes['EVECS2X2'],slideIndexes);
+
   </script>
 
 
