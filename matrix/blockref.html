@@ -143,6 +143,10 @@
                 </div>
               </div> -->
 
+              <div class='imgFixed'>
+              <img src="/dcmath/figs/stills/BLOCK/mmregular.png" width=100%></img>
+              </div>
+
 
 
               <div class="txt" style="padding:40px, width:100%">
@@ -190,44 +194,29 @@
 
 
 
-              <div class='imgFixed'>
-              <img src="/dcmath/figs/stills/BLOCK/mmregular.png" width=100%></img>
-              </div>
+
               <div class='imgFixed'>
               <img src="/dcmath/figs/stills/BLOCK/mmblock.png" width=100%></img>
               </div>
+
+
+
+
+
+
+
+
+
+
               <div class='imgFixed'>
               <img src="/dcmath/figs/stills/BLOCK/mvcols.png" width=100%></img>
               </div>
-              <div class='imgFixed'>
-              <img src="/dcmath/figs/stills/BLOCK/mvrows.png" width=100%></img>
-              </div>
-              <div class='imgFixed'>
-              <img src="/dcmath/figs/stills/BLOCK/mmcols.png" width=100%></img>
-              </div>
-              <div class='imgFixed'>
-              <img src="/dcmath/figs/stills/BLOCK/mmrows.png" width=100%></img>
-              </div>
-              <div class='imgFixed'>
-              <img src="/dcmath/figs/stills/BLOCK/mmrowscols.png" width=100%></img>
-              </div>
-              <div class='imgFixed'>
-              <img src="/dcmath/figs/stills/BLOCK/mmcolsrows.png" width=100%></img>
-              </div>
-              <div class='imgFixed'>
-              <img src="/dcmath/figs/stills/BLOCK/mmmrowsmatcols.png" width=100%></img>
-              </div>
-              <div class='imgFixed'>
-              <img src="/dcmath/figs/stills/BLOCK/mmmcolsvalsrows.png" width=100%></img>
-              </div>
-              <div class='imgFixed'>
-              <img src="/dcmath/figs/stills/BLOCK/mmmcolsdiagrows.png" width=100%></img>
-              </div>
-
 
 
               <div class="txt" style="padding:40px, width:100%">
               <b> Case 1: Linear Combination of Columns - MOST IMPORTANT </b>
+
+
               <p>
                 For matrix \(A \in \mathbb{R}^{m \times n}\) and vector \(x \in \mathbb{R}^n \)
                 the product \(Ax\) can be thought of as a linear combination
@@ -260,30 +249,19 @@
                 Being comfortable with this interpretation is critical to fluency in linear algebra.
               </p>
 
-              <b> Case 2: Each Column a Set of Coordinates - 2ND MOST IMPORTANT </b>
-              <p>
-                Multiplying a matrix \(A\) with a matrix \(B\) can be thought of as applying
-                the tranformation \(A\) to each column of the matrix \(B\) separately.
-                For matrix \(A \in \mathbb{R}^{M \times N}\) and matrix \(B \in \mathbb{R}^{N \times K}\)
-                $$
-                AB = \bigg[ \ \  A \  \ \bigg]
-                \begin{bmatrix}
-                | & & |\\
-                B_1 & \cdots & B_n \\
-                | & & |\\
-                \end{bmatrix}
-                =
-                \begin{bmatrix}
-                | & & |\\
-                AB_1 & \cdots & AB_n \\
-                | & & |\\
-                \end{bmatrix}
-                $$
-                Combining this with the first case, we have that each column, \(B_j\)
-                corresponds to a different linear combination of the columns of \(A\).
-              </p>
+            </div>
 
-              <b> Case 3: Projection Onto Rows </b>
+
+              <div class='imgFixed'>
+              <img src="/dcmath/figs/stills/BLOCK/mvrows.png" width=100%></img>
+              </div>
+
+
+              <div class="txt" style="padding:40px, width:100%">
+
+              <b> Case 2: Projection Onto Rows </b>
+
+
               <p>
                 For matrix \(A \in \mathbb{R}^{M \times N}\) and vector \(x \in \mathbb{R}^N \)
                 if we think of the matrix as rows, the product \(Ax\) is the inner product of
@@ -314,7 +292,62 @@
             </div>
 
 
+            <div class='imgFixed'>
+            <img src="/dcmath/figs/stills/BLOCK/vmcols.png" width=100%></img>
+            </div>
 
+            <div class='imgFixed'>
+            <img src="/dcmath/figs/stills/BLOCK/vmrows.png" width=100%></img>
+            </div>
+
+                        <div class='imgFixed'>
+                        <img src="/dcmath/figs/stills/BLOCK/mmcols.png" width=100%></img>
+                        </div>
+
+              <div class="txt" style="padding:40px, width:100%">
+
+              <b> Case 3: Each Column a Set of Coordinates  </b>
+
+
+              <p>
+                Multiplying a matrix \(A\) with a matrix \(B\) can be thought of as applying
+                the tranformation \(A\) to each column of the matrix \(B\) separately.
+                For matrix \(A \in \mathbb{R}^{M \times N}\) and matrix \(B \in \mathbb{R}^{N \times K}\)
+                $$
+                AB = \bigg[ \ \  A \  \ \bigg]
+                \begin{bmatrix}
+                | & & |\\
+                B_1 & \cdots & B_n \\
+                | & & |\\
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                | & & |\\
+                AB_1 & \cdots & AB_n \\
+                | & & |\\
+                \end{bmatrix}
+                $$
+                Combining this with the first case, we have that each column, \(B_j\)
+                corresponds to a different linear combination of the columns of \(A\).
+              </p>
+
+            </div>
+
+
+
+
+
+
+
+              <div class='imgFixed'>
+              <img src="/dcmath/figs/stills/BLOCK/mmrows.png" width=100%></img>
+              </div>
+
+
+
+              <div class='imgFixed'>
+              <img src="/dcmath/figs/stills/BLOCK/mmrowscols.png" width=100%></img>
+              </div>
 
 
 
@@ -324,6 +357,9 @@
 
 
               <b> Case 4: Pairwise Inner Products </b>
+
+
+
               <p>
                 If \(A\) is segmented into rows and \(B\) is segmented into columns,
                 \(AB\) is the pairwise inner products between rows of \(A\) and
@@ -351,41 +387,23 @@
                 $$
               </p>
 
-              <b> Case 5: Inner Products Around Matrix </b>
-              <p>
-                If \(A\) is segmented into rows, \(B\) is segmented into cols,
-                and \(D\) is some matrix of appropriate dimension, the product
-                \(ADB\) is given by
-
-
-                $$
-                ADB =
-                \begin{bmatrix}
-                - & a_1^T & - \\
-                \vdots & & \vdots \\
-                - & a_N^T & -
-                \end{bmatrix}
-                \Bigg[ \ \ \ D \ \ \ \Bigg]
-                \begin{bmatrix}
-                | & & |\\
-                B_1 & \cdots & B_n \\
-                | & & |\\
-                \end{bmatrix}
-                =
-                \begin{bmatrix}
-                \underbrace{a_1^TDB_1}_{1 \times 1} & \cdots & a_1^TDB_K \\
-                \vdots & & \vdots  \\
-                a_M^TDB_1 & \cdots & a_M^TDB_K
-                \end{bmatrix}
-                $$
-              </p>
             </div>
+
+            <div class='imgFixed'>
+            <img src="/dcmath/figs/stills/BLOCK/mmcolsrows.png" width=100%></img>
+            </div>
+
+
+
+
+
+
 
           <div class="txt" style="padding:40px, width:100%">
 
 
 
-              <b> Case 6: Sum of Outer Products </b>
+              <b> Case 5: Sum of Outer Products </b>
               <p>
                 If \(A\) is segmented into cols and \(B\) is segmented into rows,
                 \(AB\) is a sum of outer-products.
@@ -428,8 +446,54 @@
               </p>
 
 
+            </div>
 
 
+
+            <div class='imgFixed'>
+            <img src="/dcmath/figs/stills/BLOCK/mmmrowsmatcols.png" width=100%></img>
+            </div>
+
+
+            <div class="txt" style="padding:40px, width:100%">
+            <b> Case 6: Inner Products Around Matrix </b>
+            <p>
+              If \(A\) is segmented into rows, \(B\) is segmented into cols,
+              and \(D\) is some matrix of appropriate dimension, the product
+              \(ADB\) is given by
+
+
+              $$
+              ADB =
+              \begin{bmatrix}
+              - & a_1^T & - \\
+              \vdots & & \vdots \\
+              - & a_N^T & -
+              \end{bmatrix}
+              \Bigg[ \ \ \ D \ \ \ \Bigg]
+              \begin{bmatrix}
+              | & & |\\
+              B_1 & \cdots & B_n \\
+              | & & |\\
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+              \underbrace{a_1^TDB_1}_{1 \times 1} & \cdots & a_1^TDB_K \\
+              \vdots & & \vdots  \\
+              a_M^TDB_1 & \cdots & a_M^TDB_K
+              \end{bmatrix}
+              $$
+            </p>
+          </div>
+
+
+          <div class='imgFixed'>
+          <img src="/dcmath/figs/stills/BLOCK/mmmcolsvalsrows.png" width=100%></img>
+          </div>
+
+
+
+            <div class="txt" style="padding:40px, width:100%">
 
               <b> Case 7: Outer Products Around Matrix </b>
               <p>
@@ -470,7 +534,15 @@
               }_{M \times L}
                 $$
               </p>
+            </div>
 
+
+              <div class='imgFixed'>
+              <img src="/dcmath/figs/stills/BLOCK/mmmcolsdiagrows.png" width=100%></img>
+              </div>
+
+
+              <div class="txt" style="padding:40px, width:100%">
               <b> Case 8: Diagonal \(D\) </b>
               <p>
                 If \(D\) is diagonal (as in the case of a diagonalization),
@@ -512,22 +584,6 @@
 
 
               </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
