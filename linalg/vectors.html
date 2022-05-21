@@ -158,7 +158,7 @@
             </div>
 
             <div class="txt" style="padding:40px">
-            <b> More Drawing: Projection to 2D (Difficulty: 4/10) </b>
+            <b> More Drawing: Projection to 2D (Difficulty: 3/10) </b>
             <p>
               The projection from an \(n\)D space to a 2D image can be represented by the matrix multiplication \(y=Ax\) where
               \(A \in \mathbb{R}^{2 \times n} \)
@@ -177,8 +177,8 @@
               and \(y \in \mathbb{R}^2 \) is the 2D projection of the vector \(x\).  The depth directions (in the \(n\)D space)
               are given by the nullspace of the matrix \(A\).  The rank-nullity theorem then gives that depth has the dimension \(n-2\).
               For a given vector \(x\), the 2D projection \(y\) is fully determined; however any \(y\) can represent multiple points in the
-              \(x\) space (given by adding an arbitrary element in the depth directions).  For a given \(y\), if one wants to determine
-              the single vector \(x\) with no depth component, one could use the minimum norm solution. 
+              \(x\) space (given by adding an arbitrary element in the depth directions).  If one wanted to select an \(x\) given a \(y\),
+              a simple way would be to choose \(x\) with no depth component which would be the minimum norm solution
               $$ x = A^T(AA^T^{-1})y $$
 
 
