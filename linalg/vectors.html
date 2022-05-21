@@ -71,7 +71,7 @@
             <b> AXES </b>
             <p>
             The different directions or axes that make up a vector (scaled to have unit length) can be represented by
-            the so-called "standard basis".
+            the so-called "standard basis" vectors (more explanation of this name later).
             $$
             I_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix},
             \quad
@@ -85,12 +85,11 @@
 
             <b> Drawing Vectors </b>
 
-            <b> Perpendicular Axes and 2D Representations </b>
+
 
             </p>
-            Traditionally, these axes are pictures as perpendicular to each other.
-            For visualization since we're limited to drawing in 2 dimensions, the best we can do is to pick directions (in 2D) for each
-            of these axes to point.  The overall vector position of the vector \(x\) is then the sum of each axis scaled by the appropriate
+            Traditionally, axes are thought of as perpendicular to each other.
+            The overall vector position of the vector \(x\) is then the sum of each axis scaled by the appropriate
             element of \(x\).
 
             $$
@@ -105,31 +104,55 @@
              \cdots
              +
              \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix} x_n
+             =
+             \begin{bmatrix} x_1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}+
+             \begin{bmatrix} 0 \\ x_2 \\ \vdots \\ 0 \end{bmatrix}
+             +
+             \cdots
+             +
+             \begin{bmatrix} 0 \\ 0 \\ \vdots \\ x_n \end{bmatrix}
+             =
+             \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
             $$
-
-
-            This depiction does not lose any information for 2D vectors.  For 3D vectors, there is a depth direction (towards the viewer)
-            that is lost in the drawing.  Since we live in 3D, we are used to this and can often spatially reconstruct that lost direciton in
-            our mental representation of the vector.  For 4D vectors, the depth "direction" becomes a plane; for 5D vectors, depth is
-            a 3D space; for 6D vectors, depth is 4D space, etc.  Our 2D representations of these higher dimensional spaces lose quite
-            a bit of information that is difficult for us to reconstruct but the 2D representations can still sometimes be useful.
-
-            </p>
-
-
-            <b> Parallel Axes Representations </b>
-
-            <p>
             We can also visualize vectors using axes that are parallel to each other.  In these settings, a vector can be thought of
-            as a set of heights (possibly negative).   This representation does not suffer from the concept of depth but that's simply
-            because it does not attempt to leverage our spatial reasoning machinery for intuition.  Both representations can be useful
-            depending on context
-            </p>
-          </div>
-
-
+            as a set of heights (possibly negative).  These two depictions are shown below.
+            <p>
+            </div>
             <div class='imgFixed'>
             <img src="/dcmath/figs/stills/VEC/VECCOORDS.png" width=100%></img>
+            </div>
+            <div class="txt" style="padding:40px">
+
+            <b> The Problem of Depth </b>
+            <p>
+            When trying to visualize axes as perpendicular to each other, we run into a problem.
+            We can only draw in two dimensions so for vectors of lenght three or more, there are not enough perpendicular directions for the axes to point.
+            The best we can do is to pick directions (in 2D) for each of these axes to point and think of them as being perpendicular in some higher dimensional space.
+            Our drawing then becomes a 2D projection of that higher dimensional space.
+            This depiction does not lose any information for 2D vectors, but for 3D vectors, there is a depth direction (towards the viewer)
+            that is lost in the drawing.  Since we live in 3D, we are used to this and can often spatially reconstruct that lost direction in
+            our mental representation of the vector.  For 4D vectors, the depth "direction" becomes a plane; for 5D vectors, depth becomes a
+            3D space; for 6D vectors, depth becomes a 4D space, etc, and our drawing loses quite a bit of information and our intuition suffers accordingly.
+            If you enjoy spatial reasoning, these 2D representations of higher dimensional vectors can still be useful, but you should be careful
+            not to forget the information lost in the projection.
+            </p>
+            <p>
+            Representing axes in parallel does not suffer from this pathology of depth, but that's simply
+            because this represnetation does not attempt to leverage our spatial reasoning machinery for intuition.
+            </p>
+
+
+            <div class="txt" style="padding:40px">
+            <b> More Intuition: Depth </b>
+            <p>
+              For more intuition about the idea of depth in 2D representations of higher dimensional spaces,
+              play around with the following visualizations of higher dimensional shapes.  In particular,
+              the jump from 3D to 4D (and then maybe 5D) can be illuminating.
+            </p>
+            </div>
+
+            <div class='img' style="padding:0px" id="hypershape-container">
+              <canvas class='CANVAS' id='hypershape' ></canvas>
             </div>
 
 
@@ -178,21 +201,7 @@
 
 
 
-              <div class="txt" style="padding:40px">
-              <b> In Depth: Intuition for Depth </b>
-              <p>
 
-                For more intuition about the idea of depth in 2D representations of higher dimensional spaces,
-                play around with the following visualizations of higher dimensional shapes.  In particular,
-                the jump from 3D to 4D (and then maybe 5D) can be illuminating.
-
-              </p>
-
-            </div>
-
-              <div class='img' style="padding:0px" id="hypershape-container">
-                <canvas class='CANVAS' id='hypershape' ></canvas>
-              </div>
 
 
 
