@@ -43,6 +43,47 @@
     <div w3-include-html="/dcmath/nav/sidebarLinalg.html"></div>
     </div>
     <div class=content>
+      <div class="txt" style="padding:40px">
+
+            <b> VECTOR & LINEAR COMBINATIONS </b>
+            <p>
+
+            The Cartesian representation of a mD vector is a string of \(m\) numbers that each
+            represent a distance in a different direction/dimension.
+            </p>
+            <p>
+
+            Addition between two vectors \(x\) and \(z\) is done element-wise (assuming they have the same length).
+
+            $$
+            x + z = \begin{bmatrix} x_1 \\ \vdots \\ x_m \end{bmatrix}
+            + \begin{bmatrix} z_1 \\ \vdots \\ z_m \end{bmatrix} =
+            \begin{bmatrix} x_1+z_1 \\ \vdots \\ x_m+z_m \end{bmatrix}
+            $$
+
+            Visually, this sum is a new vector given by placing the two vectors "tip-to-tail."
+          </p>
+
+          <p>
+            "Scaling" \(x\) by a number \(\lambda\) involves multiplying each element in \(x\) by \(\lambda\).
+            Visually this expands or shrinks (or flips) \(x\) without changing the direction.
+
+            Scaling multiple vectors \(x^1,\dots,x^n\) and then adding them together is referred to as
+            taking a "linear combination" of the vectors.  All the possible linear combinations of a set of vectors
+            is called the "span" of those vectors.  If a set of vectors span a whole space that means
+            any vector in that space can be written as a linear combination of those vectors.
+
+          </p>
+          <p>
+            Subtraction between two vectors is also done element-wise.  It could
+            also be thought of as taking a linear combination of two vectors with
+            weights \(1\) and \(-1\). If we think of the vector as floating rather
+            than attached to the origin, the difference vector points from the end of
+            one vector to the other.
+
+          </p>
+
+        </div> <!-- text -->
 
 
       <div class='imgFixed'>
@@ -72,47 +113,6 @@
             <div class="eqn" id="warning2_vec" ></div>
             <div class="eqn" id="usedigits_vec" ></div>
     </div>
-    <div class="txt" style="padding:40px">
-
-          <b> VECTOR & LINEAR COMBINATIONS </b>
-          <p>
-
-          The Cartesian representation of a mD vector is a string of \(m\) numbers that each
-          represent a distance in a different direction/dimension.
-          </p>
-          <p>
-
-          Addition between two vectors \(x\) and \(z\) is done element-wise (assuming they have the same length).
-
-          $$
-          x + z = \begin{bmatrix} x_1 \\ \vdots \\ x_m \end{bmatrix}
-          + \begin{bmatrix} z_1 \\ \vdots \\ z_m \end{bmatrix} =
-          \begin{bmatrix} x_1+z_1 \\ \vdots \\ x_m+z_m \end{bmatrix}
-          $$
-
-          Visually, this sum is a new vector given by placing the two vectors "tip-to-tail."
-        </p>
-
-        <p>
-          "Scaling" \(x\) by a number \(\lambda\) involves multiplying each element in \(x\) by \(\lambda\).
-          Visually this expands or shrinks (or flips) \(x\) without changing the direction.
-
-          Scaling multiple vectors \(x^1,\dots,x^n\) and then adding them together is referred to as
-          taking a "linear combination" of the vectors.  All the possible linear combinations of a set of vectors
-          is called the "span" of those vectors.  If a set of vectors span a whole space that means
-          any vector in that space can be written as a linear combination of those vectors.
-
-        </p>
-        <p>
-          Subtraction between two vectors is also done element-wise.  It could
-          also be thought of as taking a linear combination of two vectors with
-          weights \(1\) and \(-1\). If we think of the vector as floating rather
-          than attached to the origin, the difference vector points from the end of
-          one vector to the other.
-
-        </p>
-
-      </div> <!-- text -->
 
 
 </div> <!-- content -->
