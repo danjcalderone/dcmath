@@ -45,56 +45,159 @@
     <div class=content>
       <div class="txt" style="padding:40px">
 
-            <b> VECTOR & LINEAR COMBINATIONS </b>
+            <b> VECTORS</b>
             <p>
 
-            The Cartesian representation of a mD vector is a string of \(m\) numbers that each
-            represent a distance in a different direction/dimension.
+            The Cartesian representation of a nD vector is a string of \(n\) numbers that each
+            represent a distance in a different direction/dimension.  These directions are often referred to as "axes".
+            $$
+            x = \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}
+            $$
+            Vectors can be "scaled" by multiplying each element by a value \(\alpha\) and two vectors \(x\) and \(z\) can be added
+            element-wise (assuming they have the same length).
+
+            $$
+             x\alpha = \begin{bmatrix} \alpha x_1 \\ \vdots \\ \alpha x_n \end{bmatrix},
+            \qquad
+            x + z = \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}
+            + \begin{bmatrix} z_1 \\ \vdots \\ z_n \end{bmatrix} =
+            \begin{bmatrix} x_1+z_1 \\ \vdots \\ x_n+z_n \end{bmatrix}
+            $$
             </p>
+
+
+
+
+            <b> AXES </b>
             <p>
+            The different directions or axes that make up a vector (scaled to have unit length) can be represented by
+            the so-called "standard basis".
+            $$
+            I_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix},
+            \quad
+            I_2 = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix},
+            \quad
+            \cdots
+            \quad
+            I_n = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix},
+            $$
+            </p>
 
-            Addition between two vectors \(x\) and \(z\) is done element-wise (assuming they have the same length).
+            <b> Drawing Vectors </b>
+
+            <b> Perpendicular Axes and 2D Representations </b>
+
+            </p>
+            Traditionally, these axes are pictures as perpendicular to each other.
+            For visualization since we're limited to drawing in 2 dimensions, the best we can do is to pick directions (in 2D) for each
+            of these axes to point.  The overall vector position of the vector \(x\) is then the sum of each axis scaled by the appropriate
+            element of \(x\).
 
             $$
-            x + z = \begin{bmatrix} x_1 \\ \vdots \\ x_m \end{bmatrix}
-            + \begin{bmatrix} z_1 \\ \vdots \\ z_m \end{bmatrix} =
-            \begin{bmatrix} x_1+z_1 \\ \vdots \\ x_m+z_m \end{bmatrix}
+            x = I_1 x_1 + \cdots + I_n x_n
             $$
 
-            Visually, this sum is a new vector given by placing the two vectors "tip-to-tail."
-          </p>
+            $$
+            x =
+             \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix} x_1 +
+             \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix} x_2
+             +
+             \cdots
+             +
+             \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix} x_n
+            $$
 
-          <p>
+
+            This depiction does not lose any information for 2D vectors.  For 3D vectors, there is a depth direction (towards the viewer)
+            that is lost in the drawing.  Since we live in 3D, we are used to this and can often spatially reconstruct that lost direciton in
+            our mental representation of the vector.  For 4D vectors, the depth "direction" becomes a plane; for 5D vectors, depth is
+            a 3D space; for 6D vectors, depth is 4D space, etc.  Our 2D representations of these higher dimensional spaces lose quite
+            a bit of information that is difficult for us to reconstruct but the 2D representations can still sometimes be useful.
+
+            </p>
+
+
+            <b> Parallel Axes Representations </b>
+
+            <p>
+            We can also visualize vectors using axes that are parallel to each other.  In these settings, a vector can be thought of
+            as a set of heights (possibly negative).   This representation does not suffer from the concept of depth but that's simply
+            because it does not attempt to leverage our spatial reasoning machinery for intuition.  Both representations can be useful
+            depending on context
+            </p>
+          </div>
+
+
+            <div class='imgFixed'>
+            <img src="/dcmath/figs/stills/VEC/VECCOORDS.png" width=100%></img>
+            </div>
+
+
+
+
+
+            <div class="txt" style="padding:40px">
+
+            <b> Scaling, Adding, and Subtracting  </b>
+            <p>
             "Scaling" \(x\) by a number \(\lambda\) involves multiplying each element in \(x\) by \(\lambda\).
-            Visually this expands or shrinks (or flips) \(x\) without changing the direction.
+            Visually (for perpendicular axes) this expands or shrinks \(x\) without changing the orientation of the vector.
+            When \(lambda\) is negative, the direction of the vector flips and points in the opposite direction.
+            For parallel axes, this increases, shrinks, and/or flips the heights of each element by a the same value (\(\lambda\)).
+            </p>
+
+            <p>
+            Adding vectors is done elementwise.  Visually (for perpendicular axes), this sum is a new vector given by placing the two vectors "tip-to-tail."
+            For parallel axes, we simply "stack" the heights together to get the height of the new vector.
+            </p>
+
+            <p>
+            Adding multiple vectors is illustrated below in 2D and in 3D
+            </p>
+
+
+          </div>
+
+
+                <div class="slideshow-container flips" id='VECADD2' any='9'></div>
+                <div class="slideshow-container flips" id='VECADD3' any='9'></div>
+                <!-- Slideshow container -->
+
+
+                <div class="txt" style="padding:40px">
+                <p>
+                  Subtraction between two vectors is also done element-wise.
+                  <!-- It couldalso be thought of as taking a linear combination of two vectors with
+                  weights \(1\) and \(-1\).  -->
+                  If we think of the vector as floating rather
+                  than attached to the origin, the difference vector points from the end of
+                  one vector to the other.
+                </p>
+
+
+
+
+                
+
+              </div>
+
+
+
+
+
+          <!-- <p>
 
             Scaling multiple vectors \(x^1,\dots,x^n\) and then adding them together is referred to as
             taking a "linear combination" of the vectors.  All the possible linear combinations of a set of vectors
             is called the "span" of those vectors.  If a set of vectors span a whole space that means
             any vector in that space can be written as a linear combination of those vectors.
 
-          </p>
-          <p>
-            Subtraction between two vectors is also done element-wise.  It could
-            also be thought of as taking a linear combination of two vectors with
-            weights \(1\) and \(-1\). If we think of the vector as floating rather
-            than attached to the origin, the difference vector points from the end of
-            one vector to the other.
-
-          </p>
-
-        </div> <!-- text -->
-
-
-      <div class='imgFixed'>
-      <img src="/dcmath/figs/stills/VEC/VECCOORDS.png" width=100%></img>
-      </div>
+          </p> -->
 
 
 
-      <div class="slideshow-container flips" id='VECADD2' any='9'></div>
-      <div class="slideshow-container flips" id='VECADD3' any='9'></div>
-      <!-- Slideshow container -->
+
+
 
 
 
