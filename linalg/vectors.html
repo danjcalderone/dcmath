@@ -125,9 +125,9 @@
 
             <b> The Problem of Depth </b>
             <p>
-            When trying to visualize axes as perpendicular to each other, we run into a problem.
-            We can only draw in two dimensions so for vectors of lenght three or more, there are not enough perpendicular directions for the axes to point.
-            The best we can do is to pick directions (in 2D) for each of these axes to point and think of them as being perpendicular in some higher dimensional space.
+            When trying to visualize perpendicular axes, we run into a problem.
+            Since we can only draw in two dimensions, there are not enough perpendicular directions for all the axes for vectors of dimension three or higher.
+            The best we can do is to pick directions (in the 2D image) for each of these axes to point and think of them as being perpendicular in some higher dimensional space.
             Our drawing then becomes a 2D projection of that higher dimensional space.
             This depiction does not lose any information for 2D vectors, but for 3D vectors, there is a depth direction (towards the viewer)
             that is lost in the drawing.  Since we live in 3D, we are used to this and can often spatially reconstruct that lost direction in
@@ -140,7 +140,9 @@
             Representing axes in parallel does not suffer from this pathology of depth, but that's simply
             because this represnetation does not attempt to leverage our spatial reasoning machinery for intuition.
             </p>
-            
+
+
+
             <b> More Intuition: Depth </b>
             <p>
               For more intuition about the idea of depth in 2D representations of higher dimensional spaces,
@@ -153,8 +155,28 @@
               <canvas class='CANVAS' id='hypershape' ></canvas>
             </div>
 
+            <div class="txt" style="padding:40px">
+            <b> More Math: Projection to 2D (Difficulty: 3/10) </b>
+            <p>
+              The projection from an \(n\)D space to a 2D image can be represented by the matrix multiplication \(y=Ax\) where
+              \(A \in \mathbb{R}^{2 \times n} \)
 
+              $$
+              \begin{bmatrix} y_1 \\ y_2 \end{bmatrix} =
+              \begin{bmatrix}
+              A_{11} & A_{12} & \cdots & A_{1n} \\
+              A_{21} & A_{22} & \cdots & A_{2n}
+              \end{bmatrix} =
+              \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
+              $$
 
+              Here \(x \in \mathbb{R}^n\) is the coordinates of the vector in \(n\)D.
+              Each column of the \(n\) columns of \(A\) is the representation of one of the \(n\) axes in the 2D drawing
+              and \(y \in \mathbb{R}^2 \) is the 2D projection of the vector \(x\).  The depth directions (in the \(n\)D space)
+              are given by the nullspace of the matrix \(A\).  The rank-nullity theorem then gives that depth has the dimension \(n-2\)
+              
+            </p>
+            </div>
 
 
             <div class="txt" style="padding:40px">
