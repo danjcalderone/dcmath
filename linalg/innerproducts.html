@@ -32,6 +32,7 @@
 
 
     <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+    <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
     </head>
 
     <body>
@@ -44,36 +45,40 @@
       </div>
       <div class=content>
 
+        <div class="txt" style="padding:40px">
 
-                            <div class='img' style="padding:0px" id="inverse-container">
-                            </div>
-                            <div class="txt" style="padding:40px">
+              <b> INNER PRODUCTS & ORTHOGONALITY </b>
+              <p>
 
-                                  <b> INNER PRODUCTS & ORTHOGONALITY </b>
-                                  <p>
+              Vectors contain both the notion of length and direction.
+              While magnitude is a property that vectors share with regular numbers,
+              direction is a uniquely vector property.
+              As such we can talk about the relative magnitude of two vectors
+              and we can also talk about whether or not they point in similar directions,
+              opposite directions or whether they are "perpendicular"
+              or "orthogonal" to each other.  The "inner product" or "dot product"
+              of two vectors is at the heart of this direction comparison.  Using matrix
+              multiplication notation, if we think of one vector as a row and one as a column,
+              the inner product is given by
+              $$
+              y^Tx = \sum_i y_ix_i = |y||x|cos(\theta)
+              $$
+              where \(\theat\) is the angle between two vectors.
 
-                                  Vectors contain both the notion of length and direction.
-                                  While magnitude is a property that vectors share with regular numbers,
-                                  direction is a uniquely vector property.
-                                  As such we can talk about the relative magnitude of two vectors
-                                  and we can also talk about whether or not they point in similar directions,
-                                  opposite directions or whether they are "perpendicular"
-                                  or "orthogonal" to each other.  The "inner product" or "dot product"
-                                  of two vectors is at the heart of this direction comparison.  Using matrix
-                                  multiplication notation, if we think of one vector as a row and one as a column,
-                                  the inner product is given by
-                                  $$
-                                  y^Tx = \sum_i y_ix_i = |y||x|cos(\theta)
-                                  $$
-                                  where \(\theat\) is the angle between two vectors.
-
-                                  Needs more.  I'm bored.
+              Needs more.  I'm bored.
 
 
 
-                              </p>
+          </p>
 
-                              </div>
+          </div>
+
+
+          <div class="slideshow-container flips" id='SCALARMULT' any='9'></div>
+          <div class="slideshow-container flips" id='DOTPRODLEN' any='7'></div>
+          <div class="slideshow-container flips" id='DOTPRODANGLE' any='9'></div>
+
+
 
 
 
@@ -81,5 +86,16 @@
       </div>
     <!-- <script type='module' src="./matrixo.js"> </script> -->
     <script src="/dcmath/src/extra/includeHTML.js"> </script>
+    <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+
+    <script>
+    const slideIndexes ={'SCALARMULT':1, 'DOTPRODLEN':1, 'DOTPRODANGLE':1}
+    addSlides('SCALARMULT',slideIndexes);
+    showSlides('SCALARMULT',slideIndexes['SCALARMULT'],slideIndexes);
+    addSlides('DOTPRODLEN',slideIndexes);
+    showSlides('DOTPRODLEN',slideIndexes['DOTPRODLEN'],slideIndexes);
+    addSlides('DOTPRODANGLE',slideIndexes);
+    showSlides('DOTPRODANGLE',slideIndexes['DOTPRODANGLE'],slideIndexes);
+
     </body>
   </html>
