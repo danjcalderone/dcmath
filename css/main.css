@@ -165,6 +165,8 @@ body{
   flex: 0 1 auto;
   padding: 0px;
   margin: 0px;
+  flex-direction: row;
+  justify-content: center;
   position: relative;
   /* top: 0px;
   left: 0px; */
