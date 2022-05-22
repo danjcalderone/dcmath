@@ -74,7 +74,20 @@
           </div>
 
 
+          <div class="txt" style="padding:40px">
+          <b> Vector Addition in 2D </b>
+        </div>
+
+
+
                 <div class="slideshow-container flips" id='VECADD2' any='9'></div>
+
+
+                <div class="txt" style="padding:40px">
+                <b> Vector Addition in 3D </b>
+                </div>
+
+
                 <div class="slideshow-container flips" id='VECADD3' any='9'></div>
                 <!-- Slideshow container -->
 
@@ -93,8 +106,18 @@
 
               </div>
 
+              <div class="txt" style="padding:40px">
+              <b> Vector Difference in 2D </b>
+              </div>
+
+              <div class="slideshow-container flips" id='VECSUBTRACT2' any='6'></div>
+
+              <div class="txt" style="padding:40px">
+              <b> Vector Difference in 3D </b>
+              </div>
 
 
+              <div class="slideshow-container flips" id='VECSUBTRACT3' any='6'></div>
 
 
 
@@ -130,11 +153,17 @@
 
 
 <script>
-const slideIndexes ={'VECADD2':1, 'VECADD3':1}
+const slideIndexes ={'VECADD2':1, 'VECADD3':1, 'VECSUBTRACT2': 1, 'VECSUBTRACT3':1}
 addSlides('VECADD2',slideIndexes);
 showSlides('VECADD2',slideIndexes['VECADD2'],slideIndexes);
 addSlides('VECADD3',slideIndexes);
 showSlides('VECADD3',slideIndexes['VECADD3'],slideIndexes);
+addSlides('VECSUBTRACT2',slideIndexes);
+showSlides('VECSUBTRACT2',slideIndexes['VECSUBTRACT2'],slideIndexes);
+addSlides('VECSUBTRACT3',slideIndexes);
+showSlides('VECSUBTRACT3',slideIndexes['VECSUBTRACT3'],slideIndexes);
+
+
 </script>
 
 
