@@ -105,13 +105,6 @@
              +
              \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix} x_n
              =
-             \begin{bmatrix} x_1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}+
-             \begin{bmatrix} 0 \\ x_2 \\ \vdots \\ 0 \end{bmatrix}
-             +
-             \cdots
-             +
-             \begin{bmatrix} 0 \\ 0 \\ \vdots \\ x_n \end{bmatrix}
-             =
              \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
             $$
             We can also visualize vectors using axes that are parallel to each other.  In these settings, a vector can be thought of
@@ -193,52 +186,6 @@
             </div>
 
 
-            <div class="txt" style="padding:40px">
-
-            <b> Scaling, Adding, and Subtracting  </b>
-            <p>
-            "Scaling" \(x\) by a number \(\lambda\) involves multiplying each element in \(x\) by \(\lambda\).
-            Visually (for perpendicular axes) this expands or shrinks \(x\) without changing the orientation of the vector.
-            When \(lambda\) is negative, the direction of the vector flips and points in the opposite direction.
-            For parallel axes, this increases, shrinks, and/or flips the heights of each element by a the same value (\(\lambda\)).
-            </p>
-
-            <p>
-            Adding vectors is done elementwise.  Visually (for perpendicular axes), this sum is a new vector given by placing the two vectors "tip-to-tail."
-            For parallel axes, we simply "stack" the heights together to get the height of the new vector.
-            </p>
-
-            <p>
-            Adding multiple vectors is illustrated below in 2D and in 3D
-            </p>
-
-
-          </div>
-
-
-                <div class="slideshow-container flips" id='VECADD2' any='9'></div>
-                <div class="slideshow-container flips" id='VECADD3' any='9'></div>
-                <!-- Slideshow container -->
-
-
-                <div class="txt" style="padding:40px">
-                <p>
-                  Subtraction between two vectors is also done element-wise.
-                  <!-- It couldalso be thought of as taking a linear combination of two vectors with
-                  weights \(1\) and \(-1\).  -->
-                  If we think of the vector as floating rather
-                  than attached to the origin, the difference vector points from the end of
-                  one vector to the other.
-                </p>
-
-              </div>
-
-
-
-
-
-
-
 
 
 
@@ -266,16 +213,16 @@
 <!-- <script type='module' src="/dcmath/src/vectoro.js"> </script> -->
 <script type='module' src="/dcmath/src/hypershapeo.js"> </script>
 <script src="/dcmath/src/extra/includeHTML.js"> </script>
-<script type='text/javascript' src="/dcmath/src/extra/flip.js"> </script>
+<!-- <script type='text/javascript' src="/dcmath/src/extra/flip.js"> </script> -->
 
-
+<!--
 <script>
 const slideIndexes ={'VECADD2':1, 'VECADD3':1}
 addSlides('VECADD2',slideIndexes);
 showSlides('VECADD2',slideIndexes['VECADD2'],slideIndexes);
 addSlides('VECADD3',slideIndexes);
 showSlides('VECADD3',slideIndexes['VECADD3'],slideIndexes);
-</script>
+</script> -->
 
 
 
