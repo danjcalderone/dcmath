@@ -47,50 +47,151 @@
 
         <div class="txt" style="padding:40px">
 
+
+
+
               <b> INNER PRODUCTS & ORTHOGONALITY </b>
               <p>
 
               Vectors contain both the notion of length and direction.
               While magnitude is a property that vectors share with regular numbers,
               direction is a uniquely vector property.
+
               As such we can talk about the relative magnitude of two vectors
               and we can also talk about whether or not they point in similar directions,
               opposite directions or whether they are "perpendicular"
               or "orthogonal" to each other.  The "inner product" or "dot product"
               of two vectors is at the heart of this direction comparison.
-
-
               </p>
 
+
+              <b> Definition </b>
+                  <p>
+                    The inner product, denoted by \(\langle \cdot, \cdot \rangle\),
+                    between two vectors \(x, y \in \mathbb{R}^n\) is given by
+                    $$
+                    \langle y,x \rangle = \sum_i y_ix_i
+                    $$
+                    We can also write the inner product in several other ways.
+                    $$
+                    \langle y,x \rangle = \sum_i y_ix_i = y^Tx = \lVert y \rVert_2  \lVert x \rVert_2 \cos(\theta)
+                    $$
+                    The expression \(y^Tx\) uses matrix multiplication notation;
+                    \(y^T\) is a row vector and \(x\) as a column vector.
+                    (This expression is perhaps the most clean and useful algebraically.)
+                    The final expression \(\lVert x \rVert_2 \cos(\theta)\) is the geometric
+                    definition of an inner productthat we will consider more below.
+                    \(\lVert y \rVert_2\) and \(\lVert x \rVert_2\) are the magnitudes of
+                    \(x\) and \(y\) and \(\theta\) is the angle between the two vectors.
+
+                  </p>
+
+                <b> Geometry of Inner Products </b>
+
+
+                <p>
+                  The geometry of the inner product can be seen by considering
+                  the law of cosines (an extension of the pythagorean theorem)
+                  detailed in the image below.
+                </p>
+
+                <div class='imgFixed'>
+                <img src="/dcmath/figs/stills/VEC/asdf.png" width=100%></img>
+                </div>
+
+
+
+                <div class="txt" style="padding:40px">
+                <p>
+                  Consider the norm (squared) of the vector difference \(x-y\)
+                  $$
+                  (x-y)^T(x-y) = x^Tx + y^Ty - 2y^Tx
+                  $$
+                  The law of cosines gives that the last term can be expressed as
+                  $$
+                  2y^Tx = 2 \lVert y \rVert_2  \lVert x \rVert_2 \cos(\theta)
+                  $$
+                  which gives the geometric interpretation of the inner product.
+                  Note from this definition if two vectors \(x\) and \(y\) point in
+                  similar directions (small \(\theta\)) then \(y^Tx\) will be larger;
+                  if they are perpendicular (\(\theta=\pi/2\)) then \(y^Tx = 0\)
+                  and if they point in close to opposite directions (\(\theta\) near \(\pi\)) then
+                  \(y^Tx\) will be negative.
+                  The inner product is closely related to length of one vector after it
+                  is projected onto another.  Specifically if \(y\) is a unit vector,
+                  then \(y^Tx\) is exactly this projection length as shown in the image below.
+                </p>
+              </div>
+
+
+
+
+              <div class='imgFixed'>
+              <img src="/dcmath/figs/stills/VEC/asdf.png" width=100%></img>
+              </div>
+
+
+              <div class="txt" style="padding:40px">
               <b> Visualizing Scalar Multiplication </b>
 
 
               <p>
-              Before we visualize vector multiplication, consider scalar multiplication of two real numbers in the following way.
+              To better visualize the geometry of the inner product, we first
+              consider scalar multiplication of two real numbers in the following way.
+              For the product of any two real numbers \(x,y \in \mathbb{R}\), \(xy\),
+              if we think of \(x\) as fixed, the value of \(y\) determines
+              how much \(x\) is stretched along the number line to get to \(xy\).
+              If \(y\) is greater than 1, \(x\) gets stretched away from the origin;
+              if \(y\) is less than one then \(x\) gets shrunk toward the origin.
+              If the sign of \(y\) is negative then \(xy\) also gets flipped to
+              the otherside of the numberline from \(x\).
+              The value \(y=1\) is special in that it leaves \(x\) unchanged and \(y=-1\)
+              leaves the magnitude of \(x\) unchanged but just flips
+              the side of the numberline.  We can illustrate this property in the figure below.
               </p>
 
           </div>
-
           <div class="slideshow-container flips" id='SCALARMULT' any='9' style="width:80%"></div>
 
           <div class="txt" style="padding:40px">
-              <p>
-              Using matrix
-              multiplication notation, if we think of one vector as a row and one as a column,
-              the inner product is given by
-              $$
-              y^Tx = \sum_i y_ix_i = |y||x|\cos(\theta)
-              $$
-              where \(\theat\) is the angle between two vectors.
-
-              Needs more.  I'm bored.
-              </p>
+          <b> Visualizing Inner Products </b>
 
 
-          </div>
+          <p>
+          If we consider the product of the magnitudes of two vectors \(x\) and \(y\)
+          (\(\lVert y \rVert_2  \lVert x \rVert_2\)),
+          the above intuition for scalar multiplication carries over if we think radial, ie.
+          in terms of distance from the origin.  Considering the angle \(\theta\)
+          (\(\lVert y \rVert_2  \lVert x \rVert_2\)\cos(\theta)\))
+          adds in the step of projecting the product onto the direction of the \(x\) vector.
+          For a fixed angle, \(\theta\) we then get the visualization shown below.
+          </p>
+
+
+
+        </div>
 
           <div class="slideshow-container flips" id='DOTPRODLEN' any='7' style="width:60%"></div>
+
+        <div class="txt" style="padding:40px">
+
+        <p>
+        If we hold the length \(y\) fixed and vary \(\theta\) we get the following
+        visualization.  The overall inner product geometry is a combination of both.
+        </p>
+      </div>
+
+
           <div class="slideshow-container flips" id='DOTPRODANGLE' any='9' style="width:60%"></div>
+
+
+
+
+
+
+
+
+
 
 
 
