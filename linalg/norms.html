@@ -50,162 +50,111 @@
 
 
 
-              <b> INNER PRODUCTS & ORTHOGONALITY </b>
+              <b> NORMS </b>
+
+
+              <b> Euclidean Norm </b>
               <p>
+              The norm of a vector is it's length.  The traditional intuitive (Eucliidean)
+              notion of length is what is the "2-norm" given by
+              $$
+              \Vert x \Vert_2  = \left(\sum_i |x_i|^2 \right)
+              $$
+              In two dimensions, this is just the Pythagorean theorem.  It can be derived for higher dimensions using
+              iterative applications of the Pythagorean theorem.  A vector with norm (length) 1 is called
+              a unit vector.  A unit vector with the same direction of any vector \(x\) can be determined
+              by scaling \(x\) by \(\tfrac{1}{\Vert x \Vert_2}\) to get a unit vector of the form \(\tfrac{1}{\Vert x \Vert_2}x\).
 
-              Vectors contain both the notion of length and direction.
-              While magnitude is a property that vectors share with regular numbers,
-              direction is a uniquely vector property.
-
-              As such we can talk about the relative magnitude of two vectors
-              and we can also talk about whether or not they point in similar directions,
-              opposite directions or whether they are "perpendicular"
-              or "orthogonal" to each other.  The "inner product" or "dot product"
-              of two vectors is at the heart of this direction comparison.
+              The set of unit vectors (for a particular norm) is called the unit ball.  For a particular norm \(\Vert \cdot \Vert \),
+              this set (in \(\mathbb{R}^n\)) is given by
+              $$
+              \Ocircle_n =
+              \Big\{ x \in \mathbb{R}^n \ \Big| \Vert x \Vert = 1 \ \Big\}
+              $$
+              For the 2-norm, this is circle (or sphere)
+              with unit radius (shown below in two, three, four, and five dimensions).
               </p>
 
-
-              <b> Definition </b>
-                  <p>
-                    The inner product, denoted by \(\langle \cdot, \cdot \rangle\),
-                    between two vectors \(x, y \in \mathbb{R}^n\) is given by
-                    $$
-                    \langle y,x \rangle = \sum_i y_ix_i
-                    $$
-                    We can also write the inner product in several other ways.
-                    $$
-                    \langle y,x \rangle = \sum_i y_ix_i = y^Tx = \lVert y \rVert_2  \lVert x \rVert_2 \cos(\theta)
-                    $$
-                    The expression \(y^Tx\) uses matrix multiplication notation;
-                    \(y^T\) is a row vector and \(x\) as a column vector.
-                    (This expression is perhaps the most clean and useful algebraically.)
-                    The final expression \(\lVert x \rVert_2 \cos(\theta)\) is the geometric
-                    definition of an inner productthat we will consider more below.
-                    \(\lVert y \rVert_2\) and \(\lVert x \rVert_2\) are the magnitudes of
-                    \(x\) and \(y\) and \(\theta\) is the angle between the two vectors.
-
-                  </p>
-
-                <b> Geometry of Inner Products </b>
-
-
-                <p>
-                  The geometry of the inner product can be seen by considering
-                  the law of cosines (an extension of the pythagorean theorem)
-                  detailed in the image below.
-                </p>
               </div>
-
-                <div class='imgFixed'>
-                <img src="/dcmath/figs/stills/VEC/LAWCOSINES.png" width=60%></img>
-                </div>
-
-
-
-                <div class="txt" style="padding:40px">
-                <p>
-                  Consider the norm (squared) of the vector difference \(x-y\)
-                  $$
-                  (x-y)^T(x-y) = x^Tx + y^Ty - 2y^Tx
-                  $$
-                  The law of cosines gives that the last term can be expressed as
-                  $$
-                  2y^Tx = 2 \lVert y \rVert_2  \lVert x \rVert_2 \cos(\theta)
-                  $$
-                  which gives the geometric interpretation of the inner product.
-                  Note from this definition if two vectors \(x\) and \(y\) point in
-                  similar directions (small \(\theta\)) then \(y^Tx\) will be larger;
-                  if they are perpendicular (\(\theta=\pi/2\)) then \(y^Tx = 0\)
-                  and if they point in opposite directions (\(\theta\) closer to \(\pi\)) then
-                  \(y^Tx\) will be negative.
-                  The inner product is closely related to length of one vector after it
-                  is projected onto another.  Specifically if \(y\) is a unit vector,
-                  then \(y^Tx\) is exactly the length of \(x\) after it is projected
-                  onto \(y\) as shown in the image below.
-                </p>
-              </div>
-
-
-
 
               <div class='imgFixed'>
-              <img src="/dcmath/figs/stills/VEC/DOTPROJECTION.png" width=60%></img>
+              <img src="/dcmath/figs/stills/VEC/LAWCOSINES.png" width=60%></img>
               </div>
 
 
               <div class="txt" style="padding:40px">
-              <b> Visualizing Scalar Multiplication </b>
-
+              <b> Generalized Norms </b>
 
               <p>
-              To better visualize the geometry of the inner product, we first
-              consider scalar multiplication of two real numbers in the following way.
-              For the product of any two real numbers \(x,y \in \mathbb{R}\), \(xy\),
-              if we think of \(x\) as fixed, the value of \(y\) determines
-              how much \(x\) is stretched along the number line to get to \(xy\).
-              If \(y\) is greater than 1, \(x\) gets stretched away from the origin;
-              if \(y\) is less than one then \(x\) gets shrunk toward the origin.
-              If the sign of \(y\) is negative then \(xy\) also gets flipped to
-              the otherside of the numberline from \(x\).
-              The value \(y=1\) is special in that it leaves \(x\) unchanged and \(y=-1\)
-              leaves the magnitude of \(x\) unchanged but just flips
-              the side of the numberline.  We can illustrate this property in the figure below.
+
+              There are many other notions of length that are consistent.  The idea of a "p-norm"
+              for \( 1\leq p \leq \infty \) is quite useful.
+              $$
+              \Vert x \Vert_p = \left(\sum_i |x_i|^p\)^{\tfrac{1}{p}}
+              $$
+              In particular along with the "2-norm" we often use the "1-norm" and the "\(\infty\)-norm" given
+              $$
+              \Vert x \Vert_1 = \left(\sum_i |x_i|\)
+              $$
+              $$
+              \Vert x \Vert_2 = \left(\sum_i |x_i|^2\)^{\tfrac{1}{2}}
+              $$
+              $$
+              \Vert x \Vert_\infty = \left(\sum_i |x_i|^2\)^{\tfrac{1}{2}} = \max_i |x_i|
+              $$
+              where the \(\infty\)-norm is defined using the appropriate limit.
+              The unit balls for each of these norms are shown below.  The unit balls of general \(p\)-norm
+              balls fills the space in between as shown.
+
               </p>
+              </div>
 
-          </div>
-          <div class="slideshow-container flips" id='SCALARMULT' any='9' style="width:80%"></div>
-
-          <div class="txt" style="padding:40px">
-          <b> Visualizing Inner Products </b>
-
-
-          <p>
-          If we consider the product of the magnitudes of two vectors \(x\) and \(y\)
-          (\(\lVert y \rVert_2  \lVert x \rVert_2\)),
-          the above intuition for scalar multiplication carries over if we think radial, ie.
-          in terms of distance from the origin.  Considering the angle \(\theta\)
-          (\(\lVert y \rVert_2  \lVert x \rVert_2\)\cos(\theta)\))
-          adds in the step of projecting the product onto the direction of the \(x\) vector.
-          For a fixed angle, \(\theta\) we then get the visualization shown below.
-          </p>
+              <div class='imgFixed'>
+              <img src="/dcmath/figs/stills/VEC/LAWCOSINES.png" width=60%></img>
+              </div>
 
 
+              <div class="txt" style="padding:40px">
+              <b> Positive Definite Norms </b>
 
-        </div>
+              <p> Note: this section is better understood with background in positive
+              definite matrices.
+              </p>
+              <p>
 
-          <div class="slideshow-container flips" id='DOTPRODLEN' any='7' style="width:60%"></div>
+              Another class of norms (that expands the 2-norm) is defined by positive definite matrices.
+              For a positive definite symmetric matrix \(P \succ 0\), \(P=P^T \in \mathbb{R}^{n \times n}\),
+              we can define a norm via the quadratic form with \(P\) given by
+              $$
+              \Vert x \Vert_P = \big(x^TPx\big)^{\tfrac{1}{2}}
+              $$
+              Level sets of this norm are ellipsoidal as shown below.  (For more details, see the section on quadratic forms
+              and positive semidefinite matrices.)
+              </p>
+            </div>
 
-        <div class="txt" style="padding:40px">
+            <div class='imgFixed'>
+            <img src="/dcmath/figs/stills/VEC/LAWCOSINES.png" width=60%></img>
+            </div>
 
-        <p>
-        If we hold the length \(y\) fixed and vary \(\theta\) we get the following
-        visualization.  The overall inner product geometry is a combination of both.
-        </p>
+            <div class="txt" style="padding:40px">
+            <b> Norm Induced by Inner Product </b>
 
-      </div>
+            <p>
 
+            A definition of an inner product defines a norm that is said to be "induced"
+            by the inner product.  For inner product \(\langle \cdot, \cdot \rangle \),
+            the induced norm is given by
+            $$
+            \Vert x \Vert| = \big(\langle x, x \rangle \big)^{\tfrac{1}{2}} \)
+            $$
+            For the standard Euclidean inner product, this is simply the 2-norm.
+            For the \(P\)-inner product, \( \langle \cdot, \cdot \rangle_P \),
+            this gives the \(P\)-norm, \(\Vert \cdot \Vert|_P\).
 
-          <div class="slideshow-container flips" id='DOTPRODANGLE' any='9' style="width:60%"></div>
+            </p>
 
-
-          <div class="txt" style="padding:40px">
-          <p>
-            As was noted above, unlike scalars, vectors contain both the notion of length and direction.
-            If a scalar has some notion of direction it is simply a binary value \(\pm 1\),
-            ie. is the number positive or negative.  This "direction" determines whether
-            or not multiplying by this number flips the direction of another number.
-            Inner products can be thought of as expanding this binary value of \( \pm 1\)
-            to a full \(360^o\) of relative orientation.  Rather than simply
-            flipping the sign of the vector product based on the directions of the vectors,
-            inner product compares their relative direction and then multiplies by a
-            number in the interval \([-1,1]\) given by \(\cos(\theta)\)
-
-          </p>
-          </div>
-
-
-
-
+            </div>
 
 
 
