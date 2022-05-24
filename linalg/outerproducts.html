@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+    <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+    <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
+    </head>
+
+    <body>
+    <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+    <div w3-include-html="/dcmath/nav/topics.html"></div>
+    <!-- <div w3-include-html="nav/topics.html"></div> -->
+    <div class="wrapper">
+      <div class="sidebar">
+      <div w3-include-html="/dcmath/nav/sidebarLinalg.html"></div>
+      </div>
+      <div class=content>
+
+        <div class="txt" style="padding:40px">
+
+
+
+
+              <b> OUTER PRODUCTS  </b>
+
+              <p> Note: this section is better understood with an understanding of matrices. </p>
+
+              <p>
+              Another fundamental type of vector product  is called an outer product.
+              Where the inner product can be represented by the vector product \(y^Tx \in \mathbb{R} \)
+              the outer product is given by switching the order of the row and column vector.
+              $$
+              xy^T  \in \mathbb{R}^{n \times n}
+              $$
+
+              An outer product is fundamentally a matrix, consisting of all possible pairwise products of
+              elements of \(x\) and \(y).  Explicitly, we have
+              \(
+              \Big[\ xy^T \Big]_{ij} = x_i y_j
+              \)
+              Note also that we can think of each column of \(xy^T\) as a copy of \(x\) each scaled by an element of \(y\)
+              For two vector \(x\) and \(y\) (in two, three, and four dimensions) the columns of \(xy^T\) are shown below.
+              Note that each column lies in the same 1D subspace defined by \(x\).
+              Note also that columns are a parallel axis representation of vector \(y\)
+              (in the \(x\) direction and scaled by the length of \(x\)).  The rows would have
+              a similar geometry with the roles of \(x\) and \(y\) reversed.
+
+
+              The outer product is a rank-1 matrix or a dyad. It has a 1D range and a nullspace with dimension \(n-1\).
+
+              \
+              Note taht
+
+               Unlike like
+              an inner product which returns a scalar, an outer product
+
+
+
+              Vectors contain both the notion of length and direction.
+              While magnitude is a property that vectors share with regular numbers,
+              direction is a uniquely vector property.
+
+              As such we can talk about the relative magnitude of two vectors
+              and we can also talk about whether or not they point in similar directions,
+              opposite directions or whether they are "perpendicular"
+              or "orthogonal" to each other.  The "inner product" or "dot product"
+              of two vectors is at the heart of this direction comparison.
+              </p>
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+      </div>
+      </div>
+    <!-- <script type='module' src="./matrixo.js"> </script> -->
+    <script src="/dcmath/src/extra/includeHTML.js"> </script>
+    <!-- <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+
+    <script>
+    const slideIndexes ={'SCALARMULT':1, 'DOTPRODLEN':1, 'DOTPRODANGLE':1}
+    addSlides('SCALARMULT',slideIndexes);
+    showSlides('SCALARMULT',slideIndexes['SCALARMULT'],slideIndexes);
+    addSlides('DOTPRODLEN',slideIndexes);
+    showSlides('DOTPRODLEN',slideIndexes['DOTPRODLEN'],slideIndexes);
+    addSlides('DOTPRODANGLE',slideIndexes);
+    showSlides('DOTPRODANGLE',slideIndexes['DOTPRODANGLE'],slideIndexes);
+
+    </script> -->
+
+    </body>
+  </html>
