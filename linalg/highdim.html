@@ -43,34 +43,139 @@
     <div class=content>
 
 
-      <div class=header > High Dimensional Vector Interpretations </div>
-      <div class='pdfview'>
-      <iframe src='/teaching/linalg/HIGHDIM.pdf#page=1'
-      width='100%'
-      height='100%'>
-      </iframe>
+      <div class=header > High Dimensional Vector Directions </div>
+
+
+      <div class="txt" style="padding:40px">
+
+          <b> HIGH DIMENSIONAL VECTOR DIRECTIONS (Difficulty: 5/10)</b>
+          <p>
+          In higher (10+) dimensions, ordinary spatial intuition for vectors
+          breaks down and only parallel axis representations are possible.
+          As discussed previously unit vectors in high dimensions have somewhat
+          counter-intuitive forms.  We show a parallel axis representation
+          for unit vectors in eight and sixteen dimensions below. Note that only
+          a few elements of each vector can be substantively larger than 0 at any
+          time.
+          </p>
+        </div>
+
+
+
+
+        <div class="slideshow-container flips" id='HIGHDIMUNIT' any='3' style="width:100%"></div>
+
+
+
+        <div class="txt" style="padding:40px">
+          <p>
+            In low dimensions with a spatial representation of vectors, we can easily
+            see when two vectors line up or point in opposite directions or are perpendicular.
+
+          In order to "see" orthogonality and correlation between
+          vectors in a parallel axis representation (in low or high dimensions)
+          we must develop a different set of intuition.  To this end,
+          we first represent two high dimensional vectors \(x\)
+          and \(y\)
+          $$
+          \begin{bmatrix} x_1 & \cdots & x_n \end{bmatrix}, \qquad
+          \begin{bmatrix} y_1 & \cdots & y_n \end{bmatrix},
+          $$
+          as points along two separate axes.  This is a parallel
+          axis representation for each vector - with the directions of variation drawn
+          perpendicular to each other.  We can then visualize the values in the \(i\)th
+          dimension as a point  \((x_i, y_i)\) in a 2D plane.  Again note here that
+          the dimensions of the vectors is the number of points and the 2D plane
+          represents the fact we have two vectors.
+          To isolate the directionality of the
+          vectors assume both \(x\) and \(y\) are unit vectors. (If the vectors
+          are not unit vectors originally, we can simply think of scaling the axes
+          so that the vectors are inside the unit ball.
+          We now borrow some ideas from statistics and data fitting
+          for intuition.
+        </p>
+
+        <b> Intuition from Least Squares </b>
+        <p>
+          We first consider the simple linear model
+          $$
+          y_i = m x_i, \qquad i=1,\dots,n
+          $$
+          with slope \(m\) and 0 vertical intercept.
+          From the data cloud of points \((x_i,y_i)\), we can easily intuitively see what the
+          best fit slope \(m\) should be.
+          The formula for the optimal slope \(m\) is closely
+          related to the inner product and is in fact exactly the inner product if \(x\) is a unit vector.
+          $$
+          m = (x^Tx)^{-1}x^Ty = x^Ty
+          $$
+          In statistics the inner product \(x^Ty\) is often called the correlation.
+          For two arbitrary unit vectors, the correlation varies between 1 and -1.
+          A best fit slope of 1 means that \(x^Ty \approx 1 \); the points \((x_i,y_i)\) lie along the line \(y=x\) and \(x\) and \(y\) point in about the same direction.
+
+          A best fit slope of -1 means \(x^Ty \approx -1); the points lie along the line \(y=-x\)
+          and the vectors point in opposite directions.
+          A best fit slope of 0 means \(x^Ty \approx 0\); the points lie along the line \(y=0\)
+          and the vectors \(x\) and \(y\) are orthogonal to each other.  These relationships are illustrated in the figure below
+
+        </p>
       </div>
 
 
 
-    <div class="txt" style="padding:40px">
 
-          <b> High Dimensional Visualizations </b>
-          <p>
+      <div class="slideshow-container flips" id='HIGHDIMINNERPROD' any='3' style="width:100%"></div>
 
-          High dimensional vectors are best visualized as correlations between random variables.
-          </p>
+
+      <div class="txt" style="padding:40px">
+
+
+          Note: the slope here is chosen to minimize the sum of squares error
+          $$
+          \sum_i \ |y_i - mx_i|^2
+          $$
+          which is the vertical distance between the best fit line and the points.
+          Because of this for two unit vectors \(x\) and \(y\), the best fit slope
+          will always be between 1 and -1.
+          We could easily switch the roles of the horizontal and vertical axes.
+          In this case, we would end up minimizing the horizontal distance between
+          the best fit line and the points.  In this case the slope of the best fit
+          line would range from 1 to \(\infty\) and then from \(-\infty\) to -1.
+          There is no difference between these two for the intuition we are seeking.
+          Additionally, if mentally look for a best fit line depending on the distribution of the
+          data we may naturally do one or the other so we should consider both cases.
+
+
+          compute  if we look at a point cloud just
+          Thus, we can summarize our practical intuition in the following way.
+
+
+          For unit vectors \(x\) and \(y\),
+          if the point cloud lines up with the line \(y=x\), then \(y^Tx \approx 1\).
+          If the point cloud lines up with the line \(y=-x\), then \(y^Tx \approx -1\).
+          If the point cloud lines up with either the vertical or horizontal axis (the point cloud is
+          symmetric) then \(y^Tx \approx 0\) and \(y\) and \(x\) are close to orthogonal.
+          This intuition is illustrated below.  Note that in the context of
+          data fitting, statistics, and probability, this perspective is quite common.
+
+          For example, it is well known that a multivariate normal distributions for 2D
+          vector of the form \((x_i,y_i)\) is symmetric across the axes
+          if the \(x_i\) and \(y_i\) elements are independently distributed or uncorrelated, ie.
+          \(\sum_i x_iy_i  = x^Ty \approx 0 \) for data samples \(i=1,\dots,n\)
+        </p>
+
+
+
       </div>
 
 
       <!-- <div class='imgFixed'>
-      <img src="/dcmath/figs/kalman4.png" ></img>
+      <img src="/dcmath/figs/stills/VEC/PROJECTION2.png" width=60%></img>
       </div> -->
 
+<div class="slideshow-container flips" id='HIGHDIMDIAG' any='3' style="width:100%"></div>
 
 
-
-      <!-- text -->
 
 
 </div> <!-- content -->
@@ -78,6 +183,21 @@
 
 <script type='module' src="/dcmath/src/vectoro.js"> </script>
 <script src="/dcmath/src/extra/includeHTML.js"> </script>
+<script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+
+<script>
+const slideIndexes ={'HIGHDIMUNIT':1,
+                     'HIGHDIMINNERPROD':1,
+                     'HIGHDIMDIAG':1}
+addSlides('HIGHDIMUNIT',slideIndexes);
+showSlides('HIGHDIMUNIT',slideIndexes['HIGHDIMUNIT'],slideIndexes);
+addSlides('HIGHDIMINNERPROD',slideIndexes);
+showSlides('HIGHDIMINNDERPROD',slideIndexes['HIGHDIMINNERPROD'],slideIndexes);
+addSlides('HIGHDIMINNERPROD',slideIndexes);
+showSlides('HIGHDIMINNDERPROD',slideIndexes['HIGHDIMINNERPROD'],slideIndexes);
+
+
+</script>
 
 
 
