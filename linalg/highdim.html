@@ -72,11 +72,41 @@
           <p>
             In low dimensions with a spatial representation of vectors, we can easily
             see when two vectors line up or point in opposite directions or are perpendicular.
+            For high dimensional vectors,
+            we are forced to use a parallel axis representation of vectors.
 
           In order to "see" orthogonality and correlation between
           vectors in a parallel axis representation (in low or high dimensions)
-          we must develop a different set of intuition.  To this end,
-          we first represent two high dimensional vectors \(x\)
+          we must develop a different set of intuition.
+        </p>
+        <b> Center of Mass Visualization </b>
+        <p>
+        One potential method would be the following.
+        Take two parallel axis representations of two vectors \(x\) and \(y\) and rotate one by 90 degrees
+        and then line up the axes as pictured below.  Draw rectangles with sides defined
+        by \(x_i\) and \(y_i\) and area given by \(x_iy_i\).  View this construction from the end
+        on (again as shown below) and the center of mass gives an indication of what the inner product is.
+
+        If the center of mass lies on a line at \(45^o\) the vectors are highly correlated; if the
+        center of mass lies on a line at \(-45^o\), the vectors are negatively correlated; and if the
+        center of mass lines up with the horizontal or vertical axes, then the vectors are orthogonal.
+
+        To make precise statements like \(y^Tx =1 \) or \(y^Tx = -1 \), etc, we need the extra assumption that \(x\)
+        and \(y\) are unit vectors, but the correlation intuition holds even if this is not the case.
+        </p>
+      </div>
+
+
+      <div class="slideshow-container flips" id='HIGHDIMSQUARES' any='13' style="width:50%"></div>
+
+
+      <div class="txt" style="padding:40px">
+        <b> Data Fitting Visualization </b>
+          <p>
+          For very high dimensional vectors, we get a similar intuitive picture
+          if we borrow some well known ideas
+          from statistics and data fitting.
+          First represent two high dimensional vectors \(x\)
           and \(y\)
           $$
           \begin{bmatrix} x_1 & \cdots & x_n \end{bmatrix}, \qquad
@@ -92,8 +122,6 @@
           vectors assume both \(x\) and \(y\) are unit vectors. (If the vectors
           are not unit vectors originally, we can simply think of scaling the axes
           so that the vectors are inside the unit ball.
-          We now borrow some ideas from statistics and data fitting
-          for intuition.
         </p>
 
         <b> Intuition from Least Squares </b>
@@ -138,10 +166,14 @@
           which is the vertical distance between the best fit line and the points.
           Because of this for two unit vectors \(x\) and \(y\), the best fit slope
           will always be between 1 and -1.
-          We could easily switch the roles of the horizontal and vertical axes.
+          We could easily switch the roles of the horizontal and vertical axes and fit
+          a curve of the form
+          $$
+          x_i = m'y_i, \qquad i =1,\dots,n
+          $$
           In this case, we would end up minimizing the horizontal distance between
           the best fit line and the points.  In this case the slope of the best fit
-          line would range from 1 to \(\infty\) and then from \(-\infty\) to -1.
+          line would range from 1 to \(\infty\) and then from \(-\infty\) to -1 and \(m' = 1/m\).
           There is no difference between these two for the intuition we are seeking.
           Additionally, if mentally look for a best fit line depending on the distribution of the
           data we may naturally do one or the other so we should consider both cases.
@@ -199,12 +231,17 @@
 
 <script>
 const slideIndexes ={'HIGHDIMUNIT':1,
+                     'HIGHDIMSQUARES':1,
                      'HIGHDIMINNERPROD':3,
                      'HIGHDIMLS1':1,
                      'HIGHDIMLS2':1,
                      'HIGHDIMDIAG':1}
 addSlides('HIGHDIMUNIT',slideIndexes);
 showSlides('HIGHDIMUNIT',slideIndexes['HIGHDIMUNIT'],slideIndexes);
+
+addSlides('HIGHDIMSQUARES',slideIndexes);
+showSlides('HIGHDIMSQUARES',slideIndexes['HIGHDIMSQUARES'],slideIndexes);
+
 
 addSlides('HIGHDIMINNERPROD',slideIndexes);
 showSlides('HIGHDIMINNERPROD',slideIndexes['HIGHDIMINNERPROD'],slideIndexes);
