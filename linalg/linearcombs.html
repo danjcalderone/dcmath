@@ -32,6 +32,7 @@
 
 
     <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+    <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
     </head>
 
     <body>
@@ -45,13 +46,247 @@
       <div class=content>
 
 
-        <div class=header> Linear Combinations </div>
-        <div class='pdfview'>
-        <iframe src='/teaching/linalg/COLROW.pdf#page=1'
-        width='100%'
-        height='100%'>
-        </iframe>
+        <div class='imgFixed'>
+        <img src="/dcmath/figs/stills/VEC/PROJECTION2.png" width=60%></img>
         </div>
+
+
+
+
+
+
+
+
+
+        <div class=header> Linear Combinations </div>
+
+
+
+
+        <div class="txt" style="padding:40px">
+
+        <b> LINEAR COMBINATIONS </b>
+
+        <p>
+        A linear combination of a set of vectors \(\big\{A_1,\dots,A_n\big\}\) is
+        a sum of those vectors each scaled by an individual coefficient
+        $$
+        A_1 x_1 + A_2 x_2 + \cdots + A_n x_n
+        $$
+        where \(x_1,\dots,x_n \in \mathbb{R}\).  Basic linear combinations of
+        one, two, three, and four vectors are shown below.
+        </p>
+        </div>
+
+        <div class='imgFixed'>
+        <img src="/dcmath/figs/stills/MAT/LINCOMB.png" width=60%></img>
+        </div>
+
+        <div class="slideshow-container flips" id='LINCOMB' any='13' style="width:60%"></div>
+
+
+        <div class="txt" style="padding:40px">
+
+        <b> SPAN </b>
+
+        <p>
+        The set of all possible linear combinations is called the span of a set of vectors.
+        Spans of one,two, and three vectors are shown in the image below.  Note that spatially
+        The span of a set of vectors forms a hyperplane or subspace that passes through the origin
+        and extends out in any directions the vectors point.  Since negative coefficients are possible
+        the span also extends in the opposite direction of the vectors.  If we add a new vector
+        to the set of vectors that does not already lie in the span of the original vectors
+        then we increase the dimension of the spanned subspace.  If we add a new vector
+        that was already in the span, the dimension of the spanned subspace does not increase
+        </p>
+        </div>
+
+        <div class='imgFixed'>
+        <img src="/dcmath/figs/stills/MAT/SPAN.png" width=60%></img>
+        </div>
+        <div class="txt" style="padding:40px">
+
+        <b> LINEAR DEPENDENCE </b>
+
+        <p>
+        We say a vector is linearly dependent on a set of vectors if it lies in the
+        span of those vectors, ie. one can construct that vector as a linear combination of
+        vectors in the set.  Algebraically, \(y\) is linearly dependent on a set of vectors
+        \(\big\{A_1,\dots,A_n\big\}\), we can find coefficients \(x_1,\dots,x_n \in \mathbb{R}\)
+        such that
+        $$
+        y = A_1 x_1 + \cdots + A_n x_n
+        $$
+        If a vector is not linearly dependent on a set of vectors, we say it is linearly independent
+        from that set.  We say a set of vectors is linearly independent if none of the vectors
+        are linearly dependent on the other vectors in the set, and we say the set is linear dependent
+        if any of the vectors are linearly dependent on the others.  The image below shows the case where
+        a vector \(A_3\) is linearly dependent on vectors \(A_1,A_2 \in \mathbb{R}^3\).
+        </p>
+        </div>
+        <div class='imgFixed'>
+        <img src="/dcmath/figs/stills/MAT/LINDEP.png" width=60%></img>
+        </div>
+
+
+        <div class="txt" style="padding:40px">
+        <p>
+        A compact way to state mathematically that a set of vectors \(\big\{A_1,\dots,A_n\big\}\)
+        is linearly dependent is to say, there exists a vector of coefficients \(x \neq 0\)
+        such that
+        $$
+        A_1 x_1 + \cdots + A_n x_n = 0
+        $$
+        This statement encodes that there is at least one vector \(A_i\) that is dependent on the others.
+        Here, \(x \neq 0\) means that at least one of the coefficients is not equal to 0.
+        Since at least one \(x_i\) is nonzero (assume it is \(i=1\) for simplicity), we can write
+        $$
+        A_1x_1 = A_2 x_2 + \cdots + A_n x_n
+        $$
+        We can then explicitly write \(A_1\) as a linear combination of the others
+        $$
+        A_1 = A_2 \tfrac{x_2}{x_1} + \cdots + A_n \tfrac{x_n}{x_1}
+        $$
+        Note: if all the other \(x_i\)'s are zero, then \(A_1\) must be the zero vector which is
+        linear dependent on any set of vectors.
+        </p>
+        <p>
+        Negating the above statement gives a mathematical definition of linear independence.
+        A set of vectors \(\big\{A_1,\dots,A_n\big\}\)
+        is linearly independent if there does not exist a nonzero vector \(x\) such that
+        \(A_1x_1+\cdots + A_n x_n = 0 \).  We can rephrase this into something a little more useful:
+        the set is linearly independent if \(A_1x_1+\cdots + A_n x_n = 0 \) only when \(x=0\) or, most usefully,
+        a set of vectors \(\big\{A_1,\dots,A_n\big\}\) is linearly independent is
+        $$
+        A_1x_1+\cdots + A_n x_n = 0 \qquad \Rightarrow \qquad x = 0
+        $$
+        This characterization is by far the most useful in mathematical proofs.  If we
+        can show that the sum condition on the left implies \(x=0\) then we know the
+        set of vectors is linearly independent.
+        </p>
+
+        <b> More Math: Proving Linear Independence (Difficulty: 3/10)</b>
+        <p>
+        These next comments assume an understanding of matrix multiplication and matrix column geometry.
+        </p>
+
+        Practically when we try to prove linear independence (or dependence) of a set of vectors (say \(n\) vectors each in
+        \(\mathbb{R}^m\)), we often write them as columns of a matrix \(A \in \mathbb{R}^{m \times n}\) and write
+        vector of coefficients as \(x \in \mathbb{R}^n\).  The linear dependence condition becomes there exist \(x \neq 0\) such that
+        \(Ax = 0\), ie. \(A\) has a nontrivial right nullspace.  The linear independence condition becomes \(Ax=0 \Rightarrow x =0 \).
+        This is quite compact and useful.  For example, suppose \(A\) can be divided into rows \(A'\) and \(A''\) where we already know that
+        \(A'\) has linearly independent columns.  We can then show immediately that \(A\) must have linearly independent columns as well
+        $$
+        Ax = \begin{bmatrix} A' \\ A'' \end{bmatrix} x
+          = \begin{bmatrix} A'x \\ A''x \end{bmatrix}
+          = \begin{bmatrix} 0 \\ 0 \end{bmatrix}
+        $$
+        Since \(A'x=0\) then \(x=0\) (by the linear independence of the columns of \(A'\)) and thus we have shown that \(Ax=0\) implies
+        \(x = 0\) as desired.  This often arises in the even simpler context where \(A'\) is just the identity matrix.
+        In this case we simply have
+        $$
+        Ax = \begin{bmatrix} I \\ A'' \end{bmatrix} x
+          = \begin{bmatrix} x \\ A''x \end{bmatrix}
+          = \begin{bmatrix} 0 \\ 0 \end{bmatrix}
+          \qquad \Rightarrow \qquad x = 0
+        $$
+        We will return to this construction in our construction of bases for range and nullspaces. 
+        </p>
+
+
+
+
+
+         We will return to this definition when we
+         return to this more later with our d
+
+
+          We can rephrase this into something a little more useful:
+        Rephrasing this to be less awkward  we slightly
+
+
+
+
+
+        cannot be zero, since then either \(x_1\) then either
+
+
+          that a set of vectors is iIf we want to write a mathematical condition for linear independence Mathematically, if can state that no vewe want to say e say lineara compatc
+        We say a vector is linearly dependent on a set of vectors if it lies in the
+        span of those vectors, ie. one can construct that vector as a linear combination of
+        vectors in the set.  Algebraically, \(y\) is linearly dependent on a set of vectors
+        \big\{A_1,\dots,A_n\big\}, we can find coefficients \(x_1,\dots,x_n \in \mathbb{R}\)
+        such that
+        $$
+        y = A_1 x_1 + \cdots + A_n x_n
+        $$
+        If a vector is not linearly dependent on a set of vectors, we say it is linearly independent
+        from that set.  We say a set of vectors is linearly independent if none of the vectors
+        are linearly dependent on the other vectors in the set, and we say the set is linear dependent
+        if any of the vectors are linearly dependent on the others.  The image below shows the case where
+        a vector \(A_3\) is linearly dependent on vectors \(A_1,A_2 \in \mathbb{R}^3\).
+        </p>
+        </div>
+
+
+
+
+        the vector The set of all possible linear combinations is called the span of a set of vectors.
+        Spans of one,two, and three vectors are shown in the image below.  Note that spatially
+        The span of a set of vectors forms a hyperplane or subspace that passes through the origin
+        and extends out in any directions the vectors point.  Since negative coefficients are possible
+        the span also extends in the opposite direction of the vectors.  If we add a new vector
+        to the set of vectors that does not already lie in the span of the original vectors
+        then we increase the dimension of the spanned subspace.  If we add a new vector
+        that was already in the span, the dimension of the spanned subspace does not increase
+        </p>
+
+        <div class='imgFixed'>
+        <img src="/dcmath/figs/stills/MAT/LINDEP.png" width=60%></img>
+        </div>
+
+
+
+
+        The Cartesian representation of a mD vector is a string of \(m\) numbers that each
+        represent a distance in a different direction/dimension.
+        </p>
+        <p>
+
+        Addition between two vectors \(x\) and \(z\) is done element-wise (assuming they have the same length).
+
+        $$
+        x + z = \begin{bmatrix} x_1 \\ \vdots \\ x_m \end{bmatrix}
+        + \begin{bmatrix} z_1 \\ \vdots \\ z_m \end{bmatrix} =
+        \begin{bmatrix} x_1+z_1 \\ \vdots \\ x_m+z_m \end{bmatrix}
+        $$
+
+        Visually, this sum is a new vector given by placing the two vectors "tip-to-tail."
+      </p>
+
+      <p>
+        "Scaling" \(x\) by a number \(\lambda\) involves multiplying each element in \(x\) by \(\lambda\).
+        Visually this expands or shrinks (or flips) \(x\) without changing the direction.
+
+        Scaling multiple vectors \(x^1,\dots,x^n\) and then adding them together is referred to as
+        taking a "linear combination" of the vectors.  All the possible linear combinations of a set of vectors
+        is called the "span" of those vectors.  If a set of vectors span a whole space that means
+        any vector in that space can be written as a linear combination of those vectors.
+
+      </p>
+      <p>
+        Subtraction between two vectors is also done element-wise.  It could
+        also be thought of as taking a linear combination of two vectors with
+        weights \(1\) and \(-1\). If we think of the vector as floating rather
+        than attached to the origin, the difference vector points from the end of
+        one vector to the other.
+
+      </p>
+
+
+    </div>
+
+
 
 
 
@@ -67,46 +302,6 @@
             </div>
             <div class="txt" style="padding:40px">
 
-                  <b> VECTOR & LINEAR COMBINATIONS </b>
-                  <p>
-
-                  The Cartesian representation of a mD vector is a string of \(m\) numbers that each
-                  represent a distance in a different direction/dimension.
-                  </p>
-                  <p>
-
-                  Addition between two vectors \(x\) and \(z\) is done element-wise (assuming they have the same length).
-
-                  $$
-                  x + z = \begin{bmatrix} x_1 \\ \vdots \\ x_m \end{bmatrix}
-                  + \begin{bmatrix} z_1 \\ \vdots \\ z_m \end{bmatrix} =
-                  \begin{bmatrix} x_1+z_1 \\ \vdots \\ x_m+z_m \end{bmatrix}
-                  $$
-
-                  Visually, this sum is a new vector given by placing the two vectors "tip-to-tail."
-                </p>
-
-                <p>
-                  "Scaling" \(x\) by a number \(\lambda\) involves multiplying each element in \(x\) by \(\lambda\).
-                  Visually this expands or shrinks (or flips) \(x\) without changing the direction.
-
-                  Scaling multiple vectors \(x^1,\dots,x^n\) and then adding them together is referred to as
-                  taking a "linear combination" of the vectors.  All the possible linear combinations of a set of vectors
-                  is called the "span" of those vectors.  If a set of vectors span a whole space that means
-                  any vector in that space can be written as a linear combination of those vectors.
-
-                </p>
-                <p>
-                  Subtraction between two vectors is also done element-wise.  It could
-                  also be thought of as taking a linear combination of two vectors with
-                  weights \(1\) and \(-1\). If we think of the vector as floating rather
-                  than attached to the origin, the difference vector points from the end of
-                  one vector to the other.
-
-                </p>
-
-
-              </div>
 
 
 
@@ -115,5 +310,14 @@
       </div>
     <script type='module' src="/dcmath/src/vectoro.js"> </script>
     <script src="/dcmath/src/extra/includeHTML.js"> </script>
+    <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+    <script>
+    const slideIndexes ={'LINCOMB':1}
+    addSlides('LINCOMB',slideIndexes);
+    showSlides('LINCOMB',slideIndexes['LINCOMB'],slideIndexes);
+    </script>
+
+
+
     </body>
   </html>
