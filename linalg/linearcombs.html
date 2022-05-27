@@ -129,7 +129,7 @@
           While one should not shy away from the rigorous math, one should also keep in mind the simple intuition
           for the concepts given above.
         </p>
-        
+
         <p>
         A compact way to state mathematically that a set of vectors \(\big\{A_1,\dots,A_n\big\}\)
         is linearly dependent is to say, there exists a vector of coefficients \(x \neq 0\)
@@ -141,11 +141,11 @@
         Here, \(x \neq 0\) means that at least one of the coefficients is not equal to 0.
         Since at least one \(x_i\) is nonzero (assume it is \(i=1\) for simplicity), we can write
         $$
-        A_1x_1 = A_2 x_2 + \cdots + A_n x_n
+        A_1x_1 = -A_2 x_2 - \cdots  -A_n x_n
         $$
         We can then explicitly write \(A_1\) as a linear combination of the others
         $$
-        A_1 = A_2 \tfrac{x_2}{x_1} + \cdots + A_n \tfrac{x_n}{x_1}
+        A_1 = A_2\left(- \tfrac{x_2}{x_1}\right) + \cdots + A_n\left(- \tfrac{x_n}{x_1}\right)
         $$
         Note: if all the other \(x_i\)'s are zero, then \(A_1\) must be the zero vector which is
         linear dependent on any set of vectors.
