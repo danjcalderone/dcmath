@@ -76,7 +76,8 @@
         any two vectors \(A_1\) and \(A_2\), \(A_1 \tfrac{1}{2} + A_2 \tfrac{1}{2}\)
         is the vector halfway between the two vectors; for \(n\) vectors \(\sum_i A_i \tfrac{1}{n}\)
         is the center of the set of vectors ("average" vector of the set); etc.
-        Different convex combinations are illustrated in the figures below.
+        Different convex combinations of vectors \(\big\{A_1,A_2,A_3\big\} \in \mathbb{R}^3\)
+        are illustrated in the figures below.
         </p>
         </div>
         <div class='imgFixed'>
@@ -85,10 +86,19 @@
 
         <div class="slideshow-container flips" id='CVXCOMB' any='11' style="width:60%"></div>
 
+        <div class="txt" style="padding:40px">
+        <p>
+        We can also show convex combinations of two, three, four, and five vectors.
+        </p>
+        </div>
+
+        <div class='imgFixed'>
+        <img src="/dcmath/figs/stills/MAT/CVXCOMB2345.png" width=80%></img>
+        </div>
+
+
 
         <div class="txt" style="padding:40px">
-
-        <b> SPAN </b>
 
         <p>
         A convex combination between just two vectors is often written in the form
@@ -96,15 +106,109 @@
         y = A_1 (1-\alpha) + A_2\alpha
         $$
         with \(0 \leq \alpha \leq 1 \).  We notice that if we start out with \(\alpha = 0\),
-        \(y=A_1\).   As alpha goes to 1, \(y\) moves from \(A_1\) to \(A_2 \).
-        We note that, we can rearrange the above expression to explicitly show the direction
-        \(y\) is changing as \(\alpha\) increases
+        \(y=A_1\).   We note that we can rearrange the above expression to show explicitly how
+        \(y\) changes with \(\alpha\)
         $$
         y = A_1 + (A_2-A_1)\alpha
         $$
-        \(y\) is \(A_1\) plus some scaled version of the vector from \(A_1\) to \(A_2\)
+        As \alpha moves from 0 to 1, \(y\) starts at \(A_1\) and then adds back little bits of the difference
+        from \(A_1\) to \(A_2\) until \(y\) reaches \(A_2\).
+        This perspective is illustrated in the figure below.
       </p>
     </div>
+
+      <div class="txt" style="padding:40px">
+      <p>
+      Keeping \(\alpha\) between 0  and 1 keeps \(y\) on the segment between \(A_1\) and \(A_2\).
+      If we relax this condition and allow \(\alpha\) to be negative or greater than 1,
+      we trace out a whole line that runs through \(A_1\) and \(A_2\).
+      \(\alpha<0 \) extends past \(A_1\); \(\alpha > 1\) extends off past \(A_2\).
+
+      Note that here \(x_1 = (1-\alpha)\) and \(x_2 = \alpha\).  Removing the restriction
+      on \(\alpha\) is equivalent to removing the restriction that \(x_1 \geq 0\) and
+      \(x_2 \geq 0\).  By construction, we still have \(x_1 + x_2 = (1-\alpha) + \alpha = 1 \)
+
+      </p>
+    </div>
+
+    <div class="txt" style="padding:40px">
+    <p>
+    Note that this extension to the line through \(A_1\) and \(A_2\) implies to
+    larger numbers of vectors as well.  For example for three vectors \(\big\{A_1,A_2,A_3 \big\}\),
+    removing the restriction that \(x\geq 0 \) expands the convex set to the plane shown below.
+    Note that signs of \(x_1\),\(x_2\), and \(x_3\) in each part of the plane.
+
+
+  </p>
+
+  <div class="txt" style="padding:40px">
+  <b> More Math: Is a Point Inside a Triangle (Difficulty: 4/10) </b>
+  <p>
+  The above construction can be quite useful for determining
+  quickly if a point is inside a triangle, tetrahedron, or hyper-tetrahedron.
+  (This has many applications. For example it is a critical step in the implementation
+  of the quickhull algorithm for computing convex hulls of points.) We focus on the
+  case of three points in 2D, ie. determining if a point is inside a triangle.
+  </p>
+  <p>
+  To determine if a point \(y \in \mathbb{R}^2\) is inside a triangle formed by points
+  \(\big{A_1,A_2,A_3\big} \subset \mathbb{R}^2\), we can form the following system of equations
+  $$
+  \begin{bmatrix}
+  y \\ 1
+  \end{bmatrix}
+  =
+  \underbrace{
+  \begin{bmatrix}
+  \begin{matrix}
+  | & | & | \\
+  A_1 & A_2 &  A_3 \\
+  | & | & | \\
+  \end{matrix} \\
+  \begin{matrix}
+  - & \mathbf{1}^T & -
+  \end{matrix}
+  \end{bmatrix}
+  }_{M}
+  \begin{bmatrix}
+  x_1 \\ x_2 \\ x_3
+  \end{bmatrix}
+  $$
+  The last row this system of equations requires \(x\) to sum to 1, ie. \(x\) generates
+  linear combinations in the plane shown in the figure above.
+  The first two rows then say that \(y\) is a linear combination of the
+  \(A_i\) vectors.  Note assuming this system is invertible, we can compute \(x=M^{-1}y\).
+  After computing \(x\) one can immediately read off which section of the plane \(y\) is
+  in based on the signs of the elements of \(x\).  If \(x\geq 0\), then \(y\) is in the
+  triangle. For fast implementation a \(3\times 3\) matrix \(M\) can be inverted explicitly
+    (see inverse formulas).
+  </p>
+
+
+  <p>
+  Note: this system will always be invertible unless the triangle shown above collapse
+  to a line and the problem is ill-posed.  One could still actually take the pseudo-inverse
+  which would determine if the projection of \(y\) onto that line was inside the
+  convex combination of the points.  (I think.)
+  </p>
+
+  </div>
+
+
+  <div class="txt" style="padding:40px">
+  <b> More Math: Coordinate Transformations on Convex Hulls (Difficulty: 4/10) </b>
+  <p>
+  When we're working with a convex hull of a set of points,
+  we may often want to write different coordinate systems based on those points.
+  We list several useful coordinate transformations below along with explicit
+  representations of their inverses, diagrams, and intuitive explanations.  Of course,
+  other useful transformations are possible.
+
+
+  </p>
+
+
+
 
 
 
