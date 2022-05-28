@@ -206,7 +206,7 @@
 
   <p>
   For tetrahedrons or hyper-tetrahedrons in \(n\)D, this formula extends to checking if
-  \(y \in \mathbb{R}^n\) is a convex combination of \(n+1\) points \(\big\{A_1,\dots,A_n\big\}\).
+  \(y \in \mathbb{R}^n\) is a convex combination of \(n+1\) points \(\big\{A_1,\dots,A_{n+1}\big\}\).
   The equation then becomes
   $$
   \begin{bmatrix}
@@ -217,7 +217,7 @@
   \begin{bmatrix}
   \begin{matrix}
   | &  & | \\
-  A_1 & \cdots  &  A_n\\
+  A_1 & \cdots  &  A_{n+1}\\
   | &  & | \\
   \end{matrix} \\
   \begin{matrix}
@@ -226,7 +226,7 @@
   \end{bmatrix}
   }_{M}
   \begin{bmatrix}
-  x_1 \\ \vdots \\ x_3
+  x_1 \\ \vdots \\ x_{n+1}
   \end{bmatrix}
   $$
   </p>
@@ -247,7 +247,7 @@
   \(\mathbb{R}^4\) the convex hull is a 3D tetrahedron which can visualized.
   The first \(n-1\) coordinates in our tranformations will line up explicitly with
   each convex hull.  The last coordinate will be related to the
-  vector \(\mathbf{1}\).  
+  vector \(\mathbf{1}\).
 
 
 
