@@ -143,7 +143,7 @@
 </div>
 
   <div class="txt" style="padding:40px">
-  <b> More Math: Is a Point Inside a Triangle? (Difficulty: 4/10) </b>
+  <b> More Drawing: Is a Point Inside a Triangle? (Difficulty: 3/10) </b>
   <p>
   The above construction can be quite useful for determining
   quickly if a point is inside a triangle, tetrahedron, or hyper-tetrahedron.
@@ -204,6 +204,33 @@
   convex combination of the points.  (I think.)
   </p>
 
+  <p>
+  For tetrahedrons or hyper-tetrahedrons in \(n\)D, this formula extends to checking if
+  \(y \in \mathbb{R}^n\) is a convex combination of \(n+1\) points \(\big\{A_1,\dots,A_n\big\}\).
+  The equation then becomes
+  $$
+  \begin{bmatrix}
+  y \\ 1
+  \end{bmatrix}
+  =
+  \underbrace{
+  \begin{bmatrix}
+  \begin{matrix}
+  | &  & | \\
+  A_1 & \cdots  &  A_n\\
+  | &  & | \\
+  \end{matrix} \\
+  \begin{matrix}
+  - & \mathbf{1}^T & -
+  \end{matrix}
+  \end{bmatrix}
+  }_{M}
+  \begin{bmatrix}
+  x_1 \\ \vdots \\ x_3
+  \end{bmatrix}
+  $$
+  </p>
+  Taking \(x = M^{-1}y\), one can similarly check that \(x\geq 0\).
   </div>
 
 
