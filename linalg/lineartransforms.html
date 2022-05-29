@@ -45,29 +45,60 @@
       <div class=content>
 
         <div class=header > Linear Transformations </div>
-        <div class='pdfview'>
-        <iframe src='/teaching/linalg/COLROW.pdf#page=1'
-        width='100%'
-        height='100%'>
-        </iframe>
-        </div>
+            <div class="txt" style="padding:40px">
 
-
-
-          <div class='img' style="padding:0px" id="matrix-container">
-                  <canvas id='matrix' class='CANVAS'></canvas>
-                  <div class="eqn" id="y_mat" ></div>
-                  <div class="eqn" id="A_mat" ></div>
-                  <div class="eqn" id="x_mat" ></div>
-                  <div class="eqn" id="Amaps_mat" ></div>
-                  <div class="eqn" id="label2_mat" ></div>
-                  <div class="eqn" id="warning2_mat" ></div>
-                  <div class="eqn" id="usedigits_mat" ></div>
-          </div>
-          <div class="txt" style="padding:40px">
-
-                <b> LINEAR TRANSFORMATIONS </b>
+                <b> Matrices </b>
                 <p>
+                A matrix \(A \in \mathbb{R}^{m \times n}\) is a block of numbers of the form
+                $$
+                A =
+                \begin{bmatrix}
+                A_{11} & \cdots & A_{1n} \\
+                \vdots & & \vdots \\
+                A_{m1} & \cdots & A_{mn}
+                \end{bmatrix}
+                $$
+                There are many useful perspectives on matrices and matrix algebra but perhaps
+                the most basic interpretation is to think of a matrix as a collection of column vectors.
+
+                $$
+                A =
+                \begin{bmatrix}
+                | & & | \\
+                A_{1} & \cdots & A_n \\
+                | & & |
+                \end{bmatrix}
+                $$
+                Here we have \(n\) column vectors each of dimension \(m\), \(A_i \in \mathbb{R}^m \).
+                Multiplication of a matrix \(A \in \mathbb{R}^{m \times n}\) times a vector \(x \in \mathbb{R}^n \)
+                was designed to represent taking linear combinations of the columns of \(A\) with coefficients
+                give by \(x\).
+                $$
+                Ax =
+                \begin{bmatrix}
+                | & & | \\
+                A_{1} & \cdots & A_n \\
+                | & & |
+                \end{bmatrix}
+                \begin{bmatrix}
+                x_1 \\ \vdots \\ x_n
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                | \\
+                A_{1} \\
+                |
+                \end{bmatrix}
+                x_1 + \cdots +
+                \begin{bmatrix}
+                | \\
+                A_n \\
+                |
+                \end{bmatrix} x_n
+                =
+                $$
+                 If we replace \(x\) with a full matrix \(B \in \mathbb{R}^{n \times p}\),
+                we treat each column of \(B\) as a separate set of coefficients for Explicitly, writing this out we have
 
                 $$ y = Ax$$
 
@@ -113,6 +144,16 @@
 
               </div>
 
+              <div class='img' style="padding:0px" id="matrix-container">
+                      <canvas id='matrix' class='CANVAS'></canvas>
+                      <div class="eqn" id="y_mat" ></div>
+                      <div class="eqn" id="A_mat" ></div>
+                      <div class="eqn" id="x_mat" ></div>
+                      <div class="eqn" id="Amaps_mat" ></div>
+                      <div class="eqn" id="label2_mat" ></div>
+                      <div class="eqn" id="warning2_mat" ></div>
+                      <div class="eqn" id="usedigits_mat" ></div>
+              </div>
 
 
 

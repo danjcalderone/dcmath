@@ -56,10 +56,6 @@
               <p> Note: this section is better understood with an understanding of matrices. </p>
 
 
-              </div>
-
-              <div class="txt" style="padding:40px">
-
               <p>
               Another fundamental type of vector product  is called an outer product.
               Where the inner product can be represented by the vector product \( y^Tx \in \mathbb{R} \)
@@ -93,7 +89,45 @@
 
               <div width = 60%>
               <div class="slideshow-container flips" id='OUTER2' any='27' ></div>
-            </div>
+              </div>
+
+              <div class="txt" style="padding:40px">
+              <b> OUTER PRODUCTS  </b>
+
+              <p> Note: this section is better understood with an understanding of matrices. </p>
+
+
+              <p>
+              A special type of outer product is the outer product of a vector with itself.  These
+              type dyads are related to the construction of symmetric matrices.
+              Symmetric matrices specifically can be thought as scaled sums of Another fundamental type of vector product  is called an outer product.
+              Where the inner product can be represented by the vector product \( y^Tx \in \mathbb{R} \)
+              the outer product is given by switching the order of the row and column vector.
+
+              $$
+              xy^T  \in \mathbb{R}^{n \times n}
+              $$
+
+              An outer product is fundamentally a matrix, consisting of all possible pairwise products of
+              elements of \(x\) and \(y\).  Explicitly, we have
+              $$
+              \Big[ \ xy^T \Big]_{ij} = x_i y_j
+              $$
+              Note also that we can think of each column of \(xy^T\) as a copy of \(x\) each scaled by an element of \(y\)
+              For two vector \(x\) and \(y\) (in two, three, and four dimensions) the columns of \(xy^T\) are shown below.
+              Note that each column lies in the same 1D subspace defined by \(x\).
+              Note also that columns are a parallel axis representation of vector \(y\)
+              (in the \(x\) direction and scaled by the length of \(x\)).  The rows would have
+              a similar geometry with the roles of \(x\) and \(y\) reversed.
+
+
+              The outer product is a rank-1 matrix or a dyad. It has a 1D range and a nullspace with dimension \( n-1 \).
+              </p>
+
+
+              </div>
+              Symmetric
+
 
 
 
