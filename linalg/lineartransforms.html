@@ -57,21 +57,18 @@
                 \vdots & & \vdots \\
                 A_{m1} & \cdots & A_{mn}
                 \end{bmatrix}
-                $$
-                There are many useful perspectives on matrices and matrix algebra but perhaps
-                the most basic interpretation is that a matrix is a collection of column vectors
-
-                $$
-                A =
+                =
                 \begin{bmatrix}
                 | & & | \\
                 A_{1} & \cdots & A_n \\
                 | & & |
                 \end{bmatrix}
                 $$
+                There are many useful perspectives on matrices and matrix algebra but perhaps
+                the most basic is that a matrix is a collection of column vectors as indicated above.
                 Here we have \(n\) column vectors each of dimension \(m\), \(A_i \in \mathbb{R}^m \).
                 Multiplication of a matrix \(A \in \mathbb{R}^{m \times n}\) times a vector \(x \in \mathbb{R}^n \)
-                was designed to represent taking linear combinations of the columns of \(A\) with coefficients
+                is designed to represent taking linear combinations of the columns of \(A\) with coefficients
                 give by \(x\).
                 $$
                 Ax =
@@ -95,18 +92,18 @@
                 A_n \\
                 |
                 \end{bmatrix} x_n
-                =
                 $$
-                 If we replace \(x\) with a full matrix \(B \in \mathbb{R}^{n \times p}\),
-                we treat each column of \(B\) as a separate set of coefficients for Explicitly, writing this out we have
 
-                $$ y = Ax$$
 
-                A matrix \( A \) can be used to represent a linear transformation from one
+
+
+
+                A matrix \( A \) is used to represent a linear transformation from one
                 vector space another. Any point \(x\) in the domain maps to \(y=Ax\) in the co-domain.
-                Each standard basis vector gets mapped to
-                the corresponding column of \(A\). For example,
+                Each column of \(A\) tells where a standard basis vector (in the domain)
+                gets mapped to in the co-domain.
 
+                For example,
                 $$
                 \begin{bmatrix}
                 | & | & & | \\
@@ -116,46 +113,110 @@
                 \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
                 = \begin{bmatrix} | \\ A_2 \\ | \end{bmatrix}
                 $$
-
-                A general vector \(x\) with nonzero components
-                in multiple coordinates gets mapped to a weighted sum of the columns of \(A\)
-
-                $$
-                y =  \begin{bmatrix}
-                  | & & | \\
-                  A_1 & \cdots & A_n \\
-                  | & & | \\
-                  \end{bmatrix}
-                  \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}
-                $$
-
-                $$
-                y = \begin{bmatrix} | \\ A_1 \\ | \end{bmatrix} x_1 + \cdots +
-                \begin{bmatrix} | \\ A_n \\ | \end{bmatrix} x_n
-                $$
-
-                Another way of saying this is that \(Ax\) is a short hand for a linear
-                combination of the columns of \(A\) with coefficients given by the elements of \(x\).
-
-                Note that we can map sets of \(x\)'s (such as the simplex, unit sphere, etc) through
-                \(A\) as well as points.  The span of the columns of \(A\) is called
-                the "column space" or the "range" of \(A\) (more below).
+              </p>
+              <p>
+                In the next section, we will discuss further how matrices represent linear transformations but we first
+                give an interactive illustration of how a vector \(x\) is transformed by a matrix
+                \(A\) based on the columns of \(A\).
               </p>
 
+            </div>
+
+                          <div class='img' style="padding:0px" id="matrix-container">
+                                  <canvas id='matrix' class='CANVAS'></canvas>
+                                  <div class="eqn" id="y_mat" ></div>
+                                  <div class="eqn" id="A_mat" ></div>
+                                  <div class="eqn" id="x_mat" ></div>
+                                  <div class="eqn" id="Amaps_mat" ></div>
+                                  <div class="eqn" id="label2_mat" ></div>
+                                  <div class="eqn" id="warning2_mat" ></div>
+                                  <div class="eqn" id="usedigits_mat" ></div>
+                          </div>
+
+
+                <div class="txt" style="padding:40px">
+
+                <b> Matrix Mechanics: Multiplication and Addition </b>
+                <p>
+                Expressing the above multiplication \(Ax\) in terms of the individual elements of \(A\)
+                we get
+                $$
+                Ax =
+                \begin{bmatrix}
+                A_{11} & \cdots & A_{1n} \\
+                \vdots & & \vdots \\
+                A_{m1} & \cdots & A_{mn}
+                \end{bmatrix}
+                \begin{bmatrix}
+                x_{11} \\ \vdots \\ x_{n1}
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                A_{11}x_1 + \cdots + A_{1n}x_n \\
+                \vdots \\
+                A_{m1}x_1 + \cdots + A_{mn}x_n
+                \end{bmatrix}
+                $$
+
+
+                If we replace \(x\) with a full matrix \(B \in \mathbb{R}^{n \times p}\),
+                we treat each column of \(B\) as a separate set of coefficients.
+
+                $$
+                AB =
+                \begin{bmatrix}
+                | & & | \\
+                A_{1} & \cdots & A_n \\
+                | & & |
+                \end{bmatrix}
+                \begin{bmatrix}
+                B_{11} & \cdots & B_{1p} \\
+                \vdots & & \vdots \\
+                B_{n1} & \cdots & B_{np}
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                | & & | \\
+                A_1 B_{11} + \cdots + A_n B_{n1} & \cdots &
+                A_1 B_{1p} + \cdots + A_n B_{np} \\
+                | & & |
+                \end{bmatrix}
+                $$
+
+                Again, expressed in terms of \(A\) and \(B\)'s individual elements this multiplication
+                is given by
+                $$
+                AB =
+                \begin{bmatrix}
+                A_{11} & \cdots & A_{1n} \\
+                \vdots & & \vdots \\
+                A_{m1} & \cdots & A_{mn}
+                \end{bmatrix}
+                \begin{bmatrix}
+                B_{11} & \cdots & B_{1n} \\
+                \vdots & & \vdots \\
+                B_{m1} & \cdots & B_{mn}
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                A_{11}B_{11}+ \cdots + A_{1n}B_{n1} & \cdots &
+                A_{11}B_{1p}+ \cdots + A_{1n}B_{np}\\
+                \vdots & & \vdots \\
+                A_{m1}B_{11}+ \cdots + A_{mn}B_{n1} & \cdots &
+                A_{m1}B_{1p}+ \cdots + A_{mn}B_{np}
+                \end{bmatrix}
+                $$
+                Note that for this multiplication to make sense the "inner" dimensions of
+                \(A\) and \(B\) must match, ie. to multiply \(A \in \mathbb{R}^{m \times n}\)
+                and \(B \in \mathbb{R}^{o \times p}\) we must have \( n = o \).
+              </p>
+                <p>
+                Matrix multiplication by scalars is done the same as vectors; each element is scaled by the scalar.
+              </p>
+              <p>
+                Matrix addition (and subtraction) are done element-wise like vectors as well.
+                </p>
               </div>
-
-              <div class='img' style="padding:0px" id="matrix-container">
-                      <canvas id='matrix' class='CANVAS'></canvas>
-                      <div class="eqn" id="y_mat" ></div>
-                      <div class="eqn" id="A_mat" ></div>
-                      <div class="eqn" id="x_mat" ></div>
-                      <div class="eqn" id="Amaps_mat" ></div>
-                      <div class="eqn" id="label2_mat" ></div>
-                      <div class="eqn" id="warning2_mat" ></div>
-                      <div class="eqn" id="usedigits_mat" ></div>
-              </div>
-
-
 
 
       </div>
