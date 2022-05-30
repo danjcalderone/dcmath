@@ -70,30 +70,117 @@
                                 = \begin{bmatrix} | \\ A_2 \\ | \end{bmatrix}
                                 $$
                 If we draw the columns of the matrix as vectors (in the co-domain), we can see how the space transforms.
-                We show some examples of transformations for \(2 \times 2\) and \(3 \times 3\) matrices below.
-                Note the flavor of how the space is distorted and stretched, particularly note the grid-lines in 2D.
+                It is particularly useful to see how several basic sets transform.  We consider the standard basis vectors,
+                the unit cube, the simplex, and the unit balls for the 1,2, and \(\infty\)-norms.
+                (It is also quite useful to consider how subspaces transform but
+                we will consider this further in our discussion of matrix multiplication and row geometry.)
+
+                We first show transformations through \(2 \times 2\) and \(3 \times 3\) square matrices In this case,
+                the domain and co-domain have the same dimension and we can think of the transformation as happening
+                on the domain directly.
+                </p>
+                </div>
+
+                <div class='imgFixed'>
+                <img src="/dcmath/figs/stills/MAT/______.png" width=90%></img>
+                </div>
+
+
+                <div class="txt" style="padding:40px">
+                <p>
+                If the row and column dimension of \(A\) are different than the input and output
+                spaces have different dimensions.  If \(A\) is a fat higher
+                dimensional sets are projected down onto a lower dimensional space.
+                If \(A\) is tall than a lower dimension set is projected onto a subspace of
+                the higher dimensional co-domain (given by the span of the columns of \(A\).
+                We illustrate this for several cases when \(A\) is fat and several when \(A\) is tall below.
+                </p>
+                </div>
+
+                <div class='imgFixed'>
+                <img src="/dcmath/figs/stills/MAT/______.png" width=90%></img>
+                </div>
+
+
+
+
+                <div class="txt" style="padding:40px">
+                  <p>
+                We also give several more interactive examples of \(2 \times 2\) and \(3 \times 3\) transformations
+                to give a better flavor for how the space is distorted and stretched. Note particularly the grid-lines in 2D.
+                Note also that these are just a few examples and are by no means meant to be exhaustive.
+                The space of potential \(m \times n\) matrices is as rich as there are ways to draw \(n\) different
+                column vectors in an \(m\) dimensional space.
               </p>
             </div>
 
 
             <div class="slideshow-container flips" id='SPACETRANSFORM2' any='13' style="width:60%"></div>
+            <div class="slideshow-container flips" id='SPACETRANSFORM3' any='15' style="width:60%"></div>
+
+
+              <div class="txt" style="padding:40px">
+
+              <b> Definition : Linear Transformation </b>
+
+              <p>
+                There are many types of intuitive transformations that are in fact linear.
+                We will discuss the technical definition of a linear transformation later; but
+                we can give an intuitive (and quite circular) definition now.
+                A linear transformation is any transformation that can be represented by
+                a matrix in the sense discussed above. In particular, a linear transformation is
+                one that if we define where the axes transform to (ie. the columns of the matrix),
+                we can see how the rest of the space moves by picturing it as getting "dragged along"
+                with this motion.
+              </p>
+              <p>
+                Algebraically, this ends up giving if we have a vector \(x \in \mathbb{R}^n \) that we can write as
+                $$
+                x = I_1 x_1 + \cdots + I_n x_n
+                $$
+                then we can compute \(Ax\) as
+                $$
+                Ax = AI_1x_1 + \cdots + AI_nx_n = A_1 x_1 + \cdots + A_n x_n
+                $$
+
+              </p>
+              <b> Types of Linear Transformations </b>
+              <p>
+
+                Linear transformations includes many intuitive transformations:
+                stretchings, reflections, skewings, rotations, and combinations of these.
+
+                We show several illlustrative examples of these different types of transformations
+                below in 2D and 3D.  Again, these examples are not meant to be exhaustive
+                but to give a flavor.  It is quite to useful to be able to picture a linear transformation
+                (based on the columns of it's representing matrix) and mentally break it down into
+                various combinations of these simpler intuitive transformations.
+                This can be done in several more precise ways using matrix decompositions:
+                QR decomposition, singular value decomposition, and most importantly eigenvalue decompositions.
+                We will discuss this later.
+
+              </p>
+
+            </div>
+
+
+            <div class='imgFixed'>
+            <img src="/dcmath/figs/stills/MAT/______.png" width=90%></img>
+            </div>
 
 
 
 
-
-
-
-                <div class='img' style="padding:0px" id="vector-container">
-                  <div class="eqn" id="y_vec" ></div>
-                  <div class="eqn" id="A_vec" ></div>
-                  <div class="eqn" id="x_vec" ></div>
-                  <div class="eqn" id="Amaps_vec" ></div>
-                  <div class="eqn" id="label2_vec" ></div>
-                  <div class="eqn" id="warning2_vec" ></div>
-                  <div class="eqn" id="usedigits_vec" ></div>
-                  <canvas class='CANVAS' id='vector'></canvas>
-                </div>
+            <div class='img' style="padding:0px" id="vector-container">
+              <div class="eqn" id="y_vec" ></div>
+              <div class="eqn" id="A_vec" ></div>
+              <div class="eqn" id="x_vec" ></div>
+              <div class="eqn" id="Amaps_vec" ></div>
+              <div class="eqn" id="label2_vec" ></div>
+              <div class="eqn" id="warning2_vec" ></div>
+              <div class="eqn" id="usedigits_vec" ></div>
+              <canvas class='CANVAS' id='vector'></canvas>
+            </div>
 
 
 
@@ -112,6 +199,9 @@
         const slideIndexes ={'SPACETRANSFORM2':1}
         addSlides('SPACETRANSFORM2',slideIndexes);
         showSlides('SPACETRANSFORM2',slideIndexes['SPACETRANSFORM2'],slideIndexes);
+        const slideIndexes ={'SPACETRANSFORM3':1}
+        addSlides('SPACETRANSFORM3',slideIndexes);
+        showSlides('SPACETRANSFORM3',slideIndexes['SPACETRANSFORM3'],slideIndexes);
     </script>
 
 
