@@ -142,14 +142,17 @@
                 with this motion.
               </p>
               <p>
-                Algebraically, this ends up giving if we have a vector \(x \in \mathbb{R}^n \) that we can write as
+                Algebraically, this is closely related to the fact that matrix multiplication is distributive.
+                If we represent a vector \(x \in \mathbb{R}^n \) as a sum of scaled standard basis vectors.
                 $$
                 x = I_1 x_1 + \cdots + I_n x_n
                 $$
-                then we can compute \(Ax\) as
+                we then have that \(Ax\) is given by
                 $$
                 Ax = AI_1x_1 + \cdots + AI_nx_n = A_1 x_1 + \cdots + A_n x_n
                 $$
+                This distributive property is the heart of the idea of linearity.
+                We will give more thorough technical definitions later.
 
               </p>
               <b> Types of Linear Transformations </b>
@@ -214,7 +217,7 @@
 
     <script>
         const slideIndexes ={'SPACETRANSFORM2':1,
-                            'SPACETRANSFORM3':1}
+                             'SPACETRANSFORM3':1}
         addSlides('SPACETRANSFORM2',slideIndexes);
         showSlides('SPACETRANSFORM2',slideIndexes['SPACETRANSFORM2'],slideIndexes);
         addSlides('SPACETRANSFORM3',slideIndexes);
