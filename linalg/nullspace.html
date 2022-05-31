@@ -49,16 +49,12 @@
           <div class=header> Nullspace </div>
 
 
-
-            <div class='img' style="padding:0px" id="range-container">
-            </div>
             <div class="txt" style="padding:40px">
 
                   <b> NULLSPACE </b>
                   <p>
 
-
-                  If some of the columns of \(A\) are linear
+                  If any of the columns of a matrix \(A\) are linear
                   combinations of other columns, then different sets of coordinates
                   \(x\) could(will) produce the same resulting \(Ax\).
                   For example, suppose for a \(3\times3\) matrix \(A\)
@@ -89,8 +85,13 @@
                 </p>
 
 
+
+
+
               </div>
               <div class="txt" style="padding:40px">
+
+                <b> Nullspace: Column Geometry </b>
                 <p> For the case where \( A \in \mathbb{R}^{ 2\times 5} \), we have the following
                 </div>
 
@@ -211,8 +212,33 @@
 
 
                 <div class="txt" style="padding:40px">
+                  <b> Nullspace: Row Geometry </b>
                   <p>
-                    For a  \(\mathbb{R}^{ 2 \times 3}\) matrix, the row geometry is illustrated below.
+                    The row geometry for the nullspace of a matrix is actually somewhat simpler than the column geometry.  If
+                    \(Ax = 0\) we have simply that \(x\) must be orthogonal to each of the rows of the matrix.
+                    $$
+                    Ax =
+                    \begin{bmatrix}
+                    - & a_1^T & - \\
+                    & \vdots & \\
+                    - & a_m^T & -
+                    \end{bmatrix}
+                    \begin{bmatrix} | \\ x \\ | \end{bmatrix}
+                    =
+                    \begin{bmatrix}
+                    a_1^Tx \\
+                    \vdots \\
+                    a_m^Tx
+                    \end{bmatrix}
+                    =
+                    \begin{bmatrix}
+                    0 \\
+                    \vdots \\
+                    0
+                    \end{bmatrix}
+                    $$
+                    If we draw the rows of \(A\), the nullspace is simply the subspace orthogonal to each row.
+                    We illustrate this below in the \(\mathbb{R}^{1 \times 3}\) and \(\mathbb{R}^{ 2 \times 3}\) matrix cases.
                   </p>
                 </div>
 
