@@ -33,6 +33,7 @@
 
 
       <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+      <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
       </head>
 
       <body>
@@ -94,6 +95,13 @@
                 <b> Nullspace: Column Geometry </b>
                 <p> For the case where \( A \in \mathbb{R}^{ 2\times 5} \), we have the following
                 </div>
+
+
+
+
+                <div class="slideshow-container flips" id='NULLSPACEBASIS' any='12' style="width:60%"></div>
+                <div class="slideshow-container flips" id='NULLSPACEMORPH' any='7' style="width:60%"></div>
+
 
                 <div class='imgFixed'>
                 <img src="/dcmath/figs/nullspace1.png" width=50%></img>
@@ -255,5 +263,17 @@
         </div>
       <!-- <script type='module' src="./matrixo.js"> </script> -->
       <script src="/dcmath/src/extra/includeHTML.js"> </script>
+      <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+      <script>
+      const slideIndexes ={'NULLSPACEBASIS':1, 'NULLSPACEMORPH':1}
+      addSlides('NULLSPACEBASIS',slideIndexes);
+      showSlides('NULLSPACEBASIS',slideIndexes['NULLSPACEBASIS'],slideIndexes);
+      addSlides('NULLSPACEMORPH',slideIndexes);
+      showSlides('NULLSPACEMORPH',slideIndexes['NULLSPACEMORPH'],slideIndexes);
+
+      </script>
+
+
+
       </body>
     </html>
