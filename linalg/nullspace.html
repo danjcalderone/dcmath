@@ -92,30 +92,34 @@
               </div>
               <div class="txt" style="padding:40px">
 
-                <b> Nullspace: Column Geometry </b>
-                <p> For the case where \( A \in \mathbb{R}^{ 2\times 5} \), we have the following
-                </div>
-
                 <!-- <div class='imgFixed'>
                 <img src="/dcmath/figs/nullspace1.png" width=50%></img>
                 </div>
                 <div class='imgFixed'>
                 <img src="/dcmath/figs/nullspace2.png" width=50%></img>
                 </div> -->
-                
-
-                <div class="txt" style="padding:40px">
 
 
-                  <p> Animating this construction we get the following. </p>
+                <b> Nullspace: Column Geometry </b>
+                <p>
+                We can use this idea to generate vectors in the nullspace of \(A\).
+                (We will show later these vectors actually form a basis for nullspace of \(A\).)
+                For illustration purposes consider \( A \in \mathbb{R}^{ 2\times 5} \)
+                where the first two columns are linearly independent.  In this case,
+                columns 3, 4, and 5 can be written as linear combinations of the first two columns.
+
+                We then have the following way of constructing non-zero "coordinates of the origin"
+                , ie. vectors in \(N_i \in \mathbb{R}^5\)
+                such that \(AN_i = 0\).  We illustrate this construction below.
+                </p>
+
                 </div>
 
                 <div class="slideshow-container flips" id='NULLSPACEBASIS' any='12' style="width:90%"></div>
 
 
                 <div class="txt" style="padding:40px">
-
-                  <p> We note also that we can use this construction to visualize the nullspace in the co-domain as well.  </p>
+                <p> We note also that we can use this construction to visualize the nullspace in the co-domain as well.  </p>
                 </div>
 
                 <div class="slideshow-container flips" id='NULLSPACEMORPH' any='7' style="width:80%"></div>
