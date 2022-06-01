@@ -48,23 +48,60 @@
           <div class="txt" style="padding:40px">
               <b> Orthonormalization  </b>
               <p>
-              Given a set of vectors
+              Given a set of vectors given the columns of \(A\), we may often
+              want to find an orthonormal basis that spans the same space.  Note
+              this assumes that the vectors are linearly independent, ie. \(A\)
+              is either square or tall and \(A\)
+              has full column rank.  If this is not true, we can proceed with the
+              the following construction using a linearly independent spanning subset
+              of the vectors.
+              </p>
+              <p>
+              Given that \(A\) is full column rank we have that \(A^TA\) is invertible
+              and along with it it's positive definite square root \((A^TA)^{\tfrac{1}{2}}\)
+              (For more details on these matrices see the discussion of shape matrices.)
+              Given this we can define a set of vectors, the columns of \(U\) that
+              form an orthonormal basis for the range of \(A\).
               $$
               U = A(A^TA)^{-\tfrac{1}{2}}
               $$
+              Perhaps not obviously, the columns of this matrix are orthonormal.
+              We can check this by taking all pairwise inner producst of the columns:
               $$
               U^TU = \big((A^TA)^{-\tfrac{1}{2}}A^T\big)\big(A(A^TA)^{-\tfrac{1}{2}}\big)
               = (A^TA)^{-\tfrac{1}{2}}A^TA(A^TA)^{-\tfrac{1}{2}}
               = (A^TA)^{-\tfrac{1}{2}}(A^TA)^{\tfrac{1}{2}}
-              (A^TA)^{-\tfrac{1}{2}}(A^TA)^{-\tfrac{1}{2}}
+              (A^TA)^{-\tfrac{1}{2}}(A^TA)^{-\tfrac{1}{2}} =I
               $$
-              </p>
 
-              <p>
-              One of the fundamental uses of inner products is to compute projections.  Projection
-              onto one vector is illustrated below.
+              Note: we also know that \(U\) spans the same space as
+              \(A\) since if \(y=Ax\) then there exists (uniquely) \(x'\)
+              such that \(y = Ux' = A(A^TA)^{-\tfrac{1}{2}}x'\)
+              Here \(x'\) is simply given by \(x' = (A^TA)^{\tfrac{1}{2}}x \)
+
+              This construction is illustrated below.
               </p>
-          </div>
+              </div>
+
+              <div class="txt" style="padding:40px">
+              <p>
+              We can extend this construction to give us any possible orthonormal basis
+              by then taking the appropriate number of orthonormal linear combinations
+              of the columns of \(U\), ie.
+              $$
+              U' = UR
+              $$
+              for any rotation matrix \( R \in \mathbb{R}^{m \times m}\)
+              We can check again quickly that we still have orthonormality:
+              \(U'^TU' = R^TU^TUR = R^TR = I\).
+              </p>
+              <p>
+              We note that this construction in some ways can be thought of as the
+              heart of projection matrices and pseudoinverses. Rewrite your system
+              in orthonormal coordinates for the subspace you care about, project
+              onto that subspace, and then perform all your computations on that subspace
+              </p>
+            </div>
 
 
           <div class='imgFixed'>
@@ -72,7 +109,7 @@
           </div>
 
 
-          <div class="txt" style="padding:40px">
+
 
             We can expand this to projection on larger dimensional subspace.
 

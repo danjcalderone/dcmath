@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+    <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+    <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
+    </head>
+
+    <body>
+    <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+    <div w3-include-html="/dcmath/nav/topics.html"></div>
+    <!-- <div w3-include-html="nav/topics.html"></div> -->
+    <div class="wrapper">
+      <div class="sidebar">
+      <div w3-include-html="/dcmath/nav/sidebarLinalg.html"></div>
+      </div>
+      <div class=content>
+
+
+        <div class=header> Linear Combinations </div>
+
+
+
+
+        <div class="txt" style="padding:40px">
+
+        <b> LINEAR COMBINATIONS </b>
+
+        <p>
+        A linear combination of a set of vectors \(\big\{A_1,\dots,A_n\big\}\) is
+        weighted sum of those vectors
+        $$
+        A_1 x_1 + A_2 x_2 + \cdots + A_n x_n
+        $$
+        where the weights or coefficients are scalars \(x_1,\dots,x_n \in \mathbb{R}\).
+        Basic linear combinations of
+        one, two, three, and four vectors are shown below.
+        </p>
+        </div>
+
+        <div class="slideshow-container flips" id='LINCOMB' any='13' style="width:60%"></div>
+
+        <div class='imgFixed'>
+        <img src="/dcmath/figs/stills/MAT/LINCOMB.png" width=80%></img>
+        </div>
+
+        <div class="txt" style="padding:40px">
+
+        <b> SPAN </b>
+
+        <p>
+        The set of all possible linear combinations is called the span of a set of vectors.
+        Spans of one,two, and three vectors are shown in the image below.  Note that spatially
+        The span of a set of vectors forms a hyperplane or subspace that passes through the origin
+        and extends out in any directions the vectors point.  Since negative coefficients are possible
+        the span also extends in the opposite direction of the vectors.  If we add a new vector
+        to the set of vectors that does not already lie in the span of the original vectors
+        then we increase the dimension of the spanned subspace.  If we add a new vector
+        that was already in the span, the dimension of the spanned subspace does not increase
+        </p>
+        </div>
+
+        <div class='imgFixed'>
+        <img src="/dcmath/figs/stills/MAT/SPAN.png" width=80%></img>
+        </div>
+
+
+        <div class="txt" style="padding:40px">
+
+        <b> LINEAR DEPENDENCE </b>
+
+        <p>
+        We say a vector is linearly dependent on a set of vectors if it lies in the
+        span of those vectors, ie. one can construct that vector as a linear combination of
+        vectors in the set.  Algebraically, \(y\) is linearly dependent on a set of vectors
+        \(\big\{A_1,\dots,A_n\big\}\), we can find coefficients \(x_1,\dots,x_n \in \mathbb{R}\)
+        such that
+        $$
+        y = A_1 x_1 + \cdots + A_n x_n
+        $$
+        If a vector is not linearly dependent on a set of vectors, we say it is linearly independent
+        from that set.  We say a set of vectors is linearly independent if none of the vectors
+        are linearly dependent on the other vectors in the set, and we say the set is linear dependent
+        if any of the vectors are linearly dependent on the others.  The image below shows the case where
+        a vector \(A_3\) is linearly dependent on vectors \(A_1,A_2 \in \mathbb{R}^3\).
+        </p>
+        </div>
+
+        <div class='imgFixed'>
+        <img src="/dcmath/figs/stills/MAT/LINDEP.png" width=60%></img>
+        </div>
+
+
+        <div class="txt" style="padding:40px">
+        <b> More Math: Rigorous Definitions </b>
+
+        <p> This next section discusses linear dependence and independence in rigorous
+          mathematical terms.  A student of linear algebra will quickly note that understanding/working with these
+          definitions can actually be a lot more difficult than understanding the concepts given above.
+          While one should not shy away from the rigorous math, one should also keep in mind the simple intuition
+          for the concepts given above.
+        </p>
+
+        <p>
+        A compact way to state mathematically that a set of vectors \(\big\{A_1,\dots,A_n\big\}\)
+        is linearly dependent is to say, there exists a vector of coefficients \(x \neq 0\)
+        such that
+        $$
+        A_1 x_1 + \cdots + A_n x_n = 0
+        $$
+        This statement encodes that there is at least one vector \(A_i\) that is dependent on the others.
+        Here, \(x \neq 0\) means that at least one of the coefficients is not equal to 0.
+        Since at least one \(x_i\) is nonzero (assume it is \(i=1\) for simplicity), we can write
+        $$
+        A_1x_1 = -A_2 x_2 - \cdots  -A_n x_n
+        $$
+        We can then explicitly write \(A_1\) as a linear combination of the others
+        $$
+        A_1 = A_2\left(- \tfrac{x_2}{x_1}\right) + \cdots + A_n\left(- \tfrac{x_n}{x_1}\right)
+        $$
+        Note: if all the other \(x_i\)'s are zero, then \(A_1\) must be the zero vector which is
+        linear dependent on any set of vectors.
+        </p>
+        <p>
+        Negating the above statement gives a mathematical definition of linear independence.
+        A set of vectors \(\big\{A_1,\dots,A_n\big\}\)
+        is linearly independent if there does not exist a nonzero vector \(x\) such that
+        \(A_1x_1+\cdots + A_n x_n = 0 \).  We can rephrase this in several ways:
+        a set is linearly independent if \(A_1x_1+\cdots + A_n x_n = 0 \) only when \(x=0\) or
+        a set of vectors \(\big\{A_1,\dots,A_n\big\}\) is linearly independent if
+        $$
+        A_1x_1+\cdots + A_n x_n = 0 \qquad \Rightarrow \qquad x = 0
+        $$
+        This last characterization is by far the most useful in mathematical proofs.  If we
+        can show that the sum condition on the left implies \(x=0\) then we know the
+        set of vectors is linearly independent.
+        </p>
+
+        <b> More Math: Proving Linear Independence (Difficulty: 3/10)</b>
+        <p>
+        These next comments assume an understanding of matrix multiplication and matrix column geometry.
+        </p>
+
+        Practically when we try to prove linear independence (or dependence) of a set of vectors (say \(n\) vectors each in
+        \(\mathbb{R}^m\)), we often write them as columns of a matrix \(A \in \mathbb{R}^{m \times n}\) and write
+        vector of coefficients as \(x \in \mathbb{R}^n\).  The linear dependence condition becomes there exist \(x \neq 0\) such that
+        \(Ax = 0\), ie. \(A\) has a nontrivial right nullspace.  The linear independence condition becomes \(Ax=0 \Rightarrow x =0 \).
+        This is quite compact and useful.  For example, suppose \(A\) can be divided into rows \(A'\) and \(A''\) where we already know that
+        \(A'\) has linearly independent columns.  We can then show immediately that \(A\) must have linearly independent columns as well
+        $$
+        Ax = \begin{bmatrix} A' \\ A'' \end{bmatrix} x
+          = \begin{bmatrix} A'x \\ A''x \end{bmatrix}
+          = \begin{bmatrix} 0 \\ 0 \end{bmatrix}
+        $$
+        Since \(A'x=0\) then \(x=0\) (by the linear independence of the columns of \(A'\)) and thus we have shown that \(Ax=0\) implies
+        \(x = 0\) as desired.  This often arises in the even simpler context where \(A'\) is just the identity matrix.
+        In this case we simply have
+        $$
+        Ax = \begin{bmatrix} I \\ A'' \end{bmatrix} x
+          = \begin{bmatrix} x \\ A''x \end{bmatrix}
+          = \begin{bmatrix} 0 \\ 0 \end{bmatrix}
+          \qquad \Rightarrow \qquad x = 0
+        $$
+        We will return to this construction in our construction of bases for range and nullspaces.
+        </p>
+        </div>
+
+
+
+
+
+            <div class='img' style="padding:0px" id="vector-container">
+              <div class="eqn" id="y_vec" ></div>
+              <div class="eqn" id="A_vec" ></div>
+              <div class="eqn" id="x_vec" ></div>
+              <div class="eqn" id="Amaps_vec" ></div>
+              <div class="eqn" id="label2_vec" ></div>
+              <div class="eqn" id="warning2_vec" ></div>
+              <div class="eqn" id="usedigits_vec" ></div>
+              <canvas class='CANVAS' id='vector'></canvas>
+            </div>
+            <div class="txt" style="padding:40px">
+
+
+
+
+
+      </div>
+      </div>
+    <script type='module' src="/dcmath/src/vectoro.js"> </script>
+    <script src="/dcmath/src/extra/includeHTML.js"> </script>
+    <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+    <script>
+    const slideIndexes ={'LINCOMB':1}
+    addSlides('LINCOMB',slideIndexes);
+    showSlides('LINCOMB',slideIndexes['LINCOMB'],slideIndexes);
+    </script>
+
+
+
+    </body>
+  </html>
