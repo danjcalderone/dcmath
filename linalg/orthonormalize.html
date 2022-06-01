@@ -83,15 +83,33 @@
               </p>
               </div>
 
+
+
+              <div class="txt" style="padding:40px">
+              <p>
+              Of course there are many orthonormal bases for the span of \(A\)
+              The orientation of the columns of \(U\) relative to the columns of \(A\)
+              is related to the unique positive definite "shape matrix" \((A^TA)^{\tfrac{1}{2}}\).
+              Specifically, \((A^TA)^{\tfrac{1}{2}}\) is actually the coordinates of the columns of
+              \(A\) relative to the \(U\) basis since clearly
+              $$
+              A = U(A^TA)^{\tfrac{1}{2}} = A(A^TA)^{-\tfrac{1}{2}}(A^TA)^{-\tfrac{1}{2}}
+              $$
+              If we think of the columns of \(U\) as a new coordinate system than \(A\)
+              will be a positive definite symmetric matrix relative to that coordinate system.
+              </p>
+              </div>
+
+
               <div class="txt" style="padding:40px">
               <p>
               We can extend this construction to give us any possible orthonormal basis
-              by then taking the appropriate number of orthonormal linear combinations
-              of the columns of \(U\), ie.
+              by then taking orthonormal linear combinations
+              of the columns of \(U\), ie. right multiplying \(U\) by any rotation matrix
+              \( R \in \mathbb{R}^{m \times m}\)
               $$
               U' = UR
               $$
-              for any rotation matrix \( R \in \mathbb{R}^{m \times m}\)
               We can check again quickly that we still have orthonormality:
               \(U'^TU' = R^TU^TUR = R^TR = I\).
               </p>

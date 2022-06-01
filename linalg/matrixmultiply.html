@@ -36,6 +36,7 @@
 
 
       <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+      <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
       </head>
 
       <body>
@@ -47,6 +48,60 @@
         <div w3-include-html="/dcmath/nav/sidebarLinalg.html"></div>
         </div>
         <div class=content>
+
+
+
+            <div class="txt" style="padding:40px">
+
+                <b> MATRIX MULTIPLICATION </b>
+                <p>
+
+                When we multiply two matrices \(A\) and \(B\) together \(AB\)
+                we can think of \(A\) as acting on each of the columns of \(B\) separately
+
+                $$
+                AB =
+                \Bigg[\ \ A \ \ \Bigg]
+                \begin{bmatrix}
+                | &   & | \\
+                B_1  & \cdots & B_n \\
+                | &  & | \\
+                \end{bmatrix}
+                $$
+                $$
+                AB
+                =
+                \begin{bmatrix}
+                | &   & | \\
+                AB_1  & \cdots & AB_n \\
+                | &  & | \\
+                \end{bmatrix}
+                $$
+                Visually, the columns of the matrix \(A\) give the vectors
+                that the standard bases vectors map to under the transformation
+                \(A\).  If we can picture the columns of \(B\) by themselves,
+                the columns of \(AB\) are just where the columns of \(B\) would be
+                relative to the basis of the columns of \(A\).  Squinting our eyes
+                in this way we can see each of the successive transformations
+                represented by a multiplication of the form.
+                $$
+                M = ABCD...
+                $$.
+
+              </p>
+
+            </div>
+
+
+
+            <div class="slideshow-container flips" id='MULTIPLYABCD' any='12' style="width:80%"></div>
+
+
+
+
+
+
+
             <div class='img' style="padding:0px" id="matrices-container">
                 <canvas class='CANVAS' id='matrices'  ></canvas>
                 <div class="eqn" id="eqn1y" ></div>
@@ -67,46 +122,7 @@
 
 
 
-            <div class="txt" style="padding:40px">
 
-                  <b> MATRIX MULTIPLICATION </b>
-                  <p>
-
-                  When we multiply two matrices \(A\) and \(B\) together \(AB\)
-                  we can think of \(A\) as acting on each of the columns of \(B\) separately
-
-                  $$
-                  AB =
-                  \Bigg[\ \ A \ \ \Bigg]
-                  \begin{bmatrix}
-                  | &   & | \\
-                  B_1  & \cdots & B_n \\
-                  | &  & | \\
-                  \end{bmatrix}
-                  $$
-                  $$
-                  AB
-                  =
-                  \begin{bmatrix}
-                  | &   & | \\
-                  AB_1  & \cdots & AB_n \\
-                  | &  & | \\
-                  \end{bmatrix}
-                  $$
-                  Visually, the columns of the matrix \(A\) give the vectors
-                  that the standard bases vectors map to under the transformation
-                  \(A\).  If we can picture the columns of \(B\) by themselves,
-                  the columns of \(AB\) are just where the columns of \(B\) would be
-                  relative to the basis of the columns of \(A\).  Squinting our eyes
-                  in this way we can see each of the successive transformations
-                  represented by a multiplication of the form.
-                  $$
-                  M = ABCD...
-                  $$.
-
-                </p>
-
-              </div>
 
 
 
@@ -114,5 +130,14 @@
         </div>
         <script type='module' src="/dcmath/src/matriceso.js"> </script>
         <script src="/dcmath/src/extra/includeHTML.js"> </script>
+
+        <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+        <script>
+        const slideIndexes ={'MULTIPLYABCD':1}
+        addSlides('MULTIPLYABCD',slideIndexes);
+        showSlides('MULTIPLYABCD',slideIndexes['MULTIPLYABCD'],slideIndexes);
+        </script>
+
+
       </body>
     </html>
