@@ -61,12 +61,37 @@
                   across the diagonal (leaving the diagonal fixed).
 
                   $$
+                  A^T =
+                  \left\{
+                  \begin{matrix}
+                  \uparrow \\
+                  m \\
+                  \downarrow
+                  \end{matrix}
+                  \right.
+                  \underbrace{
                   \begin{bmatrix}
-
+                  A_{11} & \cdots & A_{1n} \\
+                  \vdots & & \vdots \\
+                  A_{m1} & \cdots & A_{mn}
+                  \end{bmatrix}_{
+                  n
+                  }^T
+                  =
+                  \underbrace{
+                  \begin{bmatrix}
+                  A_{11} & \cdots & A_{m1} \\
+                  \vdots & & \vdots \\
+                  A_{1n} & \cdots & A_{mn}
                   \end{bmatrix}
+                  }_{m}
                   $$
+                  One should note that if the matrix \( A \) is not square then the
+                  dimensions of the rows and columns switch.  Thus while a square matrix
+                  stays square, a tall matrix becomes fat, and a fat matrix becomes tall.
                   The transpose operator is used in practically every linear algebraic formula.
                   Several must know properties of transposes are listed at the end of this page.
+
                   </p>
 
                   <p>
