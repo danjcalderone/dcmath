@@ -46,87 +46,68 @@
         </div>
         <div class=content>
 
-            <div class='img' style="padding:0px" id="matrices-container">
-                <canvas class='CANVAS' id='matrices'  ></canvas>
-                <div class="eqn" id="ymats" ></div>
-                <div class="eqn" id="Amats" ></div>
-                <div class="eqn" id="Bmats" ></div>
-                <div class="eqn" id="Cmats" ></div>
-                <div class="eqn" id="Dmats" ></div>
-                <div class="eqn" id="xmats" ></div>
-
-                <div class="eqn" id="y_vec" ></div>
-                <div class="eqn" id="A_vec" ></div>
-                <div class="eqn" id="x_vec" ></div>
-                <div class="eqn" id="Amaps_vec" ></div>
-                <div class="eqn" id="label2_vec" ></div>
-                <div class="eqn" id="warning2_vec" ></div>
-                <div class="eqn" id="usedigits_vec" ></div>
-              </div>
-
-
-
 
 
             <div class="txt">
 
                   <b> TRANSPOSE </b>
+
                   <p>
-                  (description is for rows... not transpose)
-                  Multiplying a matrix by a vector can also be thought of
-                  in terms of the rows of the matrix as opposed to the columns.
-                  Given the equation \(y=Ax\), \(y_i\) is determined by the
-                  inner product between \(x\) and the \(i\)th row of \(A\)
+                  The transpose of a matrix \(A\), denoted \(A^T\), also
+                  called the adjoint of \(A\) is the matrix you get when you
+                  switch the roles of the rows and columns of \(A\).
+                  Algebraically this is quite a
+                  simple operation; we can think of the matrix values as "flipping"
+                  across the diagonal (leaving the diagonal fixed).
 
                   $$
-                  y = Ax
-                  $$
-                  $$
-                  \begin{bmatrix} y_1 \\ \vdots \\ y_m \end{bmatrix
-                  =
                   \begin{bmatrix}
-                  -- & a_1^T & -- \\
-                  & \vdots &  \\
-                  -- & a_m^T & --
-                  \end{bmatrix}
-                  \begin{bmatrix }
-                  | \\ x \\ |
-                  \end{bmatrix}
-                  =
-                  \begin{bmatrix}
-                  a_1^Tx \\ \vdots \\ a_m^Tx
+
                   \end{bmatrix}
                   $$
-
-                  As such the direction of the \(i\)th row of \(A\) can be thought
-                  of as the direction in the domain which \(x\) should point to have
-                  the greatest impact on \(y_i\), ie. the rows of \(A\) could be thought
-                  of as input directions of \(A\).
-
-                  A slightly more insightful way to define input directions of
-                  matrix is not to think about \(a_i^T\) as an input direction
-                  but rather to think about the direction(s) orthogonal to the other
-                  \(m-1\) rows as defining an input direction for \(y_i\).
-                  For example, suppose \(x\) is chosen to be orthogonal to all but
-                  the second row \(a_2^T\).  \(Ax\) is then given by
-
-                  $$
-                  Ax =
-                  \begin{bmatrix}
-                  a_1^Tx \\ a_2^Tx \\ \vdots \\ a_m^Tx
-                  \end{bmatrix}
-                  =
-                  \begin{bmatrix} 0 \\ a_2^Tx \\ \vdots \\ 0 \end{bmatrix
-                  $$
-
-                  \(a_i^T\) (in this case \(a_2^T\)) then determines how much \(y_i\)
-                  changes for a given magnitude \(x\) (based on both magnitude and relative orientation)
-                  and also helps define an orthogonal input direction for all the other indices of \(y\).
-
-
+                  The transpose operator is used in practically every linear algebraic formula.
+                  Several must know properties of transposes are listed at the end of this page.
                   </p>
 
-        </div>
+                  <p>
+                  Geometrically, the transpose operation is actually profoundly deep.
+                  It is the operation that switches between the column and row geometry of a matrix.
+                  If we represent the columns of a matrix spatially (with respect to some axes for the co-domain)
+                  we also naturally give a parallel representation of the rows (along each axis in the co-domain).
+                  The transpose operation then switches the original columns to a parallel representation
+                  (along axes in the domain) and then expands the parallel representation of the rows
+                  to a spatial representation.  If we visualize this operation as continuous
+                  we can get the following transformation.
+                  </p>
+                </div>
+
+                <div class='img' style="padding:0px" id="matrices-container">
+                    <canvas class='CANVAS' id='matrices'  ></canvas>
+                    <div class="eqn" id="ymats" ></div>
+                    <div class="eqn" id="Amats" ></div>
+                    <div class="eqn" id="Bmats" ></div>
+                    <div class="eqn" id="Cmats" ></div>
+                    <div class="eqn" id="Dmats" ></div>
+                    <div class="eqn" id="xmats" ></div>
+
+                    <div class="eqn" id="y_vec" ></div>
+                    <div class="eqn" id="A_vec" ></div>
+                    <div class="eqn" id="x_vec" ></div>
+                    <div class="eqn" id="Amaps_vec" ></div>
+                    <div class="eqn" id="label2_vec" ></div>
+                    <div class="eqn" id="warning2_vec" ></div>
+                    <div class="eqn" id="usedigits_vec" ></div>
+                  </div>
+
+
+
+                <div class="txt">
+
+                  <b> More Drawing: 5/10 </b>
+                  <p>
+                  It is unclear if this transformation is useful at all, but it is done in the following way.
+                  </p>
+                </div>
 
         </div>
         </div>
