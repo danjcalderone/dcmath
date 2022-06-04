@@ -58,7 +58,6 @@
 
                 <b> MATRIX MULTIPLICATION </b>
                 <p>
-
                 When we multiply two matrices \(A\) and \(B\) together \(AB\)
                 we can think of \(A\) as acting on each of the columns of \(B\) separately
 
@@ -107,6 +106,11 @@
 
 
 
+
+
+
+
+
                         <div class="txt" style="padding:40px">
 
                             <p>
@@ -137,7 +141,145 @@
                 <div class="eqn" id="usedigits_vec" ></div>
               </div>
 
+              <
+              <p>
+              We now pull apart the two equations
+              $$
+              P^{-1}P = PP^{-1} = I
+              $$
+              from the perspective of the column and row geometry of both \(P\)
+              and \(P^{-1}\).  As noted in the matrix multiplication we can think of any matrix
+              product \(AB\) from four perspectives with \(A\) and/or \(B\) as columns and/or rows.
+              We consider products \(P^{-1}P\) and \(PP^{-1}\) from each of these perspectives
+              and thus we get 8 different perspectives to consider.
+              For each geometry (column-column, row-column, etc)
+              we present analysis of both products together and discuss their relationship.
+              One or another geometry/perspective maybe useful depending on the application.
+              None are simple but some are more straightforward than others.
+              They are subtly similar and different so one may not want to digest them all at once.
+              We give a difficulty score for each to help any new students
+              of linear algebra focus their efforts.
+              <p>
 
+              <b> Matrix-Column Geometry (Difficult: 1/10)</b>
+              <p>
+              The picture shared above is a visualization of the matrix-column
+              geometry of the equation \(P^{-1}P = I\), ie. multiplying each column of
+              \(P\) by \(P^{-1}\) transforms them to the appropriate standard basis vectors.
+              Similarly, the equation \(PP^{-1}=I\) gives that \(P\) transforms the columns
+              of \(P^{-1}\) to the standard basis vectors well.  In order to visualize this
+              relationship, we start with \(P\) and then visualize left multiplication by
+              the sequence of matrices
+              $$
+              P^{-1} \quad \Rightarrow \quad P^{-1} \quad \Rightarrow \quad P \quad \Rightarrow P \quad P^{-1}
+              \quad P^{-1}
+              $$
+              This sequence causes the product to fluctuate back and form between \(P\), \(I\), \(P^{-1}\),
+              \(I\), \(P\), etc to visualize how each transformation works.  The fundamental matrix
+              property that both \(PP^{-1}=I\) and \(P^{-1}P = I\) can be restated as
+              "the same transformation that moves \(P\) to the identity is also moved
+              to the identity by \(P\)".
+
+              </p>
+
+              <b> Column-Column Geometry (Difficult: 1/10)</b>
+
+              <p>
+              The column-column geometry of \(P^{-1}P\) and \(PP^{-1} \)
+              is perhaps the most straightforward and intuitive.
+
+
+
+              From the equation \(PP^{-1} = I\) we see that the columns of \(P^{-1}\)
+              are the coordinates of each of the standard basis vectors with respect
+              to the basis \(P\).  More explicitly
+
+
+              The inverse of \(P\) is the matrix \(P^{-1}\) such that \(PP^{-1} = I \)
+              Expanding this equation we have that
+              $$
+              I = PP^{-1} =
+              \Bigg[
+              \ \ P \ \
+              \Bigg]
+              \begin{bmatrix}
+              | &   & | \\
+              Q_1  & \cdots & Q_n \\
+              | &  & |
+              \end{bmatrix}
+              =
+              \begin{bmatrix}
+              | &   & | \\
+              PQ_1  & \cdots & PQ_n \\
+              | &  & |
+              \end{bmatrix}
+              $$
+              Thus, \(Q_i\), the \(i\)th column of \(P^{-1}\) is the coordinates of
+              the \(i\)th standard basis vector with respect to the columns of P.
+              We illustrate this in the image below.
+
+
+
+
+
+              Similarly, the columns of \(P\) are the coordinates of the standard basis vectors
+              with respect to \(P^{-1}\).  The fact that the coordinates of \(I\) with
+              respect to the basis \(P\) (ie. \(PP^{-1}=I\)) form basis for which \(P\) are the
+              coordinates of \(I\) is perhaps a deep fact.
+
+
+
+            </p>
+
+              <b> Row-Matrix and Row-Row Geometry (Difficult: 1/10) </b>
+              <p>
+              As discussed in the matrix product section,
+              the row-matrix and row-row geometry in general is quite similar
+              to the matrix-column and column-column geometry with rows
+              replacing columns conceptually and the direction of multiplication
+              reversed.
+              We reproduce the first picture from the previous section with rows
+              instead of columns for eye-candy and leave it at that.
+              </p>
+
+              <b> Row-Column Geometry (Difficulty: 3/10) </b>
+              </p>
+              The study of matrix inverses is one of the primary places where
+              the row-column geometry bears quite interesting fruit.
+              In summary, the row-column geometry of \(P^{-1}P=I\) indicates
+              that each row of \(P^{-1}\) has inner product 1 with the corresponding column
+              of \(P\) and (perhaps more fundamentally) is orthogonal to every other column of
+              \(P\).  (Similarly, the row-column geometry of \(PP^{-1}\) indicates
+              that each row of \(P\) has inner product 1 with the corresponding
+              column of \(P^{-1}\) and is orthogonal to every other column of \(P^{-1}\).
+              This perspective is actually quite fruitful.  For example, if we want to know
+              the direction of the first column of \(P^{-1}\) we can look at the span of
+              rows 2 thru \(n\) and compute the orthogonal direction.  If we then
+              want to know the length of that first column of \(P\), we look at
+              the inner product of that direction with the first row of \(P\).  We could continue
+              with a similar procedure for every column of \(P^{-1}\).  This geometry is illustrated
+              in the figure below.
+
+              This is not at all
+              an efficient way to compute an inverse of matrix but it allows us to
+              compute parts of a matrix individually without computing the whole.
+              The geometry is also the fundamental idea behind Cramer's determinant
+              rule, a quite old and deep fact about systems of equations.
+
+              It is also fundamental in helping us understand
+              when and how the invertibility of a matrix breaks down.  We expound on
+              this more in the section on degrees of matrix invertibility and
+              matrix condition number.
+              </p>
+
+
+              <b> Column-Row Geometry (Difficulty: 7/10)</b>
+
+              <p>
+              As mentioned in the matrix product discussion, this last perspective
+              is the most esoteric.
+              </p>
+            </div>
 
 
 
