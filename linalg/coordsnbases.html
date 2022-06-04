@@ -51,7 +51,123 @@
 
             <div class="txt" style="padding:40px">
 
-                  <b> COORDINATES & BASES </b>
+                  <b> Intuition: Coordinates </b>
+                  <p>
+                  Given a set of vectors \(P_1,\dots,P_n \in \mathbb{R}^m \) organized as the columns of a matrix
+                  \(P \in \mathbb{R}^{ m \times n}\)
+                  $$
+                  P =
+                  \begin{bmatrix}
+                  | &  & | \\
+                  P_1 & \cdots & P_n \\
+                  | &  & |
+                   \end{bmatrix}
+                  $$
+                  we can represent other vectors as linear combinations of those vectors.
+                  This is illustrated in the basic figure shown.  The vector \(y\) is a linear combination
+                  of the columns of \(P\) with coefficients \(x\), ie. \(y = Px\).  Here, we say
+                  that \(x\) is the "coordinates of \(y\) with respect to the columns of \(P\)" (or just
+                  "with respect to \(P\)" for short.)
+                  </p>
+                  </div>
+                  <div class="txt" style="padding:40px">
+                  <p>
+                  Intuitively, we can see that if there are less columns than the dimension of \(y\),
+                  ie. \(m < n\) than we will not be able to represent every possible \(y\) as a
+                  linear combination of the columns.  In this case we say that the columns of \(P\)
+                  do not span all of \(\mathbb{R}^m\).  We can also see that if there are more
+                  columns than the dimension of \(y\), there are likely multiple sets of coordinates \(x\)
+                  that will reach any given \(y\).  We will see that this is because the columns of \(P\)
+                  are not linearly indepedent.  These two cases are illustrated below.
+                  </p>
+                  </div>
+                  <div class="txt" style="padding:40px">
+                  <b> Bases </b>
+                  <p>
+                  When a set of vectors \(P\) has just enough vectors to span the space
+                  \(\mathbb{R}^m\) without having any redundant vectors, we say that
+                  (the columns of) \(P\) is a basis for \(\mathbb{R}^m\).  Mathematically,
+                  "just enough vectors to span the space without being redundant" means that
+                  the columns of \(P\) span \(\mathbb{R}^m\) and they are linearly independent
+                  from each other.  When this is the case, every vector \(y \in \mathbb{R}^m\)
+                  can be uniquely represented by a set of coordinates \(x \in \mathbb{R}^n\)
+                  and for practical purposes we can think of \(y\) and \(x\) as representing the same
+                  vector (albeit in two different ways).
+                  Perhaps unsurprisingly, one basic requirement for this to be possible is that
+                  \(m = n\)
+                  </p>
+
+
+                  <p>
+                  Speaking a bit more abstractly, it's not actually possible to represent a general vector
+                  without first defining a basis.  Our intuitive notation of a vector as a string of numbers
+                  \(\begin{bmatrix}x_1 & \cdots & x_n \end{bmatrix}^T \) is actually just the
+                  coordinates of that vector with respect to the standard basis
+                  $$
+                  I_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix},
+                  I_2 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix},
+                  \cdots
+                  I_n = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}
+                  $$
+                  Since the standard basis is just the columns of the identity matrix, the equation
+                  \(y = Px\) just becomes \(x = Ix\).
+                  If we define a vector space more abstractly than \(\mathbb{R}^m\),
+                  before we can write down general vectors in that vector space we have to
+                  first define a basis and then write other vectors as linear combinations
+                  (ie. coordinates) with respect to those basis vectors.
+
+                  </p>
+
+                  <b> Span and Linear Independence </b>
+
+                  <p>
+                  For a set of vectors \(P\) to be a basis for \(\mathbb{R}^m\)
+                  it must satisfy two requirements.  It is must span all of \(\mathbb{R}^m\)
+                  and it must also be linearly independent.  The span requirement
+                  guarantees that any vector \(y \in \mathbb{R}^m\) can be represented
+                  as coordinates with respect to \(P\) and the linear independence requirement
+                  guarantees that there is a unique set of coordintes \(x\) that represent
+                  \(y\), ie. there is only one \(x\) such that \(y = Px\). If we satisfy these
+                  two requirements than we can switch back and forth freely between
+                  the "\(y\)-representation" of \(y\) and the "\(x\)-representation" of \(y\)
+                  without issue.
+                  The process of switching back and forth between \(y\) and \(x\) involves
+                  the idea of a matrix inverse which we will cover next.
+                  If we have the equation
+                  \(y = Px\), the inverse of \(P\), denoted \(P^{-1}\) is the
+                  matrix we use to figure out what \(x\) should be for any given \(y\), ie.
+                  the matrix that satisfies
+                  $$
+                  x = P^{-1}y
+                  $$
+                  </p>
+
+
+                  </p>
+                  </div>
+                  <div class="txt" style="padding:40px">
+                  <b> More Math: Constructing an Abstract Basis (Difficulty: 6/10)</b>
+
+
+                  <p>
+                  When we talk about bases in an abstract sense we have
+                  to have a way of constructing them from elements in a vectors space,
+                  ie.
+                  do a bunch of abstact nonsense
+                  to prove obvious things
+                  </p>
+
+                  <b> Steinitz Exchange Lemma </b>
+
+                  <p> INSERT ANALITY HERE </p>
+
+                </div>
+
+
+                <div class='txt' style="padding:40px">
+
+
+                  <b> OLD VERSION </b>
                   <p>
 
                   A vector \(x\) can be written as a linear combination of
@@ -102,7 +218,7 @@
                 </p>
 
                 </div>
-        
+
 
 
         </div>
