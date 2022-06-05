@@ -201,7 +201,11 @@
             $$
             \big(proj_Yx\big)^Tproj_Y^\perp x =
             x^T Y(Y^TY)^{-1}Y^T\big(I - Y(Y^TY)^{-1}Y^T\big)x
+            $$
+            $$
             = x\big(Y(Y^TY)^{-1}Y^T- Y(Y^TY)^{-1}Y^TY(Y^TY)^{-1}Y^T\big)x
+            $$
+            $$
             = x\big(Y(Y^TY)^{-1}Y^T- Y(Y^TY)^{-1}Y^T\big)x
             = x^T(0)x = 0
             $$
@@ -255,21 +259,26 @@
             $$
             proj_Y(proj_Y) =
             Y(Y^TY)^{-1}Y^TY(Y^TY)^{-1}Y^T =
-            Y(Y^TY)^{-1}Y^T
+            Y(Y^TY)^{-1}Y^T= proj_Y
             $$
             and
             $$
             proj_Y^\perp(proj_Y^\perp) =
             \big(I- Y(Y^TY)^{-1}Y^T\big)
             \big(I- Y(Y^TY)^{-1}Y^T\big)
+            $$
+            $$
             =
             I- 2Y(Y^TY)^{-1}Y^T +
             Y(Y^TY)^{-1}Y^TY(Y^TY)^{-1}Y^T
+            $$
+            $$
             =
             I- 2Y(Y^TY)^{-1}Y^T +
             Y(Y^TY)^{-1}Y^T
             =
             I- Y(Y^TY)^{-1}Y^T
+            = proj_Y^\perp
             $$
           </p>
         </div>
