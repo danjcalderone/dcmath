@@ -74,9 +74,10 @@
               and then multiplying that length by the unit vector again in the \(y\) direction.
               Formulaically, we have that
               $$
-              proj_y x = \left(\frac{1}{\vert|y\vert|_2}y\right)\left(\frac{1}{\vert|y\vert|_2}y^Tx\right
+              proj_y x = \left(\frac{1}{\vert|y\vert|_2}y\right)\left(\frac{1}{\vert|y\vert|_2}y^Tx\right)
               = y(y^Ty)^{-1}y^T x
               $$
+
               The second version in the equation above is elegant in that it explicitly writes the projection operator as a matrix
               that we can then use to project any vector \(x\) onto \(y\).  We can denote this matrix \(proj_y = y(y^Ty)^{-1}y^T \).
               We will also see that this form is
@@ -98,9 +99,13 @@
             $$
             \big(proj_y x \big)^T proj_y^\perp x  =
             x^Ty(y^Ty)^{-1}y^T\big( I-y(y^Ty)^{-1}y^T \big)x
+            $$
+            $$
             =
             x^T\Big(y(y^Ty)^{-1}y^T-
             y(y^Ty)^{-1}y^Ty(y^Ty)^{-1}y^T \Big)x
+            $$
+            $$
             =
             x^T\Big(y(y^Ty)^{-1}y^T-
             y(y^Ty)^{-1}y^T \Big)x = x^T(0)x = 0
@@ -159,12 +164,17 @@
             U = Y(Y^TY)^{-\tfrac{1}{2}}
             $$
             the columns of \(U\) are orthonormal to each other and span the same space as \(Y\).
-            (Note here that the matrix \((Y^TY)^{\tfrac{1}{2}}\) is invertible if and only if
-            the columns of \(Y\) are linearly independent.)  We can check also
-            that the columns of \(U\) are orthonormal by taking all the pairwise inner products of each column.
+            Critically, we can check that
+            the columns of \(U\) are orthonormal by taking all the pairwise inner products of each column.
             $$
             U^TU = (Y^TY)^{-\tfrac{1}{2}}Y^TY(Y^TY)^{-\tfrac{1}{2}} = 0
             $$
+            Here we note that the matrix \((Y^TY)^{\tfrac{1}{2}}\) is invertible if and only if
+            the columns of \(Y\) are linearly independent.  We note also that there
+            is a specific relationship between the columns of \(U\) and \(Y\) that we
+            will discuss more in later sections.
+
+
             We then can compute the projection of \(x\) onto the span of \(Y\) by
             projecting \(x\) onto each column of \(U\) and summing up.
             $$
@@ -220,7 +230,10 @@
 
 
           <div>
+
             <b> More Abstraction: Abstract Projection Definitions </b>
+
+            <p>
 
             Generally in math, a projection operator is an operator such that applying
             the operator twice yields the same result as applying it once, ie.
