@@ -55,10 +55,61 @@
               </p>
               <p>
 
-              One of the fundamental uses of inner products is to compute projections.  Projection
-              onto one vector is illustrated below.
-
+              One of the fundamental uses of inner products is to compute projections. A projection
+              of a vector \(x\) onto \(y\), which we can denote \(proj_{y}x\),
+              is the closest vector to \(x\) that points precisely in the \(y\)
+              direction.  We illustrate this in the figure below.
+              Intuitively one can see that the difference between \(x\) and \(proj_y x\)
+              must be orthogonal to \(y\).  (Mathematically, this comes from the Pythagorean theorem
+              applied to \(x-proj_y x\)). We can also see intuitively that the length
+              of the projection is \(\vert|\vert|x\vert|\vert|_2 \cos \theta\) where
+              \(\theta\) is the angle between \(x\) and \(y\) and can thus be related
+              to the inner product using the geometric definition
+              \(y^Tx = \vert|\vert|x\vert|\vert|_2\vert|\vert|y\vert|\vert|_2 \cos \theta\)
+              If a vector \(y\) is a unit vector, than the geometric definition of an inner product
+              gives that the length of the projection is simply \(y^Tx\).
+              Algebraically, then, the process of computing a projection is can be done by
+              converting \(y\) to a unit vector (ie. \(\tfrac{y}{\vert|\vert|y\vert|\vert|_2} \))
+              taking the inner product with \(x\) to get the length of the projection
+              and then multiplying that length by the unit vector again in the \(y\) direction.
+              Formulaically, we have that
+              $$
+              proj_y x = \left(\frac{1}{\vert|\vert|y\vert|\vert|_2}y\right)\left(\frac{1}{\vert|\vert|y\vert|\vert|_2}y^Tx\right
+              = y(y^Ty)^{-1}y^T x
+              $$
+              The second version in the equation above is elegant in that it explicitly writes the projection operator as a matrix
+              that we can then use to project any vector \(x\) onto \(y\).  We can denote this matrix \(proj_y = y(y^Ty)^{-1}y^T \).
+              We will also see that this form is
+              directly extendable to projecting onto a subspace of dimension greater than one.
             </p>
+            <p>
+            If we want to get the component of \(x\) orthogonal to \(y\)
+            we can simply subtract the projection from \(x\).  This can be called
+            the projection orthogonal to \(y\).
+            $$
+            proj^\perp_y x = x- y(y^Ty)^{-1}y^T x = \Big[ I-y(y^Ty)^{-1}y^T \Big]x
+            $$
+            Note that again we have managed to write the projection operation as a matrix which we can denote
+            \( proj^\perp_y = I-y(y^Ty)^{-1}y^T \).
+            </p>
+            <p>
+            It is instructive to check that for any \(x\), \(proj_y x\) and \(proj_y^\perp x\) are orthogonal to each other.
+            We can check this actually independent of \(x\) as follows
+            $$
+            \big(proj_y x \big)^T proj_y^\perp x  =
+            x^Ty(y^Ty)^{-1}y^T\big( I-y(y^Ty)^{-1}y^T \big)x
+            =
+            x^T\Big(y(y^Ty)^{-1}y^T-
+            y(y^Ty)^{-1}y^Ty(y^Ty)^{-1}y^T \Big)x
+            =
+            x^T\Big(y(y^Ty)^{-1}y^T-
+            y(y^Ty)^{-1}y^T \Big)x = x^T(0)x = 0
+            $$
+            Note the fact that \(proj_y(proj_y) = proj_y\).
+            </p>
+
+
+
           </div>
 
 
