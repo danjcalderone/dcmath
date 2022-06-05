@@ -119,8 +119,85 @@
 
 
           <div class="txt" style="padding:40px">
+            <p>
+            A similar formulation works if we would like to project \(x\) onto a
+            a subspace spanned by multiple vectors given by the columns of a
+            matrix \(Y \in \mathbb{R}^{m \times n} \)
+            $$
+            Y =
+            \begin{bmatrix}
+            | & & | \\
+            Y_1 & \cdots & Y_n \\
+            | & & |
+            \end{bmatrix}
+            $$
+            We will assume for this discussion the columns of \(Y\) are linearly independent
+            and we will denote this as \(proj_Y x\).
+            As in the one dimensional case above, we proceed by converting
+            columns of \(Y\) into unit vectors, but for multi-dimensional subspaces
+            there is another subtlety; we must make the columns of \(Y\) orthogonal to each other
+            as well.  To see this consider a counter-example for two vectors \(Y_1\) and
+            \(Y_2\).  A naive approach would be to normalize each vector \(Y_i\), project \(x\)
+            onto each and add up the projections according to the formula
+            $$
+            proj_Y x =
+            proj_{Y_1}x +
+            proj_{Y_2}x
+            $$
+            This is, in general, an incorrect approach as illustrated in the left figure below
+            Unless, \(Y_1\) and \(Y_2\) are orthogonal to each other the result will not give
+            the desired projection.  If, however, the columns of \(Y\) are orthonormal
+            as illustrated in the right figure.
+            </p>
+            <p>
+            The process of orthonormalizing the columns of \(Y\) is more complicated than normalizing
+            a single vector.  We will discuss this in much more detail in the section on orthonormalization
+            and in the section on shape matrices and polar decomposition.
+            For now we will simply give the following formula.
+            If we take
+            $$
+            U = Y(Y^TY)^{-\tfrac{1}{2}}
+            $$
+            the columns of \(U\) are orthonormal to each other and span the same space as \(Y\).
+            (Note here that the matrix \((Y^TY)^{\tfrac{1}{2}}\) is invertible if and only if
+            the columns of \(Y\) are linearly independent.)  We can check also
+            that the columns of \(U\) are orthonormal by taking all the pairwise inner products of each column.
+            $$
+            U^TU = (Y^TY)^{-\tfrac{1}{2}}Y^TY(Y^TY)^{-\tfrac{1}{2}} = 0
+            $$
+            We then can compute the projection of \(x\) onto the span of \(Y\) by
+            projecting \(x\) onto each column of \(U\) and summing up.
+            $$
+            proj_y x = U_1U_1^Tx + \cdots U_nU_n^Tx = UU^Tx
+            $$
+            Note that the second equality is based on the outer product formulation of matrix multiplication.
+            Expanding this out in terms of the original matrix \(Y\) now gives
+            $$
+            proj_y x = Y(Y^TY)^{-\tfrac{1}{2}}(Y^TY)^{-\tfrac{1}{2}}Y^Tx =Y(Y^TY)^{-1}Y^Tx
+            $$
+            Here we can denote the projection matrix as \(proj_Y = Y(Y^TY)^{-1}Y^T\).  Note
+            the similarities to the one-dimesional form and specifically the similar role of
+            \((y^Ty)^{-1}\) and \((Y^TY)^{-1}\) in the two formulas.
+            </p>
+            <p>
+            Similarly, we can compute a projection orthogonal to the span of \(Y\)
+            as
+            $$
+            proj_Y^\perp x = x - Y(Y^TY)^{-1}Y^Tx = \big(I - Y(Y^TY)^{-1}Y^T\big)x
+            $$
+            with projection matrix \(proj_Y^\perp = \big(I - Y(Y^TY)^{-1}Y^T\big)\).
+            Finally, we can check again algebraically that for any \(x\), \(proj_Y x\)
+            and \(proj_Y^\perp x\) are orthogonal (as desired) regardless of what \(x\) is.
+            $$
+            \big(proj_Yx\big)^Tproj_Y^\perp x =
+            x^T Y(Y^TY)^{-1}Y^T\big(I - Y(Y^TY)^{-1}Y^T\big)x
+            = x\big(Y(Y^TY)^{-1}Y^T- Y(Y^TY)^{-1}Y^TY(Y^TY)^{-1}Y^T\big)x
+            = x\big(Y(Y^TY)^{-1}Y^T- Y(Y^TY)^{-1}Y^T\big)x
+            = x^T(0)x = 0
+            $$
 
-            We can expand this to projection on larger dimensional subspace.
+
+            </p>
 
           </div>
 
@@ -141,6 +218,48 @@
           <div class="slideshow-container flips" id='PROJECTIONDETAILS' any='10' ></div>
           </div>
 
+
+          <div>
+            <b> More Abstraction: Abstract Projection Definitions </b>
+
+            Generally in math, a projection operator is an operator such that applying
+            the operator twice yields the same result as applying it once, ie.
+            $$
+            (proj_Y)(proj_Y) = proj_Y
+            $$
+            This is enough to imply the orthogonality conditions we expect above
+            since it implies that
+            $$
+            \big(proj_Yx\big)^T
+            \big(I-proj_Y\big)x
+            =
+            x^T\big(proj_Y-(proj_Y)proj_Y\big)x
+            =
+            x^T\big(proj_Y-proj_Y\big)x
+            = x^T(0)x = 0
+            $$
+            We also can check that this true for for the matrix operators above
+            $$
+            proj_Y(proj_Y) =
+            Y(Y^TY)^{-1}Y^TY(Y^TY)^{-1}Y^T =
+            Y(Y^TY)^{-1}Y^T
+            $$
+            and
+            $$
+            proj_Y^\perp(proj_Y^\perp) =
+            \big(I- Y(Y^TY)^{-1}Y^T\big)
+            \big(I- Y(Y^TY)^{-1}Y^T\big)
+            =
+            I- 2Y(Y^TY)^{-1}Y^T +
+            Y(Y^TY)^{-1}Y^TY(Y^TY)^{-1}Y^T
+            =
+            I- 2Y(Y^TY)^{-1}Y^T +
+            Y(Y^TY)^{-1}Y^T
+            =
+            I- Y(Y^TY)^{-1}Y^T
+            $$
+          </p>
+        </div>
 
       </div>
       </div>
