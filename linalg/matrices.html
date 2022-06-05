@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+    <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+    </head>
+
+    <body>
+    <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+    <div w3-include-html="/dcmath/nav/topics.html"></div>
+    <!-- <div w3-include-html="nav/topics.html"></div> -->
+    <div class="wrapper">
+      <div class="sidebar">
+      <div w3-include-html="/dcmath/nav/sidebarLinalg.html"></div>
+      </div>
+      <div class=content>
+
+        <!-- <div class=header > Linear Transformations </div> -->
+            <div class="txt" style="padding:40px">
+
+                <b> Matrices </b>
+                <p>
+                A matrix \(A \in \mathbb{R}^{m \times n}\) is a block of numbers of the form
+                $$
+                A =
+                \begin{bmatrix}
+                A_{11} & \cdots & A_{1n} \\
+                \vdots & & \vdots \\
+                A_{m1} & \cdots & A_{mn}
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                | & & | \\
+                A_{1} & \cdots & A_n \\
+                | & & |
+                \end{bmatrix}
+                $$
+                There are many useful perspectives on matrices and matrix algebra but perhaps
+                the most basic is that a matrix is a collection of column vectors as indicated above.
+                Here we have \(n\) column vectors each of dimension \(m\), \(A_i \in \mathbb{R}^m \).
+                Multiplication of a matrix \(A \in \mathbb{R}^{m \times n}\) times a vector \(x \in \mathbb{R}^n \)
+                is designed to represent taking linear combinations of the columns of \(A\) with coefficients
+                give by \(x\).
+                $$
+                Ax =
+                \begin{bmatrix}
+                | & & | \\
+                A_{1} & \cdots & A_n \\
+                | & & |
+                \end{bmatrix}
+                \begin{bmatrix}
+                x_1 \\ \vdots \\ x_n
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                | \\
+                A_{1} \\
+                |
+                \end{bmatrix}
+                x_1 + \cdots +
+                \begin{bmatrix}
+                | \\
+                A_n \\
+                |
+                \end{bmatrix} x_n
+                $$
+
+
+                A matrix \( A \) is used to represent a linear transformation from one
+                vector space another. Each column of \(A\) tells where a standard basis vector
+                in the original vector space (called the domain)
+                gets mapped to in the transformed vector space (the co-domain).
+
+                For example,
+                $$
+                \begin{bmatrix}
+                | & | & & | \\
+                A_1  & A_2  & \cdots & A_n \\
+                | & | & & | \\
+                \end{bmatrix}
+                \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
+                = \begin{bmatrix} | \\ A_2 \\ | \end{bmatrix}
+                $$
+              </p>
+              <p>
+                In the next section, we will discuss further how matrices represent linear transformations but we first
+                give an interactive illustration of how a vector \(x\) is transformed by a matrix
+                \(A\) based on the columns of \(A\).
+              </p>
+
+            </div>
+
+
+                <div class='img' style="padding:0px" id="vector-container">
+                  <div class="eqn" id="y_vec" ></div>
+                  <div class="eqn" id="A_vec" ></div>
+                  <div class="eqn" id="x_vec" ></div>
+                  <div class="eqn" id="Amaps_vec" ></div>
+                  <div class="eqn" id="label2_vec" ></div>
+                  <div class="eqn" id="warning2_vec" ></div>
+                  <div class="eqn" id="usedigits_vec" ></div>
+                  <canvas class='CANVAS' id='vector'></canvas>
+                </div>
+
+
+                <div class="txt" style="padding:40px">
+
+                <b> Matrix Mechanics: Multiplication and Addition </b>
+                <p>
+                Expressing the above multiplication \(Ax\) in terms of the individual elements of \(A\)
+                we get
+                $$
+                Ax =
+                \begin{bmatrix}
+                A_{11} & \cdots & A_{1n} \\
+                \vdots & & \vdots \\
+                A_{m1} & \cdots & A_{mn}
+                \end{bmatrix}
+                \begin{bmatrix}
+                x_{11} \\ \vdots \\ x_{n1}
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                A_{11}x_1 + \cdots + A_{1n}x_n \\
+                \vdots \\
+                A_{m1}x_1 + \cdots + A_{mn}x_n
+                \end{bmatrix}
+                $$
+
+
+                If we replace \(x\) with a full matrix \(B \in \mathbb{R}^{n \times p}\),
+                we treat each column of \(B\) as a separate set of coefficients.
+
+                $$
+                AB =
+                \begin{bmatrix}
+                | & & | \\
+                A_{1} & \cdots & A_n \\
+                | & & |
+                \end{bmatrix}
+                \begin{bmatrix}
+                B_{11} & \cdots & B_{1p} \\
+                \vdots & & \vdots \\
+                B_{n1} & \cdots & B_{np}
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                | & & | \\
+                A_1 B_{11} + \cdots + A_n B_{n1} & \cdots &
+                A_1 B_{1p} + \cdots + A_n B_{np} \\
+                | & & |
+                \end{bmatrix}
+                $$
+
+                Again, expressed in terms of \(A\) and \(B\)'s individual elements this multiplication
+                is given by
+                $$
+                AB =
+                \begin{bmatrix}
+                A_{11} & \cdots & A_{1n} \\
+                \vdots & & \vdots \\
+                A_{m1} & \cdots & A_{mn}
+                \end{bmatrix}
+                \begin{bmatrix}
+                B_{11} & \cdots & B_{1n} \\
+                \vdots & & \vdots \\
+                B_{m1} & \cdots & B_{mn}
+                \end{bmatrix}
+                $$
+                $$
+                =
+                \begin{bmatrix}
+                A_{11}B_{11}+ \cdots + A_{1n}B_{n1} & \cdots &
+                A_{11}B_{1p}+ \cdots + A_{1n}B_{np}\\
+                \vdots & & \vdots \\
+                A_{m1}B_{11}+ \cdots + A_{mn}B_{n1} & \cdots &
+                A_{m1}B_{1p}+ \cdots + A_{mn}B_{np}
+                \end{bmatrix}
+                $$
+                Note that for this multiplication to make sense the "inner" dimensions of
+                \(A\) and \(B\) must match, ie. to multiply \(A \in \mathbb{R}^{m \times n}\)
+                and \(B \in \mathbb{R}^{o \times p}\) we must have \( n = o \).
+              </p>
+                <p>
+                Matrix multiplication by scalars is done the same as vectors; each element is scaled by the scalar.
+              </p>
+              <p>
+                Matrix addition (and subtraction) are done element-wise like vectors as well.
+                </p>
+              </div>
+
+
+      </div>
+      </div>
+
+    <script type='module' src="/dcmath/src/vectoro.js"> </script>
+    <script src="/dcmath/src/extra/includeHTML.js"> </script>
+    </body>
+  </html>

@@ -32,6 +32,7 @@
 
 
     <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+    <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
     </head>
 
     <body>
@@ -44,179 +45,170 @@
       </div>
       <div class=content>
 
-        <div class=header > Linear Transformations </div>
+        <div class=header > Transformation of Sets </div>
             <div class="txt" style="padding:40px">
 
-                <b> Matrices </b>
+                <b> Transformation of Sets </b>
                 <p>
-                A matrix \(A \in \mathbb{R}^{m \times n}\) is a block of numbers of the form
-                $$
-                A =
-                \begin{bmatrix}
-                A_{11} & \cdots & A_{1n} \\
-                \vdots & & \vdots \\
-                A_{m1} & \cdots & A_{mn}
-                \end{bmatrix}
-                =
-                \begin{bmatrix}
-                | & & | \\
-                A_{1} & \cdots & A_n \\
-                | & & |
-                \end{bmatrix}
-                $$
-                There are many useful perspectives on matrices and matrix algebra but perhaps
-                the most basic is that a matrix is a collection of column vectors as indicated above.
-                Here we have \(n\) column vectors each of dimension \(m\), \(A_i \in \mathbb{R}^m \).
-                Multiplication of a matrix \(A \in \mathbb{R}^{m \times n}\) times a vector \(x \in \mathbb{R}^n \)
-                is designed to represent taking linear combinations of the columns of \(A\) with coefficients
-                give by \(x\).
-                $$
-                Ax =
-                \begin{bmatrix}
-                | & & | \\
-                A_{1} & \cdots & A_n \\
-                | & & |
-                \end{bmatrix}
-                \begin{bmatrix}
-                x_1 \\ \vdots \\ x_n
-                \end{bmatrix}
-                =
-                \begin{bmatrix}
-                | \\
-                A_{1} \\
-                |
-                \end{bmatrix}
-                x_1 + \cdots +
-                \begin{bmatrix}
-                | \\
-                A_n \\
-                |
-                \end{bmatrix} x_n
-                $$
+                Intuitively, a linear transformation on a space is some combination of stretching,
+                skewing, rotation, and reflection.  Intuition for the action of these transformations is perhaps
+                best given by visualizing how various shapes and sets transform under linear transformations.
 
 
-                A matrix \( A \) is used to represent a linear transformation from one
-                vector space another. Each column of \(A\) tells where a standard basis vector
-                in the original vector space (called the domain)
-                gets mapped to in the transformed vector space (the co-domain).
 
-                For example,
-                $$
-                \begin{bmatrix}
-                | & | & & | \\
-                A_1  & A_2  & \cdots & A_n \\
-                | & | & & | \\
-                \end{bmatrix}
-                \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
-                = \begin{bmatrix} | \\ A_2 \\ | \end{bmatrix}
-                $$
+                As previously mentioned, each column of \(A\) tells where a standard basis vector
+                in the original vector space is mapped to in the transformed space.
+
+                For example, the second standard basis vector, \(I_2\), maps to the 2nd column, etc.
+                                $$
+                                \begin{bmatrix}
+                                | & | & & | \\
+                                A_1  & A_2  & \cdots & A_n \\
+                                | & | & & | \\
+                                \end{bmatrix}
+                                \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}
+                                = \begin{bmatrix} | \\ A_2 \\ | \end{bmatrix}
+                                $$
+                If we draw the columns of the matrix as vectors (in the co-domain), we can see how the space transforms.
+                It is particularly useful to see how several basic sets transform.  We consider the standard basis vectors,
+                the unit cube, the simplex, and the unit balls for the 1,2, and \(\infty\)-norms.
+                (It is also quite useful to consider how subspaces transform but
+                we will consider this further in our discussion of matrix multiplication and row geometry.)
+
+                We first show transformations through \(2 \times 2\) square matrices
+                </p>
+                </div>
+                <div class='imgFixed'>
+                <img src="/dcmath/figs/stills/MAT/SHAPETRANSFORM2.png" width=90%></img>
+                </div>
+
+                <div class="txt" style="padding:40px">
+                <p>
+                and \(3 \times 3\) square matrices.  In both these cases,
+                the domain and co-domain have the same dimension and we can think of the transformation as happening
+                on the domain directly.
+                </p>
+                </div>
+
+                <div class='imgFixed'>
+                <img src="/dcmath/figs/stills/MAT/SHAPETRANSFORM3.png" width=90%></img>
+                </div>
+
+
+
+                <div class="txt" style="padding:40px">
+                <p>
+                If the row and column dimension of \(A\) are different than the input and output
+                spaces have different dimensions.  If \(A\) is a fat higher
+                dimensional sets are projected down onto a lower dimensional space.
+                If \(A\) is tall than a lower dimension set is projected onto a subspace of
+                the higher dimensional co-domain (given by the span of the columns of \(A\).
+                We illustrate this for several cases when \(A\) is fat and several when \(A\) is tall below.
+                </p>
+                </div>
+
+                <div class='imgFixed'>
+                <img src="/dcmath/figs/stills/MAT/SHAPETRANSFORMNOTSQUARE.png" width=90%></img>
+                </div>
+
+
+
+
+
+                <div class="txt" style="padding:40px">
+                  <p>
+                We also give several more interactive examples of \(2 \times 2\) and \(3 \times 3\) transformations
+                to give a better flavor for how the space is distorted and stretched. Note particularly the grid-lines in 2D.
+                Note also that these are just a few examples and are by no means meant to be exhaustive.
+                The space of potential \(m \times n\) matrices is as rich as there are ways to draw \(n\) different
+                column vectors in an \(m\) dimensional space.
+              </p>
+            </div>
+
+
+            <div class="slideshow-container flips" id='SPACETRANSFORM2' any='13' style="width:60%"></div>
+            <div class="slideshow-container flips" id='SPACETRANSFORM3' any='15' style="width:60%"></div>
+
+
+              <div class="txt" style="padding:40px">
+
+              <b> Definition : Linear Transformation </b>
+
+              <p>
+                There are many types of intuitive transformations that are in fact linear.
+                We will discuss the technical definition of a linear transformation later; but
+                we can give an intuitive (and quite circular) definition now.
+                A linear transformation is any transformation that can be represented by
+                a matrix in the sense discussed above. In particular, a linear transformation is
+                one that if we define where the axes transform to (ie. the columns of the matrix),
+                we can see how the rest of the space moves by picturing it as getting "dragged along"
+                with this motion.
               </p>
               <p>
-                In the next section, we will discuss further how matrices represent linear transformations but we first
-                give an interactive illustration of how a vector \(x\) is transformed by a matrix
-                \(A\) based on the columns of \(A\).
+                Algebraically, this is closely related to the fact that matrix multiplication is distributive.
+                If we represent a vector \(x \in \mathbb{R}^n \) as a sum of scaled standard basis vectors.
+                $$
+                x = I_1 x_1 + \cdots + I_n x_n
+                $$
+                we then have that \(Ax\) is given by
+                $$
+                Ax = AI_1x_1 + \cdots + AI_nx_n = A_1 x_1 + \cdots + A_n x_n
+                $$
+                This distributive property is the heart of the idea of linearity.
+                We will give more thorough technical definitions later.
+
+              </p>
+              <b> Types of Linear Transformations </b>
+              <p>
+
+                Linear transformations includes many intuitive transformations:
+                stretchings, reflections, skewings, rotations, and combinations of these.
+
+                We show several illlustrative examples of these different types of transformations
+                below in 2D and 3D.  Again, these examples are not meant to be exhaustive
+                but to give a flavor.  It is quite to useful to be able to picture a linear transformation
+                (based on the columns of it's representing matrix) and mentally break it down into
+                various combinations of these simpler intuitive transformations.
+                This can be done in several more precise ways using matrix decompositions:
+                QR decomposition, singular value decomposition, and most importantly eigenvalue decompositions.
+                We will discuss this later.
+
               </p>
 
             </div>
 
 
-                <div class='img' style="padding:0px" id="vector-container">
-                  <div class="eqn" id="y_vec" ></div>
-                  <div class="eqn" id="A_vec" ></div>
-                  <div class="eqn" id="x_vec" ></div>
-                  <div class="eqn" id="Amaps_vec" ></div>
-                  <div class="eqn" id="label2_vec" ></div>
-                  <div class="eqn" id="warning2_vec" ></div>
-                  <div class="eqn" id="usedigits_vec" ></div>
-                  <canvas class='CANVAS' id='vector'></canvas>
-                </div>
+            <div class='imgFixed'>
+            <img src="/dcmath/figs/stills/MAT/______.png" width=90%></img>
+            </div>
+
+            <div class="txt" style="padding:40px">
 
 
-                <div class="txt" style="padding:40px">
-
-                <b> Matrix Mechanics: Multiplication and Addition </b>
-                <p>
-                Expressing the above multiplication \(Ax\) in terms of the individual elements of \(A\)
-                we get
-                $$
-                Ax =
-                \begin{bmatrix}
-                A_{11} & \cdots & A_{1n} \\
-                \vdots & & \vdots \\
-                A_{m1} & \cdots & A_{mn}
-                \end{bmatrix}
-                \begin{bmatrix}
-                x_{11} \\ \vdots \\ x_{n1}
-                \end{bmatrix}
-                =
-                \begin{bmatrix}
-                A_{11}x_1 + \cdots + A_{1n}x_n \\
-                \vdots \\
-                A_{m1}x_1 + \cdots + A_{mn}x_n
-                \end{bmatrix}
-                $$
+            <p>
+              Finally, we include an interactive visualization of how a matrix transforms sets
+              and points that we will discuss more later.
+            </p>
+          </div>
 
 
-                If we replace \(x\) with a full matrix \(B \in \mathbb{R}^{n \times p}\),
-                we treat each column of \(B\) as a separate set of coefficients.
 
-                $$
-                AB =
-                \begin{bmatrix}
-                | & & | \\
-                A_{1} & \cdots & A_n \\
-                | & & |
-                \end{bmatrix}
-                \begin{bmatrix}
-                B_{11} & \cdots & B_{1p} \\
-                \vdots & & \vdots \\
-                B_{n1} & \cdots & B_{np}
-                \end{bmatrix}
-                =
-                \begin{bmatrix}
-                | & & | \\
-                A_1 B_{11} + \cdots + A_n B_{n1} & \cdots &
-                A_1 B_{1p} + \cdots + A_n B_{np} \\
-                | & & |
-                \end{bmatrix}
-                $$
 
-                Again, expressed in terms of \(A\) and \(B\)'s individual elements this multiplication
-                is given by
-                $$
-                AB =
-                \begin{bmatrix}
-                A_{11} & \cdots & A_{1n} \\
-                \vdots & & \vdots \\
-                A_{m1} & \cdots & A_{mn}
-                \end{bmatrix}
-                \begin{bmatrix}
-                B_{11} & \cdots & B_{1n} \\
-                \vdots & & \vdots \\
-                B_{m1} & \cdots & B_{mn}
-                \end{bmatrix}
-                $$
-                $$
-                =
-                \begin{bmatrix}
-                A_{11}B_{11}+ \cdots + A_{1n}B_{n1} & \cdots &
-                A_{11}B_{1p}+ \cdots + A_{1n}B_{np}\\
-                \vdots & & \vdots \\
-                A_{m1}B_{11}+ \cdots + A_{mn}B_{n1} & \cdots &
-                A_{m1}B_{1p}+ \cdots + A_{mn}B_{np}
-                \end{bmatrix}
-                $$
-                Note that for this multiplication to make sense the "inner" dimensions of
-                \(A\) and \(B\) must match, ie. to multiply \(A \in \mathbb{R}^{m \times n}\)
-                and \(B \in \mathbb{R}^{o \times p}\) we must have \( n = o \).
-              </p>
-                <p>
-                Matrix multiplication by scalars is done the same as vectors; each element is scaled by the scalar.
-              </p>
-              <p>
-                Matrix addition (and subtraction) are done element-wise like vectors as well.
-                </p>
-              </div>
+            <div class='img' style="padding:0px" id="vector-container">
+              <div class="eqn" id="y_vec" ></div>
+              <div class="eqn" id="A_vec" ></div>
+              <div class="eqn" id="x_vec" ></div>
+              <div class="eqn" id="Amaps_vec" ></div>
+              <div class="eqn" id="label2_vec" ></div>
+              <div class="eqn" id="warning2_vec" ></div>
+              <div class="eqn" id="usedigits_vec" ></div>
+              <canvas class='CANVAS' id='vector'></canvas>
+            </div>
+
+
+
+
+
 
 
       </div>
@@ -224,5 +216,20 @@
 
     <script type='module' src="/dcmath/src/vectoro.js"> </script>
     <script src="/dcmath/src/extra/includeHTML.js"> </script>
+    <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+
+    <script>
+        const slideIndexes ={'SPACETRANSFORM2':1,
+                             'SPACETRANSFORM3':1}
+        addSlides('SPACETRANSFORM2',slideIndexes);
+        showSlides('SPACETRANSFORM2',slideIndexes['SPACETRANSFORM2'],slideIndexes);
+        addSlides('SPACETRANSFORM3',slideIndexes);
+        showSlides('SPACETRANSFORM3',slideIndexes['SPACETRANSFORM3'],slideIndexes);
+    </script>
+
+
+
+
+
     </body>
   </html>
