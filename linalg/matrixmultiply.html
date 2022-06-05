@@ -80,7 +80,6 @@
                 the same as our intuition for matrix-vector multiplication
 
                 </p>
-              </div>
 
 
 
@@ -90,40 +89,6 @@
 
 
 
-
-
-                        <div class="txt" style="padding:40px">
-
-                            <p>
-                            The following interactive visualization allows us to experiment with the
-                            column and row geometry for several matrices multiplied together.
-                          </p>
-
-                        </div>
-
-
-
-
-            <div class='img' style="padding:0px" id="matrices-container">
-                <canvas class='CANVAS' id='matrices'  ></canvas>
-                <div class="eqn" id="eqn1y" ></div>
-                <div class="eqn" id="eqn1A" ></div>
-                <div class="eqn" id="eqn1B" ></div>
-                <div class="eqn" id="eqn1C" ></div>
-                <div class="eqn" id="eqn1D" ></div>
-                <div class="eqn" id="eqn1x" ></div>
-
-                <div class="eqn" id="y_vec" ></div>
-                <div class="eqn" id="A_vec" ></div>
-                <div class="eqn" id="x_vec" ></div>
-                <div class="eqn" id="Amaps_vec" ></div>
-                <div class="eqn" id="label2_vec" ></div>
-                <div class="eqn" id="warning2_vec" ></div>
-                <div class="eqn" id="usedigits_vec" ></div>
-              </div>
-
-
-              <div class="txt" style="padding:40px">
 
               <b> Primary Perspectives </b>
 
@@ -143,15 +108,16 @@
               When left-multiplying \(B\) by a matrix \(A\)
               perhaps the most natural perspective is to think of
               \(A\) transforming each column of \(B\) separately.
+
               $$
-              AB = \Big[ \ A \ \Big]\
-              begin{bmatrix}
+              AB = \Big[ \ A \ \Big]
+              \begin{bmatrix}
               | & & | \\
               B_1 & & B_p \\
               | & & |
               \end{bmatrix}
               =
-              begin{bmatrix}
+              \begin{bmatrix}
               | & & | \\
               AB_1 & & AB_p \\
               | & & |
@@ -284,7 +250,35 @@
               somewhat on seeing parallel axis representation of the row vectors
               which is less natural.
               </p>
-            </div>
+
+
+                                        <p>
+                                        The following interactive visualization allows us to experiment with the
+                                        column and row geometry for several matrices multiplied together.
+                                      </p>
+
+                                    </div>
+
+
+
+
+                        <div class='img' style="padding:0px" id="matrices-container">
+                            <canvas class='CANVAS' id='matrices'  ></canvas>
+                            <div class="eqn" id="eqn1y" ></div>
+                            <div class="eqn" id="eqn1A" ></div>
+                            <div class="eqn" id="eqn1B" ></div>
+                            <div class="eqn" id="eqn1C" ></div>
+                            <div class="eqn" id="eqn1D" ></div>
+                            <div class="eqn" id="eqn1x" ></div>
+
+                            <div class="eqn" id="y_vec" ></div>
+                            <div class="eqn" id="A_vec" ></div>
+                            <div class="eqn" id="x_vec" ></div>
+                            <div class="eqn" id="Amaps_vec" ></div>
+                            <div class="eqn" id="label2_vec" ></div>
+                            <div class="eqn" id="warning2_vec" ></div>
+                            <div class="eqn" id="usedigits_vec" ></div>
+                          </div>
 
 
 
