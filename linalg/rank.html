@@ -185,19 +185,20 @@
               and follows immediately from the nullspace basis construction discussed previously.
               As before, any matrix \(A \in \mathbb{R}^{m \times n}\) of rank \(k\)
               has exactly \(k\) linearly independent columns.  Assuming (wlog) they are the first
-              \(k\) columns and \(A\) can be decomposed as
+              \(k\) columns then \(A\) can be decomposed as
               $$
               A = \Big[ A' \ A'' \Big] = \Big[ A' \ A'B \Big]
               =A'\Big[ I \ B \Big]
               $$
               with linearly independent \(A' \in \mathbb{R}^{m \times k}\) and
+              linearly dependent \(A'' \in \mathbb{R}^{m \times (n-k)}\) that can be written as
               \(A'' = A'B\) where the columns of \(B\) give coefficients of the columns
               of \(A''\) with respect to \(A'\).  The matrix
               $$
               N = \begin{bmatrix} B \\ -I \end{bmatrix} \in \mathbb{R}^{n \times (n-k)}
               $$
-              then forms a basis for the nullspace of \(A\) as shown and thus the nullity of \(A\)
-              is \(n-k\).  We then have immediately that
+              then forms a basis for the nullspace of \(A\) (as previously shown) and thus the nullity of \(A\)
+              is \(n-k\).   We then immediately have that
               $$
               n = k + (n-k) = rank(A) + null(A)
               $$
