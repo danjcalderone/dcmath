@@ -76,7 +76,10 @@
 
 
               <b>Column Rank = Row Rank </b>
+
+              <p>
               <b>Proof:</b>
+              </p>
               <p>
               For a matrix \(A \in \mathbb{R}^{m \times n}\),
               let \(c\) represent the column rank and \(r\) represent the row rank.
@@ -84,7 +87,8 @@
               and thus we must have \(r=c\).
               </p>
               <p>
-              \(r \leq c\): Since the column rank is \(c\), write a basis for the
+              <b> \(r \leq c\):</b>
+              Since the column rank is \(c\), write a basis for the
               column space of \(A\) as the columns of a matrix \(C \in \mathbb{R}^{m \times c}\).
               \(A\) can then be written as
 
@@ -127,13 +131,14 @@
               of the row space of \(V\), \(r\) is less than or equal to \(c\), ie. \(r \leq c\).
               </p>
               <p>
-              \(r \geq c\): For this second direction, we could simply say apply the
+              <b>
+              \(r \geq c\):
+              </b>
+              For this second direction, we could simply say apply the
               same reasoning to \(A^T\) but we reproduce it here for symmetry.
               </p>
               <p>
-              Since the row rank is \(r\), write a basis for the
-              rows space of \(A\) as the rows of \(R \in \mathbb{R}^{r \times n}\).
-              \(A\) can then be written as
+              Given that row rank is \(r\), write \(A\) as
               $$
               A = WR =
               \begin{bmatrix}
@@ -147,9 +152,11 @@
               - & \bar{R}_r^T & -
               \end{bmatrix}
               $$
-              where the rows of \(W \in \mathbb{R}^{m \times r}\) are
-              the coordinates of each row of \(A\) with respect to the rows of \(R\).
-              Switching to viewing \(W\) and \(R\) as columns we have
+              where the rows of rows of \(R \in \mathbb{R}^{r \times n}\)
+              are a basis for the rowspace and the rows of
+              \(W \in \mathbb{R}^{m \times r}\) are
+              the coordinates of the rows of \(A\) with respect to the rows of \(R\).
+              Switch to viewing \(W\) and \(R\) as columns
               $$
               A = WR =
               \begin{bmatrix}
@@ -163,7 +170,7 @@
               | & & |
               \end{bmatrix}
               $$
-              Thus each column of \(A\) is a linear combination of the columns of
+              and we have that each column of \(A\) is a linear combination of the columns of
               \(W\) and thus the dimension
               of the column space is less than or equal to \(r\), ie. \(r \geq c\).
               </p>
