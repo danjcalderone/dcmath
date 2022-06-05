@@ -123,8 +123,8 @@
               </p>
               <b> Row Rank \(geq\) Column Rank:</b>
               <p>
-              For this second direction, we could simply say apply the
-              same reasoning to \(A^T\) but we reproduce it here for symmetry.
+              We have the second direction immediately by applying the above reasoning
+              to \(A^T\) but we reproduce it here for symmetry and practice purposes.
               </p>
               <p>
               Given that row rank is \(r\), write \(A\) as
@@ -163,7 +163,45 @@
               \(W\) and thus the dimension
               of the column space is less than or equal to \(r\), ie. \(r \geq c\).
               </p>
+              <b> Rank-Nullity Theorem </b>
+              <p>
+              The second major rank result is called the rank-nullity theorem:
+              the rank of a matrix plus the dimension of the nullspace (or nullity)
+              is equal to the dimension of the domain.  For \(A \in \mathbb{R}^{m \times n} \)
+              $$
+              rank(A)+null(A) = n
+              $$
+              </p>
+              <p>
+              Given the row geometry of a matrix and it's nullspace, this result is actually quite
+              intuitive. The rank of a matrix is the number of linearly independent rows; the
+              nullspace is the orthogonal subspace to these rows.  Together their dimensions
+              is naturally the dimension of the overall space, \(n\).
+              We first give several pictures that show this result for different matrices.
+              </p>
 
+              <p>
+              The proof is easier done by considering the column geometry of \(A\)
+              and follows immediately from the nullspace basis construction discussed previously.
+              As before, any matrix \(A \in \mathbb{R}^{m \times n}\) of rank \(k\)
+              has exactly \(k\) linearly independent columns.  Assuming (WLOG) they are the first
+              \(k\) columns and \(A\) can be decomposed as
+              $$
+              A = \Big[ A' \ A'' \Big] = \Big[ A' \ A'B \Big]
+              =A'\Big[ I \ B \Big]
+              $$
+              with linearly independent \(A' \in \mathbb{R}^{m \times k}\) and
+              \(A'' = A'B\) where the columns of \(B\) give coefficients of the columns
+              of \(A''\) with respect to \(A'\).  The matrix
+              $$
+              N = \begin{bmatrix} B \\ -I \end{bmatrix} \in \mathbb{R}^{n \times (n-k)}
+              $$
+              then forms a basis for the nullspace of \(A\) as shown and thus the nullity of \(A\)
+              is \(n-k\).  We then have immediately that
+              $$
+              n = k + (n-k) = rank(A) + null(A)
+              $$
+              </p>
 
 
 
