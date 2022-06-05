@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+    <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+    </head>
+
+    <body>
+    <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+    <div w3-include-html="/dcmath/nav/topics.html"></div>
+    <!-- <div w3-include-html="nav/topics.html"></div> -->
+    <div class="wrapper">
+      <div class="sidebar">
+      <div w3-include-html="/dcmath/nav/sidebarLinalg.html"></div>
+      </div>
+      <div class=content>
+
+
+        <div class=header > Range & Column Geometry </div>
+        <div class='pdfview'>
+        <iframe src='/teaching/linalg/COLROW.pdf#page=1'
+        width='100%'
+        height='100%'>
+        </iframe>
+        </div>
+
+
+
+        <div class='img' style="padding:0px" id="range-container">
+        </div>
+        <div class="txt" style="padding:40px">
+
+              <b> Matrix Rank </b>
+              <p>
+              The dimension of the column space of a matrix is called the column-rank.
+              The dimension of the row space of a matrix is called the row-rank.
+              One of the fundamental properties of linear maps is that the column-rank
+              and row-rank are equal and are thus often just called the rank.
+              We first give several images of a the column and row spaces of a matrix
+              and show that as one drops rank so does the other.
+              </p>
+
+              <p>
+              The proof that the column and row rank are equal is dense, and subtle but short.  We
+              give it here in compact form.
+              </p>
+
+
+              <b>Column Rank = Row Rank </b>
+              <b>Proof:</b>
+              <p>
+              For a matrix \(A \in \mathbb{R}^{m \times n}\),
+              let \(c\) represent the column rank and \(r\) represent the row rank.
+              We will proceed by showing that of necessity \(r \leq c\) and \(r \geq c\)
+              and thus we must have \(r=c\).
+              </p>
+              <p>
+              \(r \leq c\): Since the column rank is \(c\), write a basis for the
+              column space of \(A\) as the columns of a matrix \(C \in \mathbb{R}^{m \times c}\).
+              \(A\) can then be written as
+              $$
+              A = CV =
+              \begin{bmatrix}
+              | & & | \\
+              C_1 & \cdots & C_c \\
+              | & & |
+              \end{bmatrix}
+              \begin{bmatrix}
+              | & & | \\
+              V_1 & \cdots & V_n \\
+              | & & |
+              \end{bmatrix}
+              where the columns of \(V \in \mathbb{R}^{c \times n}\) are
+              the coordinates of each column of \(A\) with respect to \(C\).
+              Whenever one defines a matrix in terms of columns one also defines
+              its rows; the key to the proof is simply shifting perspectives on
+              \(C\) and \(V\) writing them in terms of their rows instead of columns
+              The above equation then becomes
+              $$
+              A = CV =
+              \begin{bmatrix}
+              - & \bar{C}_1^T & - \\
+              & \vdots & \\
+              - & \bar{C}_m^T & -
+              \end{bmatrix}
+              \begin{bmatrix}
+              - & \bar{V}_1^T & - \\
+              & \vdots & \\
+              - & \bar{V}_c^T & -
+              \end{bmatrix}
+              From this row-row geometry perspective we can now think about the
+              rows of the product as linear combinations of the rows of \(V\)
+              with coefficients given by the rows of \(C\).  We then have immediately
+              that each row of \(A\) is in the row space of \(V\) and thus the dimension
+              of the row space of \(V\), \(r\) is less than or equal to \(c\), ie. \(r \leq c\).
+              </p>
+              <p>
+              \(r \geq c\): For this second direction, we could simply say apply the
+              same reasoning to \(A^T\) but we reproduce it here for symmetry.
+              </p>
+              <p>
+              Since the row rank is \(r\), write a basis for the
+              rows space of \(A\) as the rows of \(R \in \mathbb{R}^{r \times n}\).
+              \(A\) can then be written as
+              $$
+              A = WR =
+              \begin{bmatrix}
+              - & \bar{W}_1^T & - \\
+              & \vdots & \\
+              - & \bar{W}_m^T & -
+              \end{bmatrix}
+              \begin{bmatrix}
+              - & \bar{R}_1^T & - \\
+              & \vdots & \\
+              - & \bar{R}_r^T & -
+              \end{bmatrix}
+              $$
+
+              \begin{bmatrix}
+              | & & | \\
+              C_1 & \cdots & C_c \\
+              | & & |
+              \end{bmatrix}
+              \begin{bmatrix}
+              | & & | \\
+              V_1 & \cdots & V_n \\
+              | & & |
+              \end{bmatrix}
+              where the rows of \(W \in \mathbb{R}^{m \times r}\) are
+              the coordinates of each row of \(A\) with respect to the rows of \(R\).
+              Switching to viewing \(W\) and \(R\) as columns we have
+              $$
+              A = WR =
+              \begin{bmatrix}
+              | & & | \\
+              W_1 & \cdots & W_r \\
+              | & & |
+              \end{bmatrix}
+              \begin{bmatrix}
+              | & & | \\
+              R_1 & \cdots & R_n \\
+              | & & |
+              \end{bmatrix}
+              Thus each column of \(A\) is a linear combination of the columns of
+              \(W\) and thus the dimension
+              of the column space is less than or equal to \(r\), ie. \(r \geq c\).
+              </p>
+
+
+
+
+
+
+              </div>
+
+
+
+      </div>
+      </div>
+    <!-- <script type='module' src="./matrixo.js"> </script> -->
+    <script src="/dcmath/src/extra/includeHTML.js"> </script>
+    </body>
+  </html>
