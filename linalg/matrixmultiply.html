@@ -130,6 +130,12 @@
               <p>
               </div>
 
+
+              <div>
+              <div class="slideshow-container flips" id='MULTIPLYLEFT24' any='16' style="width:80%"></div>
+              </div>
+
+
               <div class="txt" style="padding:40px">
               <b> Column-Column: Right-Multiplication </b>
               <p>
@@ -141,6 +147,11 @@
               above.
               </p>
               </div>
+
+              <div>
+              <div class="slideshow-container flips" id='MULTIPLYRIGHT23' any='16' style="width:80%"></div>
+              </div>
+
 
               <div class="txt" style="padding:40px">
               <p>
@@ -292,7 +303,13 @@
 
         <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
         <script>
-        const slideIndexes ={'MULTIPLYABCD':1}
+        const slideIndexes ={'MULTIPLYABCD':1,
+        'MULTIPLYLEFT24':1,
+        'MULTIPLYRIGHT23':1}
+        addSlides('MULTIPLYLEFT24',slideIndexes);
+        showSlides('MULTIPLYLEFT24',slideIndexes['MULTIPLYLEFT24'],slideIndexes);
+        addSlides('MULTIPLYRIGHT23',slideIndexes);
+        showSlides('MULTIPLYRIGHT23',slideIndexes['MULTIPLYRIGHT23'],slideIndexes);
         addSlides('MULTIPLYABCD',slideIndexes);
         showSlides('MULTIPLYABCD',slideIndexes['MULTIPLYABCD'],slideIndexes);
         </script>
