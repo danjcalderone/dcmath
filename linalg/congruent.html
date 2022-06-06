@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+      <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+      <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
+      </head>
+
+      <body>
+      <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+      <div w3-include-html="/dcmath/nav/topics.html"></div>
+      <!-- <div w3-include-html="nav/topics.html"></div> -->
+      <div class="wrapper">
+        <div class="sidebar">
+        <div w3-include-html="/dcmath/nav/sidebarLinalg.html"></div>
+        </div>
+        <div class=content>
+
+
+            <div class="txt" style="padding:40px">
+
+
+                  <b> CONGRUENT TRANSFORMATIONS </b>
+                  <p> Note: this page is better understood with knowledge of
+                  symmetric positive-definite matrices and quadratic forms.  </p>
+
+                  <p>
+                  A congruent transformation on a square matrix \(A \in \mathbb{R}^{m \times m}\)
+                  has the form
+                  $$
+                  A' = W^T A W
+                  $$
+                  where \(W\) is a (possibly non-square) matrix \(W \in \mathbb{R}^{m \times n}\).
+                  While this transformation bears some surface-level
+                  resemblance to a similarity transform with the inverse replaced with a transpose,
+                  we note that this resemblance is actually somewhat deceptive.
+                  Assuming \(A\) is symmetric, congruent transformations preserve
+                  symmetries and definiteness of the matrix (and thus the signs of the eigenvalues)
+                  but not the eigenvalues of the matrix.
+                  The one exception is when \(W\) is a rotation and then the congruent
+                  transformation is also a similarity transformation.
+                  </p>
+                  <b> Symmetric \(A\) </b>
+                  <p>
+                  In the case when \(A\) is symmetric, a congruent transformation
+                  gives how the quadratic form \(x^TAx\) changes under the
+                  coordinate transformation \(x = Wx'\). Explicitly,
+                  $$
+                  x^TAx = x'^TW^TAWx' = x'^TA'x'
+                  $$
+                  Below we give a visualization of the level sets of \(x^TAx\) and how the
+                  the transform under \(x = Wx'\).
+                </p>
+                </div>
+
+
+                <div class='imgFixed'>
+                <img src="/dcmath/figs/stills/MAT/SIMDIAGGEN.png" width=50%></img>
+                </div>
+
+
+
+                  <!-- <div>
+                  <div class="slideshow-container flips" id='SIMILARITY3' any='16' style="width:80%"></div>
+                  </div> -->
+
+
+
+
+
+
+        </div>
+        </div>
+      <!-- <script type='module' src="./matrixo.js"> </script> -->
+      <script src="/dcmath/src/extra/includeHTML.js"> </script>
+      </body>
+    </html>
