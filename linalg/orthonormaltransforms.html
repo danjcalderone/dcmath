@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+
+
+      <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+      </head>
+
+      <body>
+      <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+      <div w3-include-html="/dcmath/nav/topics.html"></div>
+      <!-- <div w3-include-html="nav/topics.html"></div> -->
+      <div class="wrapper">
+        <div class="sidebar">
+        <div w3-include-html="/dcmath/nav/sidebarLinalg.html"></div>
+        </div>
+        <div class=content>
+            <!-- <div class='img' style="padding:0px" id="inverse-container">
+            </div> -->
+            <div class="txt" style="padding:40px">
+
+                  <b> ORTHONORMAL TRANSFORMS </b>
+
+                  <p>
+                  We will soon expand on general bases and inverses in much more detail, but we first
+                  make a brief digression to talk about a particularly well-behaved type of basis
+                  called an orthonormal basis.   We will denote these as the columns of
+                  \(R \in \mathbb{R}^{n \times n}\).
+                  </p>
+
+                  <b> Orthonormal Columns and Rows </b>
+                  <p>
+                  An orthonormal basis has basis vectors that are mutually orthogonal and all of length 1.
+                  If we store these as the columns of a matrix \(R \in \mathbb{R}^{n \times n}\), we will
+                  show shortly that the rows of \(R\) are orthonormal as well.
+                  </p>
+                  <b> Inverse \(=\) Transpose </b>
+                  <p>
+                    The inverse of an orthonormal transform is simply it's transpose.  We can check this quickly
+                    by considering the row-column geometry of \(R^TR\).
+
+                    $$
+                    R^TR =
+                    \begin{bmatrix}
+                    - & R_1^T & - \\
+                    & \vdots & \\
+                    - & R_n^T & - \\
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                    | & & | \\
+                    R_1 & \cdots & R_n \\
+                    | & & |
+                    \end{bmatrix}
+                    =
+                    \begin{bmatrix}
+                    R_1^TR_1 & \cdots & R_1^TR_n \\
+                    \vdots & & \vdots \\
+                    R_n^TR_1 & \cdots & R_n^TR_n
+                    \end{bmatrix}
+                    =
+                    \begin{bmatrix}
+                    1 & \cdots & 0 \\
+                    \vdots & & \vdots \\
+                    0 & \cdots & 1
+                    \end{bmatrix}
+                    $$
+                    This last equality is simply the definition
+                    of orthnormality of the columns of \(R\).
+                    In general, inverses are difficult to compute, but
+                    for orthonormal transforms computing the inverse is as
+                    simple as rearranging the values of \(R\).
+                  </p>
+                  <p>
+                    Note that since left and right inverses of a square matrix must be the
+                    same (if they both exist), \(R^TR = I\) implies that
+                    $$
+                    I =
+                    RR^T =
+                    \begin{bmatrix}
+                    - & \bar{R}_1^T & - \\
+                    & \vdots & \\
+                    - & \bar{R}_n^T & - \\
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                    | & & | \\
+                    \bar{R}_1 & \cdots & \bar{R}_n \\
+                    | & & |
+                    \end{bmatrix}
+                    =
+                    \begin{bmatrix}
+                    \bar{R}_1^T\bar{R}_1 & \cdots & \bar{R}_1^T\bar{R}_n \\
+                    \vdots & & \vdots \\
+                    \bar{R}_n^T\bar{R}_1 & \cdots & \bar{R}_n^T\bar{R}_n
+                    \end{bmatrix}
+                    =
+                    \begin{bmatrix}
+                    1 & \cdots & 0 \\
+                    \vdots & & \vdots \\
+                    0 & \cdots & 1
+                    \end{bmatrix}
+                    $$
+                    and thus the rows of \(R\) must be orthonormal as well.
+
+                    <b> Preserves Inner Products (Isometry) </b>
+                    <p>
+                    Perhaps the most important consequence of the inverse condition above
+                    is that orthonormal transformations preserve the values of inner products
+                    on a space.  Explicitly, if \(y=Ry'\) and \(x = Rx'\), then
+                    $$
+                    y^Tx = y'^TR^TRx' = y'^Tx'
+                    $$
+                    The geometry of a space is fundamentally based on the inner product operator.
+                    Norms are given by \((x^Tx)^{\tfrac{1}{2}}\), angles are given by
+                    \(y^Tx = \vert|x\vert|_2 \vert|y\vert|_2 \cos \theta\), etc; and thus
+                    orthonormal transformations do not change metric properties on a space.
+                    Because of this we say that orthonormal transforms are an isometric (same-metric)
+                    map or just an isometry.
+                    </p>
+
+                    <b> Intuition: Rotations + Reflections </b>
+                    <p>
+                    Geometrically, orthonormal transformations represent
+                    rotations and reflections.  Pure rotations have a determinant of \(+1\);
+                    rotation+reflections have a determinant of \(-1\). (More later on this.)
+                    </p>
+
+                    <b> Compositions are Orthonormal </b>
+                    <p>
+                    Finally, we can show that composition of two
+                    orthonormal transformations is also orthonormal.  Intuitively,
+                    two rotations form a composite rotation.
+                    $$
+                    (RR')^T(RR') = R'^TR^TRR' = R'^TR' = I
+                    $$
+                    </p>
+
+
+                  </div>
+
+
+                  <div class="txt" style="padding:40px">
+                        <b> Left Multiplying  </b>
+
+                      <p> We note that since both the columns and rows
+                        are orthonormal, it is natural to visualize a rotation matrix
+                        as a set of orthogonal columns (or rows)
+                        on the unit circle as illustrated below.  We can see that
+                        left multiplying a matrix \(A\)  by \(R\) transforms
+                        each of the standard basis vectors to a column of \(R\)
+                        and in so doing performs a rotation on each column of the matrix.
+                        We illustrate this in the
+                        figure below.
+                        </p>
+                      </div>
+
+
+                      <div class="txt" style="padding:40px">
+                      <b> Left Right Multiplying  </b>
+                      <p>
+                        Right multiplying takes linear combinations of the columns of \(A\).
+                        Since each column of \(R\) is a unit vector (on the unit sphere)
+                        we see that the columns of \(AR\) remain on the transformed unit sphere
+                        as illustrated below.
+                        </p>
+                      </div>
+
+
+                      <div class="txt" style="padding:40px">
+                      <b> Inverse & Transpose Visualizations  </b>
+                      <p>
+                      If we observe the inverting and transposing visualizations together,
+                      we see that they give the same result for an orthonormal matrix \(R\)
+                      </p>
+                    </div>
+
+                    <div class="txt" style="padding:40px">
+                    <b> Inverse & Transpose Visualizations  </b>
+                    <p>
+                    Finally we reproduce several of the inverse visualizations
+                    for \(R\) orthonormal to provide extra intuition.
+                    </p>
+                  </div>
+
+
+
+        </div>
+        </div>
+      <!-- <script type='module' src="./matrixo.js"> </script> -->
+      <script src="/dcmath/src/extra/includeHTML.js"> </script>
+      </body>
+    </html>

@@ -69,8 +69,14 @@
               We can check this by taking all pairwise inner producst of the columns:
               $$
               U^TU = \big((A^TA)^{-\tfrac{1}{2}}A^T\big)\big(A(A^TA)^{-\tfrac{1}{2}}\big)
+              $$
+              $$
               = (A^TA)^{-\tfrac{1}{2}}A^TA(A^TA)^{-\tfrac{1}{2}}
+              $$
+              $$
               = (A^TA)^{-\tfrac{1}{2}}(A^TA)^{\tfrac{1}{2}}
+              $$
+              $$
               (A^TA)^{-\tfrac{1}{2}}(A^TA)^{-\tfrac{1}{2}} =I
               $$
 
@@ -93,7 +99,7 @@
               Specifically, \((A^TA)^{\tfrac{1}{2}}\) is actually the coordinates of the columns of
               \(A\) relative to the \(U\) basis since clearly
               $$
-              A = U(A^TA)^{\tfrac{1}{2}} = A(A^TA)^{-\tfrac{1}{2}}(A^TA)^{-\tfrac{1}{2}}
+              A = U(A^TA)^{\tfrac{1}{2}} = A(A^TA)^{-\tfrac{1}{2}}(A^TA)^{\tfrac{1}{2}}
               $$
               If we think of the columns of \(U\) as a new coordinate system than \(A\)
               will be a positive definite symmetric matrix relative to that coordinate system.
@@ -117,7 +123,11 @@
               We note that this construction in some ways can be thought of as the
               heart of projection matrices and pseudoinverses. Rewrite your system
               in orthonormal coordinates for the subspace you care about, project
-              onto that subspace, and then perform all your computations on that subspace
+              onto that subspace, and then perform all your computations on that subspace.
+              In this vein, the projection matrix onto the range of \(A\) is given by
+              $$
+              UU^T = A(A^TA)^{-\tfrac{1}{2}}(A^TA)^{-\tfrac{1}{2}}A^T = A(A^TA)^{-1}A^T
+              $$
               </p>
             </div>
 
