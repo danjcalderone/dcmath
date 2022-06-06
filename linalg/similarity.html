@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+
+
+      <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+      </head>
+
+      <body>
+      <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+      <div w3-include-html="/dcmath/nav/topics.html"></div>
+      <!-- <div w3-include-html="nav/topics.html"></div> -->
+      <div class="wrapper">
+        <div class="sidebar">
+        <div w3-include-html="/dcmath/nav/sidebarLinalg.html"></div>
+        </div>
+        <div class=content>
+
+
+            <div class="txt" style="padding:40px">
+
+
+                  <b> SIMILARITY TRANSFORMATIONS </b>
+                  <b> General Case </b>
+                  <p>
+                  Changing the basis of
+                  the domain and co-domain of a matrix
+                  \(A\) naturally affects the representation of \(A\).  Suppose we have
+                  the matrix equation \(y=Ax\) for \( A \in \mathbb{R}^{m \times n}\)
+                  and we apply the two coordinate transformations \(x = Vx'\) and
+                   \(y = Wy'\) to the domain and co-domain respectively.  A new matrix
+                   \(A' \in \mathbb{R}^{m \times n}\) that performs the same
+                   transformation but between the \(x'\) and \(y'\) coordinates
+                   can be derived simply
+                   $$
+                   y = Ax
+                   \qquad \Rightarrow \qquad
+                   Wy' = AVx'
+                   \qquad \Rightarrow \qquad
+                   y' = W^{-1}AV x'
+                   $$
+                   we then have
+                   $$
+                   A' = W^{-1}AV
+                   $$
+                   Note that this construction is general and works for
+                   and size \(A\) as long as \(V\) and \(W\) are square and invertible
+                   of the appropriate dimensions.  We illustrate the relationship between
+                   the representations of the domain and co-domain and the maps
+                   \(A\) and \(A'\) in the following diagram.
+                 </p>
+                </div>
+                <div class='imgFixed'>
+                <img src="/dcmath/figs/stills/MAT/SIMDIAGGEN.png" width=50%></img>
+                </div>
+                <div class="txt" style="padding:40px">
+                <p>
+                  We note that it is instructive to think explicitly about the action of
+                  \(A'\) in terms of it's components.  The action of \(A'\) on \(x'\)
+                  can be thought of as first transforming \(x'\) back into the \(x\)
+                  coordinates, \(Vx'\); then applying the original map \(A\) to the result
+                  \(AVx'\); and then finally transforming into the \(y'\) coordinates,
+                  \(W^{-1}AVx'\).
+                </p>
+
+
+
+
+                  <div class="txt" style="padding:40px">
+                  <b> Square Case: Similarity Transforms </b>
+                  <p>
+                  Very often the matrix \(A\) is square and we apply the same coordinate
+                  transformation to the domain and co-domain.  In this case (for coordinate
+                  transforms \(x = Vx'\) and \(y = Vy'\)), the above construction becomes
+                  $$
+                  A' = V^{-1}AV
+                  $$
+                  In this case, we say that \(A\) and \(A'\) are similar to each other
+                  and the above equation is called a similarity transform.
+                  We will see later that similarities tranforms preserve eigenvalues and thus
+                  the fundamental internal structure of a linear map.  We reproduce the figure
+                  above since it is commonly seen in linear algebra analysis.
+                  </p>
+                  </div>
+
+                  <div class='imgFixed'>
+                  <img src="/dcmath/figs/stills/MAT/SIMDIAGSQUARE.png" width=50%></img>
+                  </div>
+
+
+                  <div class="txt" style="padding:40px">
+                  <p>
+                  We end with several interactive visualizations that show
+                  the relationship between \(A\) and \(A'\) in a much more explicit sense
+                  given the row and column geometry of the matrices.  Again, to simplify the intution
+                  we first use orthonormal transformations (rotations) for \(V\) and \(W\)
+                  (tho of course this is not required).  We show this visualization for the non-square
+                  and square case.
+                  </p>
+                </div>
+
+                <div class="txt" style="padding:40px">
+                <p>
+                Finally, we show the geometry of the general case when \(V\) and \(W\) are
+                not rotations.
+                </p>
+                </div>
+
+
+                  <!-- <div>
+                  <div class="slideshow-container flips" id='SIMILARITY3' any='16' style="width:80%"></div>
+                  </div> -->
+
+
+
+
+
+
+        </div>
+        </div>
+      <!-- <script type='module' src="./matrixo.js"> </script> -->
+      <script src="/dcmath/src/extra/includeHTML.js"> </script>
+      </body>
+    </html>
