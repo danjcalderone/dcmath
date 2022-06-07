@@ -34,6 +34,7 @@
 
 
       <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+      <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
       </head>
 
       <body>
@@ -183,6 +184,11 @@
                         </p>
                       </div>
 
+                      <div>
+                      <div class="slideshow-container flips" id='MULTIPLYLEFT24' any='16' style="width:80%"></div>
+                      </div>
+
+
 
                       <div class="txt" style="padding:40px">
                       <b> Left Right Multiplying  </b>
@@ -193,6 +199,13 @@
                         as illustrated below.
                         </p>
                       </div>
+
+                      <div>
+                      <div class="slideshow-container flips" id='MULTIPLYRIGHT23' any='16' style="width:80%"></div>
+                      </div>
+
+
+
 
 
                       <div class="txt" style="padding:40px">
@@ -217,5 +230,19 @@
         </div>
       <!-- <script type='module' src="./matrixo.js"> </script> -->
       <script src="/dcmath/src/extra/includeHTML.js"> </script>
+
+      <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+      <script>
+      const slideIndexes ={
+      'MULTIPLYLEFT24':1,
+      'MULTIPLYRIGHT23':1}
+      addSlides('MULTIPLYLEFT24',slideIndexes);
+      showSlides('MULTIPLYLEFT24',slideIndexes['MULTIPLYLEFT24'],slideIndexes);
+      addSlides('MULTIPLYRIGHT23',slideIndexes);
+      showSlides('MULTIPLYRIGHT23',slideIndexes['MULTIPLYRIGHT23'],slideIndexes);
+      </script>
+
+
+
       </body>
     </html>
