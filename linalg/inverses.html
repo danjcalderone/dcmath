@@ -34,6 +34,7 @@
 
 
       <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+      <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>      
       </head>
 
       <body>
@@ -149,8 +150,12 @@
                   and \(P \in \mathbb{R}^{3 \times 3}\) is illustrated in the figures below.
 
                   </p>
+                </div>
+
+                <div class="slideshow-container flips" id='INVERSEANIMATE1' any='23' style="width:60%"></div>
 
 
+                <div class="txt" style="padding:40px">
                   <p>
                   We now pull apart the two equations
                   $$
@@ -169,6 +174,16 @@
                   We give a difficulty score for each to help any new students
                   of linear algebra focus their efforts.
                   <p>
+                  </div>
+
+
+                  <div class="slideshow-container flips" id='INVERSEANIMATE2' any='23' style="width:60%"></div>
+
+
+
+
+
+                  <div class="txt" style="padding:40px">
 
                   <b> Matrix-Column Geometry (Difficult: 1/10)</b>
                   <p>
@@ -190,6 +205,16 @@
                   to the identity by \(P\)".
 
                   </p>
+                </div>
+
+
+
+
+
+
+
+
+                <div class="txt" style="padding:40px">
 
                   <b> Column-Column Geometry (Difficult: 1/10)</b>
 
@@ -226,19 +251,43 @@
                   Thus, \(Q_i\), the \(i\)th column of \(P^{-1}\) is the coordinates of
                   the \(i\)th standard basis vector with respect to the columns of P.
                   We illustrate this in the image below.
+                  <p>
+                  </div>
 
 
 
 
+                  <div class='imgFixed'>
+                  <img src="/dcmath/figs/stills/BASE/AAinv.png" width=80%></img>
+                  </div>
 
+
+
+                  <div class="txt" style="padding:40px">
+
+
+                  <p>
                   Similarly, the columns of \(P\) are the coordinates of the standard basis vectors
                   with respect to \(P^{-1}\).  The fact that the coordinates of \(I\) with
                   respect to the basis \(P\) (ie. \(PP^{-1}=I\)) form basis for which \(P\) are the
                   coordinates of \(I\) is perhaps a deep fact.
-
-
-
                 </p>
+              </div>
+
+
+
+
+              <div class='imgFixed'>
+              <img src="/dcmath/figs/stills/BASE/AinvA.png" width=80%></img>
+              </div>
+
+
+
+
+
+
+
+              <div class="txt" style="padding:40px">
 
                   <b> Row-Matrix and Row-Row Geometry (Difficult: 1/10) </b>
                   <p>
@@ -296,5 +345,26 @@
         </div>
       <!-- <script type='module' src="./matrixo.js"> </script> -->
       <script src="/dcmath/src/extra/includeHTML.js"> </script>
+        <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+<script>
+const slideIndexes ={'INVERSEANIMATE1':1,'INVERSEANIMATE2':1}
+addSlides('INVERSEANIMATE1',slideIndexes);
+showSlides('INVERSEANIMATE1',slideIndexes['INVERSEANIMATE1'],slideIndexes);
+addSlides('INVERSEANIMATE2',slideIndexes);
+showSlides('INVERSEANIMATE2',slideIndexes['INVERSEANIMATE2'],slideIndexes);
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
       </body>
     </html>
