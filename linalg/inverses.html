@@ -34,7 +34,7 @@
 
 
       <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
-      <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>      
+      <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
       </head>
 
       <body>
@@ -153,6 +153,20 @@
                 </div>
 
                 <div class="slideshow-container flips" id='INVERSEANIMATE1' any='23' style="width:60%"></div>
+
+
+                <div class="txt" style="padding:40px">
+                  <p>
+                  We note that if we draw a vector \(x\) as coordinates
+                  with respect to the columns of \(A\), we get \(y=Ax\).
+                  The same action of the matrix inverse moves the vector \(y\) to
+                  \(x\).  We can illustrate this similarly to the visualization above
+                  but with \(x\) and \(y\) drawn also.
+                </p>
+              </div>
+
+
+                <div class="slideshow-container flips" id='INVERSEANIMATE1x' any='14' style="width:60%"></div>
 
 
                 <div class="txt" style="padding:40px">
@@ -347,9 +361,11 @@
       <script src="/dcmath/src/extra/includeHTML.js"> </script>
         <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
 <script>
-const slideIndexes ={'INVERSEANIMATE1':1,'INVERSEANIMATE2':1}
+const slideIndexes ={'INVERSEANIMATE1':1,'INVERSEANIMATE2':1,'INVERSEANIMATE1x':1}
 addSlides('INVERSEANIMATE1',slideIndexes);
 showSlides('INVERSEANIMATE1',slideIndexes['INVERSEANIMATE1'],slideIndexes);
+addSlides('INVERSEANIMATE1x',slideIndexes);
+showSlides('INVERSEANIMATE1x',slideIndexes['INVERSEANIMATE1x'],slideIndexes);
 addSlides('INVERSEANIMATE2',slideIndexes);
 showSlides('INVERSEANIMATE2',slideIndexes['INVERSEANIMATE2'],slideIndexes);
 
