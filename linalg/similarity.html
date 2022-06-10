@@ -34,6 +34,7 @@
 
 
       <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+      <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
       </head>
 
       <body>
@@ -83,7 +84,7 @@
                 </div>
 
                 <div class='imgFixed'>
-                <img src="/dcmath/figs/stills/MAT/SIMDIAGGEN.png" width=50%></img>
+                <img src="/dcmath/figs/stills/BASE/SIMILARITYGEN.png" width=50%></img>
                 </div>
 
                 <div class="txt" style="padding:40px">
@@ -97,6 +98,7 @@
                 </p>
                 </div>
 
+                <div class="slideshow-container flips" id='SIMILARITYEXPLAIN' any='14' style="width:60%"></div>
 
 
                   <div class="txt" style="padding:40px">
@@ -117,7 +119,7 @@
                   </div>
 
                   <div class='imgFixed'>
-                  <img src="/dcmath/figs/stills/MAT/SIMDIAGSQUARE.png" width=50%></img>
+                  <img src="/dcmath/figs/stills/BASE/SIMILARITYSQUARE.png" width=40%></img>
                   </div>
 
 
@@ -131,6 +133,13 @@
                   and square case.
                   </p>
                 </div>
+
+
+                <div class='imgFixed'>
+                <img src="/dcmath/figs/stills/BASE/SIMILARITYGEOM.png" width=70%></img>
+                </div>
+
+
 
                 <div class="txt" style="padding:40px">
                 <p>
@@ -153,5 +162,24 @@
         </div>
       <!-- <script type='module' src="./matrixo.js"> </script> -->
       <script src="/dcmath/src/extra/includeHTML.js"> </script>
+
+
+
+
+
+
+
+
+      <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+      <script>
+const slideIndexes ={'SIMILARITYEXPLAIN':4}
+addSlides('SIMILARITYEXPLAIN',slideIndexes);
+showSlides('SIMILARITYEXPLAIN',slideIndexes['SIMILARITYEXPLAIN'],slideIndexes);
+</script>
+
+
+
+
+
       </body>
     </html>
