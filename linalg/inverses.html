@@ -86,10 +86,22 @@
                   $$
                   Px' = PP^{-1}x \quad \Rightarrow \quad x = Px'
                   $$
+                  If we represent a vector \(x\) in terms of two different bases other than the
+                  standard basis (let's say \(P\) and \(Q\)), then we can get two alternate set of coordinates
+                  (\(x'\) and \(x''\)) such that \(x = Px'\) and \(x = Qx''\).  The relationship between \(x'\)
+                  and \(x''\) can the be computed by using the equation
+                  $$
+                  Px' = x = Qx'' \qquad \Rightarrow \qquad x' = P^{-1}Qx'' \quad and \quad x'' = Q^{-1}Px'
+                  $$
+                  While perhaps pedantic, writing this out explicitly is worth doing since it is
+                  a very common construction used in practice.  We often want to define two arbitrary coordinate
+                  systems \(P\) and \(Q\) in the same space and then convert in between them.
                   </p>
 
 
 
+
+                  <b> Side Note: Left and Right Inverses </b>
                   <p>
                   Side note: It is also possible to have situations where we can only find a \(P^{-1}\)
                   to satisfy either only \(P^{-1}P=I\) or \(PP^{-1} = I\) but not the other.
@@ -112,22 +124,10 @@
                   first.
                   </p>
 
-                  <p>
-                  Side note: if we represent a vector \(x\) in terms of two different bases other than the
-                  standard basis (let's say \(P\) and \(Q\)), then we can get two alternate set of coordinates
-                  (\(x'\) and \(x''\)) such that \(x = Px'\) and \(x = Qx''\).  The relationship between \(x'\)
-                  and \(x''\) can the be computed by using the equation
-                  $$
-                  Px' = x = Qx'' \qquad \Rightarrow \qquad x' = P^{-1}Qx'' \quad and \quad x'' = Q^{-1}Px'
-                  $$
-                  While perhaps pedantic, writing this out explicitly is worth doing since it is
-                  a very common construction used in practice.  We often want to define two arbitrary coordinate
-                  systems \(P\) and \(Q\) in the same space and then convert in between them.
-                  </p>
 
 
 
-                  <b> Intuition </b>
+                  <b> Inverse Intuition </b>
                   <p>
                   We first start by giving an intuitive picture of the action of matrix
                   \(P^{-1}\).  The equation \(x = Px'\) tells us that
