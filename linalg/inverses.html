@@ -87,18 +87,44 @@
                   $$
                   </p>
 
+
+
                   <p>
                   Side note: It is also possible to have situations where we can only find a \(P^{-1}\)
                   to satisfy either only \(P^{-1}P=I\) or \(PP^{-1} = I\) but not the other.
                   If there exists
-                  \(P^{-1}\) such that \(P^{-1}P = I\) we say that \(P\) is left-invertible and
-                  \(P^{-1}\) is the left inverse.
-                  If there exists \(P^{-1}\) such that \(PP^{-1} = I\) we say that \(P\) is right-invertible and
-                  \(P^{-1}\) is the right inverse.  We will cover the situations where \(P\) is only right or left-invertible
-                  later (since they are significantly more complicated). For now we will simply note that
+                  \(P^{\ell}\) such that \(P^{\ell}P = I\) we say that \(P\) is left-invertible and
+                  \(P^{\ell}\) is the left inverse.
+                  If there exists \(P^{r}\) such that \(PP^{r} = I\) we say that \(P\) is right-invertible and
+                  \(P^{r}\) is the right inverse.  We will cover the situations where \(P\) is only right or left-invertible
+                  later (since they are significantly more complicated - \(P\) need not even be square,etc).
+                  For now we will simply note that
                   if both a right and left-inverse exist for a matrix \(P\) then
-                  they are the same matrix \(P^{-1}\).
+                  they are the same matrix \(P^{\ell} = P^{r} = P^{-1}\). This fact comes from
+                  considering the product \(P^\ell P P^r\) using the (very basic) associative
+                  property of matrix multiplication.
+                  $$
+                  \(P^{\ell} = P^\ell P P^r = P^{r}\)
+                  $$
+                  The first equality comes from considering the \(P \cdot P^r\) in the
+                  center expression first; the second equality comes from considering \(P^\ell \cdot P\)
+                  first.
                   </p>
+
+                  <p>
+                  Side note: if we represent a vector \(x\) in terms of two different bases other than the
+                  standard basis (let's say \(P\) and \(Q\)), then we can get two alternate set of coordinates
+                  (\(x'\) and \(x''\)) such that \(x = Px'\) and \(x = Qx''\).  The relationship between \(x'\)
+                  and \(x''\) can the be computed by using the equation
+                  $$
+                  Px' = x = Qx'' \qquad \Rightarrow \qquad x' = P^{-1}Qx'' \quad and \quad x'' = Q^{-1}Px'
+                  $$
+                  While perhaps pedantic, writing this out explicitly is worth doing since it is
+                  a very common construction used in practice.  We often want to define two arbitrary coordinate
+                  systems \(P\) and \(Q\) in the same space and then convert in between them.
+
+                  </p>
+
 
                   <p>
                   We first start by giving an intuitive picture of the action of matrix
