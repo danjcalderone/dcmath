@@ -114,49 +114,55 @@
 
       Up to a point, we can use this to visualize the action of a matrix by thinking loosely of
       each element of the product \(Ax\) as the projection of \(x\) onto that row.
-      This is most diretly accurate if the rows of \(A\) each have unit norm as visualized in the
-      image below.
-    </p>
-  </div>
-
-      <p>
-        If the rows don't have unit norm, this visualization idea is best applied when \(x\)
-        is confined to the unit ball, ie. when we simply think about the direction of \(x\).
+      This projection is best applied when \(x\)
+        is confined to the unit ball, ie. when we think about \(x\) as a pure direction.
         The output element in the co-domain for a unit direction \(x\) is then given by
-        projecting each row onto \(x\) as visualized below.
+        projecting each row onto \(x\) as visualized below.  Note that the longer the
+        rows the increase in length in the output coordinate in the co-domain. We can
+        extend this construction by then scaling each element of the resulting vector
+        by the length of \(x\).  This visualization method is not as clean as the
+        column generation method since it suffers from sum of the difficulties of
+        visualizating inner products in general when either of the vectors are not unit
+        vectors.
+
       </p>
+    </div>
 
-
-
-
-
-      </p>
-
+    <div class="txt" style="padding:40px">
       <p>
+        A perhaps more insightful way to visualize row geometry is to think of
+        directions that are orthogonal to a particular row.  A column (drawn in
+        the co-domain) clearly defines where a standard basis vector in the domain
+        maps to (both in terms of direction and length).
+        A row (drawn in the domain) most clearly defines an
+        \(n-1\) dimensional subspace that is the preimage of the plane
+        where that particular coordinate is 0 in the co-domain (or 0-plane).
+        Note that this is purely based on the direction of the row.
+        The length of the row gives the size of that particular output coordinate
+        but in a slightly more subtle way (to be discussed).
+        To see the pre-image of a particular axis in the co-domain
+        we have to visualize the intersection of the 0-planes associated with all
+        the other rows.  This shows us the pre-image of the axis direction.
+        (Length of vectors in this preimage are a little more subtle.)
+        A unit vector in this direction (in the domain) is mapped to a vector
+        (on the axis in the co-domain) with a length given by the projection of
+        of the row onto that unit vector.  All of this is visualized in the image below.
+      </p>
+
+    </div>
 
 
+                <!-- By squinting our eyes even more, we can now extend this visualization to general \(x\).
+        No matter the size of \(x\), we first project the rows of \(A\) onto the
+        direction of \(x\) to get the general shape of the output vector \(y\).
+        Since we've ignored the length of \(x\) what we are actually visualizing
+        is \(y/\vert| v\vert|_2\).  We can then scale this result by \(\vert|x\vert|_2\)
+        to get the actual value of \(y\).  Note that this is the same stretching for each
+        element so it is not difficult to visualize.
+        This method suffers from some of the same pathologies as visualizing
+        inner products in general but in some cases the ideas can be servicable. -->
 
 
-      some ways the row geometry of a matrix is more subtle.  The column geometry
-
-       the
-      are mapped u
-
-        We note that for this discussio n
-
-        Depending on the situationboth can be useful for visualizia
-
-        We can visualize the action of a matrix (ie. a linear transformation)
-        from many angles.  Two basic angles are to visualize the columns of
-        the matrix and the rows of a matrix.  of the most basic are to visualize the geometry
-        of the columns of the matrix and
-
-
-        (insert description)  </p>
-
-
-
-      </div>
 
       </div>
       </div>
