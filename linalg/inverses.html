@@ -51,7 +51,8 @@
             <div class="txt" style="padding:40px">
 
                   <b> INVERSES </b>
-
+                  <p> </p>
+                  <b> Basics </b>
                   <p>
                   We say \(P\) is invertible if there is a unique \(x'\) that
                   solves \(x=Px'\) for any \(x \in \mathbb{R}^n \), ie. if the columns of \(P\)
@@ -122,10 +123,11 @@
                   While perhaps pedantic, writing this out explicitly is worth doing since it is
                   a very common construction used in practice.  We often want to define two arbitrary coordinate
                   systems \(P\) and \(Q\) in the same space and then convert in between them.
-
                   </p>
 
 
+
+                  <b> Intuition </b>
                   <p>
                   We first start by giving an intuitive picture of the action of matrix
                   \(P^{-1}\).  The equation \(x = Px'\) tells us that
@@ -154,13 +156,13 @@
                   P^{-1}
                   \begin{bmatrix}
                   | & & | \\
-                  P_1 & \cdots & | P_n \\
+                  P_1 & \cdots &  P_n \\
                   | & & |
                   \end{bmatrix} x'
                   =
                   \begin{bmatrix}
                   | & & | \\
-                  PP_1 & \cdots & | PP_n \\
+                  P^{-1}P_1 & \cdots &  P^{-1}P_n \\
                   | & & |
                   \end{bmatrix}
                   =
