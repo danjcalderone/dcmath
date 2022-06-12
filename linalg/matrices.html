@@ -120,22 +120,6 @@
                 \(A\) based on the columns of \(A\).
               </p>
 
-            </div>
-
-
-                <div class='img' style="padding:0px" id="vector-container">
-                  <div class="eqn" id="y_vec" ></div>
-                  <div class="eqn" id="A_vec" ></div>
-                  <div class="eqn" id="x_vec" ></div>
-                  <div class="eqn" id="Amaps_vec" ></div>
-                  <div class="eqn" id="label2_vec" ></div>
-                  <div class="eqn" id="warning2_vec" ></div>
-                  <div class="eqn" id="usedigits_vec" ></div>
-                  <canvas class='CANVAS' id='vector'></canvas>
-                </div>
-
-
-                <div class="txt" style="padding:40px">
 
                 <b> Matrix Mechanics: Multiplication and Addition </b>
                 <p>
@@ -213,6 +197,16 @@
                 \(A\) and \(B\) must match, ie. to multiply \(A \in \mathbb{R}^{m \times n}\)
                 and \(B \in \mathbb{R}^{o \times p}\) we must have \( n = o \).
               </p>
+              <p>
+                Note above we have assumed each element \(A_{ij}\) and \(B_{jk}\) are individual
+                scalars.  However, this form can make sense as well when
+                \(A_{ij}\) and \(B_{jk}\)are each submatrices.  This is VERY important practically
+                for doing matrix algebra and is expounded in much more detail in the section
+                on block matrix structures.  For now, we note that to use this block matrix
+                form, each subblock \(A_{ij}\) must have the same number of columns as \(B_{jk}\)
+                has rows and the resulting terms in the product will be made up of subblocks as well.
+
+              </p>
                 <p>
                 Matrix multiplication by scalars is done the same as vectors; each element is scaled by the scalar.
               </p>
@@ -225,7 +219,7 @@
 
               <div class="txt" style="padding:40px">
 
-              <b> Matrix Visualization </b>
+              <b> Matrix Visualization (Difficulty: 4/10) </b>
               <p>
               There are several options for visualizing elements of a matrix.
               </p>
@@ -237,6 +231,21 @@
               <div class='imgFixed'>
               <img src="/dcmath/figs/stills/MAT/MATRIXREP.png" width=95%></img>
               </div>
+
+
+
+
+                <div class='img' style="padding:0px" id="vector-container">
+                  <div class="eqn" id="y_vec" ></div>
+                  <div class="eqn" id="A_vec" ></div>
+                  <div class="eqn" id="x_vec" ></div>
+                  <div class="eqn" id="Amaps_vec" ></div>
+                  <div class="eqn" id="label2_vec" ></div>
+                  <div class="eqn" id="warning2_vec" ></div>
+                  <div class="eqn" id="usedigits_vec" ></div>
+                  <canvas class='CANVAS' id='vector'></canvas>
+                </div>
+
 
 
 
