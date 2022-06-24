@@ -283,11 +283,19 @@
           </div>
 
 
+          <div class="txt" style="padding:40px">
+          <p>
+          Note that for the \(P\)-inner product, orthogonality, ie. \(y^TPx= 0\), does
+          not imply that the angle between the two vectors is \(90^o\).  Graphically,
+          orthogonality is better understood as one vector being parallel
+          to a tangent vector where the other vector crosses the unit ball.
+          This is illustrated below and discussed more in the section on orthogonality.
+          </p>
+          </div>
 
 
 
-
-
+          <div class="slideshow-container flips" id='INNERPROD_ORTHO' any='9' style="width:90%"></div>
 
 
 
@@ -303,11 +311,13 @@
 
     <script>
     // const slideIndexes ={'SCALARMULT':1, 'DOTPRODLEN':1, 'DOTPRODANGLE':1}
-    const slideIndexes ={'INNERPRODX':1, 'INNERPRODY':1}
+    const slideIndexes ={'INNERPRODX':1, 'INNERPRODY':1,'INNERPROD_ORTHO':1}
     addSlides('INNERPRODX',slideIndexes);
     showSlides('INNERPRODX',slideIndexes['INNERPRODX'],slideIndexes);
     addSlides('INNERPRODY',slideIndexes);
     showSlides('INNERPRODY',slideIndexes['INNERPRODY'],slideIndexes);
+    addSlides('INNERPROD_ORTHO',slideIndexes);
+    showSlides('INNERPROD_ORTHO',slideIndexes['INNERPROD_ORTHO'],slideIndexes);
 
     // addSlides('SCALARMULT',slideIndexes);
     // showSlides('SCALARMULT',slideIndexes['SCALARMULT'],slideIndexes);
