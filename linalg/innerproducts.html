@@ -153,7 +153,11 @@
               </p>
 
           </div>
-          <div class="slideshow-container flips" id='SCALARMULT' any='9' style="width:80%"></div>
+          <!-- <div class="slideshow-container flips" id='SCALARMULT' any='9' style="width:80%"></div> -->
+          <div class='imgFixed'>
+          <img src="/dcmath/figs/stills/VEC/INNER_SCALARMULT.png" width=80%></img>
+          </div>
+
 
           <div class="txt" style="padding:40px">
           <b> Visualizing Inner Products </b>
@@ -173,7 +177,11 @@
 
         </div>
 
-          <div class="slideshow-container flips" id='DOTPRODLEN' any='7' style="width:40%"></div>
+          <!-- <div class="slideshow-container flips" id='DOTPRODLEN' any='7' style="width:40%"></div> -->
+          <div class='imgFixed'>
+          <img src="/dcmath/figs/stills/VEC/INNER_SCALARMULT.png" width=80%></img>
+          </div>
+
 
         <div class="txt" style="padding:40px">
 
@@ -184,8 +192,15 @@
 
       </div>
 
+      <div class='imgFixed'>
+      <img src="/dcmath/figs/stills/VEC/INNER_DIAG.png" width=80%></img>
+      </div>
 
-          <div class="slideshow-container flips" id='DOTPRODANGLE' any='9' style="width:40%"></div>
+      <div class='imgFixed'>
+      <img src="/dcmath/figs/stills/VEC/INNERXFIXED.png" width=80%></img>
+      </div>
+
+          <!-- <div class="slideshow-container flips" id='DOTPRODANGLE' any='9' style="width:40%"></div> -->
 
 
           <div class="txt" style="padding:40px">
@@ -203,6 +218,8 @@
           </p>
           </div>
 
+          <div class="slideshow-container flips" id='INNERPRODX' any='9' style="width:60%"></div>
+          <div class="slideshow-container flips" id='INNERPRODY' any='9' style="width:60%"></div>
 
 
           <div class="txt" style="padding:40px">
@@ -282,13 +299,19 @@
     <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
 
     <script>
-    const slideIndexes ={'SCALARMULT':1, 'DOTPRODLEN':1, 'DOTPRODANGLE':1}
-    addSlides('SCALARMULT',slideIndexes);
-    showSlides('SCALARMULT',slideIndexes['SCALARMULT'],slideIndexes);
-    addSlides('DOTPRODLEN',slideIndexes);
-    showSlides('DOTPRODLEN',slideIndexes['DOTPRODLEN'],slideIndexes);
-    addSlides('DOTPRODANGLE',slideIndexes);
-    showSlides('DOTPRODANGLE',slideIndexes['DOTPRODANGLE'],slideIndexes);
+    // const slideIndexes ={'SCALARMULT':1, 'DOTPRODLEN':1, 'DOTPRODANGLE':1}
+    const slideIndexes ={'INNERPRODX':1, 'INNERPRODY':1}
+    addSlides('INNERPRODX',slideIndexes);
+    showSlides('INNERPRODX',slideIndexes['INNERPRODX'],slideIndexes);
+    addSlides('INNERPRODY',slideIndexes);
+    showSlides('INNERPRODY',slideIndexes['INNERPRODY'],slideIndexes);
+
+    // addSlides('SCALARMULT',slideIndexes);
+    // showSlides('SCALARMULT',slideIndexes['SCALARMULT'],slideIndexes);
+    // addSlides('DOTPRODLEN',slideIndexes);
+    // showSlides('DOTPRODLEN',slideIndexes['DOTPRODLEN'],slideIndexes);
+    // addSlides('DOTPRODANGLE',slideIndexes);
+    // showSlides('DOTPRODANGLE',slideIndexes['DOTPRODANGLE'],slideIndexes);
 
     </script>
 
