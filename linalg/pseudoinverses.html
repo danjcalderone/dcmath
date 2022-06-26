@@ -77,12 +77,12 @@
 
                   <b> Additive Characterization </b>
                   <p>
-                  Right inverses are not (in general) unique.  Given one right inverse $A^r'$
+                  Right inverses are not (in general) unique.  Given one right inverse \((A^r)'\)
                   then we can construct a new right inverse \(A^r\)
                   by adding elements in the nullspace of \(A\) to each column
-                   of \(A^r'\).  Compactly we can write this as
+                   of \((A^r)'\).  Compactly we can write this as
                   $$
-                  A^r = A^r' + NZ
+                  A^r = (A^r)' + NZ
                   $$
                   where \(N \in \mathbb{R}^{n \times (n-m)}\) is a basis for the nullspace of \(A\)
                   and the columns of \(Z \in \mathbb{R}^{(n-m)\times m}\) give the coordinates
@@ -136,7 +136,7 @@
                   A^r = M(AM)^{-1} + NVU^{-1}(AM)^{-1}
                   $$
                   which is the additive characterization with \(Z = VU^{-1}(AM)^{-1}\)
-                  and the specific right inverse \(A^r' = M(AM)^{-1}\)
+                  and the specific right inverse \((A^r)' = M(AM)^{-1}\)
                   </p>
                   <p>
                   We note that \(M(AM)^{-1}\) is actually a more
@@ -147,7 +147,7 @@
                   M(AM)^{-1} = A^TW^{-1}(AA^TW^{-1})^{-1} = A^TW^{-1}W(AA^T)^{-1} = A^T(AA^T)^{-1}
                   $$
                   so the specific solution can always just be written as
-                  \(A^r' = A^T(AA^T)^{-1}\) (though the component in the nullspace
+                  \((A^r)' = A^T(AA^T)^{-1}\) (though the component in the nullspace
                   \(
                   NZ = NVU^{-1}(AM)^{-1}
                   \)
