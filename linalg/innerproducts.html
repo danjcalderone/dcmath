@@ -172,43 +172,51 @@
           <div class="txt" style="padding:40px">
           <b> Visualizing Inner Products </b>
 
+          <p>
+            Unlike scalars, vectors contain both the notion of length and direction.
+            If a scalar has some notion of direction it is simply a binary value \(\pm 1\),
+            ie. is the number positive or negative.  This "direction" determines whether
+            or not multiplying by this number flips the direction of another number.
+            Inner products can be thought of as expanding this binary value of \( \pm 1\)
+            to a full \(360^o\) of relative orientation.  Rather than simply
+            flipping the sign of the vector product based on the directions of the vectors,
+            inner product compares their relative direction and then multiplies by a
+            number in the interval \([-1,1]\) given by \(\cos(\theta)\)
+
+          </p>
+
 
           <p>
-          The above intuition for scalar multiplication carries over to inner products
-          with an adjustement to account for the possibily directions of the two vectors.
-          A unit step for \(y\) now includes a direction as well as a length.
+          To adjust the visualization of scalar multiplication above to apply to
+          inner products we first note that a unit step for \(y\)
+          now includes a direction as well as a length.
           When taking the inner product rather than redefining the unit vector
           in the \(y\) direction as \(x\), we can find the vector in the \(y\)
-          direction that would project to the unit vector in the \(x\) direction
-          and redefine that vector as \(x\).  This is visualized in the
-          diagram below.  Here we find the vector \(v\) (in the \(y\)-direction)
-          that would project to a unit vector in the \(x\)-direction and drag that
-          vector to \(x\).  If we let, \(y\) get stetched in the same way,
+          direction, \(v\), that would project to the unit vector in the \(x\) direction
+          and redefine that vector as \(x\).
+          If we let, \(y\) get stetched in the same way,
           the resulting length of the stretched \(y\) will be \(y^Tx\).
-          If \(x\) and \(y\) point in the same
-          direction, this is the same as the scalar case but the more they
-          point in different directions the larger the vector \(v\) gets.  For  large
-          \(v\) the action of stretching \(v\) to \(x\) actually ends up shrinking
-          \(y\) and so \(y^Tx\) becomes small.  Note also that if \(x\) is just a unit vector
-          this operation ends up just projecting \(y\) down onto the direction of \(x\).
+          This is visualized in the
+          diagram below.  Note that when we move \(v\) to \(x\), \(y\) moves
+          along a parallel line.
+
           </p>
 
           <p>
-          The algebra of this visualization is the following.  \(v\) is the vector in the
-          \(y\)-direction such that
-          \(v^T\tfrac{x}{\lVert x\rVert_2} = 1\).  Since \(v\) and \(y\) point in the
-          same direction, we can define \(y = \beta v\), ie. \(y\) is just a scaled
-          version of \(v\).   We then get that
-          $$
-          y^Tx = \beta  v^T \tfrac{x}{\lVert x \rVert_2} \lVert x \rVert_2  = \beta \lVert x\rVert_2
-          $$
-          ie. the same scaling that scales \(v\) to \(y\) also scales \(x\) to a vector
-          with length \(y^Tx\).  The geometric interpretation above is this applied visualized
-          using similar triangles.
+          The vector \(v\) can be thought of as
+          how far we have to go in the \(y\)-direction to get to one unit in the \(x\)
+          direction.
+
+          If \(x\) and \(y\) point in the same
+          direction, then \(v\) just has length one (and this picture reduces to the scalar picture)
+          but the more \(x\) and \(y\)
+          point in different directions the larger the vector \(v\) gets, ie.
+          the farther you have to go in the \(y\) direction to move one unit
+          in the \(x\) direction.   For  large
+          \(v\) the action of stretching \(v\) to \(x\) actually ends up shrinking
+          \(y\) and so \(y^Tx\) becomes small. (The diagrams below are dense
+          and worth considering slowly.)
           </p>
-
-
-
 
         </div>
 
@@ -229,21 +237,42 @@
           <!-- <div class="slideshow-container flips" id='DOTPRODANGLE' any='9' style="width:40%"></div> -->
 
 
+
+
+
           <div class="txt" style="padding:40px">
           <p>
-            As was noted above, unlike scalars, vectors contain both the notion of length and direction.
-            If a scalar has some notion of direction it is simply a binary value \(\pm 1\),
-            ie. is the number positive or negative.  This "direction" determines whether
-            or not multiplying by this number flips the direction of another number.
-            Inner products can be thought of as expanding this binary value of \( \pm 1\)
-            to a full \(360^o\) of relative orientation.  Rather than simply
-            flipping the sign of the vector product based on the directions of the vectors,
-            inner product compares their relative direction and then multiplies by a
-            number in the interval \([-1,1]\) given by \(\cos(\theta)\)
-
+          Several other special cases are worthy of note. If \(x\) is just a unit vector
+          this operation ends up just giving the length of \(y\) projected onto
+          the direction of \(x\).  This idea of projection is at the heart of the difference
+          between inner products and scalar products.  Scalar products just scale
+          the magnitude of the thing they multiply; inner products both scale and project
+          the things they multiply.  Another special case is when \(y\) and \(x\)
+          are perpendicular.  Here the visualization above reaches a limiting case
+          where the vector \(v\) shoots off to infinite.  Dragging \(v\) to \(x\) then
+          shrinks \(y\) to 0.  Intuitively since \(y\) does not point in the direction of \(x\)
+          at all, we have to go out to infinite to move one unit in the \(x\) direction.
           </p>
-          </div>
 
+          <p>
+          The algebra of this visualization is the following.  \(v\) is the vector in the
+          \(y\)-direction such that
+          \(v^T\tfrac{x}{\lVert x\rVert_2} = \lVert v\rVert|_2 \cos \theta = 1\).
+          Since \(v\) and \(y\) point in the
+          same direction, we can define \(y = \beta v\), ie. \(y\) is just a scaled
+          version of \(v\).   We then get that
+          $$
+          y^Tx = \beta  v^T \tfrac{x}{\lVert x \rVert_2} \lVert x \rVert_2  = \beta \lVert x\rVert_2
+          $$
+          ie. the same scaling (\(\beta\)) that scales \(v\) to \(y\) also scales \(x\) to a vector
+          with length \(y^Tx\).  The geometric interpretation above is just this visualized
+          using similar triangles.
+          </p>
+
+
+
+
+        </div>
 
 
 
@@ -311,7 +340,26 @@
           Rather than a uniform, spherical geometry, this inner product induces an ellipsoidal geometry.
           One interpretation of this inner product is that each vector \(x\) and \(y\) is transformed (stretched) using the coordinate
           transfromations \(x' = P^{\tfrac{1}{2}}x\) and \(y'=P^{\tfrac{1}{2}}y\)
-          before the regular Euclidean inner product is applied.
+          before the regular Euclidean inner product is applied.  The unit ball
+          \(x^TPx = 1\) is ellipsoidal rather than spherical in the \(x\)-coordinates
+          (but it is spherical in the \(x'\)-coordinates).
+          A projection in this ellipsoidal geometry does not follow perpendicular lines
+          but rather lines tangent to the unit ball.  Since the ellipsoid
+          changes based on direction, the directions of projection change with direction
+          as well.
+          The visualization of the inner product given above is similar but now
+          the unit vector in the \(x\)-direction is shown by the ellisoid and
+          \(v\) is the intersection of the \(y\)-direction and the tangent
+          space to the ellipsoid where \(x\) crosses it.  This new geometry is illustrated
+          in the diagram below.
+
+
+
+
+
+
+
+
 
           </p>
 
@@ -330,6 +378,8 @@
 
           <div class="txt" style="padding:40px">
           <p>
+
+
           Note that for the \(P\)-inner product, orthogonality, ie. \(y^TPx= 0\), does
           not imply that the angle between the two vectors is \(90^o\).  Graphically,
           orthogonality is better understood as one vector being parallel
