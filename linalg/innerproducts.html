@@ -79,8 +79,8 @@
                     The expression \(y^Tx\) uses matrix multiplication notation;
                     \(y^T\) is a row vector and \(x\) as a column vector.
                     (This expression is perhaps the most clean and useful algebraically.)
-                    The final expression \(\lVert x \rVert_2 \cos(\theta)\) is the geometric
-                    definition of an inner productthat we will consider more below.
+                    The final expression \(\lVert y \rVert \lVert x \rVert_2 \cos(\theta)\)
+                    is the geometric definition of an inner product that we will consider more below.
                     \(\lVert y \rVert_2\) and \(\lVert x \rVert_2\) are the magnitudes of
                     \(x\) and \(y\) and \(\theta\) is the angle between the two vectors.
 
@@ -91,7 +91,7 @@
 
                 <p>
                   The geometry of the inner product can be seen by considering
-                  the law of cosines (an extension of the pythagorean theorem)
+                  the law of cosines (an extension of the Pythagorean theorem)
                   detailed in the image below.
                 </p>
               </div>
@@ -104,6 +104,10 @@
 
                 <div class="txt" style="padding:40px">
                 <p>
+                  Note that the law of cosines is an extension of the Pythagorean
+                  theorem in that it gives a correction term for when \(\theta \neq \pi/2\).
+                  This correction term is closely related to the inner product between
+                  the vectors that form the sides of the triangle.
                   Consider the norm (squared) of the vector difference \(x-y\)
                   $$
                   (x-y)^T(x-y) = x^Tx + y^Ty - 2y^Tx
@@ -140,15 +144,21 @@
               <p>
               To better visualize the geometry of the inner product, we first
               consider scalar multiplication of two real numbers in the following way.
-              For the product of any two real numbers \(x,y \in \mathbb{R}\), \(xy\),
-              if we think of \(x\) as fixed, the value of \(y\) determines
-              how much \(x\) is stretched along the number line to get to \(xy\).
-              If \(y\) is greater than 1, \(x\) gets stretched away from the origin;
-              if \(y\) is less than one then \(x\) gets shrunk toward the origin.
-              If the sign of \(y\) is negative then \(xy\) also gets flipped to
-              the otherside of the numberline from \(x\).
-              The value \(y=1\) is special in that it leaves \(x\) unchanged and \(y=-1\)
-              leaves the magnitude of \(x\) unchanged but just flips
+              For the product of any two real numbers \(x,y \in \mathbb{R}\),
+              we can think of \(x\) as a step-size and \(y\) as how many steps we take
+              (not necessarily an integer).  On a number line,
+              We can think of this as re-defining a unit for \(y\) as \(x\).
+              Visually this is equivalent to dragging the value of 1 on the \(y\)
+              number line to the value of \(x\) and allowing \(y\) to be stretched as well.
+
+              As 1 goes to \(x\), \(y\) will go to \(xy\).
+
+              If \(x\) is greater than 1, \(y\) gets stretched away from the origin;
+              if \(x\) is less than one then \(y\) gets shrunk toward the origin.
+              If the sign of \(x\) is negative then \(y\) also gets flipped to
+              the otherside of the numberline.
+              The value \(x=1\) is special in that it leaves \(y\) unchanged and \(x=-1\)
+              leaves the magnitude of \(y\) unchanged but just flips
               the side of the numberline.  We can illustrate this property in the figure below.
               </p>
 
