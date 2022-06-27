@@ -33,6 +33,7 @@
 
 
     <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+    <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
     </head>
 
     <body>
@@ -70,6 +71,25 @@
                           | &  & | \\
                           \end{bmatrix}
                           $$
+                          We can illustrate this using axes geometry or parallel geometry.
+
+                        </p>
+                      </div>
+
+
+                      <div>
+                      <div class="slideshow-container flips" id='MATRIXADD' any='5' style="width:80%"></div>
+                      </div>
+
+
+
+
+
+
+                        <div class="txt" style="padding:40px">
+
+                              <b> MATRIX SUBTRACTION </b>
+                              <p>
 
                           Matrix subtraction is just matrix addition where the second matrix
                           is negated.  If we allow the columns (or rows) to "float" as opposed
@@ -81,11 +101,30 @@
 
                         </div>
 
-
-
       </div>
       </div>
     <!-- <script type='module' src="./matrixo.js"> </script> -->
     <script src="/dcmath/src/extra/includeHTML.js"> </script>
+
+
+            <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+            <script>
+            const slideIndexes ={'MULTIPLYADD':1}
+            addSlides('MATRIXADD',slideIndexes);
+            showSlides('MATRIXADD',slideIndexes['MATRIXADD'],slideIndexes);
+            </script>
+
+
+          </body>
+        </html>
+
+
+
+
+
+
+
+
+
     </body>
   </html>
