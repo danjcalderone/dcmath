@@ -1,0 +1,270 @@
+<!-- asdfasdfasdfasdfaasdfasdfsasasdfadaasdfadsffdfdasdffasdfasdfasdasdaasdffdfasfasdf -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+  <!-- <script src="https://cdnjs.com/libraries/pdf.js"> </script> -->
+  <!-- <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script> -->
+  <link rel="stylesheet" href="./css/flip.css" ></link>
+  <link rel="stylesheet" href="./css/main.css" ></link>
+
+  </head>
+
+
+  <body>
+  <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+  <!-- <div w3-include-html="nav/topics.html"></div> -->
+
+
+  <div w3-include-html="/dcmath/nav/topics.html"></div>
+  <div class="wrapper">
+
+
+
+
+    <div class="sidebar">
+    <div w3-include-html="/dcmath/nav/sidebarMAIN.html"></div>
+    </div>
+    <div class=content>
+      <p> testing status <p>
+
+      <div class="slideshow-container flips" id='EVECS2X2' any='10'></div>
+      <div class="slideshow-container flips" id='KALMAN1024' any='9'></div>
+      <!-- Slideshow container -->
+
+
+
+
+      <!-- <div class="slideshow-container">
+        <div class="mySlides fade specific1">
+          <div class="numbertext">1 / 3</div>
+          <img src="./img1.png" style="width:100%">
+          <div class="text">Caption Text</div>
+        </div>
+        <div class="mySlides fade specific1">
+          <div class="numbertext">2 / 3</div>
+          <img src="./img2.png" style="width:100%">
+          <div class="text">Caption Two</div>
+        </div>
+        <div class="mySlides fade specific1">
+          <div class="numbertext">3 / 3</div>
+          <img src="./img3.png" style="width:100%">
+          <div class="text">Caption Three</div>
+        </div> -->
+
+        <!-- Next and previous buttons -->
+        <!-- <a class="prev" onclick="plusSlides('specific1',-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides('specific1',1)">&#10095;</a>
+      </div> -->
+      <!-- <br> -->
+
+      <!-- The dots/circles -->
+
+      <!-- <iframe
+      src='KALMAN.pdf#page=9&zoom=FitH'
+      width='100%'
+      >
+    </iframe> -->
+
+<!-- <iframe src="KALMAN.pdf#toolbar=0&navpanes=0&scrollbar=0&statusbar=0&messages=0&scrollbar=0"
+width="100%"
+height="100%">
+</iframe> -->
+
+
+      <!-- <button id="selectText">Copy Text</button> -->
+
+      <!-- <object data='KALMAN.pdf#controls=0' width='100%' height='100%' >
+
+      </object> -->
+
+        <div class=header > Highlighted Visualization </div>
+
+        <!-- <div class='img' style="padding:0px" id="hypershape-container">
+        <canvas class='CANVAS' id='hypershape' ></canvas>
+      </div>
+    </div> -->
+    <!-- <div class='pdfview'>
+    <iframe src='./KALMAN.pdf#page=2'
+            width='100%'
+            height='100%'>
+    </iframe>
+    </div> -->
+    <!-- <div class='pdfview'>
+    <object data='./KALMAN.pdf#page=2'
+    width='100%'
+    height='100%'>
+    </object>
+    </div> -->
+
+
+    <div class='img' style="padding:0px" id="matrices-container">
+        <canvas class='CANVAS' id='matrices'  ></canvas>
+        <div class="eqn" id="eqn1y" ></div>
+        <div class="eqn" id="eqn1A" ></div>
+        <div class="eqn" id="eqn1B" ></div>
+        <div class="eqn" id="eqn1C" ></div>
+        <div class="eqn" id="eqn1D" ></div>
+        <div class="eqn" id="eqn1x" ></div>
+
+        <div class="eqn" id="y_vec" ></div>
+        <div class="eqn" id="A_vec" ></div>
+        <div class="eqn" id="x_vec" ></div>
+        <div class="eqn" id="Amaps_vec" ></div>
+        <div class="eqn" id="label2_vec" ></div>
+        <div class="eqn" id="warning2_vec" ></div>
+        <div class="eqn" id="usedigits_vec" ></div>
+      </div>
+
+
+
+      <div class="txt" style="padding:40px">
+
+    <!-- <b> HYPERSHAPES </b>
+    <p>
+    We're used to drawing 2D projections of 3D shapes.
+    This process can be extended to n-dimensions by defining a
+    2D direction for each of the n coordinate axes.
+    Modifying these 2D directions gives a different perspective
+    on the nD shape.
+    This example shows the result for various shapes
+    including the unit simplex, unit cube, and unit sphere.
+  </p>
+    <p>
+    "Depth" is the dimension(s) that are lost in the 2D projection.
+    For an n-dimensional shape, depth is n-2 dimensional.  When drawing a 3D shape, depth is 1-dimensional,
+    ie. there is a line of points (coming towards the camera) that are
+    indistinguishable in the picture.
+    When drawing a 4D shape, depth is 2-dimensional, ie. there is a plane of points
+    (in the 4D space) that are indistinguishable.
+    When drawing a 5D shape, depth is 3-dimensional...
+  </p>
+
+  <p>
+    We can't fully "see" n-dimensions, but we can see 2D or 3D subspaces
+    of the nD space.  The question
+    then becomes can we trick our brains into stitching those 2D/3D
+    subspaces back together into some "nD" image.
+    The answer remains unclear.
+
+  </p> -->
+
+
+    <b> ROTATION MATRIX </b>
+    <p>
+
+    The inverse of a rotation matrix is its transpose
+
+    $$  R^{-1} = R^T $$
+    This relationship is equivalent to the columns being orthonormal.
+    Explicitly
+    $$ R^{-1}R = R^TR =I $$
+
+    $$ R^TR =
+    \begin{bmatrix}
+    - & R_1^T & - \\
+    & \vdots & \\
+    - & R_n^T & - \\
+    \end{bmatrix}
+    \begin{bmatrix}
+    | & & | \\
+    R_1 & \cdots & R_n \\
+    | & & |
+    \end{bmatrix}
+    $$
+    $$
+    \begin{bmatrix}
+    R_1^TR_1 & \cdots & R_1^TR_n \\
+    \vdots & \ddots  & \vdots \\
+    R_n^TR_1 & \cdots & R_n^TR_n
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    1 & \cdots & 0 \\
+    \vdots & \ddots & \vdots \\
+    0 & \cdots  & 1
+    \end{bmatrix}
+    $$
+    Elementwise:
+
+    $$ R_i^TR_j =
+    \begin{cases}
+    1 & i = j \\
+    0 & i \neq j
+    \end{cases}
+    $$
+
+    Visually this means the columns (and rows) of \(R\) are orthogonal vectors on the unit sphere.
+
+    </p>
+
+    <p>
+    Example: a counter-clockwise 2D rotation given by
+    $$
+    R_{2 \times 2} =
+    \begin{bmatrix}
+    \cos \theta & - \sin \theta \\
+    \sin \theta & \cos \theta
+    \end{bmatrix}
+    $$
+    </p>
+
+      </div>
+
+
+</div>
+</div>
+
+  <!-- <script type='module' src='Users/dan/Documents/dcmath/pdf1.js'> </script> -->
+  <!-- <script defer src='pdf1.js'> </script> -->
+
+  <script src="/dcmath/src/extra/includeHTML.js"> </script>
+  <script type='module' src="/dcmath/src/roto.js"> </script>
+  <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+  <script>
+
+  const slideIndexes ={'KALMAN1024':1, 'EVECS2X2':1}
+
+  addSlides('KALMAN1024',slideIndexes);
+  showSlides('KALMAN1024',slideIndexes['KALMAN1024'],slideIndexes);
+
+  addSlides('EVECS2X2',slideIndexes);
+  showSlides('EVECS2X2',slideIndexes['EVECS2X2'],slideIndexes);
+
+  </script>
+
+
+
+
+
+
+  </body>
+</html>

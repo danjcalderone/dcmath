@@ -1,5 +1,3 @@
-<!-- asdfasdfasdfasdfaasdfasdfsasasdfadaasdfadsffdfdasdffasdfasdfasdasdaasdffdfasfasdf -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,238 +29,200 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
   <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
-  <!-- <script src="https://cdnjs.com/libraries/pdf.js"> </script> -->
-  <!-- <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script> -->
-  <link rel="stylesheet" href="./css/flip.css" ></link>
-  <link rel="stylesheet" href="./css/main.css" ></link>
 
+  <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+  <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
   </head>
-
 
   <body>
   <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
-  <!-- <div w3-include-html="nav/topics.html"></div> -->
-
-
   <div w3-include-html="/dcmath/nav/topics.html"></div>
+  <!-- <div w3-include-html="nav/topics.html"></div> -->
   <div class="wrapper">
-
-
-
-
     <div class="sidebar">
-    <div w3-include-html="/dcmath/nav/sidebarMAIN.html"></div>
+    <div w3-include-html="/dcmath/nav/sidebarLinalg.html"></div>
     </div>
     <div class=content>
-      <p> testing status <p>
-
-      <div class="slideshow-container flips" id='EVECS2X2' any='10'></div>
-      <div class="slideshow-container flips" id='KALMAN1024' any='9'></div>
-      <!-- Slideshow container -->
-
-
-
-
-      <!-- <div class="slideshow-container">
-        <div class="mySlides fade specific1">
-          <div class="numbertext">1 / 3</div>
-          <img src="./img1.png" style="width:100%">
-          <div class="text">Caption Text</div>
-        </div>
-        <div class="mySlides fade specific1">
-          <div class="numbertext">2 / 3</div>
-          <img src="./img2.png" style="width:100%">
-          <div class="text">Caption Two</div>
-        </div>
-        <div class="mySlides fade specific1">
-          <div class="numbertext">3 / 3</div>
-          <img src="./img3.png" style="width:100%">
-          <div class="text">Caption Three</div>
-        </div> -->
-
-        <!-- Next and previous buttons -->
-        <!-- <a class="prev" onclick="plusSlides('specific1',-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides('specific1',1)">&#10095;</a>
-      </div> -->
-      <!-- <br> -->
-
-      <!-- The dots/circles -->
-
-      <!-- <iframe
-      src='KALMAN.pdf#page=9&zoom=FitH'
-      width='100%'
-      >
-    </iframe> -->
-
-<!-- <iframe src="KALMAN.pdf#toolbar=0&navpanes=0&scrollbar=0&statusbar=0&messages=0&scrollbar=0"
-width="100%"
-height="100%">
-</iframe> -->
-
-
-      <!-- <button id="selectText">Copy Text</button> -->
-
-      <!-- <object data='KALMAN.pdf#controls=0' width='100%' height='100%' >
-
-      </object> -->
-
-        <div class=header > Highlighted Visualization </div>
-
-        <!-- <div class='img' style="padding:0px" id="hypershape-container">
-        <canvas class='CANVAS' id='hypershape' ></canvas>
-      </div>
-    </div> -->
-    <!-- <div class='pdfview'>
-    <iframe src='./KALMAN.pdf#page=2'
-            width='100%'
-            height='100%'>
-    </iframe>
-    </div> -->
-    <!-- <div class='pdfview'>
-    <object data='./KALMAN.pdf#page=2'
-    width='100%'
-    height='100%'>
-    </object>
-    </div> -->
-
-
-    <div class='img' style="padding:0px" id="matrices-container">
-        <canvas class='CANVAS' id='matrices'  ></canvas>
-        <div class="eqn" id="eqn1y" ></div>
-        <div class="eqn" id="eqn1A" ></div>
-        <div class="eqn" id="eqn1B" ></div>
-        <div class="eqn" id="eqn1C" ></div>
-        <div class="eqn" id="eqn1D" ></div>
-        <div class="eqn" id="eqn1x" ></div>
-
-        <div class="eqn" id="y_vec" ></div>
-        <div class="eqn" id="A_vec" ></div>
-        <div class="eqn" id="x_vec" ></div>
-        <div class="eqn" id="Amaps_vec" ></div>
-        <div class="eqn" id="label2_vec" ></div>
-        <div class="eqn" id="warning2_vec" ></div>
-        <div class="eqn" id="usedigits_vec" ></div>
-      </div>
-
-
-
       <div class="txt" style="padding:40px">
 
-    <!-- <b> HYPERSHAPES </b>
-    <p>
-    We're used to drawing 2D projections of 3D shapes.
-    This process can be extended to n-dimensions by defining a
-    2D direction for each of the n coordinate axes.
-    Modifying these 2D directions gives a different perspective
-    on the nD shape.
-    This example shows the result for various shapes
-    including the unit simplex, unit cube, and unit sphere.
-  </p>
-    <p>
-    "Depth" is the dimension(s) that are lost in the 2D projection.
-    For an n-dimensional shape, depth is n-2 dimensional.  When drawing a 3D shape, depth is 1-dimensional,
-    ie. there is a line of points (coming towards the camera) that are
-    indistinguishable in the picture.
-    When drawing a 4D shape, depth is 2-dimensional, ie. there is a plane of points
-    (in the 4D space) that are indistinguishable.
-    When drawing a 5D shape, depth is 3-dimensional...
-  </p>
+            <b> VECTORS</b>
+            <p>
 
-  <p>
-    We can't fully "see" n-dimensions, but we can see 2D or 3D subspaces
-    of the nD space.  The question
-    then becomes can we trick our brains into stitching those 2D/3D
-    subspaces back together into some "nD" image.
-    The answer remains unclear.
+            The Cartesian representation of a nD vector is a string of \(n\) numbers that each
+            represent a distance in a different direction/dimension.  These directions are often referred to as "axes".
+            $$
+            x = \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}
+            $$
+            Vectors can be "scaled" by multiplying each element by a value \(\alpha\) and two vectors \(x\) and \(z\) can be added
+            element-wise (assuming they have the same length).
 
-  </p> -->
-
-
-    <b> ROTATION MATRIX </b>
-    <p>
-
-    The inverse of a rotation matrix is its transpose
-
-    $$  R^{-1} = R^T $$
-    This relationship is equivalent to the columns being orthonormal.
-    Explicitly
-    $$ R^{-1}R = R^TR =I $$
-
-    $$ R^TR =
-    \begin{bmatrix}
-    - & R_1^T & - \\
-    & \vdots & \\
-    - & R_n^T & - \\
-    \end{bmatrix}
-    \begin{bmatrix}
-    | & & | \\
-    R_1 & \cdots & R_n \\
-    | & & |
-    \end{bmatrix}
-    $$
-    $$
-    \begin{bmatrix}
-    R_1^TR_1 & \cdots & R_1^TR_n \\
-    \vdots & \ddots  & \vdots \\
-    R_n^TR_1 & \cdots & R_n^TR_n
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-    1 & \cdots & 0 \\
-    \vdots & \ddots & \vdots \\
-    0 & \cdots  & 1
-    \end{bmatrix}
-    $$
-    Elementwise:
-
-    $$ R_i^TR_j =
-    \begin{cases}
-    1 & i = j \\
-    0 & i \neq j
-    \end{cases}
-    $$
-
-    Visually this means the columns (and rows) of \(R\) are orthogonal vectors on the unit sphere.
-
-    </p>
-
-    <p>
-    Example: a counter-clockwise 2D rotation given by
-    $$
-    R_{2 \times 2} =
-    \begin{bmatrix}
-    \cos \theta & - \sin \theta \\
-    \sin \theta & \cos \theta
-    \end{bmatrix}
-    $$
-    </p>
-
-      </div>
-
-
-</div>
-</div>
-
-  <!-- <script type='module' src='Users/dan/Documents/dcmath/pdf1.js'> </script> -->
-  <!-- <script defer src='pdf1.js'> </script> -->
-
-  <script src="/dcmath/src/extra/includeHTML.js"> </script>
-  <script type='module' src="/dcmath/src/roto.js"> </script>
-  <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
-  <script>
-
-  const slideIndexes ={'KALMAN1024':1, 'EVECS2X2':1}
-
-  addSlides('KALMAN1024',slideIndexes);
-  showSlides('KALMAN1024',slideIndexes['KALMAN1024'],slideIndexes);
-
-  addSlides('EVECS2X2',slideIndexes);
-  showSlides('EVECS2X2',slideIndexes['EVECS2X2'],slideIndexes);
-
-  </script>
+            $$
+             x\alpha = \begin{bmatrix} \alpha x_1 \\ \vdots \\ \alpha x_n \end{bmatrix},
+            \qquad
+            x + z = \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}
+            + \begin{bmatrix} z_1 \\ \vdots \\ z_n \end{bmatrix} =
+            \begin{bmatrix} x_1+z_1 \\ \vdots \\ x_n+z_n \end{bmatrix}
+            $$
+            </p>
 
 
 
+
+            <b> AXES </b>
+            <p>
+            The different directions or axes that make up a vector (scaled to have unit length) can be represented by
+            the so-called "standard basis" vectors (more explanation of this name later).
+            $$
+            I_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix},
+            \quad
+            I_2 = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix},
+            \quad
+            \cdots
+            \quad
+            I_n = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix},
+            $$
+            </p>
+
+            <b> Drawing Vectors </b>
+
+
+
+            </p>
+            Traditionally, axes are thought of as perpendicular to each other.
+            The overall vector position of the vector \(x\) is then the sum of each axis scaled by the appropriate
+            element of \(x\).
+
+            $$
+            x = I_1 x_1 + \cdots + I_n x_n
+            $$
+
+            $$
+            x =
+             \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix} x_1 +
+             \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix} x_2
+             +
+             \cdots
+             +
+             \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix} x_n
+             =
+             \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
+            $$
+            We can also visualize vectors using axes that are parallel to each other.  In these settings, a vector can be thought of
+            as a set of heights (possibly negative).  These two depictions are shown below.
+            <p>
+            </div>
+            <div class='imgFixed'>
+            <img src="/dcmath/figs/stills/VEC/VECCOORDS.png" width=100%></img>
+            </div>
+            <div class="txt" style="padding:40px">
+
+            <b> The Problem of Depth </b>
+            <p>
+            When trying to visualize perpendicular axes, we run into a problem.
+            Since we can only draw in two dimensions, there are not enough perpendicular directions for all the axes for vectors of dimension three or higher.
+            The best we can do is to pick directions (in the 2D image) for each of these axes to point and think of them as being perpendicular in some higher dimensional space.
+            Our drawing then becomes a 2D projection of that higher dimensional space.
+            This depiction does not lose any information for 2D vectors, but for 3D vectors, there is a depth direction (towards the viewer)
+            that is lost in the drawing.  Since we live in 3D, we are used to this and can often spatially reconstruct that lost direction in
+            our mental representation of the vector.  For 4D vectors, the depth "direction" becomes a plane; for 5D vectors, depth becomes a
+            3D space; for 6D vectors, depth becomes a 4D space, etc, and our drawing loses quite a bit of information and our intuition suffers accordingly.
+            If you enjoy spatial reasoning, these 2D representations of higher dimensional vectors can still be useful, but you should be careful
+            not to forget the information lost in the projection.
+            </p>
+            <p>
+            Paralle axis representations do not suffer from this pathology of depth, but this is simply
+            because they do not attempt to leverage our spatial reasoning machinery for intuition at all.
+            </p>
+
+
+
+            <b> More Intuition: Depth </b>
+            <p>
+              For more intuition about the idea of depth in 2D representations of higher dimensional spaces,
+              play around with the following visualizations of higher dimensional shapes.  In particular,
+              the jump from 3D to 4D (and then maybe 5D) can be illuminating.
+            </p>
+            </div>
+
+            <div class="txt" style="padding:40px">
+            <div class='img' style="padding:0px" id="hypershape-container" width="60%" >
+              <canvas class='CANVAS' id='hypershape' ></canvas>
+            </div>
+            </div>
+
+            <div class="txt" style="padding:40px">
+            <b> More Drawing: Projection to 2D (Difficulty: 3/10) </b>
+            <p>
+              The projection from an \(n\)D space to a 2D image can be represented by the matrix multiplication \(y=Ax\) where
+              \(A \in \mathbb{R}^{2 \times n} \)
+
+              $$
+              \underbrace{
+              \begin{bmatrix} y_1 \\ y_2 \end{bmatrix}}_{2D} =
+              \underbrace{
+              \begin{bmatrix}
+              A_{11} & A_{12} & \cdots & A_{1n} \\
+              A_{21} & A_{22} & \cdots & A_{2n}
+              \end{bmatrix}
+            }_{2D \ axes \ representions}
+              \underbrace{
+              \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}}_{nD}
+              $$
+
+              Here \(x \in \mathbb{R}^n\) is the coordinates of the vector in \(n\)D.
+              Each column of the \(n\) columns of \(A\) is the representation of one of the \(n\) axes in the 2D drawing
+              and \(y \in \mathbb{R}^2 \) is the 2D projection of the vector \(x\).  The depth directions (in the \(n\)D space)
+              are given by the nullspace of the matrix \(A\).  The rank-nullity theorem then gives that depth has the dimension \(n-2\).
+              For a given vector \(x\), the 2D projection \(y\) is fully determined; however any \(y\) can represent multiple points in the
+              \(x\) space (given by adding an arbitrary element in the depth directions).  If one wanted to select an \(x\) given a \(y\),
+              a simple way would be to choose \(x\) with no depth component which would be the minimum norm solution
+
+              $$ x = A^T(AA^T)^{-1}y $$
+
+
+
+
+            </p>
+            </div>
+
+
+
+
+
+
+          <!-- <p>
+
+            Scaling multiple vectors \(x^1,\dots,x^n\) and then adding them together is referred to as
+            taking a "linear combination" of the vectors.  All the possible linear combinations of a set of vectors
+            is called the "span" of those vectors.  If a set of vectors span a whole space that means
+            any vector in that space can be written as a linear combination of those vectors.
+
+          </p> -->
+
+
+
+
+
+
+
+
+
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<!-- <script type='module' src="/dcmath/src/vectoro.js"> </script> -->
+<script type='module' src="/dcmath/src/hypershapeo.js"> </script>
+<script src="/dcmath/src/extra/includeHTML.js"> </script>
+<!-- <script type='text/javascript' src="/dcmath/src/extra/flip.js"> </script> -->
+
+<!--
+<script>
+const slideIndexes ={'VECADD2':1, 'VECADD3':1}
+addSlides('VECADD2',slideIndexes);
+showSlides('VECADD2',slideIndexes['VECADD2'],slideIndexes);
+addSlides('VECADD3',slideIndexes);
+showSlides('VECADD3',slideIndexes['VECADD3'],slideIndexes);
+</script> -->
 
 
 
