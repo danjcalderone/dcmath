@@ -32,6 +32,7 @@
 
 
     <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+    <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
     </head>
 
     <body>
@@ -45,14 +46,46 @@
       <div class=content>
 
 
-          <div class="txt">
-      <b> GAUSSIAN ELIMINATION </b>
-      <p> (insert description)  </p>
-      </div>
+        <!-- <div class=header style="fontsize:20px"> Convex Combinations  </div> -->
+
+
+
+
+        <div class="txt" style="padding:40px">
+
+        <b> GAUSSIAN ELIMINATION </b>
+
+        <p>
+        Gaussian elimination (or row/column reduction) mechanizes the process of
+        converting a matrix inverse and thus solving systems of equations.
+        </p>
+        </div>
+
+        <div class="slideshow-container flips" id='ELEMCOL3' any='31' style="width:70%"></div>
+
+        <div class="txt" style="padding:40px">
+        <p>
+        </p>
+        </div>
+
+        <!-- <div class='imgFixed'>
+        <img src="/dcmath/figs/stills/MAT/CVXHULLS1.png" width=90%></img>
+        </div> -->
+
+
+
 
       </div>
-      </div>
-    <!-- <script type='module' src="./matrixo.js"> </script> -->
+    </div>
     <script src="/dcmath/src/extra/includeHTML.js"> </script>
+    <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+    <script>
+    const slideIndexes ={'ELEMENTARYCOL3':1}
+    addSlides('ELEMCOL3',slideIndexes);
+    showSlides('ELEMCOL3',slideIndexes['ELEMCOL3'],slideIndexes);
+    </script>
+
+
+
     </body>
   </html>
