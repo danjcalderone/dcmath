@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+    <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+    <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
+    </head>
+
+    <body>
+    <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+    <div w3-include-html="/dcmath/nav/topics.html"></div>
+    <!-- <div w3-include-html="nav/topics.html"></div> -->
+    <div class="wrapper">
+      <div class="sidebar">
+      <div w3-include-html="/dcmath/nav/sidebarLinalg.html"></div>
+      </div>
+      <div class=content>
+
+
+        <!-- <div class=header style="fontsize:20px"> Convex Combinations  </div> -->
+
+
+
+
+        <div class="txt" style="padding:40px">
+
+        <b> GAUSSIAN ELIMINATION </b>
+        <p>
+        Gaussian elimination (or row/column reduction) mechanizes the process of
+        converting a matrix inverse and thus solving systems of equations.
+        </p>
+        <b> Elementary Row Operations (Column Geometry) </b>
+        </div>
+        <div>
+        <div class="slideshow-container flips" id='ELEMROW3' any='31' style="width:80%"></div>
+      </div>
+
+        <div class="txt" style="padding:40px">
+        <b> Elementary Column Operations (Column Geometry) </b>
+        </div>
+        <div>
+        <div class="slideshow-container flips" id='ELEMCOL3' any='31' style="width:80%"></div>
+      </div>
+
+
+        <!-- <div class='imgFixed'>
+        <img src="/dcmath/figs/stills/MAT/CVXHULLS1.png" width=90%></img>
+        </div> -->
+
+
+
+
+      </div>
+    </div>
+    <script src="/dcmath/src/extra/includeHTML.js"> </script>
+    <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+    <script>
+    const slideIndexes ={'ELEMCOL3':1,'ELEMROW3':1}
+    addSlides('ELEMCOL3',slideIndexes);
+    showSlides('ELEMCOL3',slideIndexes['ELEMCOL3'],slideIndexes);
+    addSlides('ELEMROW3',slideIndexes);
+    showSlides('ELEMROW3',slideIndexes['ELEMROW3'],slideIndexes);
+
+    </script>
+
+
+
+    </body>
+  </html>
