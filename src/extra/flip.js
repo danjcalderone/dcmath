@@ -157,7 +157,7 @@ function showSlides(name,n,slideIndexes) {
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
     slides[i].style.borderStyle = 'solid';
-    slides[i].style.borderWidth = '5px';
+    slides[i].style.borderWidth = '2px';
   }
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
