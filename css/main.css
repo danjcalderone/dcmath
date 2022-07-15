@@ -192,7 +192,6 @@ body{
 
 .imgFixed {
   flex: 0 1 auto;
-  margin: 20px;
   padding: 40px;
   display: flex;
   flex-direction: row;
@@ -236,11 +235,11 @@ body{
 /* .wrapper .content .module */
 .txt {
   /* flex: 0 1 auto; */
-  margin: 20px;
+  margin: auto;
   padding: 40px;
-    width: 80%;
-    background-color: rgba(64, 106, 157, 0.0);
-    font-size: 16px;
+  width: 80%;
+  background-color: rgba(64, 106, 157, 0.0);
+  font-size: 16px;
   }
 
 
