@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+    <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+    <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
+    </head>
+
+    <body>
+    <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+    <div w3-include-html="/dcmath/nav/topics.html"></div>
+    <!-- <div w3-include-html="nav/topics.html"></div> -->
+    <div class="wrapper">
+      <div class="sidebar">
+      <div w3-include-html="/dcmath/nav/sidebarLINALG.html"></div>
+      </div>
+      <div class=content>
+
+        <div class="txt" style="padding:40px">
+
+
+
+
+              <b> MATRIX NORMS </b>
+              <p>
+                Matrices can be thought of as vector style objects
+                (in a vector space) and also as linear operators between vector spaces.
+                There are many norm ("size") concepts for matrices in both of these settings.
+                When we treat matrices simply as vectors we can apply the standard
+                vector norm concepts.  These norms are useful in some settings
+                but do not capture the structure of the linear operator the matrix represents.
+                Norms that treat matrices as linear operators are called induced norms
+                and capture more of the operator structure of the matrix.  We will discuss
+                both norm types below, with more of a focus on operator/induced norms.
+              </p>
+
+
+
+              </p>
+
+              <b> VECTOR-STYLE NORMS </b>
+              <p>
+
+                When we think of a matrix as a vector the standard
+                \(p\)-norms (1-norm, 2-norm, \(\infty\)-norm, etc.)
+                all still apply with their usual definitions. Some of them have
+                special names.  Specifically, the Frobenius norm refers to the
+                standard vector 2-norm applied to a matrix.
+              </p>
+
+              <b> Frobenius Norm </b>
+
+              <p>
+              The Frobenius norm of a matrix \( A \in \mathbb{R}^{m \times n} \) is
+              denoted as \( \Vert A \Vert_F\) and
+              given by
+              $$
+              \Vert A \Vert_F = \left(\sum_{ij} (A_{ij})^2\right)^{\tfrac{1}{2}} =
+              \left(Tr\big(A^TA\big)\right)^{\tfrac{1}{2}}
+              =
+              \left(Tr\big(AA^T\big)\right)^{\tfrac{1}{2}}
+              $$
+              Note that this is the vector 2-norm appllied to \(A\) and that the
+              trace formulas on the right are computable for any size \(A\)
+              and gives the desired sum (though computing the full matrices \(A^TA\)
+              or \(AA^T\) does many extra/unneeded computations).
+              </p>
+              <b> Frobenius Norm: Relations to SVD (Difficulty: 2) </b>
+              <p>
+              From properties of traces, we can quickly derive the relationship between
+              the Frobenius norm and the singular value decomposition.  Let the SVD of
+              \(A\) be given by
+              $$
+              A = U \begin{bmatrix} \Sigma & 0 \\ 0 & 0 \end{bmatrix}V^T
+              $$
+              We can then quickly compute that
+              $$
+              Tr \big(A^TA\big) = Tr\left(V
+              \begin{bmatrix} \Sigma & 0 \\ 0 & 0 \end{bmatrix}U^T
+              U\begin{bmatrix} \Sigma & 0 \\ 0 & 0 \end{bmatrix}V^T\right)
+              $$
+              $$
+              =
+              Tr \left(
+              V\begin{bmatrix} \Sigma^2 & 0 \\ 0 & 0 \end{bmatrix}V^T
+              \right)
+              =
+              Tr \left(
+              \begin{bmatrix} \Sigma^2 & 0 \\ 0 & 0 \end{bmatrix}V^TV
+              \right)
+              = Tr \big(\Sigma^2 \big)
+              $$
+              Thus we have that the Frobenius norm is also the 2-norm applied to
+              a vector of the singular values of a matrix.
+              $$
+              \Vert A \Vert_F = \left(\sum_{i}(\sigma_i)^2\right)^{\tfrac{1}{2}}
+              $$
+              The trace definitions above make the Frobenius norm often easy to
+              work with algebraically (since matrices commute (cyclically)
+              inside the trace operator).
+              Often in optimization when we want to minimize the size of a matrix,
+              we use the squared Frobenius-norm as an objective function.
+
+            </p>
+
+            <b> INDUCED NORMS </b>
+            <p>
+              Induced norms, or operator norms, measure how much a matrix
+              changes the size of vectors it operates on. To quantify this exactly
+              we ask what is the maximum increase in size a matrix can ad
+              to a unit vector in the domain.  Note that this implies a notation of
+              size, ie. a vector norm both to define a unit vector in the domain
+              as well as the size of the output vector in the codomain.  The
+              vector norms we pick for the domain or codomain can be the same or
+              different.  We often denote an induced norm as \(\Vert A\Vert_{q,p}\)
+              where \(p\) refers to the norm type in the domain and \(q\)
+              refers to the norm type in the co-domain.  Explicitly, we can use the
+              following definitions for an induced norm
+              $$
+              \Vert A\Vert_{q,p} =
+              \max_{\Vert x \Vert_p=1 } \ \Vert Ax \Vert_q
+              =
+              \max_{\Vert x \Vert_p \neq 0 } \ \frac{\Vert Ax \Vert_q}{\Vert x \Vert_p}
+              $$
+              In the first definition, we find the \(x\) constrained to the (\(p\)-norm) unit ball,
+              that maximizes the size (with respect to the \(q\)-norm) after it is transformed
+              by \(A\).  In the second definition, we no longer explicitly require that
+              \(x\) is on the unit ball (only that \(x \neq 0\)) since
+              we normalize by the length of \(x\) when we do the maximization. Both
+              definitions are equivalent and either can be used.  If \(q\) and \(p\) are
+              the same, we sometimes use \(\Vert \cdot \Vert_p\) to refer to
+              \(\Vert \cdot \Vert_{p,p}\) if the fact we're using an induced norm is
+              clear from context.
+
+            </p>
+
+            <b> Induced Norms: Specific Cases (Difficulty: 2) </b>
+
+            <p>
+            For several specifc induced norms, we can derive further
+            relationships to the structure of the matrix.  The \(2,2\)-norm
+            or induced 2-norm is given by the maximum singular value of the matrix
+            and the \(1,1\)-norm, \(1,\infty\)-norm, the \(1,\infty\)-norm, and the
+            \(\infty,\infty\)-norm all have relationships with the magnitude
+            of the rows and columns that I can't remember
+
+            </p>
+
+
+
+
+
+
+
+            <!-- <div class='imgFixed'>
+            <img src="/dcmath/figs/stills/VEC/NORMBALLS2.png" width=60%></img>
+            </div> -->
+
+
+
+
+
+
+
+
+
+      </div>
+      </div>
+    <!-- <script type='module' src="./matrixo.js"> </script> -->
+    <script src="/dcmath/src/extra/includeHTML.js"> </script>
+    <!-- <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script> -->
+
+    <!-- <script>
+    const slideIndexes ={'SCALARMULT':1, 'DOTPRODLEN':1, 'DOTPRODANGLE':1}
+    addSlides('SCALARMULT',slideIndexes);
+    showSlides('SCALARMULT',slideIndexes['SCALARMULT'],slideIndexes);
+    addSlides('DOTPRODLEN',slideIndexes);
+    showSlides('DOTPRODLEN',slideIndexes['DOTPRODLEN'],slideIndexes);
+    addSlides('DOTPRODANGLE',slideIndexes);
+    showSlides('DOTPRODANGLE',slideIndexes['DOTPRODANGLE'],slideIndexes);
+
+    </script> -->
+
+    </body>
+  </html>
