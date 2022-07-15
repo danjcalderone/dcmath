@@ -45,6 +45,9 @@
       </div>
       <div class=content>
 
+
+        <div class="section">
+
         <div class="txt" style="padding:40px">
 
 
@@ -58,7 +61,7 @@
               <p>
 
               One of the fundamental uses of inner products is to compute projections. A projection
-              of a vector \(x\) onto \(y\), which we can denote \(\Pi_{y}x\),
+              of a vector \(x\) onto \(y\), which we can denote \(\textbf{proj}_{y}x\),
               is the closest vector to \(x\) that points precisely in the \(y\)
               direction.  We illustrate this in the figure below.
               </p>
@@ -72,9 +75,9 @@
               <p>
 
 
-              Intuitively one can see that the difference between \(x\) and \(\Pi_y x\)
+              Intuitively one can see that the difference between \(x\) and \(\textbf{proj}_y x\)
               must be orthogonal to \(y\).  (Mathematically, this comes from the Pythagorean theorem
-              applied to \(x-\Pi_y x\)). We can also see intuitively that the length
+              applied to \(x-\textbf{proj}_y x\)). We can also see intuitively that the length
               of the projection is \(\vert|x\vert|_2 \cos \theta\) where
               \(\theta\) is the angle between \(x\) and \(y\) and can thus be related
               to the inner product using the geometric definition
@@ -87,12 +90,12 @@
               and then multiplying that length by the unit vector again in the \(y\) direction.
               Formulaically, we have that
               $$
-              \Pi_y x = \left(\frac{1}{\vert|y\vert|_2}y\right)\left(\frac{1}{\vert|y\vert|_2}y^Tx\right)
+              \textbf{proj}_y x = \left(\frac{1}{\vert|y\vert|_2}y\right)\left(\frac{1}{\vert|y\vert|_2}y^Tx\right)
               = y(y^Ty)^{-1}y^T x
               $$
 
               The second version in the equation above is elegant in that it explicitly writes the projection operator as a matrix
-              that we can then use to project any vector \(x\) onto \(y\).  We can denote this matrix \(\Pi_y = y(y^Ty)^{-1}y^T \).
+              that we can then use to project any vector \(x\) onto \(y\).  We can denote this matrix \(\textbf{proj}_y = y(y^Ty)^{-1}y^T \).
               We will also see that this form is
               directly extendable to projecting onto a subspace of dimension greater than one.
             </p>
@@ -101,16 +104,16 @@
             we can simply subtract the projection from \(x\).  This can be called
             the projection orthogonal to \(y\).
             $$
-            \Pi_y^\perp x = x- y(y^Ty)^{-1}y^T x = \Big[ I-y(y^Ty)^{-1}y^T \Big]x
+            \textbf{proj}_y^\perp x = x- y(y^Ty)^{-1}y^T x = \Big[ I-y(y^Ty)^{-1}y^T \Big]x
             $$
             Note that again we have managed to write the projection operation as a matrix which we can denote
-            \( \Pi_y^\perp = I-y(y^Ty)^{-1}y^T \).
+            \( \textbf{proj}_y^\perp = I-y(y^Ty)^{-1}y^T \).
             </p>
             <p>
-            It is instructive to check that for any \(x\), \(\Pi_y x\) and \(\Pi_y^\perp x\) are orthogonal to each other.
+            It is instructive to check that for any \(x\), \(\textbf{proj}_y x\) and \(\textbf{proj}_y^\perp x\) are orthogonal to each other.
             We can check this actually independent of \(x\) as follows
             $$
-            \big(\Pi_y x \big)^T \Pi_y^\perp x  =
+            \big(\textbf{proj}_y x \big)^T \textbf{proj}_y^\perp x  =
             x^Ty(y^Ty)^{-1}y^T\big( I-y(y^Ty)^{-1}y^T \big)x
             $$
             $$
@@ -123,16 +126,14 @@
             x^T\Big(y(y^Ty)^{-1}y^T-
             y(y^Ty)^{-1}y^T \Big)x = x^T(0)x = 0
             $$
-            Note the fact that \(\Pi_y(\Pi_y) = \Pi_y\).
+            Note the fact that \(\textbf{proj}_y(\textbf{proj}_y) = \textbf{proj}_y\).
             </p>
-
-
-
+          </div>
           </div>
 
 
 
-
+          <div class="section hard">
           <div class="txt" style="padding:40px">
             <b> Projection onto a Subspace </b>
             <p>
@@ -148,7 +149,7 @@
             \end{bmatrix}
             $$
             We will assume for this discussion the columns of \(Y\) are linearly independent
-            and we will denote this as \(\Pi_Y x\).
+            and we will denote this as \(\textbf{proj}_Y x\).
           </p>
         </div>
 
@@ -169,9 +170,9 @@
             \(Y_2\).  A naive approach would be to normalize each vector \(Y_i\), project \(x\)
             onto each and add up the projections according to the formula
             $$
-            \Pi_Y x =
-            \Pi_{Y_1}x +
-            \Pi_{Y_2}x
+            \textbf{proj}_Y x =
+            \textbf{proj}_{Y_1}x +
+            \textbf{proj}_{Y_2}x
             $$
             This is, in general, an incorrect approach as illustrated in the left figure below
             Unless, \(Y_1\) and \(Y_2\) are orthogonal to each other the result will not give
@@ -202,14 +203,14 @@
             We then can compute the projection of \(x\) onto the span of \(Y\) by
             projecting \(x\) onto each column of \(U\) and summing up.
             $$
-            \Pi_y x = U_1U_1^Tx + \cdots U_nU_n^Tx = UU^Tx
+            \textbf{proj}_y x = U_1U_1^Tx + \cdots U_nU_n^Tx = UU^Tx
             $$
             Note that the second equality is based on the outer product formulation of matrix multiplication.
             Expanding this out in terms of the original matrix \(Y\) now gives
             $$
-            \Pi_y x = Y(Y^TY)^{-\tfrac{1}{2}}(Y^TY)^{-\tfrac{1}{2}}Y^Tx =Y(Y^TY)^{-1}Y^Tx
+            \textbf{proj}_y x = Y(Y^TY)^{-\tfrac{1}{2}}(Y^TY)^{-\tfrac{1}{2}}Y^Tx =Y(Y^TY)^{-1}Y^Tx
             $$
-            Here we can denote the projection matrix as \(\Pi_Y = Y(Y^TY)^{-1}Y^T\).  Note
+            Here we can denote the projection matrix as \(\textbf{proj}_Y = Y(Y^TY)^{-1}Y^T\).  Note
             the similarities to the one-dimesional form and specifically the similar role of
             \((y^Ty)^{-1}\) and \((Y^TY)^{-1}\) in the two formulas.
             </p>
@@ -217,13 +218,13 @@
             Similarly, we can compute a projection orthogonal to the span of \(Y\)
             as
             $$
-            \Pi_Y^\perp x = x - Y(Y^TY)^{-1}Y^Tx = \big(I - Y(Y^TY)^{-1}Y^T\big)x
+            \textbf{proj}_Y^\perp x = x - Y(Y^TY)^{-1}Y^Tx = \big(I - Y(Y^TY)^{-1}Y^T\big)x
             $$
-            with projection matrix \(\Pi_Y^\perp = \big(I - Y(Y^TY)^{-1}Y^T\big)\).
-            Finally, we can check again algebraically that for any \(x\), \(\Pi_Y x\)
-            and \(\Pi_Y^\perp x\) are orthogonal (as desired) regardless of what \(x\) is.
+            with projection matrix \(\textbf{proj}_Y^\perp = \big(I - Y(Y^TY)^{-1}Y^T\big)\).
+            Finally, we can check again algebraically that for any \(x\), \(\textbf{proj}_Y x\)
+            and \(\textbf{proj}_Y^\perp x\) are orthogonal (as desired) regardless of what \(x\) is.
             $$
-            \big(\Pi_Yx\big)^T\Pi_Y^\perp x =
+            \big(\textbf{proj}_Yx\big)^T\textbf{proj}_Y^\perp x =
             x^T Y(Y^TY)^{-1}Y^T\big(I - Y(Y^TY)^{-1}Y^T\big)x
             $$
             $$
@@ -242,8 +243,9 @@
           <div width=80%>
           <div class="slideshow-container flips" id='PROJECTIONDETAILS' any='10' ></div>
           </div>
+        </div>
 
-
+        <div class="section harder">
           <div class="txt" style="padding:40px">
 
             <b> More Abstraction: Abstract Projection Definitions </b>
@@ -253,28 +255,28 @@
             Generally in math, a projection operator is an operator such that applying
             the operator twice yields the same result as applying it once, ie.
             $$
-            (\Pi_Y)(\Pi_Y) = \Pi_Y
+            (\textbf{proj}_Y)(\textbf{proj}_Y) = \textbf{proj}_Y
             $$
             This is enough to imply the orthogonality conditions we expect above
             since it implies that
             $$
-            \big(\Pi_Yx\big)^T
-            \big(I-\Pi_Y\big)x
+            \big(\textbf{proj}_Yx\big)^T
+            \big(I-\textbf{proj}_Y\big)x
             =
-            x^T\big(\Pi_Y-(\Pi_Y)\Pi_Y\big)x
+            x^T\big(\textbf{proj}_Y-(\textbf{proj}_Y)\textbf{proj}_Y\big)x
             =
-            x^T\big(\Pi_Y-\Pi_Y\big)x
+            x^T\big(\textbf{proj}_Y-\textbf{proj}_Y\big)x
             = x^T(0)x = 0
             $$
             We also can check that this true for for the matrix operators above
             $$
-            \Pi_Y(\Pi_Y) =
+            \textbf{proj}_Y(\textbf{proj}_Y) =
             Y(Y^TY)^{-1}Y^TY(Y^TY)^{-1}Y^T =
-            Y(Y^TY)^{-1}Y^T= \Pi_Y
+            Y(Y^TY)^{-1}Y^T= \textbf{proj}_Y
             $$
             and
             $$
-            \Pi_Y^\perp(\Pi_Y^\perp) =
+            \textbf{proj}_Y^\perp(\textbf{proj}_Y^\perp) =
             \big(I- Y(Y^TY)^{-1}Y^T\big)
             \big(I- Y(Y^TY)^{-1}Y^T\big)
             $$
@@ -289,10 +291,11 @@
             Y(Y^TY)^{-1}Y^T
             =
             I- Y(Y^TY)^{-1}Y^T
-            = \Pi_Y^\perp
+            = \textbf{proj}_Y^\perp
             $$
           </p>
         </div>
+      </div>
 
       </div>
       </div>
