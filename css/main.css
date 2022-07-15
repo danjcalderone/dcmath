@@ -188,6 +188,18 @@ body{
 }
 
 
+.section {
+  flex: 0 1 auto;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  /* top: 0px;
+  left: 0px; */
+  width: 80%;
+  /* height: 900px; */ */
+}
 
 
 .imgFixed {
@@ -229,6 +241,8 @@ body{
   font-size: 16px;
   z-index: -1;
 }
+
+
 
 
 
