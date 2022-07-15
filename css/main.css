@@ -583,7 +583,7 @@ body{
 
 
 @media all and (max-width:1800px) {
-  .wrapper .content .module {justify-content: center}
+  /* .wrapper .content .module {justify-content: center} */
   .wrapper .content .module .txt {width:100%; height: auto}
   .wrapper .content .module .img {width:900px; height: 900px}
   .wrapper .content .module .CANVAS {width:900px; height: 900px}
