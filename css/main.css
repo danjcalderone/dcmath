@@ -114,7 +114,33 @@ body{
 } */
 
 
+.hard {
+  /* background-color: rgb(187, 222, 251); */
+  background-color: rgb(227, 242, 253);
+  border-radius: 20pt;
+}
 
+.harder  {
+  /* background-color: rgb(209, 196, 233); */
+  background-color: rgb(237, 231, 246);
+  border-radius: 20pt;
+}
+
+.hardest  {
+  /* background-color: rgb(255, 205, 210); */
+  background-color: rgb(255, 235, 238);
+  /* background-color: rgb(255, 245, 246); */
+  border-radius: 20pt;
+}
+
+.basicproof  {
+  background-color: rgb(236, 239, 241);
+  border-radius: 20pt;
+}
+
+.hardproof  {
+  background-color: #FF7A59;
+}
 
 .wrapper {
   display: flex;
@@ -160,6 +186,9 @@ body{
   aspect-ratio: 1 / 1;
   /* height: 900px; */ */
 }
+
+
+
 
 .imgFixed {
   flex: 0 1 auto;
