@@ -176,44 +176,87 @@
             </p>
 
 
-            <p> \(2,2\): Induced 2-norm </p>
+            <b> \( ( 2,2 ) \)-norm: </b>
 
             <p>
             The induced 2-norm can be shown to be the maximum singular value of the matrix.
-            Assuming the singular value decomposition of \(A\) shown above
-            (and also using some of the steps from the above expressions for \(A^TA\))
+            Assuming the singular value decomposition of \( A \) shown above
+            (and also using some of the steps from the above expressions for \( A^TA \) )
             we have that
+            $$ \Vert A \Vert_{2,2}
+            = \max_{ \Vert x \Vert_2 = 1} \ \Vert Ax \Vert_2
+            = \max_{ \Vert x \Vert_2 = 1} \ \big( x^TA^TAx \big)^{\tfrac{1}{2}}
             $$
-            \Vert A\Vert_{2,2}
-            = \max_{\Vert x \Vert_2 = 1} \ \Vert Ax \Vert_2
-            = \max_{\Vert x \Vert_2 = 1} \ \big(x^TA^TAx\big)^{\tfrac{1}{2}}
-            = \max_{\Vert x \Vert_2 = 1} \
-            \left(x^TV\begin{bmatrix} \Sigma^2 & 0 \\ 0 & 0 \end{bmatrix}V^Tx\right)^{\tfrac{1}{2}}
-            = \max_{\Vert x' \Vert_2 = 1} \
-            \left((x')^T\begin{bmatrix} \Sigma^2 & 0 \\ 0 & 0 \end{bmatrix}x'\right)^{\tfrac{1}{2}}
             $$
-            with \(x = Vx'\) where we have used the fact that
-            since \(V\) is orthonormal, the unit ball constraint on
-            \(x\) is equivalent to a unit ball constraint on \(x'\).
+            = \max_{ \Vert x \Vert_2 = 1} \ \left( x^TV \begin{bmatrix} \Sigma^2 & 0 \\ 0 & 0 \end{bmatrix} V^T x \right)^{ \tfrac{1}{2} }
+            = \max_{ \Vert x' \Vert_2 = 1} \ \left( (x')^T\begin{bmatrix} \Sigma^2 & 0 \\ 0 & 0 \end{bmatrix}x'\right)^{\tfrac{1}{2}}
+            $$
+            with \( x = Vx' \) where we have used the fact that
+            since \( V \) is orthonormal, the unit ball constraint on
+            \(x\) is equivalent to a unit ball constraint on \( x' \).
             $$
             1 = \Vert x \Vert =
             \Vert Vx' \Vert = \Vert x' \Vert
             $$
-            The maximum is achieved by putting all the weight of \(x'\) on the
+            The maximum is achieved by putting all the weight of \( x'\) on the
             largest singular value. If we order the singular values from
-            largest to smallest (as is standard) this means taking \(x' = I_1\),
+            largest to smallest (as is standard) this means taking \( x' = I_1\),
             the first standard basis vector.  We then get
+
             $$
-            \Vert A\Vert_{2,2} =
-            = \max_{\Vert x' \Vert_2 = 1} \
-            \left((x')^T\begin{bmatrix} \Sigma^2 & 0 \\ 0 & 0 \end{bmatrix}x'\right)^{\tfrac{1}{2}}
+            \Vert A \Vert_{2,2}
+            = \max_{\Vert x' \Vert_2 = 1} \ \left( (x')^T\begin{bmatrix} \Sigma^2 & 0 \\ 0 & 0 \end{bmatrix}x' \right)^{\tfrac{1}{2}}
             = \left(I_1^T\begin{bmatrix} \Sigma^2 & 0 \\ 0 & 0 \end{bmatrix}I_1\right)^{\tfrac{1}{2}}
-            = \sigma_\max(A)
+            = \sigma_{\max}(A)
             $$
+
+
             Note the above imples that the induced 2-norm is always smaller than the
-            Frobenius norm \(\Vert A \Vert_F \geq \Vert A \Vert_{2,2}\).
+            Frobenius norm \( \Vert A \Vert_F \geq \Vert A \Vert_{2,2}\).
 
             </p>
+
+
+            <b> \( ( q,1 ) \)-norm: </b>
+
+            <p>
+            The induced 2-norm can be shown to be the maximum singular value of the matrix.
+            Assuming the singular value decomposition of \( A \) shown above
+            (and also using some of the steps from the above expressions for \( A^TA \) )
+            we have that
+            $$ \Vert A \Vert_{2,2}
+            = \max_{ \Vert x \Vert_2 = 1} \ \Vert Ax \Vert_2
+            = \max_{ \Vert x \Vert_2 = 1} \ \big( x^TA^TAx \big)^{\tfrac{1}{2}}
+            $$
+            $$
+            = \max_{ \Vert x \Vert_2 = 1} \ \left( x^TV \begin{bmatrix} \Sigma^2 & 0 \\ 0 & 0 \end{bmatrix} V^T x \right)^{ \tfrac{1}{2} }
+            = \max_{ \Vert x' \Vert_2 = 1} \ \left( (x')^T\begin{bmatrix} \Sigma^2 & 0 \\ 0 & 0 \end{bmatrix}x'\right)^{\tfrac{1}{2}}
+            $$
+            with \( x = Vx' \) where we have used the fact that
+            since \( V \) is orthonormal, the unit ball constraint on
+            \(x\) is equivalent to a unit ball constraint on \( x' \).
+            $$
+            1 = \Vert x \Vert =
+            \Vert Vx' \Vert = \Vert x' \Vert
+            $$
+            The maximum is achieved by putting all the weight of \( x'\) on the
+            largest singular value. If we order the singular values from
+            largest to smallest (as is standard) this means taking \( x' = I_1\),
+            the first standard basis vector.  We then get
+
+            $$
+            \Vert A \Vert_{2,2}
+            = \max_{\Vert x' \Vert_2 = 1} \ \left( (x')^T\begin{bmatrix} \Sigma^2 & 0 \\ 0 & 0 \end{bmatrix}x' \right)^{\tfrac{1}{2}}
+            = \left(I_1^T\begin{bmatrix} \Sigma^2 & 0 \\ 0 & 0 \end{bmatrix}I_1\right)^{\tfrac{1}{2}}
+            = \sigma_{\max}(A)
+            $$
+
+
+            Note the above imples that the induced 2-norm is always smaller than the
+            Frobenius norm \( \Vert A \Vert_F \geq \Vert A \Vert_{2,2}\).
+
+            </p>
+
 
 
             <!-- <div class='imgFixed'>
