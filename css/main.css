@@ -147,7 +147,7 @@ body{
   justify-content: center;
   align-items: center;
   margin: 40pt;
-  background-color: #f3f5f9;
+  background-color: rgb(255,255,255);
   border-radius: 20pt;
   border-width: 2pt;
   border-style: 2pt;
