@@ -166,6 +166,12 @@ body{
 }
 
 
+.imgBorder {
+  border-width: 2pt;
+  border-style: solid;
+}
+
+
 .wrapper {
   display: flex;
   flex-direction: row;

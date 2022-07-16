@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+
+
+      <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+      <link rel="stylesheet" href="/dcmath/css/flip.css" ></link>
+      </head>
+
+      <body>
+      <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+      <div w3-include-html="/dcmath/nav/topics.html"></div>
+      <!-- <div w3-include-html="nav/topics.html"></div> -->
+      <div class="wrapper">
+        <div class="sidebar">
+        <div w3-include-html="/dcmath/nav/sidebarLINALG.html"></div>
+        </div>
+        <div class=content>
+            <!-- <div class='img' style="padding:0px" id="inverse-container">
+            </div> -->
+
+
+            <div class="section harder">
+            <div class="txt" style="padding:40px">
+
+                  <b> PSEUDO-INVERSES </b>
+
+
+                  <p>
+                  A matrix is always invertible between the subspaces
+
+                  </p>
+
+                  <b> RIGHT INVERSES </b>
+
+                  <p>
+                  A matrix \(A \in \mathbb{R}^{m \times n}\) is right invertible
+                  if there exists a matrix \(A^r\) such that
+                  $$
+                  A A^r = I_{m \times m}
+                  $$
+                  First, note that for this to be possible \(A^r\) must be in
+                  \(\mathbb{R}^{n \times m}\).  Second, note that if we want to solve
+                  the equation \(y=Ax\), then taking \(x=A^ry\) clearly gives a solution.
+                  This works for any \(y\) so it must be true that a required condition for
+                  a right inverse to exist is that the columns of \(A\) span all of
+                  \(\mathbb{R}^m\), or equivalently \(A\) has full row rank.
+                  </p>
+                </div>
+                </div>
+
+                <div class="section hardest">
+                <div class="txt" style="padding:40px">
+
+
+                  <b> Additive Characterization </b>
+                  <p>
+                  Right inverses are not (in general) unique.  Given one right inverse \((A^r)'\)
+                  then we can construct a new right inverse \(A^r\)
+                  by adding elements in the nullspace of \(A\) to each column
+                   of \((A^r)'\).  Compactly we can write this as
+                  $$
+                  A^r = (A^r)' + NZ
+                  $$
+                  where \(N \in \mathbb{R}^{n \times (n-m)}\) is a basis for the nullspace of \(A\)
+                  and the columns of \(Z \in \mathbb{R}^{(n-m)\times m}\) give the coordinates
+                  of the nullspace elements added to each column of \(A^r\).  Note the similarities
+                  between this equation and general solutions to the equation \(y=Ax\) where
+                  \(A\) is fat.  Since the above equation defines all possible
+                  right inverses, we also have that the set of right inverses defines a subspace in.
+                  \(\mathbb{R}^{n \times m}\)
+                  </p>
+
+                  <b> Multiplicative Characterization </b>
+                  <p>
+                  Consider right multiplying \(A\) by a non-specific matrix \(B \in \mathbb{R}^{n \times m}\)
+                  to get the product \(AB \in \mathbb{R}^{m \times m}\).
+                  In general \(AB\) will be invertible.
+                  (This assumes the columns of \(B\) are linearly independent and the intersection
+                  between the span of \(B\) and the nullspace of \(A\) is just 0, both
+                  of which are generic conditions that we would have to be purposeful in order to violate. )
+                  Given \(B\), we can then get a right inverse in the form
+                  $$
+                  A^r = B(AB)^{-1}
+                  $$
+                  Note that if we allow \(B\) to vary this also characterizes all right inverses.
+                  </p>
+                  <p>
+                  We can connect the multiplicative and additive characterizations in the
+                  following way.  Assuming \(A\) is full rank, construct bases for the range of \(A^T) and the nullspace of \(A\)
+                  as the columns of \(M \in \mathbb{R}^{n \times m}\) and \(N \in \mathbb{R}^{n \times (n -m)}\)
+                  respectively.  (Assuming \(A\) is full row rank
+                  we can just take \(M\) to be \(A^T\); we will return to this later)
+                  Any \(B\) can then be written as
+                  $$
+                  B = MU + NV
+                  $$
+                  where \(U \in \mathbb{R}^{m \times m}\) and \(V \in \mathbb{R}^{(n-m)\times(m)}\)
+                  Note the required dimensions of \(U\) and \(V\)
+                  Note also that the condition that \(AB\) is invertible
+                  is equivalent to \(U\) being invertible since
+                  $$
+                  AB = AMU + ANV = AMU
+                  $$
+                  and if \(A\) has full row rank and \(M\) is a basis for the range of
+                  \(A^T\) then \(AM\) is invertible.
+                  Using this construction to write out the right inverse we get
+                  $$
+                  A^r = B(AB)^{-1} = (MU + NV)(AMU + ANV)^{-1}
+                  = (MU + NV)(AMU)^{-1}
+                  $$
+                  and simplify to obtain
+                  $$
+                  A^r = M(AM)^{-1} + NVU^{-1}(AM)^{-1}
+                  $$
+                  which is the additive characterization with \(Z = VU^{-1}(AM)^{-1}\)
+                  and the specific right inverse \((A^r)' = M(AM)^{-1}\)
+                  </p>
+                  <p>
+                  We note that \(M(AM)^{-1}\) is actually a more
+                  general characterization than needed. For a full row rank \(A\),
+                  we can always write \(A^T = MW\) for some invertible \(W\).
+                  We then have that
+                  $$
+                  M(AM)^{-1} = A^TW^{-1}(AA^TW^{-1})^{-1} = A^TW^{-1}W(AA^T)^{-1} = A^T(AA^T)^{-1}
+                  $$
+                  so the specific solution can always just be written as
+                  \((A^r)' = A^T(AA^T)^{-1}\) (though the component in the nullspace
+                  \(
+                  NZ = NVU^{-1}(AM)^{-1}
+                  \)
+                  does depend on the choice of \(M\).
+                  </p>
+                  <p>
+                  From these considerations, we note that the set of right inverses are affine
+                  in \(Z\) or in the product \(VU^{-1}\) but not in \(U\) and \(V\)
+                  separately.  The equation
+                  $$
+                  AMZ = VU^{-1}
+                  $$
+                  gives a useful linear relationship between \(Z\) and \(VU^{-1}\)
+                  and a nonlinear relationship between \(Z\) and \(V\) and \(U\)
+                  </p>
+                </div>
+              </div>
+
+
+        </div>
+        </div>
+      <!-- <script type='module' src="./matrixo.js"> </script> -->
+      <script src="/dcmath/src/extra/includeHTML.js"> </script>
+        <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+<script>
+const slideIndexes ={'INVERSEANIMATE1':1,
+'INVERSEANIMATE2':1,'INVERSEANIMATE1x':1,
+'INVROWCOLAAi':1,'INVROWCOLAiA':1,
+'INVCOLROWAAi':1,'INVCOLROWAiA':1}
+
+addSlides('INVERSEANIMATE1',slideIndexes);
+showSlides('INVERSEANIMATE1',slideIndexes['INVERSEANIMATE1'],slideIndexes);
+addSlides('INVERSEANIMATE1x',slideIndexes);
+showSlides('INVERSEANIMATE1x',slideIndexes['INVERSEANIMATE1x'],slideIndexes);
+addSlides('INVERSEANIMATE2',slideIndexes);
+showSlides('INVERSEANIMATE2',slideIndexes['INVERSEANIMATE2'],slideIndexes);
+
+
+addSlides('INVROWCOLAAi',slideIndexes);
+showSlides('INVROWCOLAAi',slideIndexes['INVROWCOLAAi'],slideIndexes);
+addSlides('INVROWCOLAiA',slideIndexes);
+showSlides('INVROWCOLAiA',slideIndexes['INVROWCOLAiA'],slideIndexes);
+
+addSlides('INVCOLROWAAi',slideIndexes);
+showSlides('INVCOLROWAAi',slideIndexes['INVCOLROWAAi'],slideIndexes);
+addSlides('INVCOLROWAiA',slideIndexes);
+showSlides('INVCOLROWAiA',slideIndexes['INVCOLROWAiA'],slideIndexes);
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+      </body>
+    </html>
