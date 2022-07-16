@@ -80,7 +80,6 @@ function addSlides(name,slideIndexes){
       // document.getElementById('slide-container1').appendChild(newNumText)
       // document.getElementById('slide-container1').appendChild(newImg)
       // document.getElementById('slide-container1').appendChild(newCaption)
-
       //
       // var textNode = document.createTextNode(htmlText);
       // newNode.append(textNode);
@@ -156,8 +155,8 @@ function showSlides(name,n,slideIndexes) {
   if (n < 1) {slideIndexes[name] = slides.length}
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
-    slides[i].style.borderStyle = 'solid';
-    slides[i].style.borderWidth = '2px';
+    // slides[i].style.borderStyle = 'solid';
+    // slides[i].style.borderWidth = '2px';
   }
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
