@@ -151,7 +151,7 @@ body{
   background-color: rgb(255,255,255);
   border-radius: 20pt;
   border-width: 2pt;
-  border-style: 2pt;
+  border-style: solid;
 }
 
 
@@ -163,7 +163,7 @@ body{
   background-color: rgb(255,255,255);
   border-radius: 20pt;
   border-width: 2pt;
-  border-style: 2pt;
+  border-style: solid;
 }
 
 
