@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></link>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" ></link>
+
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous"></link>
+
+  <!-- The loading of KaTeX is deferred to speed up page rendering -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+  <!-- To automatically render math in text elements, include the auto-render extension: -->
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body)">
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.min.js"> </script>
+  <script src="https://unpkg.com/pts@0.10.5/dist/pts.js"></script>
+
+
+
+
+      <link rel="stylesheet" href="/dcmath/css/main.css" ></link>
+      </head>
+
+      <body>
+      <header> <h1> .dcmath - UNDER CONSTRUCTION </h1> </header>
+      <div w3-include-html="/dcmath/nav/topics.html"></div>
+      <!-- <div w3-include-html="nav/topics.html"></div> -->
+      <div class="wrapper">
+        <div class="sidebar">
+        <div w3-include-html="/dcmath/nav/sidebarLINALG.html"></div>
+        </div>
+        <div class=content>
+          <div class="section basic">
+
+
+
+            <div class="txt" style="padding:40px">
+
+
+                  <b> COORDINATE TRANSFORMATIONS </b>
+                  <p>
+                  <b> Intuition: Coordinates </b>
+                  </p>
+                  <p>
+                  Given a set of vectors \(P_1,\dots,P_n \in \mathbb{R}^m \) organized as the columns of a matrix
+                  \(P \in \mathbb{R}^{ m \times n}\)
+                  $$
+                  P =
+                  \begin{bmatrix}
+                  | &  & | \\
+                  P_1 & \cdots & P_n \\
+                  | &  & |
+                   \end{bmatrix}
+                  $$
+                  we can represent other vectors as linear combinations of those vectors.
+                  This is illustrated in the basic figure shown.  The vector \(y\) is a linear combination
+                  of the columns of \(P\) with coefficients \(x\), ie. \(y = Px\).  Here, we say
+                  that \(x\) is the "coordinates of \(y\) with respect to the columns of \(P\)" (or just
+                  "with respect to \(P\)" for short.)
+                  </p>
+                  </div>
+
+                  <div class='imgBackground'>
+                  <div class="slideshow-container flips" id='COORDS3' any='4' style="width:80%"></div>
+                  </div>
+
+                  <div class="txt" style="padding:40px">
+                    <p>
+                      Once we've defined the new coordinate system \(x = Vx'\)
+                      that tells us how to represent \(x\) as a coordinates (\(x'\))
+                      with respect to \(V\), if we now want to convert
+                      from the original \(x\)-coordinates to the \(x'\)-coordinates
+                      we actually need the inverse transformation.
+
+                    </p>
+                    </div>
+
+
+                  <div class='imgBackground'>
+                  <div class='imgFixed'>
+                  <img src="/dcmath/figs/stills/BASE/COORDINVERSE.png" width=100%></img>
+                  </div>
+                  </div>
+
+
+                  <div class="txt" style="padding:40px">
+                    <p>
+                      The process of defining a coordinate system is worth laying out
+                      in detail.  If we have a vector \(x\) represented with
+                      respect to the standard basis and we want to represent it in terms of a
+                      new basis of vectors, the first step is to write those new basis vectors
+                      in terms of the standard basis.  We then organize these
+                      basis vectors as the columns of a matrix \(V\)
+
+                      $$
+                      V_1, \cdots, V_n \qquad \substack{w.r.t the \\ standard \\ basis}
+                      \qquad \Rightarrow
+                      \qquad
+                      \begin{bmatrix}
+                      | & & | \\
+                      V_1 & \cdots & V_n \\
+                      | & & |
+                      \end{bmatrix}
+                      $$
+
+                      Conceptually, now it is clear that \(x'\) gives a linear combination
+                      of the columns of \(V\) (the new basis vectors) and that the equation
+                      \(x=Vx'\) says that \(x'\) is the representation of \(x\) in the new basis.
+                      We can also see that here both \(x\) and a the columns of \(V\)
+                      should be coordinates with respect to the same basis (the standard basis).
+                      If we know \(x'\) and want to convert \(x\), we simply compute \(x=Vx'\).
+                      If, however, we want to compute \(x'\) from \(x\), we need the equation
+                      \(x' = V^{-1}x\).  We will discuss the details of the inverse operation next.
+                    </p>
+                  </div>
+
+
+
+                  <div class='imgBackground'>
+                  <div class='imgFixed'>
+                  <img src="/dcmath/figs/stills/BASE/COORDSTEPS.png" width=100%></img>
+                  </div>
+                  </div>
+
+
+
+                </div>
+
+
+
+        </div>
+        </div>
+      <!-- <script type='module' src="./matrixo.js"> </script> -->
+      <script src="/dcmath/src/extra/includeHTML.js"> </script>
+      <script type='text/javascript' src="/dcmath/src/extra/flip.js"></script>
+<script>
+const slideIndexes ={'COORDS3':3}
+
+addSlides('COORDS3',slideIndexes);
+showSlides('COORDS3',slideIndexes['COORDS3'],slideIndexes);
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </body>
+    </html>
