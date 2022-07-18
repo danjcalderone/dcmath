@@ -789,6 +789,92 @@
       </div>
     </div>
 
+
+    <div class="txt" style="padding:40px">
+
+      <b> Gaussian Elimination: General Case </b>
+      <p>
+      As shown in the section on Gaussian elimination, in general,
+      for a matrix \( A \in \mathbb{R}^{m \times n} \) we can find an
+      invertible \(E \in \mathbb{R}^{m \times m} \) that is a composition
+      of elementary matrices \( E = E_k \cdots E_1 \) such that
+      $$
+      EA = \begin{bmatrix} I & B \\ 0 & 0 \end{bmatrix}
+      $$
+      with \( I \in \mathbb{R}^{k \times k} \)
+      and \( B \in \mathbb{R}^{k \times n-k} \).
+      It will be helpful to decompose \( E \) and also \( E^{-1} \)
+      as
+
+      $$
+      E =
+      \begin{bmatrix}
+      - & E' & -  \\
+      - & E'' & -
+      \end{bmatrix}, \qquad
+      E^{-1}
+      \begin{bmatrix}
+      | & | \\
+      F' & F'' \\
+      | & |
+      \end{bmatrix}
+      $$
+      where
+      \( E' \in \mathbb{R}^{k \times m} \), \(E'' \in \mathbb{m-k \times m} \),
+      \( F' \in \mathbb{R}^{m \times k} \), and \(F'' \in \mathbb{m \times m-k} \).
+      Note briefly that we have
+      $$
+      I = EE^{-1} =
+      \begin{bmatrix}
+      - & E' & -  \\
+      - & E'' & -
+      \end{bmatrix}
+      \begin{bmatrix}
+      | & | \\
+      F' & F'' \\
+      | & |
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+      E'F' & E'F''  \\
+      E''F' & E'' F''
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+      I & 0 \\
+      0 & I
+      \end{bmatrix}
+      $$
+      and also that \( I = E^{-1}E = F'E'+F''E'' \).  (Note which submatrices
+      are orthogonal.)
+      Returning to our discussion on Gaussian elimination, it is useful to write
+      the above equation as decomposition of \(A\)
+      $$
+      A = E^{-1}
+      \begin{bmatrix} I & B \\ 0 & 0 \end{bmatrix} =
+      \begin{bmatrix}
+      | & | \\
+      F' & F'' \\
+      | & |
+      \end{bmatrix}
+      \begin{bmatrix} I & B \\ 0 & 0 \end{bmatrix}
+      = F' \begin{bmatrix} I & B \\ 0 & 0 \end{bmatrix}
+      $$
+      It is clear from this that \( F' \) is a basis for the range
+      of \(A\). (The above construction shows that \(F'\)
+      must span the range of \(A\) and it must also have
+      linearly independent columns since it is column subset of \(E^{-1}\)
+      which is invertible. We also have that the rows of \(E''\) form a
+      basis for the nullspace of \(A^T\) by a similar linear independence
+      argument, rank-nullity (applied to the co-domain) and the fact that
+      \(E''F' = 0 \).
+      </p>
+
+
+
+    </div>
+
+
         <!-- <div class='imgFixed'>
         <img src="/dcmath/figs/stills/MAT/CVXHULLS1.png" width=90%></img>
         </div> -->
