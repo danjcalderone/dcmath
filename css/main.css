@@ -133,30 +133,30 @@ background-color: rgb(227, 242, 253)
 .hard {
   /* background-color: rgb(187, 222, 251); */
   /* background-color: rgb(227, 242, 253); */
-  /* background-color: rgb(194, 220, 254); /* version 1 */
+  background-color: rgb(194, 220, 254); /* version 1 */
   /* background-color: rgb(222, 236, 254); /* version 1 light */
   /* background-color: rgb(228, 234, 254); /* version 1 lighter */
-  background-color: rgb(238, 246, 255); /* version 1 lightest */
+  /*background-color: rgb(238, 246, 255); /* version 1 lightest */
   border-radius: 20pt;
 }
 
 .harder  {
   /* background-color: rgb(209, 196, 233); */
   /* background-color: rgb(237, 231, 246); */
-  /* background-color: rgb(232, 209, 241);  /* version1 */
+  background-color: rgb(232, 209, 241);  /* version1 */
   /* background-color: rgb(242, 230, 247);  /* version1 light */
   /* background-color: rgb(246, 236, 249);  /* version1 lighter */
-  background-color: rgb(253, 242, 253);  /* version1 lightest */
+  /* background-color: rgb(253, 242, 253);  /* version1 lightest */
   border-radius: 20pt;
 }
 
 .hardest  {
   /* background-color: rgb(255, 205, 210); */
   /* background-color: rgb(255, 235, 238); */
-  /* background-color: rgb(255, 213, 223); /* version1 */
+  background-color: rgb(255, 213, 223); /* version1 */
   /* background-color: rgb(255, 221, 228); /* version1 light */
   /* background-color: rgb(255, 232, 237); /* version1 lighter */
-  background-color: rgb(255, 238, 238); /* version1 lightest */
+  /* background-color: rgb(255, 238, 238); /* version1 lightest */
   /* background-color: rgb(255, 245, 246); */
   border-radius: 20pt;
 }
