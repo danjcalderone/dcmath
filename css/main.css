@@ -181,11 +181,21 @@ background-color: rgb(227, 242, 253)
   border-style: solid;
 }
 
+.imgPositioner {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  margin: 20px 40px 20px 40px;
+  border-radius: 20pt;
+  border-width: 2pt;
+  border-style: solid;
+}
+
 .imgBackground {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 40px 40px 20px;
+  margin: 20px 40px 20px 40px;
   background-color: rgb(255,255,255);
   border-radius: 20pt;
   border-width: 2pt;
