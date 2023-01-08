@@ -226,7 +226,6 @@ background-color: rgb(227, 242, 253)
   display: flex;
   justify-content: center;
   align-items: center;
-
   margin-top: clamp(10px, 10%, 50px);
   margin-bottom: clamp(10px, 10%, 50px);
   margin-left: clamp(10px, 10%, 50px);
