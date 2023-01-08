@@ -293,7 +293,7 @@ background-color: rgb(227, 242, 253)
 .section {
   flex: 0 1 auto;
   padding: clamp(20px, 20%, 100px);
-  /* width: 80%; */
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
