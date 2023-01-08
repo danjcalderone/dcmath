@@ -277,6 +277,7 @@ background-color: rgb(227, 242, 253)
   /* flex-grow: 2;
   flex-shrink: 1; */
   flex-basis: auto;
+  margin: clamp(20px, 20%, 100px);
   max-width: 1000px;
   position: relative;
   display: flex;
@@ -292,7 +293,6 @@ background-color: rgb(227, 242, 253)
 
 .section {
   flex: 0 1 auto;
-  padding: clamp(20px, 20%, 100px);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -307,13 +307,16 @@ background-color: rgb(227, 242, 253)
 
 .txt {
   /* flex: 0 1 auto; */
-
+  margin-top: clamp(10px, 10%, 50px);
+  margin-bottom: clamp(10px, 10%, 50px);
   /* padding: 20px 40px 40px 20px; */
   /* width: 100%; */
   word-wrap: break-word;
   /* background-color: rgba(64, 106, 157, 0.0); */
   font-size: 16px;
   background-color: rgba(255,255,255,0);
+
+
 }
 
 .sidebar ul {
