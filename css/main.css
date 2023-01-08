@@ -216,7 +216,7 @@ background-color: rgb(227, 242, 253)
   /* display: flex; */
   justify-content: center;
   align-items: center;
-  margin: 20px 40px 20px 40px;
+  /* margin: 20px 40px 20px 40px; */
   border-radius: 20pt;
   border-width: 2pt;
   border-style: solid;
@@ -226,10 +226,12 @@ background-color: rgb(227, 242, 253)
   display: flex;
   justify-content: center;
   align-items: center;
+
   margin-top: clamp(10px, 10%, 50px);
   margin-bottom: clamp(10px, 10%, 50px);
   margin-left: clamp(10px, 10%, 50px);
   margin-right: clamp(10px, 10%, 50px);
+
   background-color: rgb(255,255,255);
   border-radius: 20pt;
   border-width: 2pt;
