@@ -55,7 +55,7 @@
             </div> -->
 
 
-            <div class="section harder"> -->
+            <div class="section harder"> 
             <div class="txt" style="padding:60px">
 
                   <b> PSEUDO-INVERSES </b>
@@ -221,7 +221,7 @@
                   \end{bmatrix}
                   \begin{bmatrix} \Sigma^{-1} & 0 \\ 0 & 0 \end{bmatrix}U^T
                   \begin{bmatrix}
-                  - & {U'}^T & -
+                  - & {U'}^T & - \\
                   - & {U''}^T & -
                   \end{bmatrix}
                   = V'\Sigma^{-1}{U'}^T
@@ -244,7 +244,7 @@
                   $$ \min_{z'} \ y^Ty - 2y^TU'\Sigma z' - {z'}^T\Sigma^2 z'$$
                   Differentiating and solving for \(z'\) gives
                   $$
-                  z' = Sigma^{-2}\Sigma {U'}^Ty \qquad \Rightarrow \qquad x = V'z' = V'\Sigma^{-1}{U'}^Ty
+                  z' = \Sigma^{-2} \Sigma {U'}^Ty \qquad \Rightarrow \qquad x = V'z' = V'\Sigma^{-1}{U'}^Ty
                   $$
                   which is precisely the pseudo-inverse.
 
